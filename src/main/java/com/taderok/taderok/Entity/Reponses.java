@@ -35,4 +35,12 @@ public class Reponses {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public Questions getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Questions questions) {
+        this.questions = questions;
+    }
 }

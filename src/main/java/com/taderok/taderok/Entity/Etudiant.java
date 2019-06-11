@@ -49,4 +49,28 @@ public class Etudiant extends User {
     public void setPaiement(boolean paiement) {
         this.paiement = paiement;
     }
+
+    public List<Rating> getRatingList() {
+        return ratingList;
+    }
+
+    public void setRatingList(List<Rating> ratingList) {
+        this.ratingList = ratingList;
+    }
+
+    public List<Groupes> getGroupesList() {
+        return groupesList;
+    }
+
+    public void setGroupesList(List<Groupes> groupesList) {
+        this.groupesList = groupesList;
+    }
+
+    public List<GroupeChat> getGroupeChatList() {
+        return groupeChatList;
+    }
+
+    public void setGroupeChatList(List<GroupeChat> groupeChatList) {
+        this.groupeChatList = groupeChatList;
+    }
 }

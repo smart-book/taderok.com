@@ -33,4 +33,28 @@ public class GroupeChat {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public Groupes getGroupes() {
+        return groupes;
+    }
+
+    public void setGroupes(Groupes groupes) {
+        this.groupes = groupes;
+    }
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+    public Prof getProf() {
+        return prof;
+    }
+
+    public void setProf(Prof prof) {
+        this.prof = prof;
+    }
 }

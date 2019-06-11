@@ -66,4 +66,20 @@ public class Forum {
     public void setNiveau(String niveau) {
         this.niveau = niveau;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<CommentaireForum> getCommentaireForumList() {
+        return commentaireForumList;
+    }
+
+    public void setCommentaireForumList(List<CommentaireForum> commentaireForumList) {
+        this.commentaireForumList = commentaireForumList;
+    }
 }

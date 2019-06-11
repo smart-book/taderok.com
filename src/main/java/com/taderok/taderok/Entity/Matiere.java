@@ -27,4 +27,12 @@ public class Matiere {
     public void setMatiere(String matiere) {
         this.matiere = matiere;
     }
+
+    public List<Prof> getProfList() {
+        return profList;
+    }
+
+    public void setProfList(List<Prof> profList) {
+        this.profList = profList;
+    }
 }

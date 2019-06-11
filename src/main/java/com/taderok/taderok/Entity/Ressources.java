@@ -35,4 +35,12 @@ public class Ressources {
     public void setPath(String path) {
         this.path = path;
     }
+
+    public Seance getSeance() {
+        return seance;
+    }
+
+    public void setSeance(Seance seance) {
+        this.seance = seance;
+    }
 }

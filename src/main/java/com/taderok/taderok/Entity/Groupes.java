@@ -28,4 +28,20 @@ public class Groupes {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public List<Seance> getSeanceList() {
+        return seanceList;
+    }
+
+    public void setSeanceList(List<Seance> seanceList) {
+        this.seanceList = seanceList;
+    }
+
+    public List<Etudiant> getEtudiantList() {
+        return etudiantList;
+    }
+
+    public void setEtudiantList(List<Etudiant> etudiantList) {
+        this.etudiantList = etudiantList;
+    }
 }

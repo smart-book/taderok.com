@@ -47,4 +47,20 @@ public class Quiz {
     public void setNomQuiz(String nomQuiz) {
         this.nomQuiz = nomQuiz;
     }
+
+    public List<Seance> getSeanceList() {
+        return seanceList;
+    }
+
+    public void setSeanceList(List<Seance> seanceList) {
+        this.seanceList = seanceList;
+    }
+
+    public List<Questions> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Questions> questions) {
+        this.questions = questions;
+    }
 }

@@ -29,4 +29,14 @@ public class Chat {
     public void setContenu(Date contenu) {
         this.contenu = contenu;
     }
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+
 }

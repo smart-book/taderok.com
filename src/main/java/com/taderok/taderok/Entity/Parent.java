@@ -22,4 +22,6 @@ public class Parent extends User {
     public void setCin(String cin) {
         this.cin = cin;
     }
+
+
 }

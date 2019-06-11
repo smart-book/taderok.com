@@ -52,4 +52,36 @@ public class Prof extends User {
     public void setCode_tablette(String code_tablette) {
         this.code_tablette = code_tablette;
     }
+
+    public List<Rating> getRatingList() {
+        return ratingList;
+    }
+
+    public void setRatingList(List<Rating> ratingList) {
+        this.ratingList = ratingList;
+    }
+
+    public List<Matiere> getMatiereList() {
+        return matiereList;
+    }
+
+    public void setMatiereList(List<Matiere> matiereList) {
+        this.matiereList = matiereList;
+    }
+
+    public List<Seance> getSeanceList() {
+        return seanceList;
+    }
+
+    public void setSeanceList(List<Seance> seanceList) {
+        this.seanceList = seanceList;
+    }
+
+    public List<GroupeChat> getGroupeChatList() {
+        return groupeChatList;
+    }
+
+    public void setGroupeChatList(List<GroupeChat> groupeChatList) {
+        this.groupeChatList = groupeChatList;
+    }
 }

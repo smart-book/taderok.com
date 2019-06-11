@@ -38,4 +38,20 @@ public class CommentaireForum {
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
+
+    public Forum getForum() {
+        return forum;
+    }
+
+    public void setForum(Forum forum) {
+        this.forum = forum;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

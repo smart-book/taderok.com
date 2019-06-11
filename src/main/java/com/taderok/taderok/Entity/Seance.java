@@ -52,4 +52,36 @@ public class Seance {
     public void setMatiere(String matiere) {
         this.matiere = matiere;
     }
+
+    public Prof getProf() {
+        return prof;
+    }
+
+    public void setProf(Prof prof) {
+        this.prof = prof;
+    }
+
+    public List<Quiz> getQuizList() {
+        return quizList;
+    }
+
+    public void setQuizList(List<Quiz> quizList) {
+        this.quizList = quizList;
+    }
+
+    public List<Ressources> getRessourcesList() {
+        return ressourcesList;
+    }
+
+    public void setRessourcesList(List<Ressources> ressourcesList) {
+        this.ressourcesList = ressourcesList;
+    }
+
+    public Groupes getGroupes() {
+        return groupes;
+    }
+
+    public void setGroupes(Groupes groupes) {
+        this.groupes = groupes;
+    }
 }
