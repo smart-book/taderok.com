@@ -1,10 +1,16 @@
 package com.taderok.taderok.Entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
 
     @Id
@@ -17,8 +23,8 @@ public class User {
     private String adresse;
     private String photo;
     private String email;
+    private String password;
     private String sexe;
-    private Role role;
     @OneToMany(mappedBy = "user")
     private List<Forum> forumList;
     @OneToMany(mappedBy = "user")
@@ -27,6 +33,32 @@ public class User {
     private List<Reclamation> reclamationList;
     @OneToMany(mappedBy = "user")
     private List<Message> messageList;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+
+    public User() {
+    }
+
+    public User(User u) {
+        this.nom = u.getNom();
+        this.prenom = u.getPrenom();
+        this.telephone = u.getTelephone();
+        this.dateNaissance = u.getDateNaissance();
+        this.adresse = u.getAdresse();
+        this.photo = u.getPhoto();
+        this.email = u.getEmail();
+        this.password = u.getPassword();
+        this.sexe = u.getSexe();
+        this.forumList = u.getForumList();
+        this.commentaireForumList = u.getCommentaireForumList();
+        this.reclamationList = u.getReclamationList();
+        this.messageList = u.getMessageList();
+        this.roles = u.getRoles();
+    }
+
+
 
     public int getId() {
         return id;
@@ -100,14 +132,6 @@ public class User {
         this.sexe = sexe;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
     public List<Forum> getForumList() {
         return forumList;
     }
@@ -139,4 +163,22 @@ public class User {
     public void setMessageList(List<Message> messageList) {
         this.messageList = messageList;
     }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 }
