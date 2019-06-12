@@ -25,6 +25,7 @@ public class User {
     private String email;
     private String password;
     private String sexe;
+    private boolean activated;
     @OneToMany(mappedBy = "user")
     private List<Forum> forumList;
     @OneToMany(mappedBy = "user")
@@ -35,7 +36,7 @@ public class User {
     private List<Message> messageList;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Collection<Role> roles;
 
 
     public User() {
@@ -164,11 +165,11 @@ public class User {
         this.messageList = messageList;
     }
 
-    public Set<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 
@@ -180,5 +181,11 @@ public class User {
         this.password = password;
     }
 
+    public boolean isActivated() {
+        return activated;
+    }
 
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
 }
