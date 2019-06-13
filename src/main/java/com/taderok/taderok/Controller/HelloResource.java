@@ -27,6 +27,14 @@ public class HelloResource {
 
     public static int idConnected;
 
+    public static int getIdConnected() {
+        return idConnected;
+    }
+
+    public static void setIdConnected(int idConnected) {
+        HelloResource.idConnected = idConnected;
+    }
+
     @Autowired
     private UserService userService;
 

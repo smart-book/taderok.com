@@ -18,10 +18,15 @@ public class ForumController {
 
     @Autowired
     private ForumService forumService;
+    @Autowired
+    private HelloResource helloResource;
+
 
     @GetMapping("/findAll")
     @ResponseBody
     public List<Forum> getAllForum(){
+        int id = helloResource.getIdConnected();
+        System.out.println(id);
         return forumService.getAllForum();
     }
 
