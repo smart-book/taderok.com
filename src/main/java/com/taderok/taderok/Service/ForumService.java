@@ -39,6 +39,11 @@ public class ForumService {
     }
 
     public void updateForum(Forum forum,int id){
+        
         forumRepository.save(forum);
+    }
+    public void deleteForum(int id)
+    {
+        forumRepository.deleteById(id);
     }
 }

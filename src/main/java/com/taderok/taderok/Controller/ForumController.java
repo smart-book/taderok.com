@@ -33,6 +33,13 @@ public class ForumController {
     {
         forumService.updateForum(forum,id);
     }
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
+    public void deleteForum(@PathVariable int id)
+    {
+        forumService.deleteForum(id);
+    }
+
+
 
 
 
