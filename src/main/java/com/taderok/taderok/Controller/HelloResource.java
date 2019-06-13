@@ -1,6 +1,8 @@
 package com.taderok.taderok.Controller;
 
 
+
+import com.taderok.taderok.Entity.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,5 +39,14 @@ public class HelloResource {
 
 
         return params;
+    }
+
+    @RequestMapping("/user")
+    public Object getAuthentication() {
+        SecurityContext securityContextt = SecurityContextHolder.getContext();
+        Authentication authentication=securityContextt.getAuthentication();
+        //Object u = authentication.getPrincipal();
+        Object u = authentication.getDetails();
+        return u;
     }
 }
