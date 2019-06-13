@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -16,10 +18,15 @@ public class Seance {
     private Prof prof;
     @ManyToMany(mappedBy = "seanceList")
     private List<Quiz> quizList;
+    @JsonIgnoreProperties("seance")
     @OneToMany(mappedBy = "seance")
     private List<Ressources> ressourcesList;
     @ManyToOne
+    @JsonIgnoreProperties("seanceList")
     private Groupes groupes;
+    @JsonIgnoreProperties("seance")
+    @OneToMany(mappedBy = "seance")
+    private List<Feedback> feedbackList;
 
     public int getId() {
         return id;

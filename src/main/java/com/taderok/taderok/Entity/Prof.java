@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -11,6 +13,7 @@ public class Prof extends User {
     private String diplome;
     private String experience;
     private String code_tablette;
+    @JsonIgnoreProperties("prof")
     @OneToMany(mappedBy = "prof")
     private List<Rating> ratingList;
     @ManyToMany(mappedBy = "profList")
@@ -18,6 +21,7 @@ public class Prof extends User {
     @OneToMany(mappedBy = "prof")
     private List<Seance> seanceList;
     @OneToMany(mappedBy = "prof")
+    @JsonIgnoreProperties("prof")
     private List<GroupeChat> groupeChatList;
 
 

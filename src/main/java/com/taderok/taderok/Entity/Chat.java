@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.Null;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class Chat {
     private int id;
     private Date contenu;
     @OneToMany(mappedBy = "chat")
+    @JsonIgnoreProperties("chat")
     private List<Message> messageList;
 
     public int getId() {

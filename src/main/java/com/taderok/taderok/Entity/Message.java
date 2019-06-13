@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,10 +13,13 @@ public class Message {
     private Date date;
     private String contenu;
     @ManyToOne
+    @JsonIgnoreProperties("messageList")
     private GroupeChat groupeChat;
     @ManyToOne
+    @JsonIgnoreProperties("messageList")
     private Chat chat;
     @ManyToOne
+    @JsonIgnoreProperties("messageList")
     private User user;
 
 

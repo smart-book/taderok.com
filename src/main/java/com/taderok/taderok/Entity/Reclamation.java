@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +15,7 @@ public class Reclamation {
     private boolean etat;
     private String type;
     @ManyToOne
+    @JsonIgnoreProperties(" reclamationList")
     private User user;
 
     public int getId() {

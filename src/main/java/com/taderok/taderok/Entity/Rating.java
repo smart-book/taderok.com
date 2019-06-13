@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +12,10 @@ public class Rating {
     private int id;
     private float note;
     @ManyToOne
+    @JsonIgnoreProperties("ratingList")
     private Etudiant etudiant;
     @ManyToOne
+    @JsonIgnoreProperties("ratingList")
     private Prof prof;
 
     public int getId() {

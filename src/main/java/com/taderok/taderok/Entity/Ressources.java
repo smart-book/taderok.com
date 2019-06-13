@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Ressources {
     private String nom;
     private String path;
     @ManyToOne
+    @JsonIgnoreProperties("ressourcesList")
     private Seance seance;
 
     public int getId() {

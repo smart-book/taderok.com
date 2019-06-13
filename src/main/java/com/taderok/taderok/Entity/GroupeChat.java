@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,11 +13,16 @@ public class GroupeChat {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private Date date;
+
     @ManyToOne
+    @JsonIgnoreProperties("seanceList")
     private Groupes groupes;
-    @OneToMany(mappedBy = "groupeChat")
+
+    @OneToMany(mappedBy ="groupeChat")
+    @JsonIgnoreProperties("groupeChat")
     private List<Message> messageList;
     @ManyToOne
+    @JsonIgnoreProperties("groupeChatList")
     private Prof prof;
 
     public int getId() {

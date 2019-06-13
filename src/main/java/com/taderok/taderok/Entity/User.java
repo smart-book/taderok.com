@@ -31,11 +31,14 @@ public class User {
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<Forum> forumList;
+    @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<CommentaireForum> commentaireForumList;
+    @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<Reclamation> reclamationList;
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private List<Message> messageList;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
