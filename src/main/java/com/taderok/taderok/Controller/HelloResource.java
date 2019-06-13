@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,8 @@ import java.util.Map;
 
 @RestController
 public class HelloResource {
+
+    public static int idConnected;
 
     @Autowired
     private UserService userService;
@@ -41,6 +44,13 @@ public class HelloResource {
         params.put("username",username);
         params.put("roles",roles);
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetail = (UserDetails) auth.getPrincipal();
+
+        User u = userService.getUserFromDb(userDetail.getUsername());
+        params.put("id", u.getId());
+
+        idConnected = u.getId();
 
         return params;
     }
@@ -57,5 +67,10 @@ public class HelloResource {
     @RequestMapping(value = "/id", method = RequestMethod.GET)
     public int currentUserId(Principal principal) {
         return userService.getUserId(principal);
+    }
+
+    @RequestMapping("/get")
+    public Object getUserConnectedId() {
+        return idConnected;
     }
 }

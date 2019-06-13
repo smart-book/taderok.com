@@ -45,4 +45,10 @@ public class UserService {
         User u = (User)authentication.getPrincipal();
         return u.getId();
     }
+
+    public User getUserFromDb(String email){
+        User u=userRepository.findByEmail(email);
+        return u;
+
+    }
 }
