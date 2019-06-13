@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,6 +28,7 @@ public class User {
     private String password;
     private String sexe;
     private boolean activated;
+    @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<Forum> forumList;
     @OneToMany(mappedBy = "user")
@@ -187,5 +190,22 @@ public class User {
 
     public void setActivated(boolean activated) {
         this.activated = activated;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", telephone=" + telephone +
+                ", dateNaissance=" + dateNaissance +
+                ", adresse='" + adresse + '\'' +
+                ", photo='" + photo + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", sexe='" + sexe + '\'' +
+
+                '}';
     }
 }

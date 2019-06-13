@@ -1,5 +1,8 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -7,7 +10,7 @@ import java.util.List;
 @Entity
 public class Forum {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String titre;
     private Date date;
@@ -15,6 +18,7 @@ public class Forum {
     private String matiere;
     private String niveau;
     @ManyToOne
+    @JsonIgnoreProperties("forumList")
     private User user;
     @OneToMany(mappedBy = "forum")
     private List<CommentaireForum> commentaireForumList;
@@ -81,5 +85,17 @@ public class Forum {
 
     public void setCommentaireForumList(List<CommentaireForum> commentaireForumList) {
         this.commentaireForumList = commentaireForumList;
+    }
+
+    @Override
+    public String toString() {
+        return "Forum{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", matiere='" + matiere + '\'' +
+                ", niveau='" + niveau + '\'' +
+                '}';
     }
 }

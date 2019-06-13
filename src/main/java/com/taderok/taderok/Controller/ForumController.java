@@ -4,10 +4,7 @@ import com.taderok.taderok.Entity.Forum;
 import com.taderok.taderok.Repository.ForumRepository;
 import com.taderok.taderok.Service.ForumService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +19,30 @@ public class ForumController {
     private HelloResource helloResource;
 
 
-    @GetMapping("/findAll")
-    @ResponseBody
+    @RequestMapping("/findAll")
     public List<Forum> getAllForum(){
-        int id = helloResource.getIdConnected();
-        System.out.println(id);
         return forumService.getAllForum();
     }
+
+    @RequestMapping("/{id}")
+    public Forum getForum(@PathVariable int id){
+        return forumService.getForum(id);
+    }
+    @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
+    public void updateForum(@RequestBody Forum forum,@PathVariable int id)
+    {
+        forumService.updateForum(forum,id);
+    }
+
+
+
+
+    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    public void addForum(@RequestBody Forum forum){
+
+        forumService.addForum(forum);
+    }
+
 
 
 
