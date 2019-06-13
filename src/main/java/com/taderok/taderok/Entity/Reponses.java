@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Reponses {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String reponse;
     private boolean status;

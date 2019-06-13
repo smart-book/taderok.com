@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Chat {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private Date contenu;
     @OneToMany(mappedBy = "chat")

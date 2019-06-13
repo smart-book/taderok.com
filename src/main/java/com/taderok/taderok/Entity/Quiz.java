@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class Quiz {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private int id_etudiant;
     private int note;

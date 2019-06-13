@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Forum {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String titre;
     private Date date;
