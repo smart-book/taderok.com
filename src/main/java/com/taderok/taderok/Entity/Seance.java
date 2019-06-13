@@ -24,8 +24,8 @@ public class Seance {
     @ManyToOne
     @JsonIgnoreProperties("seanceList")
     private Groupes groupes;
-    @JsonIgnoreProperties("seance")
-    @OneToMany(mappedBy = "seance")
+    @JsonIgnoreProperties("seances")
+    @OneToMany(mappedBy = "seances")
     private List<Feedback> feedbackList;
 
     public int getId() {
