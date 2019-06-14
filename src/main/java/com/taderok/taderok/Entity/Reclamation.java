@@ -13,7 +13,8 @@ public class Reclamation {
     private Date date;
     private String description;
     private boolean etat;
-    private String type;
+    private TypeReclamation type;
+
     @ManyToOne
     @JsonIgnoreProperties(" reclamationList")
     private User user;
@@ -50,11 +51,10 @@ public class Reclamation {
         this.etat = etat;
     }
 
-    public String getType() {
+    public TypeReclamation getType() {
         return type;
     }
-
-    public void setType(String type) {
+    public void setType(TypeReclamation type) {
         this.type = type;
     }
 
@@ -64,5 +64,16 @@ public class Reclamation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Reclamation{" +
+                "id=" + id +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", etat=" + etat +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
