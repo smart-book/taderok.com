@@ -14,13 +14,14 @@ public class GroupeChat {
     private int id;
     private Date date;
 
-    @ManyToOne
-    @JsonIgnoreProperties("seanceList")
-    private Groupes groupes;
+
 
     @OneToMany(mappedBy ="groupeChat")
     @JsonIgnoreProperties("groupeChat")
     private List<Message> messageList;
+    @ManyToOne
+    @JsonIgnoreProperties("groupeChatList")
+    private Groupes groupes;
     @ManyToOne
     @JsonIgnoreProperties("groupeChatList")
     private Prof prof;
@@ -41,20 +42,20 @@ public class GroupeChat {
         this.date = date;
     }
 
-    public Groupes getGroupes() {
-        return groupes;
-    }
-
-    public void setGroupes(Groupes groupes) {
-        this.groupes = groupes;
-    }
-
     public List<Message> getMessageList() {
         return messageList;
     }
 
     public void setMessageList(List<Message> messageList) {
         this.messageList = messageList;
+    }
+
+    public Groupes getGroupes() {
+        return groupes;
+    }
+
+    public void setGroupes(Groupes groupes) {
+        this.groupes = groupes;
     }
 
     public Prof getProf() {

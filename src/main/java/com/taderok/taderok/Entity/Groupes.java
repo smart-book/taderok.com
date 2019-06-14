@@ -15,6 +15,7 @@ public class Groupes {
     @JsonIgnoreProperties("groupes")
     private List<Seance> seanceList;
     @ManyToMany
+    @JsonIgnoreProperties("groupesList")
     private List<Etudiant> etudiantList;
 
     @OneToMany(mappedBy = "groupes")
@@ -51,5 +52,13 @@ public class Groupes {
 
     public void setEtudiantList(List<Etudiant> etudiantList) {
         this.etudiantList = etudiantList;
+    }
+
+    public List<GroupeChat> getGroupeChatList() {
+        return groupeChatList;
+    }
+
+    public void setGroupeChatList(List<GroupeChat> groupeChatList) {
+        this.groupeChatList = groupeChatList;
     }
 }
