@@ -39,14 +39,8 @@ public class ForumController {
         forumService.deleteForum(id);
     }
 
-
-
-
-
-
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public void addForum(@RequestBody Forum forum){
-
         forumService.addForum(forum);
     }
 

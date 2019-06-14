@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 public class CommentaireForum {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private Date date;
     private String contenu;

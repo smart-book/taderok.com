@@ -39,8 +39,14 @@ public class ForumService {
     }
 
     public void updateForum(Forum forum,int id){
-        
-        forumRepository.save(forum);
+        Forum f = forumRepository.findById(id).orElse(null);
+        f.setDate(forum.getDate());
+        f.setDescription(forum.getDescription());
+        f.setMatiere(forum.getMatiere());
+        f.setNiveau(forum.getNiveau());
+        f.setTitre(forum.getTitre());
+        f.setUser(forum.getUser());
+        forumRepository.save(f);
     }
     public void deleteForum(int id)
     {

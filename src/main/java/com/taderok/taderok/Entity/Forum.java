@@ -20,6 +20,7 @@ public class Forum {
     @ManyToOne
     @JsonIgnoreProperties("forumList")
     private User user;
+    @JsonIgnoreProperties("forum")
     @OneToMany(mappedBy = "forum")
     private List<CommentaireForum> commentaireForumList;
 
