@@ -8,6 +8,8 @@ import com.taderok.taderok.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
     public class FeedbackService {
 
@@ -25,6 +27,12 @@ import org.springframework.stereotype.Service;
         return feedbackRepository.save(req);
 
     }
+
+    public List<Feedback> getAllFeedback(){
+        return (List<Feedback>) feedbackRepository.findAll();
+    }
+
+
 
 
 }

@@ -5,6 +5,8 @@ import com.taderok.taderok.Service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/feedback")
     public class FeedbackController {
@@ -17,7 +19,8 @@ import org.springframework.web.bind.annotation.*;
         return feedbackService.add(req);
     }
 
-
-
-
+    @RequestMapping("/Feedbacks")
+    public List<Feedback> getAllReclamation(){
+        return feedbackService.getAllFeedback();
+    }
 }
