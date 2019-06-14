@@ -40,9 +40,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
     private List<Message> messageList;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles;
+    @ManyToOne
+    //@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Role roles;
 
 
     public User() {
@@ -62,7 +62,7 @@ public class User {
         this.commentaireForumList = u.getCommentaireForumList();
         this.reclamationList = u.getReclamationList();
         this.messageList = u.getMessageList();
-        this.roles = u.getRoles();
+        //this.roles = u.getRoles();
     }
 
 
@@ -171,13 +171,6 @@ public class User {
         this.messageList = messageList;
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
 
     public String getPassword() {
         return password;
