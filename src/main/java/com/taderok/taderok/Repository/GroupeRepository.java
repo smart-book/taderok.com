@@ -1,8 +1,8 @@
 package com.taderok.taderok.Repository;
-import com.taderok.taderok.Entity.Forum;
+import com.taderok.taderok.Entity.Groupes;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ForumRepository extends CrudRepository<Forum,Integer> {
+public interface GroupeRepository extends CrudRepository<Groupes,Integer>{
 }

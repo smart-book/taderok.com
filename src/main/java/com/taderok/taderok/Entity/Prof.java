@@ -24,7 +24,6 @@ public class Prof extends User {
     @JsonIgnoreProperties("prof")
     private List<GroupeChat> groupeChatList;
 
-
     public int getCin() {
         return cin;
     }
