@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -11,7 +12,6 @@ import java.util.List;
 public class Etudiant extends User {
     private String niveau;
     private String etablissement;
-    private int code;
     private boolean paiement;
     @JsonIgnoreProperties("etudiant")
     @OneToMany(mappedBy = "etudiant")
@@ -20,6 +20,9 @@ public class Etudiant extends User {
     private List<Groupes> groupesList;
     @OneToMany
     private List<GroupeChat> groupeChatList;
+    @ManyToOne
+    private Parent parent;
+    private String code_enfant;
 
     @JsonIgnoreProperties("etudiant")
     @OneToMany(mappedBy = "etudiant")
@@ -39,14 +42,6 @@ public class Etudiant extends User {
 
     public void setEtablissement(String etablissement) {
         this.etablissement = etablissement;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 
     public boolean isPaiement() {
@@ -87,5 +82,21 @@ public class Etudiant extends User {
 
     public void setFeedbackList(List<Feedback> feedbackList) {
         this.feedbackList = feedbackList;
+    }
+
+    public String getCode_enfant() {
+        return code_enfant;
+    }
+
+    public void setCode_enfant(String code_enfant) {
+        this.code_enfant = code_enfant;
+    }
+
+    public Parent getParent() {
+        return parent;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
     }
 }

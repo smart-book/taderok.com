@@ -188,6 +188,14 @@ public class User {
         this.activated = activated;
     }
 
+    public Role getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Role roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
