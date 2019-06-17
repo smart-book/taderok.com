@@ -1,19 +1,15 @@
 package com.taderok.taderok.Entity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Parent extends User {
-    private int code_enfant;
     private String cin;
 
-    public int getCode_enfant() {
-        return code_enfant;
-    }
-
-    public void setCode_enfant(int code_enfant) {
-        this.code_enfant = code_enfant;
-    }
+    @OneToMany
+    private List<Etudiant> enfants;
 
     public String getCin() {
         return cin;
@@ -23,5 +19,11 @@ public class Parent extends User {
         this.cin = cin;
     }
 
+    public List<Etudiant> getEnfants() {
+        return enfants;
+    }
 
+    public void setEnfants(List<Etudiant> enfants) {
+        this.enfants = enfants;
+    }
 }
