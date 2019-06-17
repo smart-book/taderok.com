@@ -1,10 +1,6 @@
 package com.taderok.taderok.Service;
-import com.taderok.taderok.Controller.HelloResource;
-import com.taderok.taderok.Entity.Forum;
 import com.taderok.taderok.Entity.Groupes;
-import com.taderok.taderok.Entity.User;
 import com.taderok.taderok.Repository.GroupeRepository;
-import com.taderok.taderok.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +27,14 @@ public class GroupeService {
         groupeRepository.save(groupe);
     }
 
-    public void updateGroupe(Groupes groupe,int id){
+    public void updateGroupe(Groupes groupe, int id ){
 
-        groupeRepository.save(groupe);
+        Groupes group = groupeRepository.findById(id).orElse( null );
+
+        group.setNom(groupe.getNom());
+
+        groupeRepository.save(group);
+  
     }
     public void deleteGroupe(int id)
     {

@@ -28,9 +28,8 @@ public class GroupesController {
         return groupeService.getGroupe(id);
     }
     @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
-    public void updateGroupes(@RequestBody Groupes groupe,@PathVariable int id)
-    {
-        groupeService.updateGroupe(groupe,id);
+    public void update(@RequestBody Groupes groupe,@PathVariable int id){
+         groupeService.updateGroupe(groupe,id);
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
     public void deleteGroupe(@PathVariable int id)
