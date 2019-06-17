@@ -12,7 +12,6 @@ import java.util.List;
 public class Etudiant extends User {
     private String niveau;
     private String etablissement;
-    private int code;
     private boolean paiement;
     @JsonIgnoreProperties("etudiant")
     @OneToMany(mappedBy = "etudiant")
@@ -23,7 +22,7 @@ public class Etudiant extends User {
     private List<GroupeChat> groupeChatList;
     @ManyToOne
     private Parent parent;
-    private int code_enfant;
+    private String code_enfant;
 
     @JsonIgnoreProperties("etudiant")
     @OneToMany(mappedBy = "etudiant")
@@ -43,14 +42,6 @@ public class Etudiant extends User {
 
     public void setEtablissement(String etablissement) {
         this.etablissement = etablissement;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 
     public boolean isPaiement() {
@@ -93,11 +84,11 @@ public class Etudiant extends User {
         this.feedbackList = feedbackList;
     }
 
-    public int getCode_enfant() {
+    public String getCode_enfant() {
         return code_enfant;
     }
 
-    public void setCode_enfant(int code_enfant) {
+    public void setCode_enfant(String code_enfant) {
         this.code_enfant = code_enfant;
     }
 

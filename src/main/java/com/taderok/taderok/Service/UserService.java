@@ -87,7 +87,7 @@ public class UserService {
         }
 
         String generatedString = sb.toString();
-        etudiant.setCode(generatedString);
+        etudiant.setCode_enfant(generatedString);
         etudiantRepository.save(etudiant);
     }
     public void registerProf(Prof prof)
