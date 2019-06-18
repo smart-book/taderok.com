@@ -1,5 +1,6 @@
 package com.taderok.taderok.Service;
 
+import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.*;
 import com.taderok.taderok.Repository.*;
 import org.apache.logging.log4j.util.Chars;
@@ -28,6 +29,10 @@ public class UserService {
     private ProfRepository profRepository;
     @Autowired
     private ParentRepository parentRepository;
+    @Autowired
+    private HelloResource helloResource;
+
+
 
     public String username;
 
@@ -58,6 +63,12 @@ public class UserService {
         return u;
 
     }
+    public User getUser(int id){
+        User u=userRepository.findById(id).orElse(null);
+        return u;
+
+    }
+
 
     public void registerUser(User user)
     {
@@ -87,7 +98,7 @@ public class UserService {
         }
 
         String generatedString = sb.toString();
-        etudiant.setCode_enfant(generatedString);
+        etudiant.setCodeEnfant(generatedString);
         etudiantRepository.save(etudiant);
     }
     public void registerProf(Prof prof)
@@ -110,11 +121,9 @@ public class UserService {
         u.setActivated(true);
         userRepository.save(u);
     }
-     public List<User> getAllUserById(int id)
-    {
-        Role r = roleRepository.findById(id).orElse(null);
-        return userRepository.findByRoles(r);
-    }
+
+
+
 
 
     public List<User> getAllUserByRole(String role)
@@ -124,9 +133,9 @@ public class UserService {
     }
 
 
-  public void affecterRole(int idUser , int idRole )
+  public void affecterRole( int idRole )
    {
-       User u = userRepository.findById(idUser).orElse(null);
+       User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
        Role r = roleRepository.findById(idRole).orElse(null);
 
        u.setRoles(r);
@@ -134,8 +143,9 @@ public class UserService {
        userRepository.save(u);
 
    }
-    public void updateUser(User user, int id){
-        User f = userRepository.findById(id).orElse(null);
+    public void updateUser(User user)
+    {
+        User f = userRepository.findById(helloResource.getIdConnected()).orElse(null);
         f.getRoles();
         f.getId();
                 
@@ -150,8 +160,35 @@ public class UserService {
         f.setTelephone(user.getTelephone());
         userRepository.save(f);
     }
-    public void affectercode(Parent parent)
+    public void affectercode(String code)
     {
+        System.out.println(code);
+
+        int idEtudiant = 0;
+        boolean test = false;
+        List<Etudiant> ets = (List<Etudiant>) etudiantRepository.findAll();
+        for (Etudiant et:
+            ets ) {
+                        if(et.getCodeEnfant().equals(code))
+                        {
+                         test=true;
+                         idEtudiant=et.getId();
+
+                        }
+        }
+        
+        Parent p = (Parent) userRepository.findById(helloResource.getIdConnected()).orElse(null);
+
+        if(test==true) {
+            Etudiant e = etudiantRepository.findById(idEtudiant).orElse(null);
+            e.setParent(p);
+            p.getEnfants().add(e);
+            System.out.println(e.getCodeEnfant());
+            System.out.println(p.getCin());
+
+            etudiantRepository.save(e);
+            parentRepository.save(p);
+        }
 
 
 

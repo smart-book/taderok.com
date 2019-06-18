@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
 
+    Etudiant findByCodeEnfant(String code);
+
 }

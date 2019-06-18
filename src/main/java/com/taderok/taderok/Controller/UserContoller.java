@@ -15,11 +15,9 @@ public class UserContoller {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
-    public void addForum(@RequestBody User user){
+    public void addUser(@RequestBody User user){
 
         userService.registerUser(user);
-
-
     }
     @RequestMapping(method = RequestMethod.POST, value = "/registerEtudiant")
     public void addEtudiant(@RequestBody Etudiant etudiant){
@@ -54,24 +52,29 @@ public class UserContoller {
         userService.activerCompte(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/affecterRole/{idUser}/{idRole}")
-    public void affecterRole(@PathVariable int idUser,@PathVariable int idRole)
+    @RequestMapping(method = RequestMethod.POST, value = "/affecterRole/{idRole}")
+    public void affecterRole(@PathVariable int idRole)
     {
-        userService.affecterRole(idUser,idRole);
+        userService.affecterRole(idRole);
 
     }
-    @RequestMapping(method = RequestMethod.GET ,value ="/afficherListId/{id}")
-    public List<User> getAllUserById(@PathVariable int id){
-        return userService.getAllUserById(id);
+    @RequestMapping(method = RequestMethod.GET ,value ="/afficherParID/{id}")
+    public User getAllUserById(@PathVariable int id){
+        return userService.getUser(id);
     }
     @RequestMapping(method = RequestMethod.GET ,value ="/afficherListRole/{role}")
     public List<User> getAllUserById(@PathVariable String role){
         return userService.getAllUserByRole(role);
     }
-    @RequestMapping(method = RequestMethod.PUT, value="/update/{id}")
-    public void updateUser(@RequestBody User user,@PathVariable int id)
+    @RequestMapping(method = RequestMethod.PUT, value="/update")
+    public void updateUser(@RequestBody User user)
     {
-        userService.updateUser(user,id);
+        userService.updateUser(user);
     }
 
+    @RequestMapping(method = RequestMethod.PUT , value="/affecterCode/{code}")
+    public void affecterCode(@PathVariable String code)
+    {
+        userService.affectercode(code);
+    }
 }

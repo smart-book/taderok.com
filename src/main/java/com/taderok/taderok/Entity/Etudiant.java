@@ -22,7 +22,7 @@ public class Etudiant extends User {
     private List<GroupeChat> groupeChatList;
     @ManyToOne
     private Parent parent;
-    private String code_enfant;
+    private String codeEnfant;
 
     @JsonIgnoreProperties("etudiant")
     @OneToMany(mappedBy = "etudiant")
@@ -84,12 +84,12 @@ public class Etudiant extends User {
         this.feedbackList = feedbackList;
     }
 
-    public String getCode_enfant() {
-        return code_enfant;
+    public String getCodeEnfant() {
+        return codeEnfant;
     }
 
-    public void setCode_enfant(String code_enfant) {
-        this.code_enfant = code_enfant;
+    public void setCodeEnfant(String code_enfant) {
+        this.codeEnfant = code_enfant;
     }
 
     public Parent getParent() {
