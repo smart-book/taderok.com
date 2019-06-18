@@ -1,0 +1,95 @@
+.text-navy {
+	color: #1ab394;
+}
+.cart-product-imitation {
+	text-align: center;
+	height: 80px;
+	width: 80px;
+}
+.product-desc {
+	padding: 20px;
+	position: relative;
+}
+.ecommerce {
+	.tag-list {
+		padding: 0;
+	}
+	.fa-star {
+		color: #d1dade;
+		&.active {
+			color: #f8ac59;
+		}
+	}
+	.note-editor {
+		border: 1px solid #e7eaec;
+	}
+}
+.ibox {
+	clear: both;
+	margin-bottom: 25px;
+	margin-top: 0;
+	padding: 0;
+	&:after {
+		display: table;
+	}
+	&:before {
+		display: table;
+	}
+	&.collapsed .ibox-content {
+		display: none;
+	}
+}
+.ibox-title {
+	background-color: #ffffff;
+	border-color: #e7eaec;
+	//Instead of the line below you could use @include border-image($value)
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 3px 0 0;
+	color: inherit;
+	margin-bottom: 0;
+	padding: 14px 15px 7px;
+	min-height: 48px;
+}
+.ibox-content {
+	background-color: #ffffff;
+	color: inherit;
+	padding: 15px 20px 20px;
+	border-color: #e7eaec;
+	//Instead of the line below you could use @include border-image($value)
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 1px 0;
+}
+.ibox-footer {
+	color: inherit;
+	border-top: 1px solid #e7eaec;
+	font-size: 90%;
+	background: #ffffff;
+	padding: 10px 15px;
+}
+.product-imitation.xl {
+	padding: 120px 0;
+}
+table.shoping-cart-table {
+	margin-bottom: 0;
+    tr {
+        border: none;
+    td {
+		border: none;
+		text-align: left;
+		&.desc {
+			text-align: right;
+		}
+		&:first-child {
+			text-align: right;
+		}
+		&:last-child {
+			width: 80px;
+        }
+    }
+    }
+    .text-price{
+        text-decoration: line-through;
+    }
+}

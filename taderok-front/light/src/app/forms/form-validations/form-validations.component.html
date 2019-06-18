@@ -1,0 +1,185 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Form Validations</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Forms</a>
+                        </li>
+                        <li class="breadcrumb-item active">Validations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Basic Validation -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Basic</strong> Validation</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form id="form_validation" method="POST">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="name" placeholder="Name" required />
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="surname" placeholder="Surname"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="email" class="form-control" name="email" placeholder="Email"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" checked />
+                                    <span>male</span>
+                                </label>
+                                <label>
+                                    <input class="with-gap" name="group1" type="radio" />
+                                    <span>Female</span>
+                                </label>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea id="textarea5" class="materialize-textarea" name="description"
+                                        placeholder="Description" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check m-l-10">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" id="checkbox" name="checkbox">
+                                        I have read and accept the terms
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Validation -->
+        <!-- Advanced Validation -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Advance</strong> Validation</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form id="form_advanced_validation" method="POST">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="minmaxlength" maxlength="10"
+                                        minlength="3" placeholder="Min/Max Length" required />
+                                </div>
+                                <div class="help-info">Min. 3, Max. 10 characters</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="number" class="form-control" name="minmaxvalue" min="10" max="200"
+                                        placeholder="Min/Max Value" required />
+                                </div>
+                                <div class="help-info">Min. Value: 10, Max. Value: 200</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="url" class="form-control" name="url" placeholder="Url" required />
+                                </div>
+                                <div class="help-info">Starts with http://, https://, ftp:// etc</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="date" placeholder="Date" required />
+                                </div>
+                                <div class="help-info">YYYY-MM-DD format</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="number" class="form-control" name="number" placeholder="Number"
+                                        required />
+                                </div>
+                                <div class="help-info">Numbers only</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="creditcard" placeholder="Credit Card"
+                                        pattern="[0-9]{13,16}" required />
+                                </div>
+                                <div class="help-info">Ex: 1234-5678-9012-3456</div>
+                            </div>
+                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Advanced Validation -->
+    </div>
+</section>

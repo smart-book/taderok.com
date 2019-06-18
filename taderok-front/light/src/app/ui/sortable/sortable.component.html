@@ -1,0 +1,183 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Sortable</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">UI</a>
+                        </li>
+                        <li class="breadcrumb-item active">Sortable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <!-- Default Example -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Default</strong> Example</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="clearfix m-b-20">
+                            <div class="dd">
+                                <ol class="dd-list">
+                                    <li class="dd-item" data-id="1">
+                                        <div class="dd-handle">Item 1</div>
+                                    </li>
+                                    <li class="dd-item" data-id="2">
+                                        <div class="dd-handle">Item 2</div>
+                                        <ol class="dd-list">
+                                            <li class="dd-item" data-id="3">
+                                                <div class="dd-handle">Item 3</div>
+                                            </li>
+                                            <li class="dd-item" data-id="4">
+                                                <div class="dd-handle">Item 4</div>
+                                            </li>
+                                            <li class="dd-item" data-id="5">
+                                                <div class="dd-handle">Item 5</div>
+                                                <ol class="dd-list">
+                                                    <li class="dd-item" data-id="6">
+                                                        <div class="dd-handle">Item 6</div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="7">
+                                                        <div class="dd-handle">Item 7</div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="8">
+                                                        <div class="dd-handle">Item 8</div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li class="dd-item" data-id="9">
+                                                <div class="dd-handle">Item 9</div>
+                                            </li>
+                                            <li class="dd-item" data-id="10">
+                                                <div class="dd-handle">Item 10</div>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="dd-item" data-id="11">
+                                        <div class="dd-handle">Item 11</div>
+                                    </li>
+                                    <li class="dd-item" data-id="12">
+                                        <div class="dd-handle">Item 12</div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <b>Output JSON</b>
+                        <textarea cols="30" rows="3" class="form-control no-resize"
+                            readonly>[{"id":1},{"id":2,"children":[{"id":3},{"id":4},{"id":5,"children":[{"id":6},{"id":7},{"id":8}]},{"id":9},{"id":10}]},{"id":11},{"id":12}]</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Default</strong> Example</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="clearfix m-b-20">
+                            <div class="dd nestable-dark-theme">
+                                <ol class="dd-list">
+                                    <li class="dd-item" data-id="1">
+                                        <div class="dd-handle">Item 1</div>
+                                    </li>
+                                    <li class="dd-item" data-id="2">
+                                        <div class="dd-handle">Item 2</div>
+                                        <ol class="dd-list">
+                                            <li class="dd-item" data-id="3">
+                                                <div class="dd-handle">Item 3</div>
+                                            </li>
+                                            <li class="dd-item" data-id="4">
+                                                <div class="dd-handle">Item 4</div>
+                                            </li>
+                                            <li class="dd-item" data-id="5">
+                                                <div class="dd-handle">Item 5</div>
+                                                <ol class="dd-list">
+                                                    <li class="dd-item" data-id="6">
+                                                        <div class="dd-handle">Item 6</div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="7">
+                                                        <div class="dd-handle">Item 7</div>
+                                                    </li>
+                                                    <li class="dd-item" data-id="8">
+                                                        <div class="dd-handle">Item 8</div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li class="dd-item" data-id="9">
+                                                <div class="dd-handle">Item 9</div>
+                                            </li>
+                                            <li class="dd-item" data-id="10">
+                                                <div class="dd-handle">Item 10</div>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="dd-item" data-id="11">
+                                        <div class="dd-handle">Item 11</div>
+                                    </li>
+                                    <li class="dd-item" data-id="12">
+                                        <div class="dd-handle">Item 12</div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <b>Output JSON</b>
+                        <textarea cols="30" rows="3" class="form-control no-resize"
+                            readonly>[{"id":1},{"id":2,"children":[{"id":3},{"id":4},{"id":5,"children":[{"id":6},{"id":7},{"id":8}]},{"id":9},{"id":10}]},{"id":11},{"id":12}]</textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Default Example -->
+        </div>
+    </div>
+</section>

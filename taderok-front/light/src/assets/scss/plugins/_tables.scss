@@ -1,0 +1,252 @@
+﻿/*
+ *  Document   : _tables.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for tables style classes
+ */
+.table {
+    tbody {
+        tr {
+            td, th {
+                padding: 10px;
+                border-top: 1px solid #eee;
+                border-bottom: 1px solid #eee;
+                vertical-align: middle;
+                ul{
+                    margin: 0;
+                }
+            }
+        }
+
+        tr.primary {
+            td, th {
+                background-color: #1f91f3;
+                color: #fff;
+            }
+        }
+
+        tr.success {
+            td, th {
+                background-color: #2b982b;
+                color: #fff;
+            }
+        }
+
+        tr.info {
+            td, th {
+                background-color: #00b0e4;
+                color: #fff;
+            }
+        }
+
+        tr.warning {
+            td, th {
+                background-color: #ff9600;
+                color: #fff;
+            }
+        }
+
+        tr.danger {
+            td, th {
+                background-color: #fb483a;
+                color: #fff;
+            }
+        }
+    }
+
+    thead {
+        tr {
+            th {
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+            }
+        }
+    }
+}
+
+.table-bordered {
+    border-top: 1px solid #eee;
+
+    tbody {
+        tr {
+            td, th {
+                padding: 10px;
+                border: 1px solid #eee;
+            }
+        }
+    }
+
+    thead {
+        tr {
+            th {
+                padding: 10px;
+                border: 1px solid #eee;
+            }
+        }
+    }
+}
+.table-img {
+    img{
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        @include box-shadow(0px 5px 25px 0px rgba(0,0,0,0.2));
+    }
+}
+.btn-tbl-edit {
+	border-radius: 50% !important;
+	background-color: #4fab52;
+	padding: 6px !important;
+	height: 28px;
+	color: $white;
+	box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2) !important;
+	.material-icons {
+		font-size: 16px !important;
+	}
+	&:hover {
+		background-color: #888;
+		color: $white;
+	}
+}
+.btn-tbl-delete {
+	border-radius: 50% !important;
+	background-color: #f96332;
+	padding: 6px !important;
+	height: 28px;
+	color: $white;
+	box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2) !important;
+	.material-icons {
+		font-size: 16px !important;
+	}
+	&:hover {
+		background-color: #f96332;
+		color: $white;
+	}
+}
+
+.avatar {
+	position: relative;
+	width: 30px;
+	white-space: nowrap;
+	border-radius: 1000px;
+	vertical-align: bottom;
+	display: inline-block;
+	img {
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		border: 0;
+		border-radius: 1000px;
+	}
+}
+.avatar-sm {
+	width: 32px;
+}
+.list-inline {
+	padding-left: 0;
+	list-style: none;
+}
+.list-unstyled {
+	padding-left: 0;
+	list-style: none;
+}
+.spinner {
+	display: inline-block;
+}
+.spinner-reverse {
+	display: inline-block;
+}
+.order-list li {
+	img {
+        border: 2px solid #ffffff;
+        box-shadow: 0 2px 10px 0 rgba(107,111,130,.3);
+	}
+	+ li {
+		margin-left: -14px;
+	}
+	.badge {
+		background: rgba(255,255,255,.8);
+		color: #6b6f82;
+		margin-bottom: 6px;
+	}
+}
+.buttons-copy{
+	background-color: #666 !important;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgba(233, 30, 99, .6);
+    color: #fff !important;
+    border-radius: 30px !important;
+    border: 0px !important;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
+}
+.buttons-excel {
+	background-color: #59bf70 !important;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgba(233, 30, 99, .6);
+    color: #fff !important;
+    border-radius: 30px !important;
+    border: 0px !important;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
+}
+.buttons-csv {
+	background-color: #2ab9d0 !important;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgba(233, 30, 99, .6);
+    color: #fff !important;
+    border-radius: 30px !important;
+    border: 0px !important;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
+}
+.buttons-pdf {
+	background-color: #e91e63 !important;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgba(233, 30, 99, .6);
+    color: #fff !important;
+    border-radius: 30px !important;
+    border: 0px !important;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;	
+}
+.buttons-print {
+    background-color: #6563ef !important;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 13px 24px -11px #6563ef;
+    color: #fff !important;
+    border-radius: 30px !important;
+    border: 0px !important;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
+}
+
+
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+.tableBody {
+        font-size: 13px;
+        color: #555;
+        padding: 0px 15px 0px 15px;
+}
+.tbl-checkbox{
+    vertical-align: bottom !important;
+    text-align: center;
+}
+// .table-hover {
+//     tbody {
+//         tr:hover {
+//             img {
+//                 border: 2px solid #ff9800;
+//             }
+//         }
+//     }
+// }
+td.details-control {
+    background: url('../images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../images/details_close.png') no-repeat center center;
+}
+

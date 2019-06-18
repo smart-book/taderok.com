@@ -1,0 +1,8 @@
+
+$colors: ( red: #F44336, pink: #E91E63, purple: #9C27B0, deep-purple: #673AB7, indigo: #3F51B5, blue: #2196F3, light-blue: #03A9F4, cyan: #00BCD4, teal: #009688, green: #4CAF50, light-green: #8BC34A, lime: #CDDC39, yellow: #ffe821, amber: #FFC107, orange: #FF9800, deep-orange: #FF5722, brown: #795548, grey: #9E9E9E, blue-grey: #607D8B, black: #000000, white: #ffffff, dark-gray: #888888  ) !default;
+
+$linear-colors: (green: linear-gradient(45deg, #9ce89d, #cdfa7e), orange: linear-gradient(135deg, #ffc480, #ff763b), cyan:linear-gradient(45deg, #72c2ff, #86f0ff), red:linear-gradient(316deg, #fc5286, #fbaaa2), purple:linear-gradient(230deg, #759bff, #843cf6),purple-dark:linear-gradient(45deg, #a52dd8, #e29bf1));
+
+//Fonts Family
+$navbar-font-family: 'Poppins';
+$sidebar-font-family: 'Poppins';

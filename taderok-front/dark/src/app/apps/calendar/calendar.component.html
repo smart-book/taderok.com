@@ -1,0 +1,58 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Events</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Events</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Draggable</strong> Events</h2>
+                    </div>
+                    <div class="body">
+                        <div id='external-events'>
+                            <form class="inline-form">
+                                <input type="text" value="" class="form-control" placeholder="Event Title..."
+                                    id="event_title" />
+                                <button type="button" id="event_add" class="btn btn-primary waves-effect m-t-15">Add
+                                    Event
+                                </button>
+                            </form>
+                            <div id="event_box" class="mg-bottom-10"></div>
+                            <label>
+                                <input type="checkbox" id='drop-remove' />
+                                <span>remove after drop</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Events</strong>
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div id='calendar'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
