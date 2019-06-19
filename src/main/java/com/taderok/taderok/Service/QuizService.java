@@ -36,7 +36,7 @@ public class QuizService {
         return quizRepository.findById(id).orElse(null);
     }
     public double getNote(int id){
-      List<Questions> questionsList=getQuiz(id).getQuestionsList();
+      List<Questions> questionsList=getQuiz(id).getQuestions();
       // note de chaque question
         double nq=20/questionsList.size()-1;
         for (Questions question:questionsList) {
