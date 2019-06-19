@@ -1,18 +1,16 @@
 package com.taderok.taderok.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 @Entity
 public class Reponses {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String reponse;
     private boolean status;
+    private boolean responseEt;
     @ManyToOne
-    @JsonIgnoreProperties("reponsesList")
     private Questions questions;
 
     public int getId() {
@@ -31,7 +29,15 @@ public class Reponses {
         this.reponse = reponse;
     }
 
-    public boolean isStatus() {
+    public boolean isResponseEt() {
+        return responseEt;
+    }
+
+    public void setResponseEt(boolean responseEt) {
+        this.responseEt = responseEt;
+    }
+
+    public boolean getStatus() {
         return status;
     }
 

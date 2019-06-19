@@ -1,23 +1,21 @@
 package com.taderok.taderok.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Quiz {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private int id_etudiant;
+    private int id_prof;
     private int note;
     private String nomQuiz;
     @ManyToMany
     private List<Seance> seanceList;
-    @JsonIgnoreProperties("quiz")
     @OneToMany(mappedBy = "quiz")
-    private List<Questions> questionsList;
+    private List<Questions> questions;
 
     public int getId() {
         return id;
@@ -33,6 +31,12 @@ public class Quiz {
 
     public void setId_etudiant(int id_etudiant) {
         this.id_etudiant = id_etudiant;
+    }
+
+    public int getId_prof() {return id_prof; }
+
+    public void setId_prof(int id_prof) {
+        this.id_prof = id_prof;
     }
 
     public int getNote() {
@@ -59,11 +63,11 @@ public class Quiz {
         this.seanceList = seanceList;
     }
 
-    public List<Questions> getQuestionsList() {
-        return questionsList;
+    public List<Questions> getQuestions() {
+        return questions;
     }
 
-    public void setQuestionsList(List<Questions> questionsList) {
-        this.questionsList = questionsList;
+    public void setQuestions(List<Questions> questions) {
+        this.questions = questions;
     }
 }
