@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { DynamicScriptLoaderService } from './dynamic-script-loader-service.service';
+import {HttpClientModule} from "@angular/common/http";
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, DynamicScriptLoaderService],
   bootstrap: [AppComponent]

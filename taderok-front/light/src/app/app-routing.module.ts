@@ -17,6 +17,10 @@ const routes: Routes = [
         path: 'extra-pages',
         loadChildren: () => import('./extra-pages/extra-pages.module').then(m => m.ExtraPagesModule)
     },
+  {
+    path: 'components',
+    loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
+  },
 
     {
         path: '',
