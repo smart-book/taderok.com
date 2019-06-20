@@ -6,10 +6,14 @@
           <h2>
             <strong>Timeline</strong>
           </h2>
-          <select class="custom-select">
-            <option value="" disabled>Choose your city</option>
-            <option>New York</option>
-          </select>
+          <mat-form-field class="example-full-width" formControlName="autoCompleteCtrl">
+            <input type="text" placeholder="Pick one" matInput [formControl]="myControl" [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         </div>
       </div>
     </div>

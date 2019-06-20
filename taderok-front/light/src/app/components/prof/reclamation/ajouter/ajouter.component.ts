@@ -1,7 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {ReclamationService} from "../../../../services/prof/reclamation.service";
 import {Reclamation} from "../../../../models/reclamation";
-import {error} from "selenium-webdriver";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-ajouter',
@@ -11,14 +11,20 @@ import {error} from "selenium-webdriver";
 export class AjouterComponent implements OnInit {
 
   reclamation : Reclamation = new Reclamation();
+  formAutocomplete : FormGroup;
 
-  constructor(private reclamationService : ReclamationService) { }
+  constructor(private reclamationService : ReclamationService , private formBuilder : FormBuilder) { }
 
   ngOnInit() {
     console.log("cfgvhjklm");
+    this.formAutocomplete = this.formBuilder.group(
+      {autoCompleteCtrl : [],}
+    );
   }
-
-  ajouterReclamation(){
+  myControl = new FormControl();
+  options: string[] = ['Comportement','Contenu','Utilisation','Seances','Profs'];
+  ajouterReclamation()
+  {
     console.log(this.reclamation.description);
     this.reclamationService.ajouterReclamation(this.reclamation).subscribe(data=>console.log(data), error => console.log(error))
   }

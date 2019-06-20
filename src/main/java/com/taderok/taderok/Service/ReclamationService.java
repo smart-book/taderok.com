@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,10 +25,13 @@ public class ReclamationService {
     @Autowired
     private UserRepository userRepository;
 
-    public Reclamation ajouterReclamation(Reclamation req) {
+    public Reclamation ajouterReclamation(Reclamation req)
+    {
         User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
         req.setUser(u);
         req.setEtat(false);
+        Date date = new Date();
+        req.setDate(date);
         return reclamationRepository.save(req);
     }
 
