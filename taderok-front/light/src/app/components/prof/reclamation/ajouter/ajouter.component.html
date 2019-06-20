@@ -4,23 +4,49 @@
       <div class="card">
         <div class="header">
 
-          <form class="login100-form validate-form">
-            <div class="wrap-input100 validate-input" data-validate="Nom est est un champ obligatoire">
-              <input class="input100" type="text" name="nom" [(ngModel)]="reclamation.description">
-              <span class="focus-input100"></span>
-              <span class="label-input100">Description</span>
-            </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+             <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModal">Ajouter Réclamation</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="formModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" style="padding-left: 150px" id="formModal">Nouvelle Réclamation </h5><br><br>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <label for="email_address1">Type de réclamation</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text" id="email_address1" class="form-control"
+                                 placeholder="Entrer le type de votre réclamation">
+                        </div>
+                      </div>
 
-            <div>
-            <mat-form-field>
-              <mat-label>Toppings</mat-label>
-              <mat-select [formControl]="toppings" multiple>
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-              </mat-select>
-            </mat-form-field>
+
+                      <label>Description</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input class="input100" type="text" name="nom" [(ngModel)]="reclamation.description" placeholder="Entrer la description de votre réclamation">
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)="ajouterReclamation()" class="btn btn-info waves-effect">Ajouter</button>
+                    <button type="button" class="btn btn-danger waves-effect"
+                            data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <button (click)="ajouterReclamation()">Ajouter</button>
-          </form>
+          </div>
 
         </div>
       </div>
