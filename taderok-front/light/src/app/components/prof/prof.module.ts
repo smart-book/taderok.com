@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ProfRoutingModule } from './prof-routing.module';
 import { AjouterComponent } from './reclamation/ajouter/ajouter.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatFormFieldModule, MatAutocompleteModule} from "@angular/material";
+import {MatFormFieldModule, MatAutocompleteModule, MatSelectModule} from "@angular/material";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [AjouterComponent],
@@ -14,7 +16,9 @@ import {MatFormFieldModule, MatAutocompleteModule} from "@angular/material";
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    BrowserAnimationsModule,
+    MatSelectModule
   ]
 })
 export class ProfModule { }

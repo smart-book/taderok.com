@@ -3,17 +3,25 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="card">
         <div class="header">
-          <h2>
-            <strong>Timeline</strong>
-          </h2>
-          <mat-form-field class="example-full-width" formControlName="autoCompleteCtrl">
-            <input type="text" placeholder="Pick one" matInput [formControl]="myControl" [matAutocomplete]="auto" required>
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of options" [value]="option">
-                {{option}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+
+          <form class="login100-form validate-form">
+            <div class="wrap-input100 validate-input" data-validate="Nom est est un champ obligatoire">
+              <input class="input100" type="text" name="nom" [(ngModel)]="reclamation.description">
+              <span class="focus-input100"></span>
+              <span class="label-input100">Description</span>
+            </div>
+
+            <div>
+            <mat-form-field>
+              <mat-label>Toppings</mat-label>
+              <mat-select [formControl]="toppings" multiple>
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+            <button (click)="ajouterReclamation()">Ajouter</button>
+          </form>
+
         </div>
       </div>
     </div>
