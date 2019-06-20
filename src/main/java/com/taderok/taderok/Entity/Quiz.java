@@ -1,6 +1,9 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,10 +13,13 @@ public class Quiz {
     private int id;
     private int id_etudiant;
     private int id_prof;
-    private int note;
+    private double note;
     private String nomQuiz;
+    private boolean corrige;
+    private Date date;
     @ManyToMany
     private List<Seance> seanceList;
+    @JsonIgnoreProperties("quiz")
     @OneToMany(mappedBy = "quiz")
     private List<Questions> questions;
 
@@ -39,12 +45,28 @@ public class Quiz {
         this.id_prof = id_prof;
     }
 
-    public int getNote() {
+    public double getNote() {
         return note;
     }
 
-    public void setNote(int note) {
+    public void setNote(double note) {
         this.note = note;
+    }
+
+    public boolean isCorrige() {
+        return corrige;
+    }
+
+    public void setCorrige(boolean corrige) {
+        this.corrige = corrige;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getNomQuiz() {

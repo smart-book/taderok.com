@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'components',
     loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
   },
+  {
+    path: 'quiz',
+    loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
+  },
 
     {
         path: '',
