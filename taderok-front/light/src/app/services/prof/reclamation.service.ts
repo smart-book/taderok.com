@@ -15,4 +15,6 @@ export class ReclamationService {
     console.log(reclamation);
     return this.http.post(`${this.baseUrl}`+`/ajoutReclamation`, reclamation);
   }
+
+
 }
