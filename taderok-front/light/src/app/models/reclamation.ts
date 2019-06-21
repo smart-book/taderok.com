@@ -3,4 +3,5 @@ export class Reclamation{
   date : Date;
   description : string;
   etat : boolean;
+  type: string;
 }

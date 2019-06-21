@@ -21,7 +21,10 @@ const routes: Routes = [
     path: 'components',
     loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
   },
-
+  {
+    path: 'admin',
+    loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
+  },
     {
         path: '',
         redirectTo: 'dashboard',

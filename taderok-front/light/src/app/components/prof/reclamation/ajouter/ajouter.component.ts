@@ -2,6 +2,8 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import {ReclamationService} from "../../../../services/prof/reclamation.service";
 import {Reclamation} from "../../../../models/reclamation";
 import {FormControl} from "@angular/forms";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 @Component({
   selector: 'app-ajouter',
