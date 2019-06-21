@@ -1,7 +1,6 @@
 package com.taderok.taderok.Repository;
 
 import com.taderok.taderok.Entity.Etudiant;
-import com.taderok.taderok.Entity.Role;
 import com.taderok.taderok.Entity.User;
 import org.springframework.data.repository.CrudRepository;
 
