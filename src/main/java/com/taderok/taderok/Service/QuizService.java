@@ -1,6 +1,5 @@
 package com.taderok.taderok.Service;
 
-import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.Questions;
 import com.taderok.taderok.Entity.Quiz;
 import com.taderok.taderok.Entity.Reponses;
@@ -22,8 +21,7 @@ public class QuizService {
     private ReponseRepository reponseRepository;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private HelloResource helloResource;
+
 
 
     public List<Quiz> getAllQuiz(){

@@ -27,7 +27,7 @@ public class ReclamationService {
 
     public Reclamation ajouterReclamation(Reclamation req)
     {
-        User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
+        User u = userRepository.findById((long) helloResource.getIdConnected()).orElse(null);
         req.setUser(u);
         req.setEtat(false);
         Date date = new Date();
@@ -47,7 +47,7 @@ public class ReclamationService {
 
     public List<Reclamation> AfficherReclamationUser()
     {
-        User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
+        User u = userRepository.findById((long) helloResource.getIdConnected()).orElse(null);
         return (List<Reclamation>) reclamationRepository.findAllByUser(u);
     }
 
