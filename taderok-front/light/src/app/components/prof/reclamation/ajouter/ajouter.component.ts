@@ -1,7 +1,9 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {ReclamationService} from "../../../../services/prof/reclamation.service";
 import {Reclamation} from "../../../../models/reclamation";
-import {error} from "selenium-webdriver";
+import {FormControl} from "@angular/forms";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 @Component({
   selector: 'app-ajouter',
@@ -13,6 +15,8 @@ export class AjouterComponent implements OnInit {
   reclamation : Reclamation = new Reclamation();
 
   constructor(private reclamationService : ReclamationService) { }
+  toppings = new FormControl();
+  toppingList: string[] = ['Comportement','Contenu','Utilisation','Seances','Profs'];
 
   ngOnInit() {
     console.log("cfgvhjklm");
