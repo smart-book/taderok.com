@@ -15,4 +15,15 @@ export class ReclamationService {
   afficherReclamations(): Observable<Reclamation[]>{
     return this.http.get<Reclamation[]>(`${this.baseUrl}`+`/Admin/getAllReclamationOrderByDate`);
   }
+
+  TraiterReclamation(id): Observable<Object>{
+     return this.http.put(`${this.baseUrl}`+`/Admin/TraiterReclamation/` + id , null);
+  }
+
+  afficherReclamationsTraitees(): Observable<Reclamation[]>{
+    return this.http.get<Reclamation[]>(`${this.baseUrl}`+`/Admin/ReclamationsTraite`);
+  }
+
+
+
 }

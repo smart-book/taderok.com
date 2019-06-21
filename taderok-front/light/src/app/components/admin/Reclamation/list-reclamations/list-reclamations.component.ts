@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ReclamationService} from "../../../../services/Admin/reclamation.service";
 import {Reclamation} from "../../../../models/reclamation";
+import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-list-reclamations',
@@ -14,6 +16,8 @@ export class ListReclamationsComponent implements OnInit {
   constructor(private reclamationService: ReclamationService) {
 
   }
+  reclamation : Reclamation = new Reclamation();
+
 
   ngOnInit() {
 
@@ -21,6 +25,11 @@ export class ListReclamationsComponent implements OnInit {
       console.log(data);
       this.list = data;
     }, error => console.log(error));
+  }
+
+
+  TraiterReclamation(id){
+     this.reclamationService.TraiterReclamation(id).subscribe(data=>console.log(data), error => console.log(error))
   }
 
 }
