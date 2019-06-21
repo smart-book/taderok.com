@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ArchwizardModule } from 'angular-archwizard';
 import { ProfRoutingModule } from './prof-routing.module';
 import { AjouterComponent } from './reclamation/ajouter/ajouter.component';
 import {FormsModule} from "@angular/forms";
@@ -12,7 +12,8 @@ import { AjouterQuizComponent } from './quiz/ajouter-quiz/ajouter-quiz.component
   imports: [
     CommonModule,
     ProfRoutingModule,
-    FormsModule
+    FormsModule,
+    ArchwizardModule
   ]
 })
 export class ProfModule { }

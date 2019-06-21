@@ -11,7 +11,8 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    private int id_etudiant;
+    @ManyToMany
+    private List<Etudiant> etudiantList;
     private int id_prof;
     private double note;
     private String nomQuiz;
@@ -31,12 +32,12 @@ public class Quiz {
         this.id = id;
     }
 
-    public int getId_etudiant() {
-        return id_etudiant;
+    public List<Etudiant> getEtudiantList() {
+        return etudiantList;
     }
 
-    public void setId_etudiant(int id_etudiant) {
-        this.id_etudiant = id_etudiant;
+    public void setEtudiantList(List<Etudiant> etudiantList) {
+        this.etudiantList = etudiantList;
     }
 
     public int getId_prof() {return id_prof; }

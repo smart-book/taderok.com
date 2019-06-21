@@ -18,6 +18,8 @@ public class Etudiant extends User {
     private List<Rating> ratingList;
     @ManyToMany(mappedBy = "etudiantList")
     private List<Groupes> groupesList;
+    @ManyToMany(mappedBy = "etudiantList")
+    private List<Quiz> quizList;
     @OneToMany
     private List<GroupeChat> groupeChatList;
     @ManyToOne
@@ -50,6 +52,14 @@ public class Etudiant extends User {
 
     public void setPaiement(boolean paiement) {
         this.paiement = paiement;
+    }
+
+    public List<Quiz> getQuizList() {
+        return quizList;
+    }
+
+    public void setQuizList(List<Quiz> quizList) {
+        this.quizList = quizList;
     }
 
     public List<Rating> getRatingList() {
