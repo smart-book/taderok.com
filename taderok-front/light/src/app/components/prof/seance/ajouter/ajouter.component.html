@@ -1,0 +1,39 @@
+
+
+<form class="login100-form validate-form">
+  <div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+  <h2>
+    <strong>Ajout Seance</strong>  </h2>
+  <b>Date debut </b>
+  <div class="input-group">
+   <span class="input-group-addon">
+   <i class="material-icons">date_range</i>
+     </span>
+  <div class="form-line validate-input" data-validate="date est est un champ obligatoire">
+
+    <input class="form-control date" type="date" name="date" [(ngModel)]="seance.date_debut">
+    <span class="focus-input100"></span>
+  </div>
+  </div>
+  <b>Date fin</b>
+  <div class="input-group">
+   <span class="input-group-addon">
+   <i class="material-icons">date_range</i>
+     </span>
+    <div class="form-line validate-input" data-validate="date est est un champ obligatoire">
+
+      <input class="form-control date" type="date" name="date" [(ngModel)]="seance.date_fin">
+      <span class="focus-input100"></span>
+    </div>
+  </div>
+
+
+
+        <button class="btn-hover btn-border-radius color-8" awNextStep (click)="ajouterSeance()">Ajouter</button>
+
+      </div>
+    </div>
+  </div>
+</form>

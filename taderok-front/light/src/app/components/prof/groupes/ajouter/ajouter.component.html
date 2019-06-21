@@ -1,0 +1,10 @@
+
+<form class="login100-form validate-form">
+  <div class="wrap-input100 validate-input" data-validate="Nom est est un champ obligatoire">
+    <input class="input100" type="text" name="nom" [(ngModel)]="groupes.nom">
+    <span class="focus-input100"></span>
+    <span class="label-input100">Nom</span>
+  </div>
+
+  <button (click)="ajouterGroupe()">Ajouter</button>
+</form>
