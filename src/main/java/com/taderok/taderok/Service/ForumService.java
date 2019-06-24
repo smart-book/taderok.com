@@ -33,7 +33,7 @@ public class ForumService {
     }
 
     public void addForum(Forum forum){
-        User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
+        User u = userRepository.findById((long) helloResource.getIdConnected()).orElse(null);
         forum.setUser(u);
         forumRepository.save(forum);
     }

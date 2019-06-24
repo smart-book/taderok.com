@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/forum")
 public class ForumController {
@@ -19,7 +20,7 @@ public class ForumController {
     private HelloResource helloResource;
 
 
-    @RequestMapping("/findAll")
+    @RequestMapping(method = RequestMethod.GET,value = "/findAll")
     public List<Forum> getAllForum(){
         return forumService.getAllForum();
     }

@@ -25,7 +25,7 @@ public class CommentaireForumService {
     private HelloResource helloResource;
 
     public void addComment(CommentaireForum commentaireForum,int id){
-        User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
+        User u = userRepository.findById((long) helloResource.getIdConnected()).orElse(null);
         Forum f = forumRepository.findById(id).orElse(null);
         commentaireForum.setUser(u);
         commentaireForum.setForum(f);

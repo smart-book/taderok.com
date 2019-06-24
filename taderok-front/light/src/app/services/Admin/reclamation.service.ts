@@ -13,6 +13,17 @@ export class ReclamationService {
   constructor(private http: HttpClient) {}
 
   afficherReclamations(): Observable<Reclamation[]>{
-    return this.http.get<Reclamation[]>(`${this.baseUrl}`+`/Admin/getAllReclamationOrderByDate`);
+    return this.http.get<Reclamation[]>(`${this.baseUrl}`+`/Admin/ReclamationsNonTraite`);
   }
+
+  TraiterReclamation(id): Observable<Object>{
+     return this.http.put(`${this.baseUrl}`+`/Admin/TraiterReclamation/` + id , null);
+  }
+
+  afficherReclamationsTraitees(): Observable<Reclamation[]>{
+    return this.http.get<Reclamation[]>(`${this.baseUrl}`+`/Admin/ReclamationsTraite`);
+  }
+
+
+
 }

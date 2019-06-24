@@ -1,0 +1,90 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Exporter liste des réclamations traitées </h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Acceuil</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Réclamations</a>
+            </li>
+            <li class="breadcrumb-item active">Liste</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Exportable Table -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              <strong>Liste</strong> des réclamations traitées</h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown">
+                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+
+
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="body">
+            <div class="table-responsive">
+              <table id="tableExport"
+                     class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+
+                <thead>   <br><br>
+
+                <tr>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                  <th>E-mail</th>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Type</th>
+                </tr>
+                </thead>
+
+                <tbody _ngcontent-wfw-c14="">
+                <tr _ngcontent-wfw-c14="" role="row" class="odd" *ngFor="let a of list">
+                  <td _ngcontent-wfw-c14="">{{a.user.nom}}</td>
+                  <td _ngcontent-wfw-c14="">{{a.user.prenom}}</td>
+                  <td _ngcontent-wfw-c14="">{{a.user.email}}</td>
+                  <td _ngcontent-wfw-c14="" class="sorting_1">{{a.date | date: 'yyyy-MM-dd \'  à \' h:mma  '}}</td>
+                  <td _ngcontent-wfw-c14="">{{a.description}}</td>
+                  <td _ngcontent-wfw-c14="">{{a.type}}</td>
+                  <td> <i _ngcontent-oah-c9="" style="color:#0ba360" class="fas fa-check"></i></td>
+
+                </tbody>
+
+                <tfoot>
+
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #END# Exportable Table -->
+  </div>
+</section>
+
+
+
+
+
+
+
