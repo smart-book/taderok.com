@@ -1,0 +1,44 @@
+<form class="login100-form validate-form">
+
+  <button type="button" class="btn btn-primary" data-toggle="modal"
+          data-target="#exampleModal">Ajouter un Feedback
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+       aria-labelledby="formModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="formModal">Feedback</h5>
+          <button type="button" class="close" data-dismiss="modal"
+                  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label for="type">type</label>
+            <div class="form-group">
+              <div class="form-line">
+                <input type="text" id="type" class="form-control" name="type"
+                       placeholder="Entrer le type du feedback" [(ngModel)]="feedback.type">
+              </div>
+            </div>
+            <label for="description">Description</label>
+            <div class="form-group">
+              <div class="form-line">
+                <input type="text" id="description" class="form-control" name="description"
+                       placeholder="Entrer la description" [(ngModel)]="feedback.description">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info waves-effect" (click)="ajouterFeedback()">Envoyer</button>
+          <button type="button" class="btn btn-danger waves-effect"
+                  data-dismiss="modal">Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
