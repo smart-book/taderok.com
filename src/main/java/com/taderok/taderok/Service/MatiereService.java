@@ -18,8 +18,7 @@ public class MatiereService {
 
     public List<Matiere> getAllMatieres(){
         return (List<Matiere>) matiereRepository.findAll();
-
-    }
+                                                                                                                        }
 
     public Matiere getMatiere(int id){
         return matiereRepository.findById(id).orElse(null);
