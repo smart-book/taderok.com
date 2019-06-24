@@ -6,9 +6,10 @@ import com.taderok.taderok.Service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/feedback")
     public class FeedbackController {
@@ -16,8 +17,8 @@ import java.util.List;
     @Autowired
     private FeedbackService feedbackService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/addFeedback")
-    public Feedback addFeedback(@RequestBody Feedback req){
+    @RequestMapping(method = RequestMethod.POST, value = "/ajouterFeedback")
+    public Feedback ajouterFeedback(@RequestBody Feedback req){
         return feedbackService.add(req);
     }
 
