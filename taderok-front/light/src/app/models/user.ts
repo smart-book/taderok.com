@@ -5,4 +5,8 @@ export class User {
   email:string;
   password:string;
   role:string;
+  adresse:string;
+  sexe:string;
+  photo:string;
+  dateNaissance:Date;
 }

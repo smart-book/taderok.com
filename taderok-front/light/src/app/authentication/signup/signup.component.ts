@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginService} from "../../services/Athentication/login.service";
+import {Router} from "@angular/router";
+import {RegisterService} from "../../services/Athentication/register.service";
+import {User} from "../../models/user";
 
 declare const jQuery: any;
 
@@ -9,7 +13,18 @@ declare const jQuery: any;
 })
 export class SignupComponent implements OnInit {
 
-    constructor() { }
+    constructor(private registerService: RegisterService,  private router: Router) { }
+
+  user: User = new User();
+
+    register(){
+      this.registerService.register(this.user).subscribe(data => {
+        console.log(data);
+        this.router.navigateByUrl('/authentication/signin');
+          // } else { alert('Veuillez verifier vos données'); }
+        },
+        error => console.log(error));
+    }
 
     ngOnInit() {
 
