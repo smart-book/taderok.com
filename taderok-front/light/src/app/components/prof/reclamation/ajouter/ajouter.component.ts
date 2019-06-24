@@ -18,8 +18,11 @@ export class AjouterComponent implements OnInit {
   toppings = new FormControl();
   toppingList: string[] = ['Comportement','Contenu','Utilisation','Seances','Profs'];
 
+  user : any;
+
   ngOnInit() {
-    console.log("cfgvhjklm");
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user.user.id);
   }
 
   ajouterReclamation(){
