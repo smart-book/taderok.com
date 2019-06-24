@@ -13,7 +13,7 @@ export class AppComponent {
   currentUrl: string;
   showLoadingIndicatior = true;
 
-  constructor(private loginService: LoginService,private _router: Router, location: PlatformLocation) {
+  constructor(private loginService: LoginService,public router : Router,private _router: Router, location: PlatformLocation) {
     this._router.events.subscribe((routerEvent: Event) => {
 
       if (routerEvent instanceof NavigationStart) {

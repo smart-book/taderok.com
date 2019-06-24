@@ -33,9 +33,13 @@ const routes: Routes = [
     path: 'forum',
     loadChildren: () => import('./components/forum/forum.module').then(m => m.ForumModule)
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./index/index.module').then(m => m.IndexModule)
+  },
     {
         path: '',
-        redirectTo: 'authentication',
+        redirectTo: 'home',
         pathMatch: 'full'
     }
 ];
