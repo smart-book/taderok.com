@@ -1,6 +1,8 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,9 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 2899651825246686381L;
@@ -33,7 +38,6 @@ public class User implements Serializable {
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<Forum> forumList;
-    @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<CommentaireForum> commentaireForumList;
     @JsonIgnoreProperties("user")
