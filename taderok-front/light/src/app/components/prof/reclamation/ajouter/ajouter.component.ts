@@ -21,7 +21,7 @@ export class AjouterComponent implements OnInit {
   toppings = new FormControl();
   toppingList: string[] = ['Comportement','Contenu','Utilisation','Seances','Profs'];
 
-  user : any;
+  user: any;
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -29,6 +29,8 @@ export class AjouterComponent implements OnInit {
     this.reclamationForm = this.formBuilder.group({
       description: ['', Validators.required]
     });
+    // this.user = JSON.parse(localStorage.getItem('user'));
+   // console.log(this.user.user.id);
   }
   // convenience getter for easy access to form fields
   get f() { return this.reclamationForm.controls; }

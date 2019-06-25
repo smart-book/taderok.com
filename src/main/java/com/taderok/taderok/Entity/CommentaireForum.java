@@ -1,5 +1,6 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -12,11 +13,11 @@ public class CommentaireForum {
     private int id;
     private Date date;
     private String contenu;
-    @JsonIgnoreProperties("commentaireForumList")
+    @JsonIgnore
     @ManyToOne
     private Forum forum;
     @ManyToOne
-    @JsonIgnoreProperties("commentaireForumList")
+    @JsonIgnore
     private User user;
 
     public int getId() {
