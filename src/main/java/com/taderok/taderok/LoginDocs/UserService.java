@@ -14,6 +14,10 @@ public interface UserService {
     Prof registerProf(Prof prof);
     void desactiverCompte(Long id);
     void activerCompte(Long id);
+    Etudiant updateEtudiant(Long id,Etudiant etudiant);
+    Parent updateParent(Long id,Parent parent);
+    Prof updateProf(Long id,Prof prof);
+
 
     List<User> findAll();
 
