@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AjouterComponent} from './reclamation/ajouter/ajouter.component';
 import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
+import {ListSeanceComponent} from './seance/list/list.component';
 
 // @ts-ignore
 const routes: Routes = [
@@ -17,6 +18,9 @@ const routes: Routes = [
   {
     path: 'ajouterSeance',
     component: AjouterComponentSeance
+  }, {
+    path: 'ListSeance',
+    component: ListSeanceComponent
   },
 ];
 
