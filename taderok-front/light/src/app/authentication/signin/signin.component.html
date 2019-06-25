@@ -6,12 +6,12 @@
           Se connecter
         </span>
         <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-          <input class="input100" type="text" name="email">
+          <input class="input100" type="text" name="email" [(ngModel)]="user.email">
           <span class="focus-input100"></span>
           <span class="label-input100">Email</span>
         </div>
         <div class="wrap-input100 validate-input" data-validate="Password is required">
-          <input class="input100" type="password" name="pass">
+          <input class="input100" type="password" name="password" [(ngModel)]="user.password">
           <span class="focus-input100"></span>
           <span class="label-input100">Mot de passe</span>
         </div>
@@ -33,7 +33,7 @@
 
 
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn">
+          <button class="login100-form-btn" (click)="login()">
             Se connecter
           </button>
         </div>

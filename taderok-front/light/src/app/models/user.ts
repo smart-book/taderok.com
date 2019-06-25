@@ -1,5 +1,12 @@
 export class User {
-  nom:String;
-  prenom:String;
-  email:String;
+  id: number;
+  nom:string;
+  prenom:string;
+  email:string;
+  password:string;
+  role:string;
+  adresse:string;
+  sexe:string;
+  photo:string;
+  dateNaissance:Date;
 }

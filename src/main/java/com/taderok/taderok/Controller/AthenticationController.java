@@ -13,15 +13,25 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class AthenticationController {
+
+
+    private static UserDTO connectedUser;
+
+    public static UserDTO getConnectedUser() {
+        return connectedUser;
+    }
+
+    public static void setConnectedUser(UserDTO connectedUser) {
+        AthenticationController.connectedUser = connectedUser;
+    }
 
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -39,10 +49,17 @@ public class AthenticationController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             final String token = jwtTokenUtil.generateToken(userDetails);
             response.setHeader("Token",token);
+            connectedUser=new UserDTO(userDetails.getUser(),token);
             return new ResponseEntity<UserDTO>(new UserDTO(userDetails.getUser(),token), HttpStatus.OK);
         }catch (Exception e){
             throw  new UnauthorizedException(e.getMessage());
         }
+    }
+
+    @RequestMapping(method = RequestMethod.OPTIONS,value = "/logout")
+    public void logout(@RequestBody User user, HttpServletRequest request, HttpServletResponse response){
+        SecurityContextHolder.clearContext();
+        setConnectedUser(null);
     }
 
 }
