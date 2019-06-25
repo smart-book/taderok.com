@@ -28,14 +28,14 @@
                       <div class="form-group">
                         <div class="form-line">
                           <input type="text" name="type_reclamation" [(ngModel)]="forum.titre" class="form-control"
-                                 placeholder="Entrer le titre de votre publication">
+                                 placeholder="Entrer le titre de votre publication" id="yamli">
                         </div>
                       </div>
 
                       <label>Description</label>
                       <div class="form-group">
                         <div class="form-line">
-                          <input class="form-control" type="text" name="description" [(ngModel)]="forum.description" placeholder="Entrer la description de votre réclamation">
+                          <input id="description" class="form-control" type="text" name="description" [(ngModel)]="forum.description" placeholder="Entrer la description de votre réclamation">
                         </div>
                       </div>
                     </form>
@@ -177,4 +177,15 @@
     </div>
   </div>
 </section>
+<!-- YAMLI CODE START -->
+<!--
+<script type="text/javascript" src="https://api.yamli.com/js/yamli_api.js"></script>
+<script type="text/javascript">
+  if (typeof(Yamli) == "object" && Yamli.init( { uiLanguage: "fr" , startMode: "onOrUserDefault" } ))
+  {
+    Yamli.yamlify( "yamli", { settingsPlacement: "bottomLeft" } );
+  }
+</script>
+-->
+<!-- YAMLI CODE END -->
 

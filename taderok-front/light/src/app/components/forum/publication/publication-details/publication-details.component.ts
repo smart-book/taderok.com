@@ -13,17 +13,28 @@ export class PublicationDetailsComponent implements OnInit {
   idPublication : number;
 
   forum : Forum = new Forum();
-  listCommentaires : CommentaireForum =  new CommentaireForum();
+  listCommentaires : CommentaireForum[] ;
   constructor( private readonly router: Router,private readonly route: ActivatedRoute, private forumService : ForumService) { }
 
   ngOnInit() {
     this.idPublication =+ this.route.snapshot.paramMap.get("id");
     console.log(this.route.snapshot.paramMap.get("id"));
     console.log(typeof (this.idPublication));
+    /////////////////////////////
+    // get one pub details
     this.forumService.getPubDetails(this.idPublication).subscribe(data=>{
       console.log(data);
       this.forum = data;
-    }, error1 => console.log(error1))
+    }, error1 => console.log(error1));
+
+    ///////////////////////////
+    // get list comments
+    this.forumService.getListCommentsOfOneForum(this.idPublication).subscribe(
+      data => {
+        console.log(data);
+        this.listCommentaires = data;
+      }, error1 => console.log(error1)
+    );
   }
 
 }
