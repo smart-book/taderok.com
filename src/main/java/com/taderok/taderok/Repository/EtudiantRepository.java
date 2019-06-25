@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
+public interface EtudiantRepository extends CrudRepository<Etudiant, Long> {
 
     Etudiant findByCodeEnfant(String code);
 
