@@ -45,9 +45,10 @@ public class QuizController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public void addQuiz(@RequestBody Quiz quiz){
+    public int addQuiz(@RequestBody Quiz quiz){
         quiz.setDate(new Date());
         quizService.addQuiz(quiz);
+        return quiz.getId();
     }
 
 

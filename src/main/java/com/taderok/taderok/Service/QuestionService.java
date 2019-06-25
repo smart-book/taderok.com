@@ -34,10 +34,12 @@ public class QuestionService {
         return questionRepository.findById(id).orElse(null);
     }
 
-    public void addQuestion(Questions question){
+    public int addQuestion(Questions question){
+
         questionRepository.save(question);
+        return question.getId();
     }
-    public void addResponsesToQuestion(int idQuestion, ArrayList<Reponses> responses){
+    public void addResponsesToQuestion(int idQuestion, List<Reponses> responses){
         Questions q=getQuestion(idQuestion);
         for ( Reponses reponse: responses) {
             reponse.setQuestions(q);
