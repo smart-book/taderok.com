@@ -15,7 +15,7 @@ export class FeedbackService {
   constructor(private http: HttpClient) { }
 
 
-  private baseUrl= "http://localhost:8181/feedback";
+  private baseUrl= 'http://localhost:8181/feedback';
 
   ajouterFeedback(feedback: object): Observable<object>{
     console.log(feedback);

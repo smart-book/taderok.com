@@ -30,6 +30,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
   },
   {
+    path: 'prof',
+    loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
+  },
+  {
     path: 'forum',
     loadChildren: () => import('./components/forum/forum.module').then(m => m.ForumModule)
   },

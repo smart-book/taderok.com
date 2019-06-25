@@ -5,6 +5,8 @@ import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
 import {AjouterRessourceComponent} from './ressource/ajouter-ressource/ajouter-ressource.component';
 import {AfficherRessourceComponent} from "./ressource/afficher-ressource/afficher-ressource.component";
+import {ListSeanceComponent} from './seance/list/list.component';
+import {ListGroupeComponent} from './groupes/list/list.component';
 
 // @ts-ignore
 const routes: Routes = [
@@ -19,6 +21,13 @@ const routes: Routes = [
   {
     path: 'ajouterSeance',
     component: AjouterComponentSeance
+  }, {
+    path: 'ListSeance',
+    component: ListSeanceComponent
+  },
+  {
+    path: 'ListGroupe',
+    component: ListGroupeComponent
   },
   {
     path: 'ajouterRessource',

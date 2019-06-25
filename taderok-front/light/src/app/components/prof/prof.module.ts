@@ -13,6 +13,15 @@ import { AfficherRessourceComponent } from './ressource/afficher-ressource/affic
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, AjouterRessourceComponent, AfficherRessourceComponent,],
+
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule, MatAutocompleteModule, MatSelectModule} from "@angular/material";
+import { ListSeanceComponent } from './seance/list/list.component';
+import { ListGroupeComponent } from './groupes/list/list.component';
+
+
+@NgModule({
+  declarations: [AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent],
   imports: [
     CommonModule,
     ProfRoutingModule,

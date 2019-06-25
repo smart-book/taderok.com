@@ -29,7 +29,7 @@ public class TaderokApplication {
 		configuration.addAllowedMethod("PUT");
 		configuration.addAllowedMethod("DELETE");
 		configuration.setAllowCredentials(true);
-		source.registerCorsConfiguration("/**", configuration);
+		source.registerCorsConfiguration("**/**", configuration);
 		return source;
 	}
 }

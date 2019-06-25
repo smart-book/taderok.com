@@ -18,9 +18,9 @@ public class Forum {
     private String matiere;
     private String niveau;
     @ManyToOne
-    @JsonIgnoreProperties("forumList")
+    @JsonIgnore
     private User user;
-    @JsonIgnoreProperties("forum")
+    @JsonIgnore
     @OneToMany(mappedBy = "forum", fetch = FetchType.EAGER)
     private List<CommentaireForum> commentaireForumList;
 
