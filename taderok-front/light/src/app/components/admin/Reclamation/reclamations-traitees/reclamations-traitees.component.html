@@ -58,13 +58,13 @@
                 </thead>
 
                 <tbody _ngcontent-wfw-c14="">
-                <tr _ngcontent-wfw-c14="" role="row" class="odd" *ngFor="let a of list">
-                  <td _ngcontent-wfw-c14="">{{a.user.nom}}</td>
-                  <td _ngcontent-wfw-c14="">{{a.user.prenom}}</td>
-                  <td _ngcontent-wfw-c14="">{{a.user.email}}</td>
-                  <td _ngcontent-wfw-c14="" class="sorting_1">{{a.date | date: 'yyyy-MM-dd \'  à \' h:mma  '}}</td>
-                  <td _ngcontent-wfw-c14="">{{a.description}}</td>
-                  <td _ngcontent-wfw-c14="">{{a.type}}</td>
+                <tr  *ngFor="let a of list" >
+                  <td>{{a.user.nom}}</td>
+                  <td>{{a.user.prenom}}</td>
+                  <td>{{a.user.email}}</td>
+                  <td>{{a.date | date: 'yyyy-MM-dd \'  à \' h:mma  '}}</td>
+                  <td>{{a.description}}</td>
+                  <td>{{a.type}}</td>
                   <td> <i _ngcontent-oah-c9="" style="color:#0ba360" class="fas fa-check"></i></td>
 
                 </tbody>
