@@ -8,10 +8,11 @@ import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule, MatAutocompleteModule, MatSelectModule} from "@angular/material";
 import { ListSeanceComponent } from './seance/list/list.component';
+import { ListGroupeComponent } from './groupes/list/list.component';
 
 
 @NgModule({
-  declarations: [AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListSeanceComponent],
+  declarations: [AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent],
   imports: [
     CommonModule,
     ProfRoutingModule,

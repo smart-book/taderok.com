@@ -4,6 +4,7 @@ import {AjouterComponent} from './reclamation/ajouter/ajouter.component';
 import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
 import {ListSeanceComponent} from './seance/list/list.component';
+import {ListGroupeComponent} from './groupes/list/list.component';
 
 // @ts-ignore
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
   }, {
     path: 'ListSeance',
     component: ListSeanceComponent
+  },
+  {
+    path: 'ListGroupe',
+    component: ListGroupeComponent
   },
 ];
 
