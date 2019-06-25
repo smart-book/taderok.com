@@ -9,19 +9,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule, MatAutocompleteModule, MatSelectModule} from '@angular/material';
 import { AjouterRessourceComponent } from './ressource/ajouter-ressource/ajouter-ressource.component';
 import { AfficherRessourceComponent } from './ressource/afficher-ressource/afficher-ressource.component';
+import {ListSeanceComponent} from './seance/list/list.component';
+import {ListGroupeComponent} from './groupes/list/list.component';
 
 
 @NgModule({
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, AjouterRessourceComponent, AfficherRessourceComponent,],
-
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatFormFieldModule, MatAutocompleteModule, MatSelectModule} from "@angular/material";
-import { ListSeanceComponent } from './seance/list/list.component';
-import { ListGroupeComponent } from './groupes/list/list.component';
-
-
-@NgModule({
-  declarations: [AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent],
+  // tslint:disable-next-line:max-line-length
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent, ],
   imports: [
     CommonModule,
     ProfRoutingModule,
