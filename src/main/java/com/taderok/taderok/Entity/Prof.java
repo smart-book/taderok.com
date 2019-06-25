@@ -19,10 +19,18 @@ public class Prof extends User {
     @ManyToMany(mappedBy = "profList")
     private List<Matiere> matiereList;
     @OneToMany(mappedBy = "prof")
+    @JsonIgnoreProperties("prof")
     private List<Seance> seanceList;
     @OneToMany(mappedBy = "prof")
     @JsonIgnoreProperties("prof")
     private List<GroupeChat> groupeChatList;
+
+    public Prof(User u) {
+        super(u);
+    }
+
+    public Prof() {
+    }
 
     public int getCin() {
         return cin;
@@ -87,4 +95,6 @@ public class Prof extends User {
     public void setGroupeChatList(List<GroupeChat> groupeChatList) {
         this.groupeChatList = groupeChatList;
     }
+
+
 }
