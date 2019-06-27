@@ -26,8 +26,6 @@ export class AjouterQuizService {
   async ajouterQuestion(question : Object,idQ: number,reponses :Object[]){
 
     this.q= await this.http.post(`${this.baseUrl2}`+`/add`, question).toPromise();
-    console.log("aaaaaaaaaa");
-    console.log(this.q);
     this.ajouterReponse(this.q,reponses);
 
  return this.q
@@ -37,7 +35,6 @@ export class AjouterQuizService {
   async ajouterReponse(idQ: number,reponses :Object[]){
     let response2 = this.http.post(`${this.baseUrl2}`+`/addResponses/`+`${this.q}`, reponses).toPromise();
     console.log(response2)
-    //Observable.forkJoin (RxJS 5) changes to just forkJoin() in RxJS 6
     reponses.splice(0,reponses.length);
     return response2;
   }

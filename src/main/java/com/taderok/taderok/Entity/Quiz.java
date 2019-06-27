@@ -14,7 +14,6 @@ public class Quiz {
     @ManyToMany
     private List<Etudiant> etudiantList;
     private int id_prof;
-    private double note;
     private String nomQuiz;
     private boolean corrige;
     private Date date;
@@ -46,13 +45,6 @@ public class Quiz {
         this.id_prof = id_prof;
     }
 
-    public double getNote() {
-        return note;
-    }
-
-    public void setNote(double note) {
-        this.note = note;
-    }
 
     public boolean isCorrige() {
         return corrige;
