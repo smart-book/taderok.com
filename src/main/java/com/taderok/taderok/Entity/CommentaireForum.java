@@ -1,21 +1,25 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+
 public class CommentaireForum {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private Date date;
     private String contenu;
+    @JsonIgnore
     @ManyToOne
     private Forum forum;
     @ManyToOne
-    @JsonIgnoreProperties("commentaireForumList")
     private User user;
 
     public int getId() {

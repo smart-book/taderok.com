@@ -20,29 +20,43 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
                       <label>Type de réclamation</label>
+            <br>
+                      <select class="custom-select" [(ngModel)]="reclamationTypeSelected" name="type">
+                        <option type="text" [value]="" disabled selected>Veuillez choisir votre type de réclamation ...</option>
+                        <option type="text" *ngFor="let type of toppingList" [value]="type">{{type}}</option>
+                      </select>
+                  <br>
+                  <br>
+
+
+
+
                       <div class="form-group">
-                        <div class="form-line">
-                          <input type="text" name="type_reclamation" [(ngModel)]="reclamation.type" class="form-control"
-                                 placeholder="Entrer le type de votre réclamation">
+                        <label>First Name</label>
+                        <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                          <div *ngIf="f.description.errors.required">First Name is required</div>
                         </div>
                       </div>
 
-                      <label>Description</label>
-                      <div class="form-group">
-                        <div class="form-line">
-                          <input class="form-control" type="text" name="description" [(ngModel)]="reclamation.description" placeholder="Entrer la description de votre réclamation">
-                        </div>
-                      </div>
+
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" (click)="ajouterReclamation()" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                    <button type="button" class="btn-hover btn-border-radius color-1">Ajouter</button>
                     <button type="button" class="btn-hover btn-border-radius color-4"
                             data-dismiss="modal">Cancel</button>
 
                    </div>
+
+                  <div class="form-group">
+                    <button type="button" class="btn-hover btn-border-radius color-1">Ajouter</button>
+
+                  </div>
+
+
                 </div>
               </div>
             </div>

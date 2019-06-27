@@ -12,7 +12,7 @@
 <div id="main-component">
     <nav class="navbar">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="navbar-header" *ngIf="router.url != '/home/index'">
                 <a href="#" onClick="return false;" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="#" onClick="return false;" class="bars"></a>
@@ -21,8 +21,8 @@
                     <span class="logo-name"> <img src="assets/images/taderok.svg" style="height: 24px" alt="Taderok.com" /></span>
                 </a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="pull-left">
+            <div class="collapse navbar-collapse" id="navbar-collapse" >
+                <ul class="pull-left" *ngIf="router.url != '/home/index'">
                     <li>
                         <a href="#" onClick="return false;" class="sidemenu-collapse">
                             <i class="material-icons">reorder</i>
@@ -178,8 +178,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" onClick="return false;">
-                                            <i class="material-icons">power_settings_new</i>Logout
+                                        <a href="#" (click)="logout()">
+                                            <i class="material-icons">power_settings_new</i>Se déconnecter
                                         </a>
                                     </li>
                                 </ul>
@@ -198,7 +198,7 @@
     </nav>
     <div>
         <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
+        <aside id="leftsidebar" *ngIf="router.url != '/home/index'" class="sidebar">
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
@@ -232,33 +232,6 @@
                         </ul>
                     </li>
 
-
-                    <li routerLinkActive="active">
-                        <a href="#" onClick="return false;" class="menu-toggle">
-                            <i class="fas fa-id-card"></i>
-                            <span>Authentication</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li routerLinkActive="active">
-                                <a routerLink="authentication/signin">Sign In</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a routerLink="authentication/signup">Sign Up</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a routerLink="authentication/forgot-password">Forgot Password</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a routerLink="authentication/locked">Locked</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a routerLink="authentication/page404">404 - Not Found</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a routerLink="authentication/page500">500 - Server Error</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li routerLinkActive="active">
                         <a href="#" onClick="return false;" class="menu-toggle">
                             <i class="far fa-file-alt"></i>
@@ -309,6 +282,43 @@
                       </li>
                     </ul>
                   </li>
+
+                  <li routerLinkActive="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                      <i _ngcontent-vqj-c3="" class="material-icons">class</i>
+                      <span>Seances</span>
+                    </a>
+                    <ul class="ml-menu">
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ajouterSeance">Ajouter</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ListSeance">list</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                      <i _ngcontent-vqj-c3="" class="material-icons">people</i>
+                      <span>Groupes</span>
+                    </a>
+                    <ul class="ml-menu">
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ajouterGroupe">Ajouter</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ListGroupe">list</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li routerLinkActive="active">
+                    <a routerLink="forum/list">
+                      <i class="far fa-file-alt"></i>
+                      <span>Forum</span>
+                    </a>
+                  </li>
+
                 </ul>
             </div>
             <!-- #Menu -->

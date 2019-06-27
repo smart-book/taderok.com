@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd, RouterEvent } from '@angular/router';
 import { PlatformLocation } from '@angular/common'
+import {User} from "./models/user";
+import {LoginService} from "./services/Athentication/login.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ export class AppComponent {
   currentUrl: string;
   showLoadingIndicatior = true;
 
-  constructor(private _router: Router, location: PlatformLocation) {
+  constructor(private loginService: LoginService,public router : Router,private _router: Router, location: PlatformLocation) {
     this._router.events.subscribe((routerEvent: Event) => {
 
       if (routerEvent instanceof NavigationStart) {
@@ -32,5 +34,12 @@ export class AppComponent {
       }
       window.scrollTo(0, 0)
     });
+  }
+  user: any ;
+  ngOnInit(){
+  }
+
+  logout(){
+    this.loginService.logout();
   }
 }

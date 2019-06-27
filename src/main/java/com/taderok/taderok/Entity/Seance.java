@@ -15,6 +15,7 @@ public class Seance {
     private Date date_fin;
     private String matiere;
     @ManyToOne
+    @JsonIgnoreProperties("seanceList")
     private Prof prof;
     @ManyToMany(mappedBy = "seanceList")
     private List<Quiz> quizList;

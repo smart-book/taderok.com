@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginService} from "../../services/Athentication/login.service";
+import {Router} from "@angular/router";
+import {User} from "../../models/user";
 
 declare const jQuery: any;
 
@@ -9,7 +12,36 @@ declare const jQuery: any;
 })
 export class SigninComponent implements OnInit {
 
-    constructor() { }
+  constructor(private loginService: LoginService,  private router: Router) { }
+
+  user: User = new User();
+
+  connectedUser: User = new User();
+
+  idConnected: number = null ;
+  isConnected = false;
+
+  login() {
+    console.log(this.user.email);
+    this.loginService.login(this.user).subscribe(data => {
+        console.log(data);
+        //  this.idConnected = + data;
+        /*if (this.idConnected > 0) {
+          this.isConnected = true;
+        }*/
+        // console.log(typeof (this.idConnected));
+        // if (this.isConnected) {
+        this.router.navigateByUrl('/components/ajouter');
+        // } else { alert('Veuillez verifier vos données'); }
+      },
+      error => console.log(error));
+
+    this.loginService.getConnectedUser().subscribe(
+      data => {console.log(data);
+      this.connectedUser = data;
+      localStorage.setItem('user',JSON.stringify({user : data}));}
+    )
+  }
 
     ngOnInit() {
 

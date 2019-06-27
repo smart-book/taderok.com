@@ -1,23 +1,22 @@
 package com.taderok.taderok.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import net.minidev.json.annotate.JsonIgnore;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public class User implements Serializable {
 
+    private static final long serialVersionUID = 2899651825246686381L;
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nom;
     private String prenom;
     private int telephone;
@@ -27,12 +26,12 @@ public class User {
     private String email;
     private String password;
     private String sexe;
-    private boolean activated;
-    @JsonIgnoreProperties("user")
+    private boolean enabled;
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Forum> forumList;
-    @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<CommentaireForum> commentaireForumList;
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
@@ -40,9 +39,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
     private List<Message> messageList;
-    @ManyToOne
-    //@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Role roles;
+    private String role;
 
 
     public User() {
@@ -67,11 +64,11 @@ public class User {
 
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -180,20 +177,21 @@ public class User {
         this.password = password;
     }
 
-    public boolean isActivated() {
-        return activated;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setActivated(boolean activated) {
-        this.activated = activated;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public Role getRoles() {
-        return roles;
+
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(Role roles) {
-        this.roles = roles;
+    public void setRole(String roles) {
+        this.role = roles;
     }
 
     @Override

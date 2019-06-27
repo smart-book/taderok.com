@@ -1,0 +1,153 @@
+
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header">
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
+                    data-target="#exampleModal">Ajouter</button>
+            <hr>
+            <!-- Modal d'ajout de publication : exampleModal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="formModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer une publication </h5><br><br>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <label>Titre</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text" name="type_reclamation" [(ngModel)]="forum.titre" class="form-control"
+                                 placeholder="Entrer le titre de votre publication" id="yamli">
+                        </div>
+                      </div>
+
+                      <label>Description</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input id="description" class="form-control" type="text" name="description" [(ngModel)]="forum.description" placeholder="Entrer la description de votre réclamation">
+                        </div>
+                      </div>
+
+                      <label>Matière</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <select class="custom-select">
+                            <option type="text">Francais</option>
+                            <option type="text">Anglais</option>
+                            <option type="text">Math</option>
+                            <option type="text">Physique</option>
+                            <option type="text">Sciences</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <label>Niveau d'étude</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <select class="custom-select">
+                            <option type="text">1ére année</option>
+                            <option type="text">2ére année</option>
+                            <option type="text">3ére année</option>
+                            <option type="text">4ére année</option>
+                            <option type="text">5ére année</option>
+                          </select>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)="ajouterStatus()" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                    <button type="button" class="btn-hover btn-border-radius color-4"
+                            data-dismiss="modal">Annuler</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fin div de modal d'ajout de la publication -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+          <div class="header">
+            <h2>
+              <strong>Filter</strong></h2>
+           </div>
+          <div class="body">
+            <div class="totalEarning">
+              <h2>Choisir votre niveau d'étude</h2>
+            </div>
+            <select class="custom-select">
+              <option type="text">1ére année</option>
+              <option type="text">2ére année</option>
+              <option type="text">3ére année</option>
+              <option type="text">4ére année</option>
+              <option type="text">5ére année</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- Customer Review -->
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Liste des <strong>publications</strong></h2>
+          </div>
+          <div class="body">
+            <div class="review-block">
+              <div class="row" *ngFor="let publication of ListPublications">
+                <div class="review-img">
+                  <img src="assets/images/user/user1.jpg" alt="">
+                </div>
+                <div class="col">
+                  <h6 class="m-b-15">{{publication.user.prenom}} {{publication.user.nom}}
+                    <span class="float-right m-r-10 text-muted"> {{publication.date | date: 'yyyy-MM-dd \' à \'hh:mm'}}
+                                        </span>
+                  </h6>
+                  <h6 class="m-b-15" ><a [routerLink]="['/forum/details', publication.id]">{{publication.titre}}</a>
+                  </h6>
+                  <p class="m-t-15 m-b-15">{{publication.description}}
+                  </p>
+                  <a href="#!">
+                    <i class="material-icons m-r-10">thumb_up</i>
+                  </a>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #END# Customer Review -->
+    </div>
+  </div>
+</section>
+<!-- YAMLI CODE START -->
+<!--
+<script type="text/javascript" src="https://api.yamli.com/js/yamli_api.js"></script>
+<script type="text/javascript">
+  if (typeof(Yamli) == "object" && Yamli.init( { uiLanguage: "fr" , startMode: "onOrUserDefault" } ))
+  {
+    Yamli.yamlify( "yamli", { settingsPlacement: "bottomLeft" } );
+  }
+</script>
+-->
+<!-- YAMLI CODE END -->
+

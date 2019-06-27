@@ -7,26 +7,26 @@
         </span>
 
         <div class="wrap-input100 validate-input" data-validate="Nom est est un champ obligatoire">
-          <input class="input100" type="text" name="nom">
+          <input class="input100" type="text" name="nom" [(ngModel)]="user.nom">
           <span class="focus-input100"></span>
           <span class="label-input100">Nom</span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Prénom est est un champ obligatoire">
-          <input class="input100" type="text" name="prenom">
+          <input class="input100" type="text" name="prenom" [(ngModel)]="user.prenom">
           <span class="focus-input100"></span>
           <span class="label-input100">Prénom</span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Veuillez entrer une adresse E-mail valide">
-          <input class="input100" type="email" name="email">
+          <input class="input100" type="email" name="email" [(ngModel)]="user.email">
           <span class="focus-input100"></span>
           <span class="label-input100">Email</span>
         </div>
 
 
         <div class="wrap-input100 validate-input" data-validate="Mot de passe est est un champ obligatoire">
-          <input class="input100" type="password" name="pass">
+          <input class="input100" type="password" name="pass" [(ngModel)]="user.password">
           <span class="focus-input100"></span>
           <span class="label-input100">Mot de passe </span>
         </div>
@@ -37,26 +37,26 @@
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Adresse est un champ obligatoire">
-          <input class="input100" type="text" name="adresse">
+          <input class="input100" type="text" name="adresse" [(ngModel)]="user.adresse">
           <span class="focus-input100"></span>
           <span class="label-input100">Adresse</span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Date de naissance est un champ obligatoire">
-          <input class="input100" type="text" name="dateNaiss">
+          <input class="input100" type="date" name="dateNaiss" [(ngModel)]="user.dateNaissance">
           <span class="focus-input100"></span>
           <span class="label-input100">Date de naissance</span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Sexe est un champ obligatoire">
-        <input class="input100" type="text" name="dateNaiss">
+        <input class="input100" type="text" name="sexe" [(ngModel)]="user.sexe">
         <span class="focus-input100"></span>
         <span class="label-input100">Sexe</span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Veuillez inserer votre photo ">
           <span class="label-input100">Veuillez inserer votre photo</span>
-          <input class="input100" type="file" name="dateNaiss">
+          <input class="input100" type="file" name="photo" [(ngModel)]="user.photo">
           <span class="focus-input100"></span>
 
         </div>
@@ -72,7 +72,7 @@
 
 
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn">
+          <button class="login100-form-btn" (click)="register()">
             Register
           </button>
         </div>

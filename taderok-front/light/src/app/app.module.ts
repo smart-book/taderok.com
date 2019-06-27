@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { DynamicScriptLoaderService } from './dynamic-script-loader-service.service';
 import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 
 
@@ -18,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, DynamicScriptLoaderService],
   bootstrap: [AppComponent]

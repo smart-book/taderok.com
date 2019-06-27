@@ -1,0 +1,52 @@
+<script type="text/javascript" src="http://api.grammarbot.io/v2/check?api_key=AF5B9M2X&text=I%20can%27t%20remember%20how%20to%20go%20their.&language=en-US"></script>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header">
+          <h2 style="padding-left: 22px">
+            Titre :<strong>{{forum.titre}}</strong>
+          </h2>
+          <br>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            Description :{{forum.description}}
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header">
+        </div>
+        <div class="body" >
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10">
+                <ul class="left-timeline">
+                  <li  *ngFor="let comment of listCommentaires">
+                    <time class="left-time" datetime="2017-11-04T18:30"><span
+                      class="hidden">{{comment.date | date: 'yyyy-MM-dd'}}</span>
+                      <span class="large">{{comment.date | date: 'h:mm'}}</span></time>
+                    <div class="left-icon"><img src="assets/images/user/user1.jpg" alt="">
+                    </div>
+                    <div class="left-label">
+                      <h2><a href="#" onClick="return false;"></a> </h2>
+                      <p>{{comment.contenu}}</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

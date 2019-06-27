@@ -22,17 +22,33 @@ const routes: Routes = [
     loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
   },
   {
+
     path: 'quiz',
     loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
   },
   {
-
+    path: 'etudiant',
+    loadChildren: () => import('./components/etudiant/etudiant.module').then(m => m.EtudiantModule)
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
   },
+  {
+    path: 'prof',
+    loadChildren: () => import('./components/prof/prof.module').then(m => m.ProfModule)
+  },
+  {
+    path: 'forum',
+    loadChildren: () => import('./components/forum/forum.module').then(m => m.ForumModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./index/index.module').then(m => m.IndexModule)
+  },
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'home',
         pathMatch: 'full'
     }
 ];

@@ -1,100 +1,90 @@
 <section class="content">
   <div class="container-fluid">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="card">
-        <div class="header">
-
-          <div>
-
-            <div _ngcontent-wfw-c14="" class="body">
-              <div _ngcontent-wfw-c14="" class="table-responsive">
-                <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                  <div class="dt-buttons">
-                    <button class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="tableExport" type="button">
-                      <span>Copy</span>
-                    </button> <button class="dt-button buttons-csv buttons-html5" tabindex="0" aria-controls="tableExport" type="button">
-                    <span>CSV</span>
-                  </button>
-                    <button class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="tableExport" type="button">
-                      <span>Excel</span>
-                    </button>
-                    <button class="dt-button buttons-pdf buttons-html5 processing" tabindex="0" aria-controls="tableExport" type="button">
-                      <span>PDF</span>
-                    </button> <button class="dt-button buttons-print" tabindex="0" aria-controls="tableExport" type="button">
-                    <span>Print</span>
-                  </button>
-                  </div>
-                  <div id="tableExport_filter" class="dataTables_filter">
-                    <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="tableExport"></label>
-                  </div>
-                  <br><br>
-                  <br><br>
-
-
-                  <table _ngcontent-wfw-c14="" class="display table table-hover table-checkable order-column m-t-20 width-per-100 dataTable" id="tableExport" role="grid" aria-describedby="tableExport_info">
-                    <thead _ngcontent-wfw-c14="">
-                    <tr _ngcontent-wfw-c14="" role="row">
-                      <th _ngcontent-wfw-c14="" class="sorting_asc" tabindex="0" aria-controls="tableExport" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 70px;">Nom</th>
-                      <th _ngcontent-wfw-c14="" class="sorting" tabindex="0" aria-controls="tableExport" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;">Prénom</th>
-                      <th _ngcontent-wfw-c14="" class="sorting" tabindex="0" aria-controls="tableExport" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 150px;">E-mail</th>
-                      <th _ngcontent-wfw-c14="" class="sorting" tabindex="0" aria-controls="tableExport" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 175px;">Date</th>
-                      <th _ngcontent-wfw-c14="" class="sorting" tabindex="0" aria-controls="tableExport" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 250px;">Description</th>
-                      <th _ngcontent-wfw-c14="" class="sorting" tabindex="0" aria-controls="tableExport" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 80px;">Type</th></tr>
-
-                    </thead>
-                    <tbody _ngcontent-wfw-c14="">
-                    <tr _ngcontent-wfw-c14="" role="row" class="odd" *ngFor="let a of list">
-                      <td _ngcontent-wfw-c14="">{{a.user.nom}}</td>
-                      <td _ngcontent-wfw-c14="">{{a.user.prenom}}</td>
-                      <td _ngcontent-wfw-c14="">{{a.user.email}}</td>
-                      <td _ngcontent-wfw-c14="" class="sorting_1">{{a.date | date: 'yyyy-MM-dd \'  à \' h:mma  '}}</td>
-                      <td _ngcontent-wfw-c14="">{{a.description}}</td>
-                      <td _ngcontent-wfw-c14="">{{a.type}}</td>
-
-                    </tbody>
-
-                  </table>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-
-
-
-
-                  <div class="dataTables_paginate paging_simple_numbers" id="tableExport_paginate">
-                    <ul class="pagination">
-
-                      <li class="paginate_button page-item previous disabled" id="tableExport_previous">
-                        <a href="#" aria-controls="tableExport" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                      </li>
-
-                      <li class="paginate_button page-item active"><a href="#" aria-controls="tableExport" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="tableExport" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="tableExport" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="tableExport" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="tableExport" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="tableExport" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                      <li class="paginate_button page-item next" id="tableExport_next">
-                        <a href="#" aria-controls="tableExport" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                      </li>
-
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Exporter liste des réclamations traitées </h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Acceuil</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Réclamations</a>
+            </li>
+            <li class="breadcrumb-item active">Liste</li>
+          </ul>
         </div>
       </div>
     </div>
+    <!-- Exportable Table -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              <strong>Liste</strong> des réclamations traitées</h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown">
+                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+
+
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="body">
+            <div class="table-responsive">
+              <table id="tableExport"
+                     class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+
+                <thead>   <br><br>
+
+                <tr>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                  <th>E-mail</th>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Type</th>
+                </tr>
+                </thead>
+
+                <tbody _ngcontent-wfw-c14="">
+                <tr  *ngFor="let a of list" >
+                  <td>{{a.user.nom}}</td>
+                  <td>{{a.user.prenom}}</td>
+                  <td>{{a.user.email}}</td>
+                  <td>{{a.date | date: 'yyyy-MM-dd \'  à \' h:mma  '}}</td>
+                  <td>{{a.description}}</td>
+                  <td>{{a.type}}</td>
+                  <td> <i _ngcontent-oah-c9="" style="color:#0ba360" class="fas fa-check"></i></td>
+
+                </tbody>
+
+                <tfoot>
+
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #END# Exportable Table -->
   </div>
 </section>
+
+
+
+
+
+
+

@@ -1,7 +1,6 @@
 package com.taderok.taderok.Controller;
 
 import com.taderok.taderok.Entity.Reclamation;
-import com.taderok.taderok.Entity.TypeReclamation;
 import com.taderok.taderok.Service.AdminServices.ReclamationAdminService;
 import com.taderok.taderok.Service.ReclamationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,11 +61,11 @@ public class ReclamationController {
         return reclamationAdminService.traiterReclamation(id);
     }
 
-    @RequestMapping("/Admin/AfficherReclamationParType/{type}")
-    public List<Reclamation> AfficherReclamationParType(@PathVariable("type") TypeReclamation type)
-    {
-        return reclamationAdminService.AfficherReclamationParType(type);
-    }
+    //@RequestMapping("/Admin/AfficherReclamationParType/{type}")
+   // public List<Reclamation> AfficherReclamationParType(@PathVariable("type") String type)
+    //{
+        //return reclamationAdminService.AfficherReclamationParType();
+    //}
 
     @RequestMapping("/Admin/getAllReclamationOrderByDate")
     public List<Reclamation> getAllReclamationOrderByDate()

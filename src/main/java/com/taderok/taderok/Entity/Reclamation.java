@@ -13,7 +13,7 @@ public class Reclamation {
     private Date date;
     private String description;
     private boolean etat;
-    private TypeReclamation type;
+    private String type;
 
     @ManyToOne
     @JsonIgnoreProperties(" reclamationList")
@@ -51,10 +51,11 @@ public class Reclamation {
         this.etat = etat;
     }
 
-    public TypeReclamation getType() {
+    public String getType() {
         return type;
     }
-    public void setType(TypeReclamation type) {
+
+    public void setType(String type) {
         this.type = type;
     }
 
