@@ -3,6 +3,7 @@ package com.taderok.taderok.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class Quiz {
     @JsonIgnoreProperties("quiz")
     @OneToMany(mappedBy = "quiz")
     private List<Questions> questions;
+    @OneToMany(mappedBy = "id.id_quiz")
+    private List<QuizEtudiant> quizEtudiant = new ArrayList<>();
 
     public int getId() {
         return id;
