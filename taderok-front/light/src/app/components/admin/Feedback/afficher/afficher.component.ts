@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Feedback} from "../../../../models/feedback";
+import {FeedbackService} from "../../../../services/Admin/feedback.service";
 
 @Component({
   selector: 'app-afficher',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AfficherComponent implements OnInit {
 
-  constructor() { }
+  constructor(private feedbackService:FeedbackService) { }
 
+  ListFeedbacks: Feedback[];
   ngOnInit() {
+    this.feedbackService.afficherFeedback().subscribe(data=>{console.log(data); this.ListFeedbacks=data}, error=>console.log(error),()=>console.log("done!"));
+    console.log(this.ListFeedbacks);
   }
+
+
+
+
 
 }
