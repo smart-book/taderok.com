@@ -1,4 +1,4 @@
-<section class="content">
+<!--<section class="content">
   <div class="container-fluid">
     <div class="block-header">
       <div class="row">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <!-- Exportable Table -->
+
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -91,7 +91,65 @@
         </div>
       </div>
     </div>
-    <!-- #END# Exportable Table -->
+
+  </div>
+</section> -->
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Exporter la liste des feedbacks</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i>Acceuil</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Seances</a>
+            </li>
+            <li class="breadcrumb-item active">feedbacks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Basic Examples -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+
+          <div class="body">
+            <div class="table-responsive">
+              <table id="chieldRow" class="display" style="width:100%">
+                <thead>
+                <tr>
+                  <th></th>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                  <th>E-mail</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                  <th>Seance</th>
+                </tr>
+                </thead>
+                <tr  *ngFor="let feedback of ListFeedbacks">
+                  <td>{{feedback.etudiant.nom}}</td>
+                  <td>{{feedback.etudiant.prenom}}</td>
+                  <td>{{feedback.etudiant.email}}</td>
+                  <td>{{feedback.type}}</td>
+                  <td>{{feedback.description}}</td>
+                  <td>{{feedback.seances.id}}</td>
+
+                </tr>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-

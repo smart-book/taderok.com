@@ -13,6 +13,7 @@ import {AjouterRessourceComponent} from './ressource/ajouter-ressource/ajouter-r
 import {AfficherRessourceComponent} from "./ressource/afficher-ressource/afficher-ressource.component";
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
+import {AfficherFeedbackComponent} from "./feedback/afficher-feedback/afficher-feedback.component";
 
 
 
@@ -58,6 +59,11 @@ const routes: Routes = [
     path: 'lister',
     component: ListerComponent
   },
+  {
+    path: 'afficherFeedbacks',
+    component: AfficherFeedbackComponent
+
+  }
 ];
 
 @NgModule({

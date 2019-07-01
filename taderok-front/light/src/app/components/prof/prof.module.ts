@@ -15,14 +15,14 @@ import { AjouterRessourceComponent } from './ressource/ajouter-ressource/ajouter
 import { AfficherRessourceComponent } from './ressource/afficher-ressource/afficher-ressource.component';
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
+import {AfficherFeedbackComponent} from "./feedback/afficher-feedback/afficher-feedback.component";
 
 
 @NgModule({
 
-  declarations: [AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance,ListQuizComponent,AjouterQuizComponent],
+  declarations: [AfficherFeedbackComponent, AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance,ListQuizComponent,AjouterQuizComponent],
 
   // tslint:disable-next-line:max-line-length
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ],
 
   imports: [
     CommonModule,
