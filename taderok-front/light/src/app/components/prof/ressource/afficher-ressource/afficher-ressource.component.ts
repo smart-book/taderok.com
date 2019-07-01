@@ -14,9 +14,8 @@ export class AfficherRessourceComponent implements OnInit {
 uploadRessource: UploadFileService;
   ressource: Ressource = new Ressource();
   listRessources: Ressource[];
-  listImage: Ressource[];
 
-  constructor(private ressourceService: RessourceService){}
+  constructor(private ressourceService: RessourceService) {}
   ngOnInit() {
     this.afficherRessource();
   }
@@ -27,10 +26,6 @@ uploadRessource: UploadFileService;
       this.listRessources = data;
     }, error => console.log(error));
   }
-  afficherImage(){
-    this.uploadRessource.getFiles().subscribe(data => {
-      console.log(data);
-      this.listImage = data;
-    }, error => console.log(error));
+  afficherImage() {
   }
 }
