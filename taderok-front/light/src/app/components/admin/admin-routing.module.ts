@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ListReclamationsComponent} from "./Reclamation/list-reclamations/list-reclamations.component";
 import  {ReclamationsTraiteesComponent} from "./Reclamation/reclamations-traitees/reclamations-traitees.component";
-import {AfficherComponent} from "./Feedback/afficher/afficher.component";
 
 const routes: Routes = [
   {
@@ -13,10 +12,6 @@ const routes: Routes = [
     path: 'ReclamationsTraite',
     component: ReclamationsTraiteesComponent
   },
-  {
-    path: 'afficher',
-    component: AfficherComponent
-  }
 ];
 
 

@@ -8,9 +8,20 @@ import com.taderok.taderok.Entity.User;
 import com.taderok.taderok.Repository.ProfRepository;
 import com.taderok.taderok.Repository.RessourcesRespository;
 import com.taderok.taderok.Repository.SeanceRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileSystemUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +36,9 @@ public class RessourcesService {
     private ProfRepository profRepository;
 
     private AthenticationController athenticationController;
+
+    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final Path rootLocation = Paths.get("upload-dir");
 
 
     public void ajouterRessources(int id,Ressources ressources){
@@ -50,13 +64,13 @@ public class RessourcesService {
 
         List<Ressources> ressources = new ArrayList<>();
         List<Seance> seances = new ArrayList<>();
-
         Prof prof = profRepository.findById(athenticationController.getConnectedUser().getUser().getId()).orElse(null);
         seances = prof.getSeanceList();
-        seances.forEach((e) -> { ressources.addAll(e.getRessourcesList());
-
+        seances.forEach((e) -> {ressources.addAll(e.getRessourcesList());
         });
 
         return ressources;
     }
+
+
 }

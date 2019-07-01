@@ -4,9 +4,11 @@ import com.taderok.taderok.Entity.Quiz;
 import com.taderok.taderok.Service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/quiz")
 public class QuizController {
@@ -43,9 +45,10 @@ public class QuizController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public void addQuiz(@RequestBody Quiz quiz){
-
+    public int addQuiz(@RequestBody Quiz quiz){
+        quiz.setDate(new Date());
         quizService.addQuiz(quiz);
+        return quiz.getId();
     }
 
 

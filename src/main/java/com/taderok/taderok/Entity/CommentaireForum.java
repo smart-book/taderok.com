@@ -1,12 +1,15 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+
 public class CommentaireForum {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,7 +20,6 @@ public class CommentaireForum {
     @ManyToOne
     private Forum forum;
     @ManyToOne
-    @JsonIgnore
     private User user;
 
     public int getId() {

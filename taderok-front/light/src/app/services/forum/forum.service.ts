@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Forum} from "../../models/forum";
+import {CommentaireForum} from "../../models/commentaireForum";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {Forum} from "../../models/forum";
 export class ForumService {
 
   private baseUrl = 'http://localhost:8181/forum';
+  private baseUrlComment = 'http://localhost:8181/comment';
 
   constructor(private http: HttpClient) {}
 
@@ -23,5 +25,15 @@ export class ForumService {
 
   getPubDetails(id): Observable<Forum>{
     return this.http.get<Forum>(`${this.baseUrl}`+`/` + id)
+  }
+
+  /////////////////////////////////////////////////////////////////////////
+  getListCommentsOfOneForum(id): Observable<CommentaireForum[]>{
+    return this.http.get<CommentaireForum[]>(`${this.baseUrlComment}`+`/findAll`+`/` + id);
+  }
+
+  ajouterCommentaire(id: number,commentaireForum:Object): Observable<Object>{
+    console.log(commentaireForum);
+    return this.http.post(`${this.baseUrlComment}`+`/add`+`/${id}`, commentaireForum);
   }
 }

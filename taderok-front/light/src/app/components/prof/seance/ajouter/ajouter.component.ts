@@ -3,6 +3,7 @@ import {Seance} from "../../../../models/seance";
 import {GroupesService} from "../../../../services/prof/groupes.service";
 import {SeanceService} from "../../../../services/prof/seance.service";
 import { FormBuilder, Validators } from "@angular/forms";
+import {Groupes} from "../../../../models/groupes";
 declare const $: any;
 declare const Dropzone: any;
 @Component({
@@ -11,15 +12,23 @@ declare const Dropzone: any;
   styleUrls: ['./ajouter.component.sass']
 })
 export class AjouterComponentSeance implements OnInit {
-
+  groupes : Groupes = new Groupes();
+  groupees : Groupes[];
+  groupe : Groupes = new Groupes();
   seance : Seance = new Seance();
 
 
 
-  constructor(private seanceService : SeanceService,public fb: FormBuilder) { }
+  constructor(private seanceService : SeanceService,public fb: FormBuilder,private groupesService : GroupesService) { }
 
   ngOnInit() {
     console.log("seance");
+
+
+    this.groupesService.afficherGroupe().subscribe(data => {
+      console.log(data);
+      this.groupees = data;
+    }, error => console.log(error));
   }
   ajouterSeance(){
     console.log(this.seance.date_debut);

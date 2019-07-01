@@ -1,16 +1,13 @@
 package com.taderok.taderok.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import net.minidev.json.annotate.JsonIgnore;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -30,11 +27,11 @@ public class User implements Serializable {
     private String password;
     private String sexe;
     private boolean enabled;
-    @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Forum> forumList;
-    @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<CommentaireForum> commentaireForumList;
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")

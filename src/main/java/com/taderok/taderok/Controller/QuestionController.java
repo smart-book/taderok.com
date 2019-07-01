@@ -12,6 +12,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/question")
 public class QuestionController {
 
@@ -44,12 +45,13 @@ public class QuestionController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public void addQuestion(@RequestBody Questions question){
+    public int addQuestion(@RequestBody Questions question){
 
         questionService.addQuestion(question);
+        return question.getId();
     }
     @RequestMapping(method = RequestMethod.POST, value = "/addResponses/{idQ}")
-    public void addResponsesToQuestion(@PathVariable int idQ, @RequestBody ArrayList<Reponses> reponsesList){
+    public void addResponsesToQuestion(@PathVariable int idQ, @RequestBody List<Reponses> reponsesList){
 
         questionService.addResponsesToQuestion(idQ,reponsesList);
     }

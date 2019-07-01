@@ -1,6 +1,8 @@
 package com.taderok.taderok.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Reponses {
@@ -9,9 +11,22 @@ public class Reponses {
     private int id;
     private String reponse;
     private boolean status;
-    private boolean responseEt;
     @ManyToOne
     private Questions questions;
+    @OneToMany(mappedBy = "id.id_reponse")
+    private List<EtudiantReponse> repEtudiant = new ArrayList<>();
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public List<EtudiantReponse> getRepEtudiant() {
+        return repEtudiant;
+    }
+
+    public void setRepEtudiant(List<EtudiantReponse> repEtudiant) {
+        this.repEtudiant = repEtudiant;
+    }
 
     public int getId() {
         return id;
@@ -27,14 +42,6 @@ public class Reponses {
 
     public void setReponse(String reponse) {
         this.reponse = reponse;
-    }
-
-    public boolean isResponseEt() {
-        return responseEt;
-    }
-
-    public void setResponseEt(boolean responseEt) {
-        this.responseEt = responseEt;
     }
 
     public boolean getStatus() {
