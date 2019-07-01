@@ -29,8 +29,6 @@
 
           <b>Group name </b>
 
-
-
           <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="material-icons">people</i>
@@ -39,11 +37,24 @@
               <input type="text" class="form-control date" placeholder="groupName" [(ngModel)]="groupes.nom">
             </div>
           </div>
-          <button class="btn-hover btn-border-radius color-8" awNextStep (click)="ajouterGroupe()">Ajouter</button>
 
+          <b>etudiants</b>
+          <select class="custom-select"
+                  [(ngModel)]="groupe">
+            <option [ngValue]="grp" *ngFor="let grp of groupees">{{grp.nom}}</option>
 
+          </select>
+
+          <button class="btn-hover btn-border-radius color-8"  (click)="ajouterGroupe()">Ajouter</button>
+
+          <table>
+            <tr *ngFor="let grp of tabGroup">
+              <td>{{grp.nom}}</td>
+
+            </tr>
+          </table>
         </div>
-  </div>
+      </div>
     </div>
   </div>
 </section>

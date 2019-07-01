@@ -1,6 +1,10 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -8,14 +12,19 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    private int id_etudiant;
+    @ManyToMany
+    private List<Etudiant> etudiantList;
     private int id_prof;
-    private int note;
     private String nomQuiz;
+    private boolean corrige;
+    private Date date;
     @ManyToMany
     private List<Seance> seanceList;
+    @JsonIgnoreProperties("quiz")
     @OneToMany(mappedBy = "quiz")
     private List<Questions> questions;
+    @OneToMany(mappedBy = "id.id_quiz")
+    private List<QuizEtudiant> quizEtudiant = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -25,12 +34,12 @@ public class Quiz {
         this.id = id;
     }
 
-    public int getId_etudiant() {
-        return id_etudiant;
+    public List<Etudiant> getEtudiantList() {
+        return etudiantList;
     }
 
-    public void setId_etudiant(int id_etudiant) {
-        this.id_etudiant = id_etudiant;
+    public void setEtudiantList(List<Etudiant> etudiantList) {
+        this.etudiantList = etudiantList;
     }
 
     public int getId_prof() {return id_prof; }
@@ -39,12 +48,21 @@ public class Quiz {
         this.id_prof = id_prof;
     }
 
-    public int getNote() {
-        return note;
+
+    public boolean isCorrige() {
+        return corrige;
     }
 
-    public void setNote(int note) {
-        this.note = note;
+    public void setCorrige(boolean corrige) {
+        this.corrige = corrige;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getNomQuiz() {

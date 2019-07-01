@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^8.0.0",
     "@angular/platform-browser-dynamic": "^8.0.0",
     "@angular/router": "^8.0.0",
+    "@types/jquery": "^3.3.29",
     "angular-archwizard": "^4.0.0",
     "bower": "^1.8.8",
     "browser-sync": "^2.26.7",
@@ -38,7 +39,8 @@
     "rxjs": "~6.5.2",
     "sweetalert2": "^8.12.2",
     "tslib": "^1.9.3",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@sweetalert2/ngx-sweetalert2": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.2",

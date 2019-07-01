@@ -58,8 +58,14 @@
           <option type="text">Physique</option>
         </select>
 
+        <b>groupes</b>
+        <select class="custom-select"
+                [(ngModel)]="seance.groupes">
+          <option [ngValue]="grp" *ngFor="let grp of groupees">{{grp.nom}}</option>
 
-        <button class="btn-hover btn-border-radius color-8" awNextStep (click)="ajouterSeance()">Ajouter</button>
+        </select>
+
+        <button class="btn-hover btn-border-radius color-8"  (click)="ajouterSeance()">Ajouter</button>
 
 
         </div>

@@ -56,20 +56,52 @@
 
 
                 <tr>
-                  <th>Nom</th>
-                  <th>Path</th>
+                  <th>Nom de la ressource</th>
                   <th>Séance</th>
                    </tr>
                 </thead>
                 <tbody>
 
 
+
                 <tr  *ngFor="let a of listRessources">
                   <td>{{a.path}}</td>
                   <td>{{a.nom}}</td>
-                  <td>{{a.seance.}}</td>
+                  <td>{{a.seance}}</td>
 
+
+                <tr data-toggle="modal" data-target="#exampleModal"  *ngFor="let a of listRessources">
+                  <td>
+                     {{a.nom}}
+                  </td>
+                  <td>
+                  {{a.seance}}</td>
                 </tr>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="formModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" style="padding-left: 150px" id="formModal">Image de la ressource </h5><br><br>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body"  *ngFor="let a of listRessources">
+                        <img _ngcontent-xte-c0=""  src="{{a.path}}">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn-hover btn-border-radius color-4"
+
+                                data-dismiss="modal">Cancel</button>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
 
                 </tbody>
 

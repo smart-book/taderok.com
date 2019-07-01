@@ -2,11 +2,14 @@ export class User {
   id: number;
   nom:string;
   prenom:string;
+  telephone: number;
+  dateNaissance:Date;
+  adresse:string;
+  photo:string;
   email:string;
   password:string;
-  role:string;
-  adresse:string;
   sexe:string;
+
   photo:string;
   dateNaissance:Date;
   telephone:number;
@@ -26,5 +29,6 @@ export class User {
   diplome:string;
   experience:string;
   code_tablette:string;
-
+  enabled: boolean;
+  role:string;
 }

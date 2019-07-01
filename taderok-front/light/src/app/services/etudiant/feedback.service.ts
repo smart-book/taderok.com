@@ -22,9 +22,4 @@ export class FeedbackService {
     return this.http.post(`${this.baseUrl}`+'/ajouterFeedback', feedback);
   }
 
-  afficherFeedback(): Observable<Feedback[]>{
-    return this.http.get<Feedback[]>(`${this.baseUrl}`+'/Feedbacks');
-  }
-
-
 }

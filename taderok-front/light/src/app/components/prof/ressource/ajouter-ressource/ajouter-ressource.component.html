@@ -29,12 +29,28 @@
                         </div>
                       </div>
 
-                      <label>Path de Ressource</label>
+                     <!-- <label>Path de Ressource</label>
                       <div class="form-group">
                         <div class="form-line">
-                          <input class="form-control" type="text" name="description" [(ngModel)]="ressource.path" placeholder="Entrer la description de votre réclamation">
+                          <input class="form-control" type="file" name="description" [(ngModel)]="ressource.path" placeholder="Entrer la description de votre réclamation">
                         </div>
+                      </div> -->
+
+
+
+                      <div *ngIf="currentFileUpload" class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                             aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                          {{progress.percentage}}%</div>
                       </div>
+
+                      <label >
+                        <input type="file" (change)="selectFile($event)">
+                      </label>
+<!--
+                      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+-->
+
                     </form>
                   </div>
                   <div class="modal-footer">
