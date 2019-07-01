@@ -63,7 +63,16 @@
                 <tbody>
 
 
+
                 <tr data-toggle="modal" *ngFor="let a of listRessources" [attr.data-target]="'#exampleModal' + a.nom"    >
+
+                <tr  *ngFor="let a of listRessources">
+                  <td>{{a.path}}</td>
+                  <td>{{a.nom}}</td>
+                  <td>{{a.seance}}</td>
+
+
+                <tr data-toggle="modal" data-target="#exampleModal"  *ngFor="let a of listRessources">
                   <td>
                      {{a.nom}}
                   </td>
@@ -111,4 +120,3 @@
     <!-- #END# Exportable Table -->
   </div>
 </section>
-

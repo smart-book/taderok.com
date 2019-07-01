@@ -38,14 +38,14 @@
             </div>
           </div>
 
-          <b>groupes</b>
+          <b>etudiants</b>
           <select class="custom-select"
                   [(ngModel)]="groupe">
             <option [ngValue]="grp" *ngFor="let grp of groupees">{{grp.nom}}</option>
 
           </select>
 
-          <button class="btn-hover btn-border-radius color-8" awNextStep (click)="ajouterGroupe()">Ajouter</button>
+          <button class="btn-hover btn-border-radius color-8"  (click)="ajouterGroupe()">Ajouter</button>
 
           <table>
             <tr *ngFor="let grp of tabGroup">
