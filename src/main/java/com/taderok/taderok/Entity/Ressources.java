@@ -10,6 +10,7 @@ public class Ressources {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String nom;
+    private String fileName;
     private String path;
     @ManyToOne
     @JsonIgnoreProperties("ressourcesList")
@@ -45,5 +46,13 @@ public class Ressources {
 
     public void setSeance(Seance seance) {
         this.seance = seance;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
