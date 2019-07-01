@@ -1,5 +1,6 @@
 package com.taderok.taderok.Service;
 
+import com.taderok.taderok.Controller.AthenticationController;
 import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.Forum;
 import com.taderok.taderok.Entity.User;
@@ -24,7 +25,7 @@ public class ForumService {
 
 
     public List<Forum> getAllForum(){
-        return (List<Forum>) forumRepository.findAll();
+        return (List<Forum>) forumRepository.findAllByOrderByDateDesc();
 
     }
 
@@ -33,7 +34,7 @@ public class ForumService {
     }
 
     public void addForum(Forum forum){
-        User u = userRepository.findById((long) helloResource.getIdConnected()).orElse(null);
+        User u = userRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         forum.setUser(u);
         forumRepository.save(forum);
     }

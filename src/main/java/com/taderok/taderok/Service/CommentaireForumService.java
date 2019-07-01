@@ -1,5 +1,6 @@
 package com.taderok.taderok.Service;
 
+import com.taderok.taderok.Controller.AthenticationController;
 import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.CommentaireForum;
 import com.taderok.taderok.Entity.Forum;
@@ -25,7 +26,7 @@ public class CommentaireForumService {
     private HelloResource helloResource;
 
     public void addComment(CommentaireForum commentaireForum,int id){
-        User u = userRepository.findById((long) helloResource.getIdConnected()).orElse(null);
+        User u = userRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         Forum f = forumRepository.findById(id).orElse(null);
         commentaireForum.setUser(u);
         commentaireForum.setForum(f);
