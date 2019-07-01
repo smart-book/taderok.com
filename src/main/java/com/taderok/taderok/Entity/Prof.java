@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 public class Prof extends User {
-    private int cin;
+    private String cin;
     private String diplome;
     private String experience;
     private String code_tablette;
@@ -32,11 +32,11 @@ public class Prof extends User {
     public Prof() {
     }
 
-    public int getCin() {
+    public String getCin() {
         return cin;
     }
 
-    public void setCin(int cin) {
+    public void setCin(String cin) {
         this.cin = cin;
     }
 

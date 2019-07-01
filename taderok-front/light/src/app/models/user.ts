@@ -9,4 +9,22 @@ export class User {
   sexe:string;
   photo:string;
   dateNaissance:Date;
+  telephone:number;
+  enabled:boolean;
+
+  // Etudiant
+
+  niveau:string;
+  etablissement:string;
+  codeEnfant:string;
+  paiement:boolean;
+
+
+  // Prof
+
+  cin:string;
+  diplome:string;
+  experience:string;
+  code_tablette:string;
+
 }

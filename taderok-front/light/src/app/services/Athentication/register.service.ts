@@ -18,4 +18,19 @@ export class RegisterService {
     return this.http.post(`${this.baseUrl}`, user);
   }
 
+  registerEtudiant(user: Object): Observable<Object> {
+    console.log(user);
+    return this.http.post(`http://localhost:8181/registerEtudiant`, user);
+  }
+
+  registerProf(user: Object): Observable<Object> {
+    console.log(user);
+    return this.http.post(`http://localhost:8181/registerProf`, user);
+  }
+
+  registerParent(user: Object): Observable<Object> {
+    console.log(user);
+    return this.http.post(`http://localhost:8181/registerParent`, user);
+  }
+
 }
