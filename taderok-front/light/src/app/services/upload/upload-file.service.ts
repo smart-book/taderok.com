@@ -6,15 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UploadFileService {
+  private fname: string;
 
   constructor(private http: HttpClient) { }
 
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+  pushFileToStorage(file: File, fname: string): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
+    formdata.append('file', file, fname );
 
-    formdata.append('file', file);
     const req = new HttpRequest('POST', 'http://localhost:8181/post', formdata, {
-      reportProgress: true,
+      reportProgress: true  ,
       responseType: 'text'
     });
 
@@ -22,6 +23,6 @@ export class UploadFileService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get('http://localhost:8181/getallfiles');
+    return this.http.get('/localhost:8181/files');
   }
 }

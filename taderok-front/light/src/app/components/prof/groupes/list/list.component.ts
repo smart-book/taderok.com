@@ -24,6 +24,7 @@ export class ListGroupeComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.groupesService.afficherGroupe().subscribe(data => {
       console.log(data);
       this.list = data;

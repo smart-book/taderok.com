@@ -25,19 +25,12 @@ export class AjouterRessourceComponent implements OnInit {
 
   ajouterRessources() {
 
-    this.ressource.path = this.currentFileUpload.name;
-    this.ressourceService.ajouterRessource(this.ressource, 1).subscribe(data => console.log(data), error => console.log(error));
-  }
-
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
-  }
-
-  upload() {
     this.progress.percentage = 0;
-
+    // tslint:disable-next-line:prefer-const
+    let fname: string;
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+    fname = Math.random().toString(36).substr(2, 11) + '.' + this.currentFileUpload.name.split('.').pop();
+    this.uploadService.pushFileToStorage(this.currentFileUpload, fname).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
@@ -46,6 +39,15 @@ export class AjouterRessourceComponent implements OnInit {
     });
 
     this.selectedFiles = undefined;
+    this.ressource.path = fname;
+    this.ressource.fileName = this.currentFileUpload.name;
+    this.ressourceService.ajouterRessource(this.ressource, 1).subscribe(data => console.log(data), error => console.log(error));
   }
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+
 
 }

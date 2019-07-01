@@ -5,11 +5,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ListReclamationsComponent } from './Reclamation/list-reclamations/list-reclamations.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ReclamationsTraiteesComponent } from './Reclamation/reclamations-traitees/reclamations-traitees.component';
-import { AfficherComponent } from './Feedback/afficher/afficher.component';
 
 
 @NgModule({
-  declarations: [ListReclamationsComponent, ReclamationsTraiteesComponent, AfficherComponent],
+  declarations: [ListReclamationsComponent, ReclamationsTraiteesComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

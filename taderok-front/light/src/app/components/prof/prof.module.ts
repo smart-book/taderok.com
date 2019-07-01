@@ -15,14 +15,19 @@ import { AjouterRessourceComponent } from './ressource/ajouter-ressource/ajouter
 import { AfficherRessourceComponent } from './ressource/afficher-ressource/afficher-ressource.component';
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
+
 import {AfficherFeedbackComponent} from "./feedback/afficher-feedback/afficher-feedback.component";
+
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+
+
+
 
 
 @NgModule({
 
-  declarations: [AfficherFeedbackComponent, AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance,ListQuizComponent,AjouterQuizComponent],
+  declarations: [AfficherFeedbackComponent,AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent],
 
-  // tslint:disable-next-line:max-line-length
 
   imports: [
     CommonModule,
@@ -32,7 +37,13 @@ import {AfficherFeedbackComponent} from "./feedback/afficher-feedback/afficher-f
     ReactiveFormsModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+    })
   ]
 })
 export class ProfModule { }
