@@ -64,46 +64,13 @@ public class RessourcesService {
 
         List<Ressources> ressources = new ArrayList<>();
         List<Seance> seances = new ArrayList<>();
-
         Prof prof = profRepository.findById(athenticationController.getConnectedUser().getUser().getId()).orElse(null);
         seances = prof.getSeanceList();
-        seances.forEach((e) -> { ressources.addAll(e.getRessourcesList());
-
+        seances.forEach((e) -> {ressources.addAll(e.getRessourcesList());
         });
 
         return ressources;
     }
-    public void store(MultipartFile file) {
-        try {
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
-        } catch (Exception e) {
-            throw new RuntimeException("FAIL!");
-        }
-    }
-    public Resource loadFile(String filename) {
-        try {
-            Path file = rootLocation.resolve(filename);
-            Resource resource = new UrlResource(file.toUri());
-            if (resource.exists() || resource.isReadable()) {
-                return resource;
-            } else {
-                throw new RuntimeException("FAIL!");
-            }
-        } catch (MalformedURLException e) {
-            throw new RuntimeException("FAIL!");
-        }
-    }
 
-    public void deleteAll() {
-        FileSystemUtils.deleteRecursively(rootLocation.toFile());
-    }
-
-    public void init() {
-        try {
-            Files.createDirectory(rootLocation);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not initialize storage!");
-        }
-    }
 
 }

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { UploadFileService } from '../upload-file.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'list-upload',
   templateUrl: './list-upload.component.html',
   styleUrls: ['./list-upload.component.css']
@@ -24,4 +25,5 @@ export class ListUploadComponent implements OnInit {
       this.fileUploads = this.uploadService.getFiles();
     }
   }
+
 }

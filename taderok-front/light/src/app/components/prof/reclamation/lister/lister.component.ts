@@ -24,7 +24,7 @@ export class ListerComponent implements OnInit {
 
     this.reclamationService.AfficherReclamationUser().subscribe(data => {
       console.log(data);
-      //this.list = data;
+      this.list = data;
     }, error => console.log(error));
     this.startScript();
 
