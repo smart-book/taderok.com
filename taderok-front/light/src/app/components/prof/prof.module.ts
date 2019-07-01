@@ -12,6 +12,7 @@ import { AjouterRessourceComponent } from './ressource/ajouter-ressource/ajouter
 import { AfficherRessourceComponent } from './ressource/afficher-ressource/afficher-ressource.component';
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 
 @NgModule({
@@ -24,7 +25,13 @@ import {ListGroupeComponent} from './groupes/list/list.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+    })
   ]
 })
 export class ProfModule { }

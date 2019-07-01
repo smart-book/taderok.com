@@ -65,8 +65,7 @@
                 </thead>
                 <tbody>
 
-
-                <tr  *ngFor="let a of list" >
+                <tr data-toggle="modal" data-target="#exampleModal"  *ngFor="let a of list" >
                   <td>{{a.user.nom}}</td>
                   <td>{{a.user.prenom}}</td>
                   <td>{{a.user.email}}</td>
@@ -82,8 +81,35 @@
 
 
               </table>
+
             </div>
           </div>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+               aria-labelledby="formModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" style="padding-left: 150px" id="formModal"> Details de la réclamation  </h5><br><br>
+                  <button type="button" class="close" data-dismiss="modal"
+                          aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body"  *ngFor="let a of list">
+                <div> {{a.description}}</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn-hover btn-border-radius color-4"
+
+                          data-dismiss="modal">Cancel</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
