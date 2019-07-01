@@ -18,6 +18,7 @@ export class AjouterComponent implements OnInit {
   }
   ajouterFeedback(){
     console.log(this.feedback.type)
+
     this.feedbackService.ajouterFeedback(this.feedback).subscribe( data=> console.log(data),error=>console.error(error),()=>console.log('done!'));
   }
 }

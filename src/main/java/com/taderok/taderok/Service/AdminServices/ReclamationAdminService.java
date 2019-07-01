@@ -2,7 +2,6 @@ package com.taderok.taderok.Service.AdminServices;
 
 import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.Reclamation;
-import com.taderok.taderok.Entity.TypeReclamation;
 import com.taderok.taderok.Repository.ReclamationRepository;
 import com.taderok.taderok.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +41,10 @@ public class ReclamationAdminService
         return reclamationRepository.save(reclamation);
     }
 
-    public List<Reclamation> AfficherReclamationParType(TypeReclamation type)
-    {
-        return (List<Reclamation>) reclamationRepository.findAllByType(type);
-    }
+    //public List<Reclamation> AfficherReclamationParType(TypeReclamation type)
+    //{
+      //  return (List<Reclamation>) reclamationRepository.findAllByType(type);
+    //}
 
     public List<Reclamation> getAllReclamationOrderByDate()
     {

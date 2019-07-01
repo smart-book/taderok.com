@@ -32,7 +32,13 @@ import java.util.List;
         feedbackService.updateFeedback(feedback,id);
     }
     @RequestMapping("/EtudiantFeedbacks/{id}")
-        public List<Feedback> getAllFeedbackById(@PathVariable int id){
+        public List<Feedback> getAllFeedbackById(@PathVariable long id){
             return feedbackService.getAllFeedbackById(id);
         }
+
+    @RequestMapping("/seanceFeedbacks/{id}")
+    public List<Feedback> getAllFeedbackBySeanceId(@PathVariable int id){
+        return feedbackService.getAllFeedbackBySeanceId(id);
+    }
+
 }

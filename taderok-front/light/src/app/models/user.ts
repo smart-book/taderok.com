@@ -2,11 +2,13 @@ export class User {
   id: number;
   nom:string;
   prenom:string;
+  telephone: number;
+  dateNaissance:Date;
+  adresse:string;
+  photo:string;
   email:string;
   password:string;
-  role:string;
-  adresse:string;
   sexe:string;
-  photo:string;
-  dateNaissance:Date;
+  enabled: boolean;
+  role:string;
 }

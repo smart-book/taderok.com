@@ -16,5 +16,8 @@ export class ReclamationService {
     return this.http.post(`${this.baseUrl}`+`/ajoutReclamation`, reclamation);
   }
 
+  AfficherReclamationUser(): Observable<Object>{
+    return this.http.put(`${this.baseUrl}`+`/ReclamationsUser`, null);
+  }
 
 }

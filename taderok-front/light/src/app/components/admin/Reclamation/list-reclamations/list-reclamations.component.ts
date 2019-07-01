@@ -40,12 +40,14 @@ export class ListReclamationsComponent implements OnInit {
   }
 
   private loadData(){
-    $('#tableExport').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
-    });
+    $(document).ready(function() {
+      $('#tableExport').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+          'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+      } );
+    } );
   }
 
 

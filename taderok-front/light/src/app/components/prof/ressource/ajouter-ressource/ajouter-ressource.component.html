@@ -1,0 +1,71 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header">
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
+                    data-target="#exampleModal">Ajouter Ressource</button>
+            <hr>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="formModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" style="padding-left: 150px" id="formModal">Nouvelle Ressource </h5><br><br>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <label>Nom de Ressource</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text" name="type_reclamation" [(ngModel)]="ressource.nom" class="form-control"
+                                 placeholder="Entrer le type de votre réclamation">
+                        </div>
+                      </div>
+
+                     <!-- <label>Path de Ressource</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input class="form-control" type="file" name="description" [(ngModel)]="ressource.path" placeholder="Entrer la description de votre réclamation">
+                        </div>
+                      </div> -->
+
+
+
+                      <div *ngIf="currentFileUpload" class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                             aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                          {{progress.percentage}}%</div>
+                      </div>
+
+                      <label >
+                        <input type="file" (change)="selectFile($event)">
+                      </label>
+
+                      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)="ajouterRessources()" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                    <button type="button" class="btn-hover btn-border-radius color-4"
+                            data-dismiss="modal">Cancel</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

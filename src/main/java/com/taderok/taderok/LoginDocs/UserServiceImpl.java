@@ -100,6 +100,40 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public Etudiant updateEtudiant(Long id, Etudiant etudiant) {
+        Etudiant etu = etudiantRepository.findById(id).orElse(null);
+        etu.setPaiement(etudiant.isPaiement());
+        etu.setEtablissement(etudiant.getEtablissement());
+        etu.setNiveau(etudiant.getNiveau());
+        etu.setAdresse(etudiant.getAdresse());
+        etu.setDateNaissance(etudiant.getDateNaissance());
+        etu.setEmail(etudiant.getEmail());
+        etu.setNom(etudiant.getNom());
+        etu.setPhoto(etudiant.getPhoto());
+        etu.setPrenom(etudiant.getPrenom());
+        etu.setSexe(etudiant.getSexe());
+        etu.setTelephone(etudiant.getTelephone());
+        etudiantRepository.save(etu);
+        return etu;
+    }
+
+    @Override
+    public Parent updateParent(Long id, Parent parent) {
+        Parent etu = parentRepository.findById(id).orElse(null);
+        etu=parent;
+        parentRepository.save(etu);
+        return etu;
+    }
+
+    @Override
+    public Prof updateProf(Long id, Prof prof) {
+        Prof etu = profRepository.findById(id).orElse(null);
+        etu=prof;
+        profRepository.save(etu);
+        return etu;
+    }
+
+    @Override
     public List<User> findAll() {
         return (List<User>) userRepository.findAll();
     }
