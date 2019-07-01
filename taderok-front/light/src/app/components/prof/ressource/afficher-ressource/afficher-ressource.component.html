@@ -64,22 +64,12 @@
 
 
 
-                <tr data-toggle="modal" *ngFor="let a of listRessources" [attr.data-target]="'#exampleModal' + a.nom"    >
+                <tr data-toggle="modal" *ngFor="let a of listRessources" [attr.data-target]="'#exampleModal' + a.id"    >
 
-                <tr  *ngFor="let a of listRessources">
-                  <td>{{a.path}}</td>
                   <td>{{a.nom}}</td>
                   <td>{{a.seance}}</td>
 
-
-                <tr data-toggle="modal" data-target="#exampleModal"  *ngFor="let a of listRessources">
-                  <td>
-                     {{a.nom}}
-                  </td>
-                  <td>
-                  {{a.seance}}
-                  </td>
-                  <div class="modal fade" [id]="'exampleModal' + a.nom" tabindex="-1" role="dialog"
+                  <div class="modal fade" [id]="'exampleModal' + a.id" tabindex="-1" role="dialog"
                        aria-labelledby="formModal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -91,7 +81,7 @@
                           </button>
                         </div>
                         <div class="modal-body" >
-                          <img _ngcontent-xte-c0=""  src="{{a.path}}">
+                          <img _ngcontent-xte-c0=""  src="assets/images/upload/uploadRessources/{{a.path}}">
                           {{a.nom}}
                         </div>
                         <div class="modal-footer">

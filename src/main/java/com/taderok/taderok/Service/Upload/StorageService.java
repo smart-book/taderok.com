@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class StorageService {
 
 	Logger log = LoggerFactory.getLogger(this.getClass().getName());
-	private final Path rootLocation = Paths.get("C:/xampp/htdocs/tadderok");
+	private final Path rootLocation = Paths.get("C:/Users/hp/Documents/GitHub/taderok.com/taderok-front/light/src/assets/images/upload/uploadRessources/");
 
 	public void store(MultipartFile file) {
 		try {
