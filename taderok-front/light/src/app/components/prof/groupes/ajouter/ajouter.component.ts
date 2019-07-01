@@ -10,14 +10,31 @@ import {Groupes} from "../../../../models/groupes";
 })
 export class AjouterComponentGroupe implements OnInit {
   groupes : Groupes = new Groupes();
+  groupees : Groupes[];
+  groupe : Groupes = new Groupes();
 
+
+  tabGroup : Groupes[] = [];
   constructor(private groupesService : GroupesService) { }
-c
+
   ngOnInit() {
-    console.log("zayneb");
+
+
+    this.groupesService.afficherGroupe().subscribe(data => {
+      console.log(data);
+      this.groupees = data;
+    }, error => console.log(error));
+
   }
+
   ajouterGroupe(){
-    console.log(this.groupes.nom);
-    this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
+    console.log(this.groupe.nom);
+   // this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
+
+    this.tabGroup.push(this.groupe);
+    this.groupees = this.groupees.filter(obj => obj !== this.groupe);
+
   }
+
+
 }

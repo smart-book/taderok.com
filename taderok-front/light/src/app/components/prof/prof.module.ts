@@ -11,6 +11,7 @@ import { ListSeanceComponent } from './seance/list/list.component';
 import { ListGroupeComponent } from './groupes/list/list.component';
 
 
+
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent],
   imports: [
