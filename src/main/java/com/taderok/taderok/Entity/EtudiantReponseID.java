@@ -5,24 +5,24 @@ import javax.persistence.*;
 public class EtudiantReponseID implements java.io.Serializable {
     @ManyToOne
     @JoinColumn(name = "id_etudiant")
-    private Etudiant etudiant;
+    private Etudiant id_etudiant;
     @ManyToOne
     @JoinColumn(name = "id_reponse")
-    private Reponses reponse;
+    private Reponses id_reponse;
 
     public Etudiant getEtudiant() {
-        return etudiant;
+        return id_etudiant;
     }
 
     public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+        this.id_etudiant = etudiant;
     }
 
     public Reponses getReponse() {
-        return reponse;
+        return id_reponse;
     }
 
     public void setReponse(Reponses reponse) {
-        this.reponse = reponse;
+        this.id_reponse = reponse;
     }
 }

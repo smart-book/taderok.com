@@ -31,4 +31,9 @@ export class ForumService {
   getListCommentsOfOneForum(id): Observable<CommentaireForum[]>{
     return this.http.get<CommentaireForum[]>(`${this.baseUrlComment}`+`/findAll`+`/` + id);
   }
+
+  ajouterCommentaire(id: number,commentaireForum:Object): Observable<Object>{
+    console.log(commentaireForum);
+    return this.http.post(`${this.baseUrlComment}`+`/add`+`/${id}`, commentaireForum);
+  }
 }
