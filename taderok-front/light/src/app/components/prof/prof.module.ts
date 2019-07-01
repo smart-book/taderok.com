@@ -20,10 +20,7 @@ import {ListGroupeComponent} from './groupes/list/list.component';
 
 @NgModule({
 
-  declarations: [AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance,ListQuizComponent,AjouterQuizComponent],
-
-  // tslint:disable-next-line:max-line-length
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ],
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent],
 
   imports: [
     CommonModule,
