@@ -13,10 +13,15 @@ declare const jQuery: any;
 })
 export class SignupComponent implements OnInit {
 
+  nForm:FormGroup;
+  post:any;
 
 
-
-    constructor(private registerService: RegisterService,  private router: Router,private _formBuilder: FormBuilder) { }
+  constructor(private registerService: RegisterService,  private router: Router,private _formBuilder: FormBuilder) {
+    this.nForm=_formBuilder.group({
+      'email':[null,Validators.required]
+    })
+  }
 
 
   role:string="ETUDIANT";
