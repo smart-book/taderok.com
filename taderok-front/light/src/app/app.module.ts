@@ -9,9 +9,7 @@ import { DynamicScriptLoaderService } from './dynamic-script-loader-service.serv
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
-
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -26,6 +24,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ReactiveFormsModule,
     FormsModule,
     MatStepperModule, MatInputModule, MatButtonModule,
+    FullCalendarModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, DynamicScriptLoaderService],
   bootstrap: [AppComponent]
