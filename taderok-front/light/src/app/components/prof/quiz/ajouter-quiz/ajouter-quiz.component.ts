@@ -3,20 +3,20 @@ import {Quiz} from "../../../../models/quiz";
 import {AjouterQuizService} from "../../../../services/prof/ajouter-quiz.service";
 import {Question} from "../../../../models/Question";
 import {Reponse} from "../../../../models/Reponse";
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-ajouter-quiz',
   templateUrl: './ajouter-quiz.component.html',
   styleUrls: ['./ajouter-quiz.component.sass']
 })
 export class AjouterQuizComponent implements OnInit {
-  quiz : Quiz = new Quiz();
-  question1: Question= new Question();
-  question2: Question= new Question();
-  question3: Question= new Question();
-  question4: Question= new Question();
-  question5: Question= new Question();
-  reponses1:Reponse[]=new Array();
+  quiz: Quiz = new Quiz();
+  question1: Question = new Question();
+  question2: Question = new Question();
+  question3: Question = new Question();
+  question4: Question = new Question();
+  question5: Question = new Question();
+  reponses1: Reponse[] = new Array();
   reponse11: Reponse=new Reponse();
   reponse12: Reponse=new Reponse();
   reponse13: Reponse=new Reponse();
@@ -42,7 +42,7 @@ export class AjouterQuizComponent implements OnInit {
    q:any;
    qs:any;
    app:any;
-  constructor(private quizService : AjouterQuizService) { }
+  constructor(private quizService : AjouterQuizService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -98,10 +98,12 @@ export class AjouterQuizComponent implements OnInit {
     this.qs= await this.quizService.getQuizById(this.q);
     this.question5.quiz=this.qs;
     console.log(this.qs)
-    this.retour1=false;
+    this.retour1 = false;
     await this.quizService.ajouterQuestion(this.question5,this.qs,this.reponses5);
   }
 
-
+  navigate() {
+    this.router.navigateByUrl('../quiz/ListQuiz');
+  }
 
 }
