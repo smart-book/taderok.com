@@ -1,6 +1,7 @@
 package com.taderok.taderok.Controller;
 
 import com.taderok.taderok.Entity.Reclamation;
+import com.taderok.taderok.Entity.User;
 import com.taderok.taderok.Service.AdminServices.ReclamationAdminService;
 import com.taderok.taderok.Service.ReclamationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class ReclamationController {
         return reclamationAdminService.AfficherReclamationNontraite();
     }
 
-    @RequestMapping("/ReclamationsUser")
+    @RequestMapping(method = RequestMethod.GET, value ="/ReclamationsUser")
     public List<Reclamation> AfficherReclamationUser()
     {
         return reclamationService.AfficherReclamationUser();

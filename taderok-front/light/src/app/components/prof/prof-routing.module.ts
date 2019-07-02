@@ -13,6 +13,7 @@ import {AjouterRessourceComponent} from './ressource/ajouter-ressource/ajouter-r
 import {AfficherRessourceComponent} from "./ressource/afficher-ressource/afficher-ressource.component";
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
+import {CalendarComponent} from "@fullcalendar/core/CalendarComponent";
 
 
 
@@ -58,6 +59,7 @@ const routes: Routes = [
     path: 'lister',
     component: ListerComponent
   },
+
 ];
 
 @NgModule({

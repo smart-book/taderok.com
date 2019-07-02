@@ -29,10 +29,10 @@ export class AjouterComponentGroupe implements OnInit {
 
   ajouterGroupe(){
     console.log(this.groupe.nom);
-   // this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
+    this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
 
-    this.tabGroup.push(this.groupe);
-    this.groupees = this.groupees.filter(obj => obj !== this.groupe);
+ //   this.tabGroup.push(this.groupe);
+  //  this.groupees = this.groupees.filter(obj => obj !== this.groupe);
 
   }
 
