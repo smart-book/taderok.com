@@ -14,6 +14,7 @@ import {AfficherRessourceComponent} from "./ressource/afficher-ressource/affiche
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
 import {CalendarComponent} from "@fullcalendar/core/CalendarComponent";
+import {CalendarProfComponent} from "./calendar-prof/calendar-prof.component";
 
 
 
@@ -58,6 +59,9 @@ const routes: Routes = [
   {
     path: 'lister',
     component: ListerComponent
+  },{
+    path: 'calendar',
+    component: CalendarProfComponent
   },
 
 ];

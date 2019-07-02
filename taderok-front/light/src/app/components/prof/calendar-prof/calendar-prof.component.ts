@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-calendar-prof',
@@ -10,6 +11,12 @@ export class CalendarProfComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  calendarPlugins = [dayGridPlugin];
+
+  handleDateClick(arg) { // handler method
+    alert(arg.dateStr);
   }
 
 }
