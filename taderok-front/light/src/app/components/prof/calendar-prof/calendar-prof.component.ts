@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarComponent } from '@fullcalendar/angular';
-import { EventInput } from '@fullcalendar/core';
+import {EventInput, OptionsInput} from '@fullcalendar/core';
 
 @Component({
   selector: 'app-calendar-prof',
@@ -10,12 +11,32 @@ import { EventInput } from '@fullcalendar/core';
 })
 export class CalendarProfComponent implements OnInit {
 
+  options: OptionsInput;
+  eventsModel: any;
+
   @ViewChild('calendar',{static: true})
   calendarComponent: FullCalendarComponent;
 
   constructor() { }
 
   ngOnInit() {
+    this.options = {
+      editable: true,
+      customButtons: {
+        myCustomButton: {
+          text: 'custom!',
+          click: function () {
+            alert('clicked the custom button!');
+          }
+        }
+      },
+      header: {
+        left: 'prev,next today myCustomButton',
+        center: 'title',
+        right: 'dayGridMonth'
+      },
+      plugins: [dayGridPlugin, interactionPlugin]
+    };
   }
 
   calendarPlugins = [dayGridPlugin];

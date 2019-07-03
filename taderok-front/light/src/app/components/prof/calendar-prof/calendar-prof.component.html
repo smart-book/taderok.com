@@ -50,11 +50,16 @@
           </div>
           <div class="body">
             <full-calendar
-              #calendar
+              *ngIf="options"
+              #fullcalendar
+              [editable]="true"
+              [header]="options.header"
+              [customButtons]="options.customButtons"
+              (dateClick)="dateClick($event)"
+              (eventDragStop)="eventDragStop($event)"
+              [plugins]="options.plugins"
+              (eventClick)="eventClick($event)"
               defaultView="dayGridMonth"
-              [plugins]="calendarPlugins"
-              (dateClick)="handleDateClick($event)"
-              deepChangeDetection="true"
               [weekends]="true"
               [events]="calendarEvents"
             ></full-calendar>
