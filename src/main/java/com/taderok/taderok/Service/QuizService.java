@@ -1,9 +1,9 @@
 package com.taderok.taderok.Service;
 
-import com.taderok.taderok.Entity.Questions;
-import com.taderok.taderok.Entity.Quiz;
-import com.taderok.taderok.Entity.Reponses;
-import com.taderok.taderok.Entity.User;
+import com.taderok.taderok.Controller.AthenticationController;
+import com.taderok.taderok.Controller.HelloResource;
+import com.taderok.taderok.Entity.*;
+import com.taderok.taderok.Repository.ProfRepository;
 import com.taderok.taderok.Repository.ReponseRepository;
 import com.taderok.taderok.Repository.UserRepository;
 import com.taderok.taderok.Repository.QuizRepository;
@@ -21,6 +21,10 @@ public class QuizService {
     private ReponseRepository reponseRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ProfRepository profRepository;
+    @Autowired
+    private HelloResource helloResource;
 
 
 
@@ -53,6 +57,11 @@ public class QuizService {
     public void addQuiz(Quiz quiz){
         /*User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
         quiz.setId_prof(u.getId()); */
+        User u = userRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
+        Prof p = profRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
+        System.out.println("prof : "+p);
+        System.out.println("user : "+u);
+        quiz.setId_prof(p);
         quizRepository.save(quiz);
     }
 

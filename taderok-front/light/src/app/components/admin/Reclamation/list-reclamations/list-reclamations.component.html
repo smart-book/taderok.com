@@ -65,7 +65,7 @@
                 </thead>
                 <tbody>
 
-                <tr data-toggle="modal" data-target="#exampleModal"  *ngFor="let a of list" >
+                <tr data-toggle="modal" data-target="#exampleModal" *ngFor="let a of list" onclick="fctClick( this)" >
                   <td>{{a.user.nom}}</td>
                   <td>{{a.user.prenom}}</td>
                   <td>{{a.user.email}}</td>
@@ -85,7 +85,7 @@
             </div>
           </div>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                aria-labelledby="formModal" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -109,7 +109,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

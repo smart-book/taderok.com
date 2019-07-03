@@ -5,9 +5,10 @@ import { ForumRoutingModule } from './forum-routing.module';
 import { ForumComponent } from './forum-list/forum/forum.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PublicationDetailsComponent } from './publication/publication-details/publication-details.component';
+import { ModalCommentairesComponent } from './forum-list/modal-commentaires/modal-commentaires.component';
 
 @NgModule({
-  declarations: [ForumComponent, PublicationDetailsComponent],
+  declarations: [ForumComponent, PublicationDetailsComponent, ModalCommentairesComponent],
   imports: [
     CommonModule,
     ForumRoutingModule,

@@ -9,6 +9,23 @@ export class User {
   email:string;
   password:string;
   sexe:string;
-  enabled: boolean;
+
+  enabled:boolean;
+
+  // Etudiant
+
+  niveau:string;
+  etablissement:string;
+  codeEnfant:string;
+  paiement:boolean;
+
+
+  // Prof
+
+  cin:string;
+  diplome:string;
+  experience:string;
+  code_tablette:string;
+
   role:string;
 }

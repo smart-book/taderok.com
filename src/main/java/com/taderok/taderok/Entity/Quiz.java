@@ -14,7 +14,9 @@ public class Quiz {
     private int id;
     @ManyToMany
     private List<Etudiant> etudiantList;
-    private int id_prof;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JsonIgnoreProperties("quiz")
+    private Prof id_prof;
     private String nomQuiz;
     private boolean corrige;
     private Date date;
@@ -42,9 +44,9 @@ public class Quiz {
         this.etudiantList = etudiantList;
     }
 
-    public int getId_prof() {return id_prof; }
+    public Prof getId_prof() {return id_prof; }
 
-    public void setId_prof(int id_prof) {
+    public void setId_prof(Prof id_prof) {
         this.id_prof = id_prof;
     }
 
