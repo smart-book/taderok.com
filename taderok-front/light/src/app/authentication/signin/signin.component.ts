@@ -31,7 +31,7 @@ export class SigninComponent implements OnInit {
         }*/
         // console.log(typeof (this.idConnected));
         // if (this.isConnected) {
-        this.router.navigateByUrl('/components/ajouter');
+        this.router.navigateByUrl('/dashboard/main');
         // } else { alert('Veuillez verifier vos données'); }
       },
       error => console.log(error));
