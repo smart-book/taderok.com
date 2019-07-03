@@ -28,7 +28,7 @@
               <form class="inline-form">
                 <input type="text" value="" class="form-control" placeholder="Event Title..."
                        id="event_title" />
-                <button type="button" id="event_add" (click)="addEvent()" class="btn btn-primary waves-effect m-t-15">Add
+                <button type="button" id="event_add"  class="btn btn-primary waves-effect m-t-15">Add
                   Event
                 </button>
               </form>
@@ -49,6 +49,7 @@
             </h2>
           </div>
           <div class="body">
+
             <full-calendar
               #calendar
               defaultView="dayGridMonth"
@@ -58,6 +59,7 @@
               [weekends]="true"
               [events]="calendarEvents"
             ></full-calendar>
+
           </div>
         </div>
       </div>
