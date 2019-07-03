@@ -1,30 +1,28 @@
 <div class="row clearfix">
-  <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" ></div>
-
+  <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" >
+  </div>
   <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" >
           <div class="card">
-
             <div class="body">
               <aw-wizard #wizard  [navBarLayout]="'large-empty-symbols'" [ngSwitch]="role">
                 <aw-wizard-step [stepTitle]="'Step 1'">
                   <ng-template awWizardStepSymbol><i class="fa fa-user-cog"></i></ng-template>
                   <div class="centered-content">
                     <div>
-                      <form #f="ngForm">
+                      <form [formGroup]="nForm">
                         <div class="form-group form-float">
                           <div class="form-line">
-                            <input  class="form-control" placeholder="Email" type="email" name="email" [(ngModel)]="user.email">
+                            <input  class="form-control" placeholder="Email" formControlName="email" type="email" required name="email" [(ngModel)]="user.email">
                           </div>
                         </div>
                         <div class="form-group form-float">
                           <div class="form-line">
-                            <input class="form-control" placeholder="Mot de pase" type="password" name="pass" [(ngModel)]="user.password">
+                            <input class="form-control" placeholder="Mot de passe" type="password" name="pass" [(ngModel)]="user.password">
                           </div>
                         </div>
                         <div class="form-group form-float">
                           <div class="form-line">
-                            <input type="password" class="form-control" name="conpass"
-                                   placeholder="Confirmer mot de passe">
+                            <input type="password" class="form-control" name="conpass" placeholder="Confirmer mot de passe">
                           </div>
                         </div>
                       </form>
