@@ -1,5 +1,6 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
@@ -13,16 +14,16 @@ public class Prof extends User {
     private String diplome;
     private String experience;
     private String code_tablette;
-    @JsonIgnoreProperties("prof")
+    @JsonIgnore
     @OneToMany(mappedBy = "prof")
     private List<Rating> ratingList;
     @ManyToMany(mappedBy = "profList")
     private List<Matiere> matiereList;
     @OneToMany(mappedBy = "prof")
-    @JsonIgnoreProperties("prof")
+    @JsonIgnore
     private List<Seance> seanceList;
     @OneToMany(mappedBy = "prof")
-    @JsonIgnoreProperties("prof")
+    @JsonIgnore
     private List<GroupeChat> groupeChatList;
 
     public List<Quiz> getQuiz() {

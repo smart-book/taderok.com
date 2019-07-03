@@ -1,5 +1,6 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Quiz {
     private boolean corrige;
     private Date date;
     @ManyToMany
+    @JsonIgnore
     private List<Seance> seanceList;
     @JsonIgnoreProperties("quiz")
     @OneToMany(mappedBy = "quiz")
