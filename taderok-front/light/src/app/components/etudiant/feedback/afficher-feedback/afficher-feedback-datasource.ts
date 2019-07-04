@@ -17,16 +17,24 @@ export interface AfficherFeedbackItem {
 }
 
 export class AfficherFeedbackDataSource extends DataSource<Feedback>{
-  ListFeedbacks: Feedback[];
-  data: any;
+  ListFeedbacks: Object[];
+  data: Feedback[];
   paginator: MatPaginator;
   sort: MatSort;
+  objectFeedback ;
 
   constructor(private feedbackService: FeedbackService) {
     super();
-    this.feedbackService.afficherFeedback().subscribe(data=>{console.log(data); this.ListFeedbacks=data},error=> console.log(error), ()=>console.log('done'));
-
-
+    this.data = [];
+    this.feedbackService.afficherFeedback().subscribe((data)=>{
+      data.map(e => {
+        console.log(e);
+        this.objectFeedback = new Feedback();
+        this.objectFeedback = e;
+        this.data.push(this.objectFeedback);
+      }); console.log(data)
+    },error=> console.log(error), ()=>console.log('done')
+    );
   }
 
  // ngOnInit(): void {
@@ -43,8 +51,8 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
       this.paginator.page,
       this.sort.sortChange
     ];
-    this.data= this.ListFeedbacks;
-    console.log('this is the data is connect: '+this.data);
+    //this.data= this.ListFeedbacks;
+    console.log(this.data);
 
     return merge(...dataMutations).pipe(map(() => {
       return this.getPagedData(this.getSortedData([...this.data]));
