@@ -1,0 +1,57 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Liste des profs</h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header">
+            <div class="col-xs-12 col-sm-6">
+
+            </div>
+
+          </div>
+          <div class="body">
+            <div class="row" >
+              <div class="col-md-4" *ngFor="let user of ListUsers">
+                <div class="card border-apply">
+                  <div class="m-b-20">
+                    <div class="contact-grid">
+                      <div class="profile-header l-bg-orange">
+                        <div class="user-name">{{user.nom}} {{user.prenom}}</div>
+                        <div class="name-center">{{user.adresse}}</div>
+                      </div>
+                      <img src="assets/images/user/usrbig1.jpg" class="user-img" alt="">
+                      <p>
+                       {{user.email}}
+                      </p>
+                      <div>
+                      <span class="phone">
+                          <i class="material-icons">phone</i>{{user.telephone}}</span>
+                      </div>
+                      <div class="profile-userbuttons">
+                        <button type="button"
+                                class="btn btn-info btn-border-radius waves-effect">Read
+                          More
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

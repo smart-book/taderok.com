@@ -56,7 +56,6 @@ public class UserController {
     public void updateEtudiant(@PathVariable Long id, @RequestBody Etudiant etudiant){
         userService.updateEtudiant(id, etudiant);
     }
-
     @PutMapping(value = "/updateProf/{id}")
     public void updateProf(@PathVariable Long id, @RequestBody Prof prof){
         userService.updateProf(id, prof);
@@ -66,6 +65,17 @@ public class UserController {
     public void updateParent(@PathVariable Long id, @RequestBody Parent parent){
         userService.updateParent(id, parent);
     }
+
+    @GetMapping(value = "/allUsers")
+    public List<User> findallUsers(){
+        return userService.findAll();
+    }
+    @GetMapping(value = "/allUsers/{role}")
+    public List<User> findallUsers(@PathVariable String role){
+        return userService.findAllByRole(role);
+    }
+
+
 
 
 

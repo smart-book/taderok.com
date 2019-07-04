@@ -139,6 +139,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<User> findAllByRole(String role) {
+        return userRepository.findAllByRole(role);
+    }
+
+    @Override
     public User getUserByEmail(String email) {
         return userRepository.findByEmailIgnoreCase(email);
     }
