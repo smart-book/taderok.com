@@ -22,4 +22,8 @@ export class FeedbackService {
     return this.http.post(`${this.baseUrl}`+'/ajouterFeedback', feedback);
   }
 
+  afficherFeedback(): Observable<Feedback[]> {
+    return this.http.get<Feedback[]>('http://localhost:8181/feedback/Feedbacks');
+  }
+
 }

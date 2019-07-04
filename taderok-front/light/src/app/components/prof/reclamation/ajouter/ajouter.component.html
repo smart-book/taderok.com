@@ -27,10 +27,10 @@
 <br>
 
                       <label>Description</label>
-                      <div class="form-group">
-                        <div class="form-line">
-                          <input class="form-control" type="text" name="description"  [(ngModel)]="reclamation.description" placeholder="Entrer la description de votre réclamation">
-                        </div>
+                        <div class="form-group">
+                          <div class="form-line">
+                            <input class="form-control" type="text" name="description"  [(ngModel)]="reclamation.description" placeholder="Entrer la description de votre réclamation">
+                          </div>
                       </div>
                     </form>
                   </div>
@@ -41,8 +41,6 @@
                     title="Succes!"
                     message="This cannot be undone"
                     type="success"
-                    [showCancelButton]="true"
-                    [focusCancel]="true"
                     (confirm)="afficherReclamtion()">
                   </swal>
 

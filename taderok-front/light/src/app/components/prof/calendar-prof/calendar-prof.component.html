@@ -28,7 +28,7 @@
               <form class="inline-form">
                 <input type="text" value="" class="form-control" placeholder="Event Title..."
                        id="event_title" />
-                <button type="button" id="event_add" (click)="addEvent()" class="btn btn-primary waves-effect m-t-15">Add
+                <button type="button" id="event_add"  class="btn btn-primary waves-effect m-t-15">Add
                   Event
                 </button>
               </form>
@@ -49,15 +49,22 @@
             </h2>
           </div>
           <div class="body">
+
             <full-calendar
-              #calendar
+              *ngIf="options"
+              #fullcalendar
+              [editable]="true"
+              [header]="options.header"
+              [customButtons]="options.customButtons"
+              (dateClick)="dateClick($event)"
+              (eventDragStop)="eventDragStop($event)"
+              [plugins]="options.plugins"
+              (eventClick)="eventClick($event)"
               defaultView="dayGridMonth"
-              [plugins]="calendarPlugins"
-              (dateClick)="handleDateClick($event)"
-              deepChangeDetection="true"
               [weekends]="true"
               [events]="calendarEvents"
             ></full-calendar>
+
           </div>
         </div>
       </div>

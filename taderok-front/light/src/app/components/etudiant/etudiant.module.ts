@@ -5,15 +5,22 @@ import { EtudiantRoutingModule } from './etudiant-routing.module';
 import { AjouterComponent } from './feedback/ajouter/ajouter.component';
 import {FormsModule} from "@angular/forms";
 import { ListQuizComponent } from './list-quiz/list-quiz.component';
+import { AfficherFeedbackComponent } from './feedback/afficher-feedback/afficher-feedback.component';
+import {MatIconModule,MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 
 
 @NgModule({
-  declarations: [AjouterComponent, ListQuizComponent],
+  declarations: [AjouterComponent, ListQuizComponent, AfficherFeedbackComponent],
   imports: [
     CommonModule,
     EtudiantRoutingModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class EtudiantModule { }
