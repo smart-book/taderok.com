@@ -3,14 +3,13 @@ package com.taderok.taderok.Service;
 import com.taderok.taderok.Controller.AthenticationController;
 import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.*;
-import com.taderok.taderok.Repository.ProfRepository;
-import com.taderok.taderok.Repository.ReponseRepository;
-import com.taderok.taderok.Repository.UserRepository;
-import com.taderok.taderok.Repository.QuizRepository;
+import com.taderok.taderok.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class QuizService {
 
@@ -23,9 +22,17 @@ public class QuizService {
     private ProfRepository profRepository;
     @Autowired
     private HelloResource helloResource;
+    @Autowired
+    private QuizEtduaintRepository quizEtduaintRepository;
 
+    public List<QuizEtudiant> getAllQuizEtudiant(QuizEtudiant idE){
+        System.out.println("aaaaaaaa"+idE.getId().getEtudiant().getId());
+        return (List<QuizEtudiant>) quizEtduaintRepository.findAllById((Iterable<QuizEtudiantID>)idE.getId());
 
-
+    }
+    public List<QuizEtudiant> findByEtudiant(Long id){
+        return  quizEtduaintRepository.findByEtudiant(id);
+    }
     public List<Quiz> getAllQuiz(){
         return (List<Quiz>) quizRepository.findAll();
 

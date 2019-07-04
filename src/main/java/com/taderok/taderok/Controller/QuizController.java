@@ -1,12 +1,16 @@
 package com.taderok.taderok.Controller;
 
+import com.taderok.taderok.Entity.Etudiant;
 import com.taderok.taderok.Entity.Quiz;
+import com.taderok.taderok.Entity.QuizEtudiant;
+import com.taderok.taderok.Entity.QuizEtudiantID;
 import com.taderok.taderok.Service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -39,6 +43,27 @@ public class QuizController {
         quizService.deleteQuiz(id);
     }
 
+
+    @RequestMapping("findQuiz/{idE}")
+    public List<QuizEtudiant> getQuizByEtu(@PathVariable Long idE){
+        return quizService.findByEtudiant(idE);
+
+    }
+
+    @RequestMapping("findAllQuiz/{idE}")
+    public List<QuizEtudiant> getQuizByEtudiant(@PathVariable Long idE)
+    {   Quiz qz=new Quiz();
+        qz.setId(5);
+        QuizEtudiant qe=new QuizEtudiant();
+        QuizEtudiantID q=new QuizEtudiantID();
+        Etudiant e=new Etudiant();
+        e.setId(idE);
+        q.setEtudiant(e);
+
+        qe.setId(q);
+        System.out.println("controllleur"+qe.getId().getEtudiant().getId());
+        return quizService.getAllQuizEtudiant(qe);
+    }
 
 
 

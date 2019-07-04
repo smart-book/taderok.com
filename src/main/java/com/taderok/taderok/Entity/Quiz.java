@@ -13,13 +13,10 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    @ManyToMany
-    private List<Etudiant> etudiantList;
     @ManyToOne(cascade = {CascadeType.ALL})
     @JsonIgnoreProperties("quiz")
     private Prof id_prof;
     private String nomQuiz;
-    private boolean corrige;
     private Date date;
     @ManyToMany
     @JsonIgnore
@@ -38,13 +35,6 @@ public class Quiz {
         this.id = id;
     }
 
-    public List<Etudiant> getEtudiantList() {
-        return etudiantList;
-    }
-
-    public void setEtudiantList(List<Etudiant> etudiantList) {
-        this.etudiantList = etudiantList;
-    }
 
     public Prof getId_prof() {return id_prof; }
 
@@ -53,13 +43,6 @@ public class Quiz {
     }
 
 
-    public boolean isCorrige() {
-        return corrige;
-    }
-
-    public void setCorrige(boolean corrige) {
-        this.corrige = corrige;
-    }
 
     public Date getDate() {
         return date;
