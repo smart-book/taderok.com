@@ -34,32 +34,27 @@
                    style="width:100%;">
               <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Nom Quiz</th>
                 <th>Date</th>
-                <th>Etudiant</th>
                 <th>Corrige</th>
-                <th>Note</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let a of quiz">
-                <td>
-                  {{a.id}}
 
-                </td>
                 <td>
                   {{a.nomQuiz}}
 
                 </td>
                 <td>
-                  {{a.date}}
+                  {{a.date | date: 'dd/MM/yyyy h:mm'}}
                 </td>
-                <td>{{a.id_etudiant}}</td>
-                <td> {{a.corrige}}</td>
-
-                <td>{{a.note}}</td>
-
+                <ng-template [ngIf]="!a.corrige" [ngIfElse]="elseBlock">
+                  <td ><a href="" style="color: red;font-weight: bold;">A Corrigé </a></td>
+                </ng-template>
+                <ng-template #elseBlock>
+                  <td  style="color: green">Corrigé</td>
+                </ng-template>
 
               </tr>
               </tbody>

@@ -31,7 +31,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Forum> forumList;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
     @JsonIgnore
     private List<CommentaireForum> commentaireForumList=new ArrayList<>();
     @JsonIgnoreProperties("user")

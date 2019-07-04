@@ -3,6 +3,9 @@ package com.taderok.taderok.Service;
 import com.taderok.taderok.Controller.AthenticationController;
 import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.*;
+
+import com.taderok.taderok.Repository.*;
+
 import com.taderok.taderok.Repository.ProfRepository;
 import com.taderok.taderok.Repository.ReponseRepository;
 import com.taderok.taderok.Repository.UserRepository;
@@ -11,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class QuizService {
 
@@ -20,14 +25,22 @@ public class QuizService {
     @Autowired
     private ReponseRepository reponseRepository;
     @Autowired
-    private UserRepository userRepository;
+    private ProfRepository profRepository;
     @Autowired
     private ProfRepository profRepository;
     @Autowired
     private HelloResource helloResource;
+    @Autowired
+    private QuizEtduaintRepository quizEtduaintRepository;
 
+    public List<QuizEtudiant> getAllQuizEtudiant(QuizEtudiant idE){
+        System.out.println("aaaaaaaa"+idE.getId().getEtudiant().getId());
+        return (List<QuizEtudiant>) quizEtduaintRepository.findAllById((Iterable<QuizEtudiantID>)idE.getId());
 
-
+    }
+    public List<QuizEtudiant> findByEtudiant(Long id){
+        return  quizEtduaintRepository.findByEtudiant(id);
+    }
     public List<Quiz> getAllQuiz(){
         return (List<Quiz>) quizRepository.findAll();
 
@@ -57,10 +70,14 @@ public class QuizService {
     public void addQuiz(Quiz quiz){
         /*User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
         quiz.setId_prof(u.getId()); */
+
+        Prof p = profRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
+
         User u = userRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         Prof p = profRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         System.out.println("prof : "+p);
         System.out.println("user : "+u);
+
         quiz.setId_prof(p);
         quizRepository.save(quiz);
     }

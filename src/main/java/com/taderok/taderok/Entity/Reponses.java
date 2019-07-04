@@ -1,5 +1,8 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,8 @@ public class Reponses {
     private String reponse;
     private boolean status;
     @ManyToOne
+    @JsonIgnoreProperties("responseList")
+
     private Questions questions;
     @OneToMany(mappedBy = "id.id_reponse")
     private List<EtudiantReponse> repEtudiant = new ArrayList<>();
