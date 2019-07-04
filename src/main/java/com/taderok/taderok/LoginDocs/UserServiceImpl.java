@@ -119,18 +119,39 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Parent updateParent(Long id, Parent parent) {
-        Parent etu = parentRepository.findById(id).orElse(null);
-        etu=parent;
-        parentRepository.save(etu);
-        return etu;
+        Parent par = parentRepository.findById(id).orElse(null);
+        par.setCin((parent.getCin()));
+        par.setAdresse(parent.getAdresse());
+        par.setDateNaissance(parent.getDateNaissance());
+        par.setEmail(parent.getEmail());
+        par.setNom(parent.getNom());
+        par.setPhoto(parent.getPhoto());
+        par.setPrenom(parent.getPrenom());
+        par.setSexe(parent.getSexe());
+        par.setTelephone(parent.getTelephone());
+        par=parent;
+        parentRepository.save(par);
+        return par;
     }
 
     @Override
     public Prof updateProf(Long id, Prof prof) {
-        Prof etu = profRepository.findById(id).orElse(null);
-        etu=prof;
-        profRepository.save(etu);
-        return etu;
+        Prof pro = profRepository.findById(id).orElse(null);
+        pro.setCin(prof.getCin());
+        pro.setCode_tablette(prof.getCode_tablette());
+        pro.setDiplome(prof.getDiplome());
+        pro.setExperience(prof.getExperience());
+        pro.setAdresse(prof.getAdresse());
+        pro.setDateNaissance(prof.getDateNaissance());
+        pro.setEmail(prof.getEmail());
+        pro.setNom(prof.getNom());
+        pro.setPhoto(prof.getPhoto());
+        pro.setPrenom(prof.getPrenom());
+        pro.setSexe(prof.getSexe());
+        pro.setTelephone(prof.getTelephone());
+        pro=prof;
+        profRepository.save(pro);
+        return pro;
     }
 
     @Override
