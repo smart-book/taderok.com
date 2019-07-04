@@ -24,6 +24,9 @@ export class SigninComponent implements OnInit {
   login() {
     console.log(this.user.email);
     this.loginService.login(this.user).subscribe(data => {
+
+        this.router.navigateByUrl('/components/ajouter');
+
         console.log(data);
         //  this.idConnected = + data;
         /*if (this.idConnected > 0) {
@@ -33,6 +36,7 @@ export class SigninComponent implements OnInit {
         // if (this.isConnected) {
         this.router.navigateByUrl('/dashboard/main');
         // } else { alert('Veuillez verifier vos données'); }
+
       },
       error => console.log(error));
 

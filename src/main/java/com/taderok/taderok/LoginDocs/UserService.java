@@ -21,5 +21,7 @@ public interface UserService {
 
     List<User> findAll();
 
+    List<User> findAllByRole(String role);
+
     User getUserByEmail(String email);
 }
