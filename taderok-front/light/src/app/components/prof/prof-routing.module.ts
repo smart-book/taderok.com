@@ -54,7 +54,7 @@ const routes: Routes = [
     component: AjouterRessourceComponent
   },
   {
-    path: 'AfficherRessource',
+    path: 'afficherRessource',
     component: AfficherRessourceComponent
   },
   {

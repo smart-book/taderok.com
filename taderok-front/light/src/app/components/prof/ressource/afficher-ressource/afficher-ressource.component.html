@@ -19,8 +19,7 @@
         </div>
       </div>
     </div>
-    <!-- Exportable Table -->
-    <div class="row clearfix">
+     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
           <div class="header">
@@ -53,21 +52,24 @@
                 <br>
                 <br>
 
-
-
                 <tr>
                   <th>Nom de la ressource</th>
                   <th>Séance</th>
+                  <th>Télécharger</th>
+                  <th>Visualiser</th>
                    </tr>
                 </thead>
                 <tbody>
 
 
 
-                <tr data-toggle="modal" *ngFor="let a of listRessources" [attr.data-target]="'#exampleModal' + a.id"    >
+                <tr  *ngFor="let a of listRessources"  >
 
-                  <td>{{a.nom}}</td>
-                  <td>{{a.seance}}</td>
+                  <td data-toggle="modal" [attr.data-target]="'#exampleModal' + a.id"   >{{a.nom}}</td>
+                  <td data-toggle="modal" [attr.data-target]="'#exampleModal' + a.id"    >{{a.seance}}</td>
+                  <td><a href="http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}"  download="{{a.fileName}}"><i class="fa fa-download"></i></a></td>
+                  <td><a href="http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}" target="_blank"><i class="fa fa-eye"></i></a></td>
+
 
                   <div class="modal fade" [id]="'exampleModal' + a.id" tabindex="-1" role="dialog"
                        aria-labelledby="formModal" aria-hidden="true">
@@ -82,7 +84,7 @@
                         </div>
                         <div class="modal-body" >
                           <img _ngcontent-xte-c0=""  src="assets/images/upload/uploadRessources/{{a.path}}">
-                          {{a.nom}}
+                          <a href="http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}" target="_blank">"http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}"</a>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn-hover btn-border-radius color-4"
@@ -107,6 +109,20 @@
         </div>
       </div>
     </div>
-    <!-- #END# Exportable Table -->
-  </div>
+   </div>²
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
