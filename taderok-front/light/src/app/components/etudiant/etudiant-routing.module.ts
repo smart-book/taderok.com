@@ -19,9 +19,10 @@ const routes: Routes = [
     component: ListQuizComponent
   },
   {
-    path:'PasserQuiz/:id',
+    path: 'PasserQuiz/:id',
     component: PasserQuizComponent
-
+  },
+  {
     path:'afficher',
     component:AfficherFeedbackComponent
   }
