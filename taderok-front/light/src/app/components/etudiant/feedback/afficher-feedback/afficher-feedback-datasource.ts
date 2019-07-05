@@ -4,15 +4,16 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import {FeedbackService} from "../../../../services/etudiant/feedback.service";
 import {Feedback} from "../../../../models/feedback";
+import {Etudiant} from "../../../../models/etudiant";
+import {Seance} from "../../../../models/seance";
 
 
 // TODO: Replace this with your own data model type
-export interface AfficherFeedbackItem {
-  nom: string;
-  prenom: string;
-  email: string;
+export interface Feedback{
   type: string;
   description: string;
+  etudiant: Etudiant;
+  seances: Seance;
 
 }
 
@@ -28,13 +29,14 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
     this.data = [];
     this.feedbackService.afficherFeedback().subscribe((data)=>{
       data.map(e => {
-        console.log(e);
+        console.log(e.type);
         this.objectFeedback = new Feedback();
         this.objectFeedback = e;
         this.data.push(this.objectFeedback);
       }); console.log(data)
     },error=> console.log(error), ()=>console.log('done')
     );
+
   }
 
  // ngOnInit(): void {
@@ -58,6 +60,7 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
       return this.getPagedData(this.getSortedData([...this.data]));
     }));
   }
+
 
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
