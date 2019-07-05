@@ -65,27 +65,64 @@
                 </thead>
                 <tbody>
 
-                <tr data-toggle="modal" data-target="#exampleModal"  *ngFor="let a of list" >
+                <tr data-toggle="modal" data-target="#exampleModal" *ngFor="let a of list" [attr.data-target]="'#exampleModal' + a.id" >
                   <td>{{a.user.nom}}</td>
                   <td>{{a.user.prenom}}</td>
                   <td>{{a.user.email}}</td>
                   <td>{{a.date | date: 'yyyy-MM-dd \'  à \' h:mma  '}}</td>
                   <td>{{a.description}}</td>
                   <td>{{a.type}}</td>
-                  <td><button _ngcontent-vqj-c5="" style="width: 100px" class="btn btn-warning btn-border-radius waves-effect" (click)="TraiterReclamation(a.id)">Traiter</button></td>
+                  <td><i _ngcontent-ygh-c15=""  style="color: darkred;" class="far fa-times-circle"></i></td>
+
+
+
+                  <div class="modal fade" [id]="'exampleModal' + a.id" tabindex="-1" role="dialog"
+                       aria-labelledby="formModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" style="padding-left: 150px;color: #ffc107" id="formModall">Détails de la réclamation</h5><br><br>
+                          <button type="button" class="close" data-dismiss="modal"
+                                  aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+
+                        <label><b>Type de la réclamation :</b></label>
+                        <div class="form-group">
+                          <div class="form-line">
+                            {{a.type}}
+                          </div>
+                          <hr>
+                        </div>
+
+
+                        <label><b>Description de la réclamation :</b></label>
+                        <div class="form-group">
+                          <div class="form-line">
+                        {{a.description}}
+                          </div>
+                        </div>
+
+
+                        <div class="modal-footer">
+                          <button _ngcontent-vqj-c5="" style="width: 100px" class="btn-hover btn-border-radius color-4" (click)="TraiterReclamation(a.id)">Traiter</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
                 </tr>
 
                 </tbody>
-
-
-
 
               </table>
 
             </div>
           </div>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                aria-labelledby="formModal" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -109,7 +146,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

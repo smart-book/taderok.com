@@ -1,101 +1,265 @@
-<div class="limiter">
-  <div class="container-login100">
-    <div class="wrap-login100">
-      <form class="login100-form validate-form">
-        <span class="login100-form-title p-b-45">
-          S'inscrire
-        </span>
+<div class="row clearfix">
+  <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" >
+  </div>
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" >
+          <div class="card">
+            <div class="body">
+              <aw-wizard #wizard  [navBarLayout]="'large-empty-symbols'" [ngSwitch]="role">
+                <aw-wizard-step [stepTitle]="'Step 1'">
+                  <ng-template awWizardStepSymbol><i class="fa fa-user-cog"></i></ng-template>
+                  <div class="centered-content">
+                    <div>
+                      <form [formGroup]="nForm">
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input  class="form-control" placeholder="Email" formControlName="email" type="email" required name="email" [(ngModel)]="user.email">
+                          </div>
+                        </div>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input class="form-control" placeholder="Mot de passe" type="password" name="password" [(ngModel)]="user.password">
+                          </div>
+                        </div>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="password" class="form-control" name="conpass" placeholder="Confirmer mot de passe">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="text-right">
+                      <button class="btn-hover btn-border-radius color-8" awNextStep>Next</button>
+                    </div>
+                  </div>
+                </aw-wizard-step>
+                <aw-wizard-step [stepTitle]="'Step 2'">
+                  <ng-template awWizardStepSymbol><i class="fa fa-user"></i></ng-template>
+                  <div class="centered-content">
+                    <div>
+                      <form>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="text" name="nom" [(ngModel)]="user.nom" class="form-control"
+                                   placeholder="Nom">
+                          </div>
+                        </div>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="text" name="prenom" [(ngModel)]="user.prenom" class="form-control"
+                                   placeholder="Prenom">
+                          </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="form-check form-check-radio">
+                            <label>
+                              <input name="sexe" type="radio" checked value="homme" [(ngModel)]="user.sexe"/>
+                              <span>Homme</span>
+                            </label>
+                          </div>
+                        </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Nom est est un champ obligatoire">
-          <input class="input100" type="text" name="nom" [(ngModel)]="user.nom">
-          <span class="focus-input100"></span>
-          <span class="label-input100">Nom</span>
-        </div>
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="form-check form-check-radio">
+                            <label>
+                              <input name="sexe" type="radio" value="femme"  [(ngModel)]="user.sexe"/>
+                              <span>Femme</span>
+                            </label>
+                          </div>
+                        </div>
+                        </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Prénom est est un champ obligatoire">
-          <input class="input100" type="text" name="prenom" [(ngModel)]="user.prenom">
-          <span class="focus-input100"></span>
-          <span class="label-input100">Prénom</span>
-        </div>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="date" name="dateNaiss" [(ngModel)]="user.dateNaissance"  class="form-control"
+                                   placeholder="Date de naissance">
+                          </div>
+                        </div>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="text" name="adresse" [(ngModel)]="user.adresse" class="form-control"
+                                   placeholder="Adresse">
+                          </div>
+                        </div>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="number" name="telephone" [(ngModel)]="user.telephone" class="form-control"
+                                   placeholder="Telephone">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Veuillez entrer une adresse E-mail valide">
-          <input class="input100" type="email" name="email" [(ngModel)]="user.email">
-          <span class="focus-input100"></span>
-          <span class="label-input100">Email</span>
-        </div>
+                    <div class="text-right">
+                      <button class="btn-hover btn-border-radius color-10"
+                              awPreviousStep>Back</button>
+                      <button class="btn-hover btn-border-radius color-8" awNextStep>Next</button>
+                    </div>
+
+                  </div>
+                </aw-wizard-step>
+                <aw-wizard-step [stepTitle]="'Step 3'">
+                  <ng-template awWizardStepSymbol><i class="fa fa-users"></i></ng-template>
+                  <div class="centered-content">
+                    <div>
+                      <form action="#">
+                        <div>
+                            <div class="col-sm-6 col-lg-3">
+                              <div class="form-check form-check-radio">
+                                <label>
+                                  <input name="role" type="radio" checked value="ETUDIANT" (click)="changeRole('ETUDIANT')"/>
+                                  <span>Etudiant</span>
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                              <div class="form-check form-check-radio">
+                                <label>
+                                  <input name="role" type="radio" value="PROF" (click)="changeRole('PROF')" />
+                                  <span>Prof</span>
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                              <div class="form-check form-check-radio">
+                                <label>
+                                  <input name="role" type="radio" value="PARENT" (click)="changeRole('PARENT')" />
+                                  <span>Parent</span>
+                                </label>
+                              </div>
+                            </div>
+                        </div>
 
 
-        <div class="wrap-input100 validate-input" data-validate="Mot de passe est est un champ obligatoire">
-          <input class="input100" type="password" name="pass" [(ngModel)]="user.password">
-          <span class="focus-input100"></span>
-          <span class="label-input100">Mot de passe </span>
-        </div>
-        <div class="wrap-input100 validate-input" data-validate="Mot de passe est est un champ obligatoire">
-          <input class="input100" type="password" name="conpass">
-          <span class="focus-input100"></span>
-          <span class="label-input100">Confirmer mot de passe</span>
-        </div>
+                      </form>
+                    </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Adresse est un champ obligatoire">
-          <input class="input100" type="text" name="adresse" [(ngModel)]="user.adresse">
-          <span class="focus-input100"></span>
-          <span class="label-input100">Adresse</span>
-        </div>
+                    <div class="text-right">
+                      <button class="btn-hover btn-border-radius color-10"
+                              awPreviousStep>Back</button>
+                      <button class="btn-hover btn-border-radius color-8" awNextStep>Next</button>
+                    </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Date de naissance est un champ obligatoire">
-          <input class="input100" type="date" name="dateNaiss" [(ngModel)]="user.dateNaissance">
-          <span class="focus-input100"></span>
-          <span class="label-input100">Date de naissance</span>
-        </div>
+                  </div>
+                </aw-wizard-step>
+                <aw-wizard-step *ngSwitchCase="'ETUDIANT'" [stepTitle]="'Step 4'">
+                  <ng-template awWizardStepSymbol><i class="fa fa-user-graduate"></i></ng-template>
+                  <div class="centered-content">
+                    <div>
+                      <form action="#">
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="text" name="niveau" [(ngModel)]="user.niveau"  class="form-control"
+                                   placeholder="Niveau">
+                          </div>
+                        </div>
+                        <div class="form-group form-float">
+                          <div class="form-line">
+                            <input type="text" name="etablissement" [(ngModel)]="user.etablissement"  class="form-control"
+                                   placeholder="Etablissement">
+                          </div>
+                        </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Sexe est un champ obligatoire">
-        <input class="input100" type="text" name="sexe" [(ngModel)]="user.sexe">
-        <span class="focus-input100"></span>
-        <span class="label-input100">Sexe</span>
-        </div>
+                      </form>
+                    </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Veuillez inserer votre photo ">
-          <span class="label-input100">Veuillez inserer votre photo</span>
-          <input class="input100" type="file" name="photo" [(ngModel)]="user.photo">
-          <span class="focus-input100"></span>
+                    <div class="text-right">
+                      <button class="btn-hover btn-border-radius color-10"
+                              awPreviousStep>Back</button>
+                      <button class="btn-hover btn-border-radius color-8" awNextStep>Next</button>
+                    </div>
+                  </div>
+                </aw-wizard-step>
+                  <aw-wizard-step *ngSwitchCase="'PARENT'" [stepTitle]="'Step 4'">
+                    <ng-template awWizardStepSymbol><i class="fa fa-user-friends"></i></ng-template>
+                    <div class="centered-content">
+                      <div>
+                        <form action="#">
+                          <div class="form-group form-float">
+                            <div class="form-line">
+                              <input type="text" name="cin" [(ngModel)]="user.cin"  class="form-control"
+                                     placeholder="CIN">
+                            </div>
+                          </div>
 
-        </div>
+                        </form>
+                      </div>
 
-        <div class="flex-sb-m w-full p-t-15 p-b-20">
+                      <div class="text-right">
+                        <button class="btn-hover btn-border-radius color-10"
+                                awPreviousStep>Back</button>
+                        <button class="btn-hover btn-border-radius color-8" awNextStep>Next</button>
+                      </div>
+                    </div>
+                  </aw-wizard-step>
+                  <aw-wizard-step *ngSwitchCase="'PROF'" [stepTitle]="'Step 4'">
+                    <ng-template awWizardStepSymbol><i class="fa fa-user-tie"></i></ng-template>
+                    <div class="centered-content">
+                      <div>
+                        <form action="#">
+                          <div class="form-group form-float">
+                            <div class="form-line">
+                              <input type="text" name="cin" [(ngModel)]="user.cin"  class="form-control"
+                                     placeholder="CIN">
+                            </div>
+                          </div>
+                          <div class="form-group form-float">
+                            <div class="form-line">
+                              <input type="text" name="code_tablette" [(ngModel)]="user.code_tablette"  class="form-control"
+                                     placeholder="Code de la tablette">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
 
-          <div>
-            <a routerLink="/authentication/signin" class="txt1">
-              Vous avez déjà un compte?
-            </a>
+                      <div class="text-right">
+                        <button class="btn-hover btn-border-radius color-10"
+                                awPreviousStep>Back</button>
+                        <button class="btn-hover btn-border-radius color-8" awNextStep>Next</button>
+                      </div>
+                    </div>
+                  </aw-wizard-step>
+
+
+                <aw-wizard-step [stepTitle]="'Step 5'">
+                  <ng-template awWizardStepSymbol><i class="fa fa-user-check"></i></ng-template>
+                  <div class="centered-content">
+                    <div>
+                      <form action="#">
+                        <p>
+                          New the her nor case that lady paid read. Invitation friendship
+                          travelling eat
+                          everything
+                          the out two. Shy you who scarcely expenses debating hastened resolved.
+                          Always
+                          polite
+                          moment on is warmth spirit it to hearts. Downs those still witty an
+                          balls so
+                          chief
+                          so. Moment an little remain no up lively no. Way brought may off our
+                          regular
+                          country
+                          towards adapted cheered.
+                        </p>
+                        <p>
+                          <label>
+                            <input id="acceptTerms-2" name="acceptTerms" type="checkbox" (click)="valider()"/>
+                            <span>I agree with the Terms and Conditions.</span>
+                          </label>
+                        </p>
+                      </form>
+                    </div>
+
+                    <div class="text-right">
+                      <button class="btn-hover btn-border-radius color-10"
+                              awPreviousStep>Back</button>
+                      <button class="btn-hover btn-border-radius color-5"  [ngClass]="{hide : !isValid()}"  (click)="register()">Finish</button>
+                    </div>
+
+                  </div>
+                </aw-wizard-step>
+              </aw-wizard>
+            </div>
           </div>
         </div>
-
-
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn" (click)="register()">
-            Register
-          </button>
-        </div>
-
-        <div class="text-center p-t-45 p-b-20">
-          <span class="txt2">
-            or sign up using
-          </span>
-        </div>
-
-        <div class="login100-form-social flex-c-m">
-          <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-
-          <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </div>
-      </form>
-
-      <div class="login100-more" style="background-image: url('assets/images/pages/signup.svg');height: 720px; width: 750px ">
       </div>
-    </div>
-  </div>
-</div>

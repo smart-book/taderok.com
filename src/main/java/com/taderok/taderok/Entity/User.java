@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,9 +31,9 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Forum> forumList;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
     @JsonIgnore
-    private List<CommentaireForum> commentaireForumList;
+    private List<CommentaireForum> commentaireForumList=new ArrayList<>();
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<Reclamation> reclamationList;

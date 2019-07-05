@@ -1,5 +1,6 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
@@ -19,8 +20,7 @@ public class Etudiant extends User {
     private List<Rating> ratingList;
     @ManyToMany(mappedBy = "etudiantList")
     private List<Groupes> groupesList;
-    @ManyToMany(mappedBy = "etudiantList")
-    private List<Quiz> quizList;
+
     @OneToMany
     private List<GroupeChat> groupeChatList;
     @ManyToOne
@@ -35,6 +35,7 @@ public class Etudiant extends User {
     @OneToMany(mappedBy = "id.id_etudiant")
     private List<EtudiantReponse> repEtudiant = new ArrayList<>();
     @OneToMany(mappedBy = "id.id_etudiant")
+    @JsonIgnore
     private List<QuizEtudiant> quizEtudiant = new ArrayList<>();
 
     public List<EtudiantReponse> getRepEtudiant() {
@@ -75,14 +76,6 @@ public class Etudiant extends User {
 
     public void setPaiement(boolean paiement) {
         this.paiement = paiement;
-    }
-
-    public List<Quiz> getQuizList() {
-        return quizList;
-    }
-
-    public void setQuizList(List<Quiz> quizList) {
-        this.quizList = quizList;
     }
 
     public List<Rating> getRatingList() {

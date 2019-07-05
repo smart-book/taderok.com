@@ -118,7 +118,7 @@
                 </div>
                 <div class="col">
                   <h6 class="m-b-15">{{publication.user.prenom}} {{publication.user.nom}}
-                    <span class="float-right m-r-10 text-muted"> {{publication.date | date: 'yyyy-MM-dd \' à \'hh:mm'}}
+                    <span class="float-right m-r-10 text-muted"> {{publication.date | date: 'yyyy-MM-dd \' à \'hh:mm a'}}
                                         </span>
                   </h6>
                   <h6 class="m-b-15" ><a [routerLink]="['/forum/details', publication.id]">{{publication.titre}}</a>
@@ -128,6 +128,36 @@
                   <a href="#!">
                     <i class="material-icons m-r-10">thumb_up</i>
                   </a>
+                  <button _ngcontent-nlp-c23="" class="btn bg-teal btn-circle waves-effect waves-circle waves-float"
+                          data-toggle="modal"
+                          data-target="#modalCommentaire" type="button">
+                    <i _ngcontent-nlp-c23="" class="material-icons">forum</i>
+                  </button>
+                  <!-- modal commentaires -->
+                  <div class="modal fade" id="modalCommentaire" tabindex="-1" role="dialog"
+                       aria-labelledby="formModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <form>
+                            <label>Titre</label>
+                            <div class="form-group">
+                              <div class="form-line">
+                                <input type="text" name="type_reclamation" [(ngModel)]="forum.titre" class="form-control"
+                                       placeholder="Entrer le titre de votre publication">
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn-hover btn-border-radius color-4"
+                                  data-dismiss="modal">Annuler</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Fin modal commentaires -->
                   <hr>
                 </div>
               </div>

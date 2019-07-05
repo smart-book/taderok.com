@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -7,10 +9,12 @@ import java.io.Serializable;
 
 @Embeddable
 public class QuizEtudiantID implements Serializable {
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_etudiant")
     private Etudiant id_etudiant;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_quiz")
     private Quiz id_quiz;
 

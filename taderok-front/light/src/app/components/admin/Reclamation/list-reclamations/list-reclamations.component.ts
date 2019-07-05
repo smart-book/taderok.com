@@ -57,5 +57,12 @@ export class ListReclamationsComponent implements OnInit {
 
   }
 
+  fctClick( obj)
+  {
+    // récup. de tous les INPUT de la TR passée en paramètre
+    var oInput = obj.getElementsByTagName('INPUT');
+    // affichage de la value du 1st
+    alert( oInput[0].value);
+  }
 
 }

@@ -41,7 +41,7 @@ export class AjouterRessourceComponent implements OnInit {
     this.selectedFiles = undefined;
     this.ressource.path = fname;
     this.ressource.fileName = this.currentFileUpload.name;
-    this.ressourceService.ajouterRessource(this.ressource, 1).subscribe(data => console.log(data), error => console.log(error));
+    this.ressourceService.ajouterRessource(this.ressource, 2).subscribe(data => console.log(data), error => console.log(error));
   }
 
   selectFile(event) {

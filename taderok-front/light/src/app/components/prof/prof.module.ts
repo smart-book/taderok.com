@@ -15,13 +15,22 @@ import { AjouterRessourceComponent } from './ressource/ajouter-ressource/ajouter
 import { AfficherRessourceComponent } from './ressource/afficher-ressource/afficher-ressource.component';
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
+
+import {AfficherFeedbackComponent} from "./feedback/afficher-feedback/afficher-feedback.component";
+
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {FullCalendarModule} from "@fullcalendar/angular";
+import { CalendarProfComponent } from './calendar-prof/calendar-prof.component';
+
+
 
 
 
 @NgModule({
 
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent],
+  declarations: [AfficherFeedbackComponent,AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent],
+
+
 
   imports: [
     CommonModule,
@@ -37,7 +46,8 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
       customClass: 'modal-content',
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
-    })
+    }),
+    FullCalendarModule
   ]
 })
 export class ProfModule { }

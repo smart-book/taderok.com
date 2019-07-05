@@ -14,6 +14,7 @@ export class PublicationDetailsComponent implements OnInit {
 
   forum : Forum = new Forum();
   listCommentaires : CommentaireForum[] ;
+  commentaire : CommentaireForum = new CommentaireForum();
   constructor( private readonly router: Router,private readonly route: ActivatedRoute, private forumService : ForumService) { }
 
   ngOnInit() {
@@ -35,6 +36,17 @@ export class PublicationDetailsComponent implements OnInit {
         this.listCommentaires = data;
       }, error1 => console.log(error1)
     );
+  }
+
+  commenter(){
+    let now = new Date();
+    this.commentaire.date = now;
+    this.forumService.ajouterCommentaire(this.forum.id, this.commentaire).subscribe(
+      data =>{
+        console.log(data)
+      },
+      error1 => console.log(error1)
+    )
   }
 
 }

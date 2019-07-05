@@ -1,5 +1,6 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
@@ -9,21 +10,32 @@ import java.util.List;
 
 @Entity
 public class Prof extends User {
-    private int cin;
+    private String cin;
     private String diplome;
     private String experience;
     private String code_tablette;
-    @JsonIgnoreProperties("prof")
+    @JsonIgnore
     @OneToMany(mappedBy = "prof")
     private List<Rating> ratingList;
     @ManyToMany(mappedBy = "profList")
     private List<Matiere> matiereList;
     @OneToMany(mappedBy = "prof")
-    @JsonIgnoreProperties("prof")
+    @JsonIgnore
     private List<Seance> seanceList;
     @OneToMany(mappedBy = "prof")
-    @JsonIgnoreProperties("prof")
+    @JsonIgnore
     private List<GroupeChat> groupeChatList;
+
+    public List<Quiz> getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(List<Quiz> quiz) {
+        this.quiz = quiz;
+    }
+
+    @OneToMany(mappedBy = "id_prof")
+    private List<Quiz> quiz;
 
     public Prof(User u) {
         super(u);
@@ -32,11 +44,11 @@ public class Prof extends User {
     public Prof() {
     }
 
-    public int getCin() {
+    public String getCin() {
         return cin;
     }
 
-    public void setCin(int cin) {
+    public void setCin(String cin) {
         this.cin = cin;
     }
 

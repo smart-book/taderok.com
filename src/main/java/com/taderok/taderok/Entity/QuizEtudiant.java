@@ -8,8 +8,10 @@ import javax.persistence.Id;
 public class QuizEtudiant {
     @Id
     QuizEtudiantID id;
-    @Column(name="note")
+    @Column(name="note",nullable = true)
     private double note;
+    @Column(name="corrige",nullable = true)
+    private boolean corrige;
 
     public QuizEtudiantID getId() {
         return id;
@@ -25,5 +27,13 @@ public class QuizEtudiant {
 
     public void setNote(double note) {
         this.note = note;
+    }
+
+    public boolean isCorrige() {
+        return corrige;
+    }
+
+    public void setCorrige(boolean corrige) {
+        this.corrige = corrige;
     }
 }

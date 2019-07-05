@@ -1,5 +1,6 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -12,13 +13,13 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    @ManyToMany
-    private List<Etudiant> etudiantList;
-    private int id_prof;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JsonIgnoreProperties("quiz")
+    private Prof id_prof;
     private String nomQuiz;
-    private boolean corrige;
     private Date date;
     @ManyToMany
+    @JsonIgnore
     private List<Seance> seanceList;
     @JsonIgnoreProperties("quiz")
     @OneToMany(mappedBy = "quiz")
@@ -34,28 +35,14 @@ public class Quiz {
         this.id = id;
     }
 
-    public List<Etudiant> getEtudiantList() {
-        return etudiantList;
-    }
 
-    public void setEtudiantList(List<Etudiant> etudiantList) {
-        this.etudiantList = etudiantList;
-    }
+    public Prof getId_prof() {return id_prof; }
 
-    public int getId_prof() {return id_prof; }
-
-    public void setId_prof(int id_prof) {
+    public void setId_prof(Prof id_prof) {
         this.id_prof = id_prof;
     }
 
 
-    public boolean isCorrige() {
-        return corrige;
-    }
-
-    public void setCorrige(boolean corrige) {
-        this.corrige = corrige;
-    }
 
     public Date getDate() {
         return date;
