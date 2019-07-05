@@ -43,6 +43,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/forum/forum.module').then(m => m.ForumModule)
   },
   {
+    path: 'user',
+    loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./index/index.module').then(m => m.IndexModule)
   },

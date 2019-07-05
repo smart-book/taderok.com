@@ -40,19 +40,20 @@
 
           <b>etudiants</b>
           <select class="custom-select"
-                  [(ngModel)]="groupe">
-            <option [ngValue]="grp" *ngFor="let grp of groupees">{{grp.nom}}</option>
+                  [(ngModel)]="groupes.etudiant">
+            <option [ngValue]="et" *ngFor="let et of etudiantss">{{et.nom  }} {{et.prenom}}</option>
 
           </select>
-
-          <button class="btn-hover btn-border-radius color-8"  (click)="ajouterGroupe()">Ajouter</button>
-
           <table>
-            <tr *ngFor="let grp of tabGroup">
-              <td>{{grp.nom}}</td>
+            <tr *ngFor="let et of tabEtudiant">
+              <td>{{et.nom  }} {{et.prenom  }}  </td>
 
             </tr>
           </table>
+          
+          <button class="btn-hover btn-border-radius color-8"  (click)="ajouterGroupe()">Ajouter</button>
+
+
         </div>
       </div>
     </div>

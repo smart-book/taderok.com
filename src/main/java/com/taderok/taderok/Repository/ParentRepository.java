@@ -4,4 +4,5 @@ import com.taderok.taderok.Entity.Parent;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ParentRepository extends CrudRepository<Parent, Long> {
+    Parent findById(long id);
 }
