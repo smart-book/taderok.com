@@ -23,6 +23,8 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.dataSource = new AfficherFeedbackDataSource(this.feedbackService);
+    console.log('this is the data source/n : ');
+    console.log(this.dataSource);
   }
 
   ngAfterViewInit() {

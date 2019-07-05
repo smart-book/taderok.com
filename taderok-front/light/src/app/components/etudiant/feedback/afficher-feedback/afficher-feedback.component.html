@@ -47,8 +47,8 @@
               </li>
             </ul>
           </div>
-          <div class="mat-elevation-z8 body">
-            <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
+          <div class="mat-elevation-z8">
+            <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource.data">
 
 
               <!-- Nom Column -->
@@ -60,7 +60,7 @@
               <!-- Prenom Column -->
               <ng-container matColumnDef="Prenom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+                <td mat-cell *matCellDef="let row">{{row.description}}</td>
               </ng-container>
 
               <!-- email Column -->
@@ -81,11 +81,14 @@
                 <td mat-cell *matCellDef="let row">{{row.description}}</td>
               </ng-container>
 
+
               <!-- Matiere Column -->
               <ng-container matColumnDef="Matiere">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>description</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
                 <td mat-cell *matCellDef="let row">{{row.description}}</td>
               </ng-container>
+
+
 
 
 
@@ -96,7 +99,7 @@
             <mat-paginator #paginator
 
                            [pageIndex]="0"
-                           [pageSize]="50"
+                           [pageSize]="25"
                            [pageSizeOptions]="[25, 50, 100, 250]">
             </mat-paginator>
           </div>
