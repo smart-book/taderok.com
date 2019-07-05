@@ -10,10 +10,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ProfilComponent } from './components/user/profil/profil.component';
+import {UserModule} from "./components/user/user.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
 
   ],
   imports: [
@@ -24,7 +26,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ReactiveFormsModule,
     FormsModule,
     MatStepperModule, MatInputModule, MatButtonModule,
-    FullCalendarModule
+    FullCalendarModule,
+    UserModule,
+
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, DynamicScriptLoaderService],
   bootstrap: [AppComponent]

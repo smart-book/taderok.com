@@ -56,6 +56,12 @@
 
           <option type="text">mathematiques</option>
           <option type="text">Physique</option>
+          <option type="text">Chimie</option>
+          <option type="text">Arabe</option>
+          <option type="text">Francais</option>
+          <option type="text">Anglais</option>
+          <option type="text">Informatique</option>
+
         </select>
 
         <b>groupes</b>
@@ -65,8 +71,19 @@
 
         </select>
 
-        <button class="btn-hover btn-border-radius color-8"  (click)="ajouterSeance()">Ajouter</button>
 
+          <swal
+            #deleteSwal
+            title="Succes!"
+            message="This cannot be undone"
+            type="success"
+            [showCancelButton]="true"
+            [focusCancel]="true"
+            (confirm)="afficherSeance()">
+          </swal>
+
+
+            <button type="button" [swal]="deleteSwal" (click)="ajouterSeance()" class="btn-hover btn-border-radius color-6">Ajouter</button>
 
         </div>
       </div>

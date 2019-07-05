@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Reclamation} from "../../../../models/reclamation";
 import {GroupesService} from "../../../../services/prof/groupes.service";
 import {Groupes} from "../../../../models/groupes";
+import {Etudiant} from "../../../../models/etudiant";
+import {ListEtudiantsService} from "../../../../services/etudiant/list-etudiants.service";
+import {FormBuilder} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ajouter',
@@ -9,32 +13,44 @@ import {Groupes} from "../../../../models/groupes";
   styleUrls: ['./ajouter.component.sass']
 })
 export class AjouterComponentGroupe implements OnInit {
+  etudiants : Etudiant = new Etudiant();
+  etudiantss : Etudiant[];
+  etudiant : Etudiant = new Etudiant();
   groupes : Groupes = new Groupes();
-  groupees : Groupes[];
-  groupe : Groupes = new Groupes();
 
 
-  tabGroup : Groupes[] = [];
-  constructor(private groupesService : GroupesService) { }
+  tabEtudiant : Etudiant[] = [];
+  constructor(private groupesService : GroupesService, private listEtudiantsService : ListEtudiantsService, private router: Router) { }
 
   ngOnInit() {
 
 
-    this.groupesService.afficherGroupe().subscribe(data => {
+    this.listEtudiantsService.afficherEtudiants().subscribe(data => {
       console.log(data);
-      this.groupees = data;
+      this.etudiantss = data;
     }, error => console.log(error));
 
   }
+  ajouterEtudiant(){
 
-  ajouterGroupe(){
-    console.log(this.groupe.nom);
-    this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
+    this.etudiant= this.groupes.etudiant;
+    this.tabEtudiant.push(this.etudiant);
+    this.etudiantss = this.etudiantss.filter(obj => obj !== this.etudiant);
 
- //   this.tabGroup.push(this.groupe);
-  //  this.groupees = this.groupees.filter(obj => obj !== this.groupe);
 
   }
+  ajouterGroupe(){
+    console.log(this.groupes.nom);
+   // this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
+
+    this.etudiant= this.groupes.etudiant;
+    this.tabEtudiant.push(this.etudiant);
+    this.etudiantss = this.etudiantss.filter(obj => obj !== this.etudiant);
+    console.log("etuiants");
+    console.log(this.tabEtudiant);
+
+  }
+
 
 
 }
