@@ -1,5 +1,7 @@
 package com.taderok.taderok.Service;
+import com.taderok.taderok.Entity.Etudiant;
 import com.taderok.taderok.Entity.Groupes;
+import com.taderok.taderok.Repository.EtudiantRepository;
 import com.taderok.taderok.Repository.GroupeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ public class GroupeService {
 
     @Autowired
     private GroupeRepository groupeRepository;
+    @Autowired
+    private EtudiantRepository etudiantRepository;
 
 
     public List<Groupes> getAllGroupes(){
@@ -24,9 +28,19 @@ public class GroupeService {
     }
 
     public void addGroupe(Groupes groupe){
+
+
         groupeRepository.save(groupe);
     }
+    public void affecterGroupeEtudiants(int idG,Long idE){
+        Groupes group = groupeRepository.findById(idG).orElse( null );
+        Etudiant et = etudiantRepository.findById(idE).orElse( null );
+        group.getEtudiantList().add(et);
+        et.getGroupesList().add(group);
+        groupeRepository.save(group);
+        etudiantRepository.save(et);
 
+    }
     public void updateGroupe(Groupes groupe, int id ){
 
         Groupes group = groupeRepository.findById(id).orElse( null );
