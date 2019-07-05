@@ -27,7 +27,7 @@ public class QuizService {
     @Autowired
     private ProfRepository profRepository;
     @Autowired
-    private ProfRepository profRepository;
+    private UserRepository userRepository;
     @Autowired
     private HelloResource helloResource;
     @Autowired
@@ -70,9 +70,6 @@ public class QuizService {
     public void addQuiz(Quiz quiz){
         /*User u = userRepository.findById(helloResource.getIdConnected()).orElse(null);
         quiz.setId_prof(u.getId()); */
-
-        Prof p = profRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
-
         User u = userRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         Prof p = profRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         System.out.println("prof : "+p);
