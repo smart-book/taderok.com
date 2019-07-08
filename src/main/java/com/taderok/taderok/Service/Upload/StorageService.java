@@ -20,10 +20,19 @@ public class StorageService {
 
 	Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	private final Path rootLocation = Paths.get("C:/Users/hp/Documents/GitHub/taderok.com/taderok-front/light/src/assets/images/upload/uploadRessources/");
+	private final Path rootLocationPhotoUser = Paths.get("C:/Users/Asus/Documents/GitHub/taderok.com/taderok-front/light/src/assets/images/upload/uploadUser/");
 
 	public void store(MultipartFile file) {
 		try {
 			Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+		} catch (Exception e) {
+			throw new RuntimeException("FAIL!");
+		}
+	}
+
+	public void storeUserPhoto(MultipartFile file) {
+		try {
+			Files.copy(file.getInputStream(), this.rootLocationPhotoUser.resolve(file.getOriginalFilename()));
 		} catch (Exception e) {
 			throw new RuntimeException("FAIL!");
 		}

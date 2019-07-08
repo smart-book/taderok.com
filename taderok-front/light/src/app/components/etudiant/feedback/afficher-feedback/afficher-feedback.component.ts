@@ -3,6 +3,7 @@ import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { AfficherFeedbackDataSource } from './afficher-feedback-datasource';
 import {FeedbackService} from "../../../../services/etudiant/feedback.service";
 import {Feedback} from "../../../../models/feedback";
+import set = Reflect.set;
 
 @Component({
   selector: 'app-afficher-feedback',
@@ -10,7 +11,8 @@ import {Feedback} from "../../../../models/feedback";
   styleUrls: ['./afficher-feedback.component.css']
 })
 export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Feedback>;
   dataSource: AfficherFeedbackDataSource;
@@ -37,4 +39,5 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
     })
 
   }
+
 }
