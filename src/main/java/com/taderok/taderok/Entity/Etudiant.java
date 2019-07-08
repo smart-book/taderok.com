@@ -18,6 +18,7 @@ public class Etudiant extends User {
     @JsonIgnoreProperties("etudiant")
     @OneToMany(mappedBy = "etudiant")
     private List<Rating> ratingList;
+    @JsonIgnoreProperties("etudiantList")
     @ManyToMany(mappedBy = "etudiantList")
     private List<Groupes> groupesList;
 

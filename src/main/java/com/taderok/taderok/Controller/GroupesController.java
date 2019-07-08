@@ -1,11 +1,13 @@
 package com.taderok.taderok.Controller;
 
+import com.taderok.taderok.Entity.Etudiant;
 import com.taderok.taderok.Entity.Groupes;
 import com.taderok.taderok.Service.ForumService;
 import com.taderok.taderok.Service.GroupeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -50,6 +52,10 @@ public class GroupesController {
     }
 
 
+    @RequestMapping(method = RequestMethod.POST, value = "/addGE/{idG}")
+    public void addGroupeEtudiants(@PathVariable int idG ,@RequestBody Etudiant et){
 
+        groupeService.affecterGroupeEtudiants(idG,et.getId());
+    }
 
 }

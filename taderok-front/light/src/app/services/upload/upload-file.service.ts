@@ -22,6 +22,18 @@ export class UploadFileService {
     return this.http.request(req);
   }
 
+  pushFileToStoragePhotoUser(file: File, fname: string): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+    formdata.append('file', file, fname );
+
+    const req = new HttpRequest('POST', 'http://localhost:8181/postUserPhoto', formdata, {
+      reportProgress: true  ,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+  }
+
   getFiles(): Observable<any> {
     return this.http.get('/localhost:8181/files');
   }

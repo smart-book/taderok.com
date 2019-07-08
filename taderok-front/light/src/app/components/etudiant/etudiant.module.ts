@@ -14,7 +14,6 @@ import {MatIconModule,MatListModule, MatTableModule, MatPaginatorModule, MatSort
 
 
 
-
 @NgModule({
 
   declarations: [AjouterComponent, ListQuizComponent, PasserQuizComponent,AfficherFeedbackComponent],

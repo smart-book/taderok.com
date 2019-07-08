@@ -33,7 +33,7 @@ export class AjouterComponentGroupe implements OnInit {
   }
   ajouterEtudiant(){
 
-    this.etudiant= this.groupes.etudiant;
+
     this.tabEtudiant.push(this.etudiant);
     this.etudiantss = this.etudiantss.filter(obj => obj !== this.etudiant);
 
@@ -41,13 +41,15 @@ export class AjouterComponentGroupe implements OnInit {
   }
   ajouterGroupe(){
     console.log(this.groupes.nom);
-   // this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
 
-    this.etudiant= this.groupes.etudiant;
     this.tabEtudiant.push(this.etudiant);
     this.etudiantss = this.etudiantss.filter(obj => obj !== this.etudiant);
     console.log("etuiants");
     console.log(this.tabEtudiant);
+    this.groupes.etudiants=this.tabEtudiant
+ this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
+
+
 
   }
 
