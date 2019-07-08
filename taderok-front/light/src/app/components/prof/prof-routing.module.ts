@@ -10,12 +10,11 @@ import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
 import {ListerComponent} from './reclamation/lister/lister.component';
 
 import {AjouterRessourceComponent} from './ressource/ajouter-ressource/ajouter-ressource.component';
-import {AfficherRessourceComponent} from "./ressource/afficher-ressource/afficher-ressource.component";
+import {AfficherRessourceComponent} from './ressource/afficher-ressource/afficher-ressource.component';
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
-import {AfficherFeedbackComponent} from "./feedback/afficher-feedback/afficher-feedback.component";
-import {CalendarComponent} from "@fullcalendar/core/CalendarComponent";
-import {CalendarProfComponent} from "./calendar-prof/calendar-prof.component";
+import {AfficherFeedbackComponent} from './feedback/afficher-feedback/afficher-feedback.component';
+import {CalendarProfComponent} from './calendar-prof/calendar-prof.component';
 
 
 
@@ -60,7 +59,7 @@ const routes: Routes = [
   {
     path: 'lister',
     component: ListerComponent
-  },{
+  }, {
     path: 'calendar',
     component: CalendarProfComponent
   },
