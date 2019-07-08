@@ -6,6 +6,7 @@ import { ListReclamationsComponent } from './Reclamation/list-reclamations/list-
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ReclamationsTraiteesComponent } from './Reclamation/reclamations-traitees/reclamations-traitees.component';
 import {AfficherReclamationComponent} from "./Reclamation/afficher-reclamation/afficher-reclamation.component";
+import {MatPaginatorModule, MatSortModule, MatTableModule} from "@angular/material";
 
 @NgModule({
   declarations: [ListReclamationsComponent, ReclamationsTraiteesComponent,AfficherReclamationComponent],
@@ -14,6 +15,9 @@ import {AfficherReclamationComponent} from "./Reclamation/afficher-reclamation/a
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ]
 })
 export class AdminModule { }
