@@ -20,6 +20,7 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarProfComponent } from './calendar-prof/calendar-prof.component';
 import { AfficherReclamationComponent } from './reclamation/afficher-reclamation/afficher-reclamation.component';
+import { AfficherFeedbackComponent } from './feedback/afficher-feedback/afficher-feedback.component';
 
 
 
@@ -27,7 +28,7 @@ import { AfficherReclamationComponent } from './reclamation/afficher-reclamation
 
 @NgModule({
 
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, AfficherReclamationComponent],
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, AfficherReclamationComponent, AfficherFeedbackComponent],
 
 
 

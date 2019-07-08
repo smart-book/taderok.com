@@ -2,7 +2,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {FeedbackService} from "../../../../services/etudiant/feedback.service";
+import {FeedbackService} from "../../../../services/prof/feedback.service";
 import {Feedback} from "../../../../models/feedback";
 import {Etudiant} from "../../../../models/etudiant";
 import {Seance} from "../../../../models/seance";
@@ -28,13 +28,13 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
     super();
     this.data = [];
     this.feedbackService.afficherFeedback().subscribe((data)=>{
-      data.map(e => {
-        console.log(e.type);
-        this.objectFeedback = new Feedback();
-        this.objectFeedback = e;
-        this.data.push(this.objectFeedback);
-      }); console.log(data)
-    },error=> console.log(error), ()=>console.log('done')
+        data.map(e => {
+          console.log(e.type);
+          this.objectFeedback = new Feedback();
+          this.objectFeedback = e;
+          this.data.push(this.objectFeedback);
+        }); console.log(data)
+      },error=> console.log(error), ()=>console.log('done')
     );
 
   }
@@ -82,8 +82,12 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'type': return compare(+a.type, +b.type, isAsc);
-        case 'description': return compare(a.description, b.description, isAsc);
+        case 'Nom': return compare(+a.etudiant.nom, +b.etudiant.nom, isAsc);
+        case 'Prenom': return compare(+a.etudiant.prenom, +b.etudiant.prenom, isAsc);
+        case 'E-mail': return compare(+a.etudiant.email, +b.etudiant.email, isAsc);
+        case 'Type': return compare(+a.type, +b.type, isAsc);
+        case 'Description': return compare(a.description, b.description, isAsc);
+        case 'Matiere': return compare(a.seances.matiere, b.seances.matiere, isAsc);
         default: return 0;
       }
     });
