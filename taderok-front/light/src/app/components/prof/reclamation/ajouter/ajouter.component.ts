@@ -25,7 +25,7 @@ export class AjouterComponent implements OnInit {
   toppings = new FormControl();
   toppingList: string[] = ['Comportement','Contenu','Utilisation','Seances','Profs'];
 
-  user : any;
+  user: any;
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
