@@ -12,7 +12,7 @@ import {LoginService} from "./services/Athentication/login.service";
 export class AppComponent {
   currentUrl: string;
   showLoadingIndicatior = true;
-
+  public conntectedUser = User;
   constructor(private loginService: LoginService,public router : Router,private _router: Router, location: PlatformLocation) {
     this._router.events.subscribe((routerEvent: Event) => {
 
@@ -36,7 +36,12 @@ export class AppComponent {
     });
   }
   user: any ;
+
   ngOnInit(){
+    this.loginService.getConnectedUser().subscribe(data=> {
+      console.log(data);
+      this.conntectedUser = data;
+    }, error => console.log(error) );
   }
 
   logout(){

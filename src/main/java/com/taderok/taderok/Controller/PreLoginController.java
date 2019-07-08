@@ -23,6 +23,7 @@ public class PreLoginController {
 
     @PostMapping(value = "/register")
     public ResponseEntity<Response> registration (@RequestBody User user){
+        user.setEnabled(true);
         User dbUser = userService.save(user);
         if(dbUser!=null){
             return new ResponseEntity<Response>(new Response("User is saved"), HttpStatus.OK);
@@ -32,7 +33,9 @@ public class PreLoginController {
 
     @PostMapping(value = "/registerEtudiant")
     public ResponseEntity<Response> registrationEtudiant (@RequestBody Etudiant etudiant){
+        etudiant.setEnabled(true);
         Etudiant dbUser = userService.registerEtudiant(etudiant);
+
         if(dbUser!=null){
             return new ResponseEntity<Response>(new Response("Etudiant is saved"), HttpStatus.OK);
         }
@@ -41,6 +44,7 @@ public class PreLoginController {
 
     @PostMapping(value = "/registerProf")
     public ResponseEntity<Response> registrationProf (@RequestBody Prof prof){
+        prof.setEnabled(true);
         Prof dbUser = userService.registerProf(prof);
         if(dbUser!=null){
             return new ResponseEntity<Response>(new Response("Prof is saved"), HttpStatus.OK);
@@ -51,6 +55,7 @@ public class PreLoginController {
 
     @PostMapping(value = "/registerParent")
     public ResponseEntity<Response> registrationParent (@RequestBody Parent parent){
+        parent.setEnabled(true);
         Parent dbUser = userService.registerParent(parent);
         if(dbUser!=null){
             return new ResponseEntity<Response>(new Response("Parent is saved"), HttpStatus.OK);

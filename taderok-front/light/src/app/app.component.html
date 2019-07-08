@@ -205,13 +205,13 @@
                     <li class="sidebar-user-panel">
                         <div class="user-panel">
                             <div class=" image">
-                                <img src="assets/images/usrbig.jpg" class="img-circle user-img-circle"
-                                    alt="User Image" />
+                                <img src="assets/images/upload/uploadUser/{{conntectedUser.photo}}" class="img-circle user-img-circle"
+                                    alt="User Image" style="width: 118px;height: 83px;" />
                             </div>
                         </div>
                         <div class="profile-usertitle">
-                            <div class="sidebar-userpic-name"> Emily Smith </div>
-                            <div class="profile-usertitle-job ">Manager </div>
+                            <div class="sidebar-userpic-name"> {{conntectedUser.nom}} {{conntectedUser.prenom}} </div>
+                            <div class="profile-usertitle-job ">{{conntectedUser.role}} </div>
                         </div>
                     </li>
                     <li routerLinkActive="active">
