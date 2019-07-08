@@ -48,25 +48,25 @@
             </ul>
           </div>
           <div class="mat-elevation-z8">
-            <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource.data">
+            <table mat-table class="full-width-table" matSort  aria-label="Elements" [dataSource]="dataSource.data">
 
 
               <!-- Nom Column -->
               <ng-container matColumnDef="Nom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+                <td mat-cell *matCellDef="let row">{{row.etudiant.nom}}</td>
               </ng-container>
 
               <!-- Prenom Column -->
               <ng-container matColumnDef="Prenom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
-                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+                <td mat-cell *matCellDef="let row">{{row.etudiant.prenom}}</td>
               </ng-container>
 
               <!-- email Column -->
               <ng-container matColumnDef="E-mail">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+                <td mat-cell *matCellDef="let row">{{row.etudiant.email}}</td>
               </ng-container>
 
               <!-- Type Column -->
@@ -85,7 +85,7 @@
               <!-- Matiere Column -->
               <ng-container matColumnDef="Matiere">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
-                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+                <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
               </ng-container>
 
 

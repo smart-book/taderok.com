@@ -5,16 +5,16 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="breadcrumb breadcrumb-style ">
             <li class="breadcrumb-item">
-              <h4 class="page-title">Data Table</h4>
+              <h4 class="page-title">La liste des Feedbacks</h4>
             </li>
             <li class="breadcrumb-item bcrumb-1">
               <a routerLink="/dashboard/main">
                 <i class="fas fa-home"></i> Home</a>
             </li>
             <li class="breadcrumb-item bcrumb-2">
-              <a href="#" onClick="return false;">Tables</a>
+              <a href="#" onClick="return false;">Seances</a>
             </li>
-            <li class="breadcrumb-item active">Data Tables</li>
+            <li class="breadcrumb-item active">Feedbacks</li>
           </ul>
         </div>
       </div>
@@ -25,7 +25,7 @@
         <div class="card">
           <div class="header">
             <h2>
-              <strong>Basic</strong> Example</h2>
+              <strong>Liste des</strong> Feedbacks</h2>
             <ul class="header-dropdown m-r--5">
               <li class="dropdown">
                 <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
@@ -46,44 +46,65 @@
               </li>
             </ul>
           </div>
-          <div class="body">
-            <div class="table-responsive">
-              <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                <thead>
-                <tr>
-                  <th>Nom</th>
-                  <th>Prenom</th>
-                  <th>E-mail</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                  <th>Matiere</th>
-                  <th>Seance</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let feedback of ListFeedbacks">
-                  <td>
-                    {{feedback.etudiant.nom}}
+          <div class="mat-elevation-z8">
+            <table mat-table class="full-width-table" matSort  aria-label="Elements" [dataSource]="dataSource.data">
 
-                  </td>
-                  <td>
-                    {{feedback.etudiant.prenom}}
 
-                  </td>
-                  <td>
-                    {{feedback.etudiant.email}}
-                  </td>
-                  <td>{{feedback.type}}</td>
-                  <td> {{feedback.description}}</td>
+              <!-- Nom Column -->
+              <ng-container matColumnDef="Nom">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+                <td mat-cell *matCellDef="let row">{{row.etudiant.nom}}</td>
+              </ng-container>
 
-                  <td>{{feedback.seances.matiere}}</td>
-                  <td>{{feedback.seances.id}}</td>
-                </tbody>
-              </table>
-            </div>
+              <!-- Prenom Column -->
+              <ng-container matColumnDef="Prenom">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
+                <td mat-cell *matCellDef="let row">{{row.etudiant.prenom}}</td>
+              </ng-container>
+
+              <!-- email Column -->
+              <ng-container matColumnDef="E-mail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
+                <td mat-cell *matCellDef="let row">{{row.etudiant.email}}</td>
+              </ng-container>
+
+              <!-- Type Column -->
+              <ng-container matColumnDef="Type">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
+                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+              </ng-container>
+
+              <!-- Description Column -->
+              <ng-container matColumnDef="Description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>description</th>
+                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+              </ng-container>
+
+
+              <!-- Matiere Column -->
+              <ng-container matColumnDef="Matiere">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
+                <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
+              </ng-container>
+
+
+
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator #paginator
+                           [length]="dataSource?.data.length"
+                           [pageIndex]="0"
+                           [pageSize]="50"
+                           [pageSizeOptions]="[25, 50, 100, 250]">
+            </mat-paginator>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+

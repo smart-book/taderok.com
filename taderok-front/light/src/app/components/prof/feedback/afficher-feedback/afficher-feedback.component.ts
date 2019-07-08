@@ -1,53 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import {FeedbackService} from 'src/app/services/prof/feedback.service';
-import {Feedback} from "../../../../models/feedback";
-declare const $: any;
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTable } from '@angular/material';
+import { AfficherFeedbackDataSource, AfficherFeedbackItem } from './afficher-feedback-datasource';
 
 @Component({
   selector: 'app-afficher-feedback',
   templateUrl: './afficher-feedback.component.html',
-  styleUrls: ['./afficher-feedback.component.sass']
+  styleUrls: ['./afficher-feedback.component.css']
 })
-export class AfficherFeedbackComponent implements OnInit {
+export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatTable, {static: false}) table: MatTable<AfficherFeedbackItem>;
+  dataSource: AfficherFeedbackDataSource;
 
-  constructor(private feedbackService: FeedbackService) {
-  }
-
-  ListFeedbacks: Feedback[];
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['id', 'name'];
 
   ngOnInit() {
-
-    this.feedbackService.afficherFeedback().subscribe(data=>{console.log(data); this.ListFeedbacks=data}, error=>console.log(error),()=>console.log("done!"));
-    $('.js-basic-example').DataTable({
-      responsive: true
-    });
-
-    $('.js-basic-example').DataTable({
-      responsive: true,
-      "scrollX": true,
-      stateSave: true
-    });
-
-
-
-    var t = $('#example3').DataTable({
-      "scrollX": true
-    });
-    var counter = 1;
-
-    $('#addRow').on('click', function () {
-      t.row.add([
-        counter + '.1',
-        counter + '.2',
-        counter + '.3',
-        counter + '.4',
-        counter + '.5'
-      ]).draw(false);
-
-      counter++;
-    });
-
+    this.dataSource = new AfficherFeedbackDataSource();
   }
 
-
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
+  }
 }
