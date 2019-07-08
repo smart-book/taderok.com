@@ -75,15 +75,19 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
    * this would be replaced by requesting the appropriate data from the server.
    */
   private getSortedData(data: Feedback[]) {
-    if (this.sort.active || this.sort.direction === '') {
+    if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
 
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'type': return compare(+a.type, +b.type, isAsc);
-        case 'description': return compare(a.description, b.description, isAsc);
+        case 'Nom': return compare(+a.etudiant.nom, +b.etudiant.nom, isAsc);
+        case 'Prenom': return compare(+a.etudiant.prenom, +b.etudiant.prenom, isAsc);
+        case 'E-mail': return compare(+a.etudiant.email, +b.etudiant.email, isAsc);
+        case 'Type': return compare(+a.type, +b.type, isAsc);
+        case 'Description': return compare(a.description, b.description, isAsc);
+        case 'Matiere': return compare(a.seances.matiere, b.seances.matiere, isAsc);
         default: return 0;
       }
     });

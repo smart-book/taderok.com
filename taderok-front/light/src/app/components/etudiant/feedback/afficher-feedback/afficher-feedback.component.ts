@@ -11,7 +11,7 @@ import {Feedback} from "../../../../models/feedback";
 })
 export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Feedback>;
   dataSource: AfficherFeedbackDataSource;
 
@@ -24,12 +24,17 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.dataSource = new AfficherFeedbackDataSource(this.feedbackService);
     console.log('this is the data source/n : ');
-    console.log(this.dataSource);
+    console.log(this.dataSource.data);
+
+
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    setTimeout(()=>{
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
+    })
+
   }
 }

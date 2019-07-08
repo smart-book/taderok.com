@@ -9,7 +9,7 @@ import { AjouterQuizComponent } from './quiz/ajouter-quiz/ajouter-quiz.component
 import {ReactiveFormsModule} from "@angular/forms";
 import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
-import {MatFormFieldModule, MatAutocompleteModule, MatSelectModule} from "@angular/material";
+import {MatFormFieldModule, MatAutocompleteModule, MatSelectModule, MatTableModule, MatPaginatorModule, MatSortModule} from "@angular/material";
 import { ListerComponent } from './reclamation/lister/lister.component';
 import { AjouterRessourceComponent } from './ressource/ajouter-ressource/ajouter-ressource.component';
 import { AfficherRessourceComponent } from './ressource/afficher-ressource/afficher-ressource.component';
@@ -47,7 +47,10 @@ import { CalendarProfComponent } from './calendar-prof/calendar-prof.component';
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
     }),
-    FullCalendarModule
+    FullCalendarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class ProfModule { }
