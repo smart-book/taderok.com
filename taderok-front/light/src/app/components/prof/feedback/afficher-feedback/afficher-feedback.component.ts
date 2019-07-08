@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { AfficherFeedbackDataSource } from './afficher-feedback-datasource';
-import {FeedbackService} from "../../../../services/etudiant/feedback.service";
+import {FeedbackService} from "../../../../services/prof/feedback.service";
 import {Feedback} from "../../../../models/feedback";
-import set = Reflect.set;
+
 
 @Component({
   selector: 'app-afficher-feedback',
@@ -24,9 +24,11 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
   displayedColumns = ['Nom','Prenom','E-mail','Type', 'Description','Matiere'];
 
   ngOnInit() {
-    this.dataSource = new AfficherFeedbackDataSource(this.feedbackService);
-    console.log('this is the data source/n : ');
-    console.log(this.dataSource.data);
+    setTimeout(()=>{
+      this.dataSource = new AfficherFeedbackDataSource(this.feedbackService);
+      console.log('this is the data source/n : ');
+      console.log(this.dataSource.data);})
+
 
 
   }

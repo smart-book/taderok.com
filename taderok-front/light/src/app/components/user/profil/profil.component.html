@@ -1,3 +1,318 @@
-<p>
-  profil works!
-</p>
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Profile</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Apps</a>
+            </li>
+            <li class="breadcrumb-item active">Contact List</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="card body">
+
+          <div class="contact-usertitle">
+            <div class="contact-usertitle-name"> {{profil.nom}} {{profil.prenom}}</div>
+          </div>
+          <div class="row">
+            <div class="contact-photo">
+              <img src="assets/images/usrbig.jpg" class="img-responsive" alt=""> </div>
+          </div>
+          <div class="contact-usertitle">
+            <div class="contact-usertitle-job"> {{profil.diplome}} </div>
+          </div>
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+                <b>Adresse</b>
+              <a class="pull-right">{{profil.adresse}}</a>
+            </li>
+            <li class="list-group-item">
+              Numéro
+              <a class="pull-right">{{profil.telephone}}</a>
+            </li>
+            <li class="list-group-item">
+              Nombre de groupe
+              <a class="pull-right"></a>
+            </li>
+
+          </ul>
+          <div class="newLabelBtn">
+            <button type="button" class="btn btn-border-radius bg-purple waves-effect">New Label</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <div class="profile-tab-box">
+            <div class="p-l-20">
+              <ul class="nav ">
+                <li class="nav-item tab-all">
+                  <a class="nav-link active show" href="#project" data-toggle="tab">A propos</a>
+                </li>
+                <li class="nav-item tab-all p-l-20">
+                  <a class="nav-link" href="#usersettings" data-toggle="tab">Expérience</a>
+                </li>
+                <li class="nav-item tab-all p-l-20">
+                  <a class="nav-link" href="#listgroupe" data-toggle="tab">Liste de groupe</a>
+                </li>
+                <li class="nav-item tab-all p-l-20">
+                  <a class="nav-link" href="#emploi" data-toggle="tab">Emploi du temps</a>
+                </li>
+                <li class="nav-item tab-all p-l-20">
+                  <a class="nav-link" href="#avis" data-toggle="tab">Avis</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card project_widget">
+                  <div class="header">
+                    <h2>A propos</h2>
+                  </div>
+                  <div class="body">
+                    <div class="row">
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Full Name</strong>
+                        <br>
+                        <p class="text-muted">Emily Smith</p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Mobile</strong>
+                        <br>
+                        <p class="text-muted">(123) 456 7890</p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Email</strong>
+                        <br>
+                        <p class="text-muted">johndeo@example.com</p>
+                      </div>
+                      <div class="col-md-3 col-6">
+                        <strong>Location</strong>
+                        <br>
+                        <p class="text-muted">India</p>
+                      </div>
+                    </div>
+                    <p class="m-t-30">Completed my graduation in Arts from the well known and
+                      renowned institution
+                      of India – SARDAR PATEL ARTS COLLEGE, BARODA in 2000-01, which was
+                      affiliated
+                      to M.S. University. I ranker in University exams from the same
+                      university
+                      from 1996-01.</p>
+                    <p>Worked as Professor and Head of the department at Sarda Collage, Rajkot,
+                      Gujarat
+                      from 2003-2015 </p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                      industry. Lorem
+                      Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      when
+                      an unknown printer took a galley of type and scrambled it to make a
+                      type
+                      specimen book. It has survived not only five centuries, but also the
+                      leap
+                      into electronic typesetting, remaining essentially unchanged.</p>
+                    <br>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card project_widget">
+                  <div class="header">
+                    <h2>Education</h2>
+                  </div>
+                  <div class="body">
+                    <ul>
+                      <li>B.A.,Gujarat University, Ahmedabad,India.</li>
+                      <li>M.A.,Gujarat University, Ahmedabad, India.</li>
+                      <li>P.H.D., Shaurashtra University, Rajkot</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card project_widget">
+                  <div class="header">
+                    <h2>Experience</h2>
+                  </div>
+                  <div class="body">
+                    <ul>
+                      <li>One year experience as Jr. Professor from April-2009 to march-2010
+                        at B.
+                        J. Arts College, Ahmedabad.</li>
+                      <li>Three year experience as Jr. Professor at V.S. Arts &amp; Commerse
+                        Collage
+                        from April - 2008 to April - 2011.</li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card project_widget">
+                  <div class="header">
+                    <h2>Conferences, Cources &amp; Workshop Attended</h2>
+                  </div>
+                  <div class="body">
+                    <ul>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="timeline" aria-expanded="false">
+          </div>
+          <div role="tabpanel" class="tab-pane" id="usersettings" aria-expanded="false">
+            <div class="card">
+              <div class="header">
+                <h2>
+                  <strong>Security</strong> Settings</h2>
+              </div>
+              <div class="body">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Current Password">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="New Password">
+                </div>
+                <button class="btn btn-info btn-round">Save Changes</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="header">
+                <h2>
+                  <strong>Account</strong> Settings</h2>
+              </div>
+              <div class="body">
+                <div class="row clearfix">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Last Name">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="City">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="E-mail">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Country">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                                            <textarea rows="4" class="form-control no-resize"
+                                                      placeholder="Address Line 1"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="form-check m-l-10">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="checkbox"
+                                 name="checkbox"> Profile Visibility For Everyone
+                          <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-check m-l-10">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="checkbox1"
+                                 name="checkbox"> New task notifications
+                          <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-check m-l-10">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="checkbox2"
+                                 name="checkbox"> New friend request notifications
+                          <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button class="btn btn-primary btn-round">Save Changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  </div>
+</section>

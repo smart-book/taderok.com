@@ -1,4 +1,3 @@
-
 <section class="content">
   <div class="container-fluid">
     <div class="block-header">
@@ -48,7 +47,7 @@
             </ul>
           </div>
           <div class="mat-elevation-z8">
-            <table mat-table class="full-width-table" matSort  aria-label="Elements" [dataSource]="dataSource.data">
+            <table mat-table class="full-width-table" matSort matSortStart="asc" matSortActive="Nom" matSortDirection="asc" aria-label="Elements" [dataSource]="dataSource.data">
 
 
               <!-- Nom Column -->
@@ -100,7 +99,7 @@
 
                            [pageIndex]="0"
                            [pageSize]="25"
-                           [pageSizeOptions]="[25, 50, 100, 250]">
+                           [pageSizeOptions]="[25, 50, 100, 250]" showFirstLastButtons>
             </mat-paginator>
           </div>
         </div>

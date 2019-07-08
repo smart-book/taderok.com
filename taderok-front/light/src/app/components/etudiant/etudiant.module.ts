@@ -9,25 +9,18 @@ import { ListQuizComponent } from './list-quiz/list-quiz.component';
 import { PasserQuizComponent } from './passer-quiz/passer-quiz.component';
 import {ArchwizardModule} from "angular-archwizard";
 
-import { AfficherFeedbackComponent } from './feedback/afficher-feedback/afficher-feedback.component';
-import {MatIconModule,MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 
 
 @NgModule({
 
-  declarations: [AjouterComponent, ListQuizComponent, PasserQuizComponent,AfficherFeedbackComponent],
+  declarations: [AjouterComponent, ListQuizComponent, PasserQuizComponent],
 
   imports: [
     ArchwizardModule,
     CommonModule,
     EtudiantRoutingModule,
-    FormsModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
+    FormsModule
   ]
 })
 export class EtudiantModule { }
