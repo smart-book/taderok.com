@@ -23,7 +23,7 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
   paginator: MatPaginator;
   sort: MatSort;
   objectFeedback ;
-  showSpinner;
+  showSpinner: boolean;
 
   constructor(private feedbackService: FeedbackService) {
     super();
@@ -34,7 +34,7 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
           this.objectFeedback = new Feedback();
           this.objectFeedback = e;
           this.data.push(this.objectFeedback);
-        }); console.log(data)
+        }); console.log(data); this.showSpinner=false;
       },error=> console.log(error), ()=>console.log('done')
     );
 

@@ -19,13 +19,13 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Feedback>;
   dataSource: AfficherFeedbackDataSource;
-  showSpinner = true;
+
   constructor(private feedbackService: FeedbackService) {
   }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['Nom','Prenom','E-mail','Type', 'Description','Matiere'];
-
+  showSpinner = true;
   ngOnInit() {
     setTimeout(()=>{
       this.showSpinner= false;
@@ -36,6 +36,7 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     setTimeout(()=>{
+      this.showSpinner= false;
       this.table.dataSource = this.dataSource;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
