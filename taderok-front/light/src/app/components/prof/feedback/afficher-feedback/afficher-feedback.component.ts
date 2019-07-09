@@ -5,6 +5,7 @@ import {FeedbackService} from "../../../../services/prof/feedback.service";
 import {Feedback} from "../../../../models/feedback";
 
 
+
 @Component({
   selector: 'app-afficher-feedback',
   templateUrl: './afficher-feedback.component.html',
@@ -29,15 +30,13 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
       console.log('this is the data source/n : ');
       console.log(this.dataSource.data);})
 
-
-
   }
 
   ngAfterViewInit() {
     setTimeout(()=>{
+      this.table.dataSource = this.dataSource;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      this.table.dataSource = this.dataSource;
     })
 
   }
