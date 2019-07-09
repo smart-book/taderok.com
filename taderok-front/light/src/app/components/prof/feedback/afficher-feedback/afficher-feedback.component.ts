@@ -6,6 +6,8 @@ import {Feedback} from "../../../../models/feedback";
 
 
 
+
+
 @Component({
   selector: 'app-afficher-feedback',
   templateUrl: './afficher-feedback.component.html',
@@ -17,7 +19,7 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Feedback>;
   dataSource: AfficherFeedbackDataSource;
-
+  showSpinner = true;
   constructor(private feedbackService: FeedbackService) {
   }
 
@@ -26,9 +28,9 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
+      this.showSpinner= false;
       this.dataSource = new AfficherFeedbackDataSource(this.feedbackService);
-      console.log('this is the data source/n : ');
-      console.log(this.dataSource.data);})
+      })
 
   }
 

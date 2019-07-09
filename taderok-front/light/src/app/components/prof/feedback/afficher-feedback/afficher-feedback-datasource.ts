@@ -23,13 +23,14 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
   paginator: MatPaginator;
   sort: MatSort;
   objectFeedback ;
+  showSpinner;
 
   constructor(private feedbackService: FeedbackService) {
     super();
+
     this.data = [];
     this.feedbackService.afficherFeedback().subscribe((data)=>{
         data.map(e => {
-          console.log(e.type);
           this.objectFeedback = new Feedback();
           this.objectFeedback = e;
           this.data.push(this.objectFeedback);

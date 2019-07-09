@@ -20,7 +20,7 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarProfComponent } from './calendar-prof/calendar-prof.component';
 import { AfficherFeedbackComponent } from './feedback/afficher-feedback/afficher-feedback.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -49,7 +49,8 @@ import { AfficherFeedbackComponent } from './feedback/afficher-feedback/afficher
     FullCalendarModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ProfModule { }
