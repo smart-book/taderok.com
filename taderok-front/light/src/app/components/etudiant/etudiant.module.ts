@@ -8,6 +8,7 @@ import { ListQuizComponent } from './list-quiz/list-quiz.component';
 
 import { PasserQuizComponent } from './passer-quiz/passer-quiz.component';
 import {ArchwizardModule} from "angular-archwizard";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 
 
@@ -20,6 +21,12 @@ import {ArchwizardModule} from "angular-archwizard";
     ArchwizardModule,
     CommonModule,
     EtudiantRoutingModule,
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+    }),
     FormsModule
   ]
 })

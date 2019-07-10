@@ -19,8 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class StorageService {
 
 	Logger log = LoggerFactory.getLogger(this.getClass().getName());
-	private final Path rootLocation = Paths.get("C:/Users/hp/Documents/GitHub/taderok.com/taderok-front/light/src/assets/images/upload/uploadRessources/");
+	private final Path rootLocation = Paths.get("C:/Users/MMD/Documents/GitHub/taderok.com/taderok-front/light/src/assets/images/upload/uploadTest/");
 	private final Path rootLocationPhotoUser = Paths.get("C:/Users/Asus/Documents/GitHub/taderok.com/taderok-front/light/src/assets/images/upload/uploadUser/");
+
 
 	public void store(MultipartFile file) {
 		try {
