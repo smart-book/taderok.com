@@ -1,39 +1,30 @@
 package com.taderok.taderok.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class QuizEtudiant {
+public class QuizEtudiant implements Serializable {
+
     @Id
-    QuizEtudiantID id;
-    @Column(name="note",nullable = true)
-    private double note;
-    @Column(name="corrige",nullable = true)
-    private boolean corrige;
+    private  QuizEtudiantId id;
+    private int note;
 
-    public QuizEtudiantID getId() {
-        return id;
-    }
-
-    public void setId(QuizEtudiantID id) {
-        this.id = id;
-    }
-
-    public double getNote() {
+    public int getNote() {
         return note;
     }
 
-    public void setNote(double note) {
+    public void setNote(int note) {
         this.note = note;
     }
 
-    public boolean isCorrige() {
-        return corrige;
+    public QuizEtudiantId getId() {
+        return id;
     }
 
-    public void setCorrige(boolean corrige) {
-        this.corrige = corrige;
+    public void setId(QuizEtudiantId id) {
+        this.id = id;
     }
 }

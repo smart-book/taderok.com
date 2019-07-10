@@ -2,15 +2,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
 
-import { AfficherFeedbackComponent } from './afficher-feedback.component';
+import { AfficherReclamationComponent } from './afficher-reclamation.component';
 
-describe('AfficherFeedbackComponent', () => {
-  let component: AfficherFeedbackComponent;
-  let fixture: ComponentFixture<AfficherFeedbackComponent>;
+describe('AfficherReclamationComponent', () => {
+  let component: AfficherReclamationComponent;
+  let fixture: ComponentFixture<AfficherReclamationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AfficherFeedbackComponent ],
+      declarations: [ AfficherReclamationComponent ],
       imports: [
         NoopAnimationsModule,
         MatPaginatorModule,
@@ -21,7 +21,7 @@ describe('AfficherFeedbackComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AfficherFeedbackComponent);
+    fixture = TestBed.createComponent(AfficherReclamationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

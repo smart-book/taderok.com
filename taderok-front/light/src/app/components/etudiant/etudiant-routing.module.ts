@@ -5,7 +5,6 @@ import {AjouterComponent} from "./feedback/ajouter/ajouter.component";
 import {ListQuizComponent} from "./list-quiz/list-quiz.component";
 import {PasserQuizComponent} from "./passer-quiz/passer-quiz.component";
 
-import {AfficherFeedbackComponent} from "./feedback/afficher-feedback/afficher-feedback.component";
 
 
 
@@ -21,10 +20,6 @@ const routes: Routes = [
   {
     path: 'PasserQuiz/:id',
     component: PasserQuizComponent
-  },
-  {
-    path:'afficher',
-    component:AfficherFeedbackComponent
   }
 ];
 

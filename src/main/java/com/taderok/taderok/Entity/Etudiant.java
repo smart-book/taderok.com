@@ -3,10 +3,7 @@ package com.taderok.taderok.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,28 +28,16 @@ public class Etudiant extends User {
     @JsonIgnoreProperties("etudiant")
     @OneToMany(mappedBy = "etudiant")
     private List<Feedback> feedbackList;
-
-
-    @OneToMany(mappedBy = "id.id_etudiant")
-    private List<EtudiantReponse> repEtudiant = new ArrayList<>();
-    @OneToMany(mappedBy = "id.id_etudiant")
+    @OneToMany(mappedBy = "id.etudiant")
     @JsonIgnore
-    private List<QuizEtudiant> quizEtudiant = new ArrayList<>();
+    private List<QuizEtudiant> quizEtudiants;
 
-    public List<EtudiantReponse> getRepEtudiant() {
-        return repEtudiant;
+    public List<QuizEtudiant> getQuizEtudiants() {
+        return quizEtudiants;
     }
 
-    public void setRepEtudiant(List<EtudiantReponse> repEtudiant) {
-        this.repEtudiant = repEtudiant;
-    }
-
-    public List<QuizEtudiant> getQuizEtudiant() {
-        return quizEtudiant;
-    }
-
-    public void setQuizEtudiant(List<QuizEtudiant> quizEtudiant) {
-        this.quizEtudiant = quizEtudiant;
+    public void setQuizEtudiants(List<QuizEtudiant> quizEtudiants) {
+        this.quizEtudiants = quizEtudiants;
     }
 
     public String getNiveau() {

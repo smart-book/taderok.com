@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Questions {
+public class Question {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
@@ -15,8 +15,8 @@ public class Questions {
     @ManyToOne
     private Quiz quiz;
     @JsonIgnore
-    @OneToMany(mappedBy = "questions")
-    private List<Reponses> reponsesList;
+    @OneToMany(mappedBy = "question")
+    private List<Proposition> propositions;
 
     public int getId() {
         return id;
@@ -42,11 +42,11 @@ public class Questions {
         this.quiz = quiz;
     }
 
-    public List<Reponses> getReponsesList() {
-        return reponsesList;
+    public List<Proposition> getPropositions() {
+        return propositions;
     }
 
-    public void setReponsesList(List<Reponses> reponsesList) {
-        this.reponsesList = reponsesList;
+    public void setPropositions(List<Proposition> propositions) {
+        this.propositions = propositions;
     }
 }

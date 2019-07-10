@@ -1,53 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import {FeedbackService} from 'src/app/services/prof/feedback.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTable} from '@angular/material';
+import { AfficherFeedbackDataSource } from './afficher-feedback-datasource';
+import {FeedbackService} from "../../../../services/prof/feedback.service";
 import {Feedback} from "../../../../models/feedback";
-declare const $: any;
+
+
+
+
 
 @Component({
   selector: 'app-afficher-feedback',
   templateUrl: './afficher-feedback.component.html',
-  styleUrls: ['./afficher-feedback.component.sass']
+  styleUrls: ['./afficher-feedback.component.css']
 })
-export class AfficherFeedbackComponent implements OnInit {
+export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatTable, {static: false}) table: MatTable<Feedback>;
+  dataSource: AfficherFeedbackDataSource;
 
   constructor(private feedbackService: FeedbackService) {
   }
 
-  ListFeedbacks: Feedback[];
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['Nom','Prenom','E-mail','Type', 'Description','Matiere'];
 
   ngOnInit() {
-
-    this.feedbackService.afficherFeedback().subscribe(data=>{console.log(data); this.ListFeedbacks=data}, error=>console.log(error),()=>console.log("done!"));
-    $('.js-basic-example').DataTable({
-      responsive: true
-    });
-
-    $('.js-basic-example').DataTable({
-      responsive: true,
-      "scrollX": true,
-      stateSave: true
-    });
-
-
-
-    var t = $('#example3').DataTable({
-      "scrollX": true
-    });
-    var counter = 1;
-
-    $('#addRow').on('click', function () {
-      t.row.add([
-        counter + '.1',
-        counter + '.2',
-        counter + '.3',
-        counter + '.4',
-        counter + '.5'
-      ]).draw(false);
-
-      counter++;
-    });
+    setTimeout(()=>{
+      this.dataSource = new AfficherFeedbackDataSource(this.feedbackService);
+      })
 
   }
 
+  ngAfterViewInit() {
+    setTimeout(()=>{
+
+      this.table.dataSource = this.dataSource;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    })
+
+  }
+
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

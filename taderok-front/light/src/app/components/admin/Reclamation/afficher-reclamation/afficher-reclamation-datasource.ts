@@ -2,46 +2,43 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {FeedbackService} from "../../../../services/etudiant/feedback.service";
-import {Feedback} from "../../../../models/feedback";
-import {Etudiant} from "../../../../models/etudiant";
-import {Seance} from "../../../../models/seance";
+import {ReclamationService} from "../../../../services/Admin/reclamation.service";
+import {Reclamation} from "../../../../models/reclamation";
+import {User} from "../../../../models/user";
 
 
 // TODO: Replace this with your own data model type
-export interface AfficherFeedbackItem{
+export interface AfficherRecalamtionItem{
+  id : number;
+  date : Date;
+  description : string;
+  etat : boolean;
   type: string;
-  description: string;
-  etudiant: Etudiant;
-  seances: Seance;
-
+  user: User;
 }
 
-export class AfficherFeedbackDataSource extends DataSource<Feedback>{
-  ListFeedbacks: Object[];
-  data: Feedback[];
+export class AfficherRecalamtionDataSource extends DataSource<Reclamation>{
+  ListReclamations: Object[];
+  data: Reclamation[];
   paginator: MatPaginator;
   sort: MatSort;
-  objectFeedback ;
+  objectReclamation ;
 
-  constructor(private feedbackService: FeedbackService) {
+  constructor(private reclamationService: ReclamationService) {
     super();
     this.data = [];
-    this.feedbackService.afficherFeedback().subscribe((data)=>{
-      data.map(e => {
-        console.log(e.type);
-        this.objectFeedback = new Feedback();
-        this.objectFeedback = e;
-        this.data.push(this.objectFeedback);
-      }); console.log(data)
-    },error=> console.log(error), ()=>console.log('done')
+    this.reclamationService.afficherReclamations().subscribe((data)=>{
+        data.map(e => {
+          console.log(e.type);
+          this.objectReclamation = new Reclamation();
+          this.objectReclamation = e;
+          this.data.push(this.objectReclamation);
+        }); console.log(data)
+      },error=> console.log(error), ()=>console.log('done')
     );
-
   }
 
-
-
-  connect(): Observable<Feedback[]> {
+  connect(): Observable<Reclamation[]> {
     const dataMutations = [
       observableOf(this.data),
       this.paginator.page,
@@ -65,7 +62,7 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Feedback[]) {
+  private getPagedData(data: Reclamation[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -74,16 +71,20 @@ export class AfficherFeedbackDataSource extends DataSource<Feedback>{
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Feedback[]) {
-    if (this.sort.active || this.sort.direction === '') {
+  private getSortedData(data: Reclamation[]) {
+    if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
 
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'type': return compare(+a.type, +b.type, isAsc);
-        case 'description': return compare(a.description, b.description, isAsc);
+        case 'Nom': return compare(+a.user.nom, +b.user.nom, isAsc);
+        case 'Prenom': return compare(+a.user.prenom, +b.user.prenom, isAsc);
+        case 'E-mail': return compare(+a.user.email, +b.user.email, isAsc);
+        case 'Date': return compare(+a.type, +b.type, isAsc);
+        case 'Description': return compare(a.description, b.description, isAsc);
+        case 'Type': return compare(a.type, b.type, isAsc);
         default: return 0;
       }
     });

@@ -1,4 +1,3 @@
-
 <section class="content">
   <div class="container-fluid">
     <div class="block-header">
@@ -6,16 +5,16 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="breadcrumb breadcrumb-style ">
             <li class="breadcrumb-item">
-              <h4 class="page-title">La liste des Feedbacks</h4>
+              <h4 class="page-title">La liste des Reclamations</h4>
             </li>
             <li class="breadcrumb-item bcrumb-1">
               <a routerLink="/dashboard/main">
                 <i class="fas fa-home"></i> Home</a>
             </li>
             <li class="breadcrumb-item bcrumb-2">
-              <a href="#" onClick="return false;">Seances</a>
+              <a href="#" onClick="return false;">Reclamations</a>
             </li>
-            <li class="breadcrumb-item active">Feedbacks</li>
+            <li class="breadcrumb-item active">Non traitées</li>
           </ul>
         </div>
       </div>
@@ -26,7 +25,7 @@
         <div class="card">
           <div class="header">
             <h2>
-              <strong>Liste des</strong> Feedbacks</h2>
+              <strong>Liste des </strong> Reclamations non traitées</h2>
             <ul class="header-dropdown m-r--5">
               <li class="dropdown">
                 <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
@@ -48,31 +47,31 @@
             </ul>
           </div>
           <div class="mat-elevation-z8">
-            <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource.data">
+            <table mat-table class="full-width-table" matSort  aria-label="Elements" [dataSource]="dataSource.data">
 
 
               <!-- Nom Column -->
               <ng-container matColumnDef="Nom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+                <td mat-cell *matCellDef="let row">{{row.user.nom}}</td>
               </ng-container>
 
               <!-- Prenom Column -->
               <ng-container matColumnDef="Prenom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
-                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+                <td mat-cell *matCellDef="let row">{{row.user.prenom}}</td>
               </ng-container>
 
               <!-- email Column -->
               <ng-container matColumnDef="E-mail">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+                <td mat-cell *matCellDef="let row">{{row.user.email}}</td>
               </ng-container>
 
-              <!-- Type Column -->
-              <ng-container matColumnDef="Type">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
+              <!-- Matiere Column -->
+              <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                <td mat-cell *matCellDef="let row">{{row.date}}</td>
               </ng-container>
 
               <!-- Description Column -->
@@ -82,13 +81,11 @@
               </ng-container>
 
 
-              <!-- Matiere Column -->
-              <ng-container matColumnDef="Matiere">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
-                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+              <!-- Type Column -->
+              <ng-container matColumnDef="Type">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
+                <td mat-cell *matCellDef="let row">{{row.type}}</td>
               </ng-container>
-
-
 
 
 
@@ -96,7 +93,7 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-            <mat-paginator #paginator
+             <mat-paginator #paginator
 
                            [pageIndex]="0"
                            [pageSize]="25"
