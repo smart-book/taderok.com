@@ -1,4 +1,3 @@
-import {QuizEtudiantID} from "./QuizEtudiantID";
 
 export class Quiz
 {
@@ -8,6 +7,5 @@ export class Quiz
   id_prof:number;
   note: number;
   nomQuiz:String;
-  corrige:boolean;
   date : Date;
 }

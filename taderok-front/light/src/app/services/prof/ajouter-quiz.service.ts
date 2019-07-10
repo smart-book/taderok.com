@@ -14,11 +14,7 @@ export class AjouterQuizService {
   constructor(private http: HttpClient) {}
 
  async ajouterQuiz(quiz: Object){
-
    return await this.http.post(`${this.baseUrl}`+`/add`, quiz).toPromise();
-
-
-
   }
   async getQuizById(id:number){
     return await this.http.get(`${this.baseUrl}`+`/`+`${id}`).toPromise();

@@ -36,26 +36,16 @@
               <tr>
                 <th>Nom Quiz</th>
                 <th>Date</th>
-                <th>Corrige</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let a of quiz">
-
+              <tr *ngFor="let q of quiz">
                 <td>
-                  {{a.nomQuiz}}
-
+                  {{q.nomQuiz}}
                 </td>
                 <td>
-                  {{a.date | date: 'dd/MM/yyyy h:mm'}}
+                  {{q.date | date: 'dd/MM/yyyy h:mm'}}
                 </td>
-                <ng-template [ngIf]="!a.corrige" [ngIfElse]="elseBlock">
-                  <td ><a href="" style="color: red;font-weight: bold;">A Corrigé </a></td>
-                </ng-template>
-                <ng-template #elseBlock>
-                  <td  style="color: green">Corrigé</td>
-                </ng-template>
-
               </tr>
               </tbody>
             </table>
