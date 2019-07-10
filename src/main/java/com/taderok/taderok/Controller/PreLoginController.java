@@ -34,6 +34,13 @@ public class PreLoginController {
     @PostMapping(value = "/registerEtudiant")
     public ResponseEntity<Response> registrationEtudiant (@RequestBody Etudiant etudiant){
         etudiant.setEnabled(true);
+        if(etudiant.getSexe().equals("femme")){
+            etudiant.setPhoto("girl.png");
+        }
+        if(etudiant.getSexe().equals("homme")){
+            etudiant.setPhoto("boy.png");
+        }
+
         Etudiant dbUser = userService.registerEtudiant(etudiant);
 
         if(dbUser!=null){
@@ -45,6 +52,13 @@ public class PreLoginController {
     @PostMapping(value = "/registerProf")
     public ResponseEntity<Response> registrationProf (@RequestBody Prof prof){
         prof.setEnabled(true);
+        if(prof.getSexe().equals("femme")){
+            prof.setPhoto("teachefemale.png");
+        }
+        if(prof.getSexe().equals("homme")){
+            prof.setPhoto("teacherMale.png");
+        }
+
         Prof dbUser = userService.registerProf(prof);
         if(dbUser!=null){
             return new ResponseEntity<Response>(new Response("Prof is saved"), HttpStatus.OK);
@@ -56,6 +70,12 @@ public class PreLoginController {
     @PostMapping(value = "/registerParent")
     public ResponseEntity<Response> registrationParent (@RequestBody Parent parent){
         parent.setEnabled(true);
+        if(parent.getSexe().equals("femme")){
+            parent.setPhoto("mother.png");
+        }
+        if(parent.getSexe().equals("homme")){
+            parent.setPhoto("father.png");
+        }
         Parent dbUser = userService.registerParent(parent);
         if(dbUser!=null){
             return new ResponseEntity<Response>(new Response("Parent is saved"), HttpStatus.OK);

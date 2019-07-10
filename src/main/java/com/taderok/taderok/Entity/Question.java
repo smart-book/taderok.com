@@ -12,11 +12,20 @@ public class Question {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String question;
+    private String BonneProposition;
     @ManyToOne
     private Quiz quiz;
     @JsonIgnore
     @OneToMany(mappedBy = "question", cascade = {CascadeType.REMOVE})
     private List<Proposition> propositions;
+
+    public String getBonneProposition() {
+        return BonneProposition;
+    }
+
+    public void setBonneProposition(String bonneProposition) {
+        BonneProposition = bonneProposition;
+    }
 
     public int getId() {
         return id;

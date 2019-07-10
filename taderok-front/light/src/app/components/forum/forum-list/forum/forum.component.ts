@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ForumService} from "../../../../services/forum/forum.service";
 import {Forum} from "../../../../models/forum";
 import {User} from "../../../../models/user";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from "sweetalert2";
+import {CommentaireForum} from "../../../../models/commentaireForum";
+declare const $: any;
 
 @Component({
   selector: 'app-forum',
@@ -16,6 +17,15 @@ export class ForumComponent implements OnInit {
   ListPublications : Forum[];
   user: any;
   userParse: User = new User();
+
+  niveauChoisi;
+
+  ListPublicationsParNiveau : Forum[] = [];
+  ListPublicationsParMatiere : Forum[] = [];
+
+  count : number = 0;
+
+  listCommentaires : CommentaireForum[] ;
   constructor(private forumService: ForumService) { }
 
   ngOnInit() {
@@ -30,18 +40,46 @@ export class ForumComponent implements OnInit {
     console.log(this.userParse);
   }
 
+  RedirectForum()
+  {
+    window.location.reload();
+  }
+
   ajouterStatus(){
     let now = new Date();
     this.forum.date = now;
     this.forumService.ajouterPublication(this.forum).subscribe(data=>
     {
       console.log(data);
-      Swal.fire({
-        title:'Votre publication est ajoutée!',
-        type:'success'}
-      )/*.then(window.location.reload())*/
+      $.notify("Publication ajoutée", "success");
     }
     , error1 => console.log(error1))
+  }
+
+  afficherListeDesCommentaires(id) {
+    this.forumService.getListCommentsOfOneForum(id).subscribe(
+      data => {
+        console.log(data);
+        this.listCommentaires = data;
+      }, error1 => console.log(error1)
+    );
+  }
+
+  afficherListePublicationsParNiveau(niveau){
+    this.ListPublications.filter(e=>{
+      if(e.niveau === niveau){
+        this.ListPublicationsParNiveau.push(e);
+        console.log(this.ListPublicationsParNiveau);
+      }
+      else {
+        console.log('nothing');
+        this.ListPublicationsParNiveau = [];
+        console.log(this.ListPublicationsParNiveau);
+      }
+    });
+
+    console.log(this.ListPublicationsParNiveau);
+
   }
 
 }

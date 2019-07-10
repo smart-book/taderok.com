@@ -46,8 +46,20 @@
               </li>
             </ul>
           </div>
-          <div class="mat-elevation-z8">
-            <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource.data">
+
+          <div>
+
+            <div class="search-div">
+              <mat-form-field class="search-form-field" >
+                <input matInput name="value" class="toolbar-search" placeholder="chercher.." type="text" autocomplete="off" (keypress)="applyFilter()" [(ngModel)]="value">
+                <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="value" (click)="onSearchClear()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+
+
+            <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data | filter:value">
 
 
               <!-- Nom Column -->
@@ -92,11 +104,6 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-            <th mat-card *ngIf="showSpinner"></th>
-              <mat-progress-spinner
-                color="navy"
-                mode="indeterminate">
-              </mat-progress-spinner>
 
 
 
