@@ -26,16 +26,6 @@ public class Prof extends User {
     @JsonIgnore
     private List<GroupeChat> groupeChatList;
 
-    public List<Quiz> getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(List<Quiz> quiz) {
-        this.quiz = quiz;
-    }
-
-    @OneToMany(mappedBy = "id_prof")
-    private List<Quiz> quiz;
 
     public Prof(User u) {
         super(u);

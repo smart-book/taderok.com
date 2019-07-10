@@ -17,8 +17,6 @@ public class Seance {
     @ManyToOne
     @JsonIgnoreProperties("seanceList")
     private Prof prof;
-    @ManyToMany(mappedBy = "seanceList")
-    private List<Quiz> quizList;
     @JsonIgnoreProperties("seance")
     @OneToMany(mappedBy = "seance")
     private List<Ressources> ressourcesList;
@@ -69,13 +67,6 @@ public class Seance {
         this.prof = prof;
     }
 
-    public List<Quiz> getQuizList() {
-        return quizList;
-    }
-
-    public void setQuizList(List<Quiz> quizList) {
-        this.quizList = quizList;
-    }
 
     public List<Ressources> getRessourcesList() {
         return ressourcesList;

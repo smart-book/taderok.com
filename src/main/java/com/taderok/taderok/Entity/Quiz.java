@@ -23,9 +23,18 @@ public class Quiz {
     private List<Seance> seanceList;
     @JsonIgnoreProperties("quiz")
     @OneToMany(mappedBy = "quiz")
-    private List<Questions> questions;
-    @OneToMany(mappedBy = "id.id_quiz")
-    private List<QuizEtudiant> quizEtudiant = new ArrayList<>();
+    private List<Question> questions;
+    @OneToMany(mappedBy = "id.quiz")
+    @JsonIgnore
+    private List<QuizEtudiant> quizEtudiants;
+
+    public List<QuizEtudiant> getQuizEtudiants() {
+        return quizEtudiants;
+    }
+
+    public void setQuizEtudiants(List<QuizEtudiant> quizEtudiants) {
+        this.quizEtudiants = quizEtudiants;
+    }
 
     public int getId() {
         return id;
@@ -35,21 +44,12 @@ public class Quiz {
         this.id = id;
     }
 
-
-    public Prof getId_prof() {return id_prof; }
+    public Prof getId_prof() {
+        return id_prof;
+    }
 
     public void setId_prof(Prof id_prof) {
         this.id_prof = id_prof;
-    }
-
-
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getNomQuiz() {
@@ -60,6 +60,14 @@ public class Quiz {
         this.nomQuiz = nomQuiz;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public List<Seance> getSeanceList() {
         return seanceList;
     }
@@ -68,11 +76,12 @@ public class Quiz {
         this.seanceList = seanceList;
     }
 
-    public List<Questions> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<Questions> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
+
 }
