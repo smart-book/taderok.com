@@ -59,7 +59,7 @@
             </div>
 
 
-            <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data">
+            <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data | filter:value">
 
 
               <!-- Nom Column -->

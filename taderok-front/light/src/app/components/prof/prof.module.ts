@@ -29,7 +29,7 @@ import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarProfComponent } from './calendar-prof/calendar-prof.component';
 import { AfficherFeedbackComponent } from './feedback/afficher-feedback/afficher-feedback.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -62,7 +62,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class ProfModule { }
