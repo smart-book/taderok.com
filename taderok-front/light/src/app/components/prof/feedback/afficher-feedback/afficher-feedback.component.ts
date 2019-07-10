@@ -6,6 +6,8 @@ import {Feedback} from "../../../../models/feedback";
 
 
 
+
+
 @Component({
   selector: 'app-afficher-feedback',
   templateUrl: './afficher-feedback.component.html',
@@ -23,17 +25,18 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['Nom','Prenom','E-mail','Type', 'Description','Matiere'];
-
+  showSpinner = true;
   ngOnInit() {
     setTimeout(()=>{
+      this.showSpinner= false;
       this.dataSource = new AfficherFeedbackDataSource(this.feedbackService);
-      console.log('this is the data source/n : ');
-      console.log(this.dataSource.data);})
+      })
 
   }
 
   ngAfterViewInit() {
     setTimeout(()=>{
+      this.showSpinner= false;
       this.table.dataSource = this.dataSource;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

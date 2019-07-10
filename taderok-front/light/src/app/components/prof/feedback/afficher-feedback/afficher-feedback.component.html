@@ -92,11 +92,19 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
+            <th mat-card *ngIf="showSpinner"></th>
+              <mat-progress-spinner
+                color="navy"
+                mode="indeterminate">
+              </mat-progress-spinner>
+
+
+
             <mat-paginator #paginator
 
-                           [pageIndex]="0"
-                           [pageSize]="25"
-                           [pageSizeOptions]="[25, 50, 100, 250]" showFirstLastButtons>
+                           [length]="100"
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
             </mat-paginator>
           </div>
         </div>
