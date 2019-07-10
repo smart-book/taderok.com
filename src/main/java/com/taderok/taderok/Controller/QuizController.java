@@ -6,6 +6,8 @@ import com.taderok.taderok.Service.QuizProfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/quiz")
@@ -20,4 +22,18 @@ public class QuizController {
     public void addQuiz(@RequestBody Quiz quiz){
         quizProfService.addQuiz(quiz);
     }
+
+
+    @RequestMapping("/findAll")
+    public List<Quiz> getAllQuiz(){ return quizEtudiantService.getAllQuiz();
+    }
+
+    @RequestMapping("/{id}")
+    public Quiz getQuiz(@PathVariable int id)
+    {
+        return quizEtudiantService.getQuiz(id);
+    }
+
+
+
 }
