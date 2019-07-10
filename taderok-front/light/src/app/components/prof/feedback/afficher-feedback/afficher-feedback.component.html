@@ -49,14 +49,15 @@
 
           <div>
 
+            <div class="search-div">
+              <mat-form-field class="search-form-field" >
+                <input matInput class="toolbar-search" placeholder="chercher.." type="text" autocomplete="off" (keyup)="applyFilter()" [(ngModel)]="value">
+                <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="value" (click)="onSearchClear()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
 
-            <mat-form-field appearance="legacy" class="search-form-field">
-              <mat-label>Chercher</mat-label>
-              <input matInput placeholder="Entrer.." class="toolbar-search" type="text" autocomplete="off">
-              <button mat-button matSuffix mat-icon-button aria-label="Clear">
-                <mat-icon>close</mat-icon>
-              </button>
-            </mat-form-field>
 
             <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data">
 
