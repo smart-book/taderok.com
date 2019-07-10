@@ -40,6 +40,11 @@ export class ForumComponent implements OnInit {
     console.log(this.userParse);
   }
 
+  RedirectForum()
+  {
+    window.location.reload();
+  }
+
   ajouterStatus(){
     let now = new Date();
     this.forum.date = now;

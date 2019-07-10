@@ -8,12 +8,20 @@ declare const $: any;
   styleUrls: ['./list-quiz.component.sass']
 })
 export class ListQuizComponent implements OnInit {
- quiz:Quiz[]
+
+  quiz: Quiz[]
+
   constructor(private quizServ: ListQuizService) { }
 
-
   ngOnInit() {
-    this.quizServ.getAllQuiz().subscribe(data => this.quiz = data);
+
+    this.quizServ.getAllQuiz().subscribe( data=> {
+      console.log(data);
+      this.quiz = data;
+    }, error => console.log(error)
+    );
+
+
     $('.js-basic-example').DataTable({
       responsive: true
     });

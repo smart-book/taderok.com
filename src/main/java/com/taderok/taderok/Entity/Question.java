@@ -9,14 +9,14 @@ import java.util.List;
 @Entity
 public class Question {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String question;
     private String BonneProposition;
     @ManyToOne
     private Quiz quiz;
     @JsonIgnore
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.REMOVE})
     private List<Proposition> propositions;
 
     public String getBonneProposition() {
