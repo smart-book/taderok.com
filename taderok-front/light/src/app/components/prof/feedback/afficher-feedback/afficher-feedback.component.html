@@ -46,8 +46,19 @@
               </li>
             </ul>
           </div>
-          <div class="mat-elevation-z8">
-            <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource.data">
+
+          <div>
+
+
+            <mat-form-field appearance="legacy" class="search-form-field">
+              <mat-label>Chercher</mat-label>
+              <input matInput placeholder="Entrer.." class="toolbar-search" type="text" autocomplete="off">
+              <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data">
 
 
               <!-- Nom Column -->
@@ -92,11 +103,6 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-            <th mat-card *ngIf="showSpinner"></th>
-              <mat-progress-spinner
-                color="navy"
-                mode="indeterminate">
-              </mat-progress-spinner>
 
 
 
