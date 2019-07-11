@@ -56,11 +56,15 @@ public class QuizEtudiantService {
         double nq=20/questionsList.size()-1;
         for (Question question:questionsList) {
             List<Proposition> reponsesList=question.getPropositions();
+            List<BonneReponses> bnreponseList=question.getBonneReponses();
+
             //calculer le nombre des réponses vraies pour connaitre la note de chaque reponse
             double nbR=0;
             for (Proposition r:reponsesList) {
-                if(r.getNom().equals(question.getBonneProposition()))
-                    nbR++; }
+
+               for(BonneReponses o:bnreponseList) {
+                if(r.getNom().equals(o.getNom()))
+                    nbR++; }}
             nbR=nq/nbR;
             //verifier les reponses
 
