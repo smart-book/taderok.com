@@ -8,4 +8,5 @@ export class Quiz
   nomQuiz:String;
   date : Date;
   questions: Question[];
+  visible: Boolean;
 }

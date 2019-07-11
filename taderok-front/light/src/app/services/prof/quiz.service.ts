@@ -8,7 +8,6 @@ import {Observable} from "rxjs";
 })
 export class QuizService {
 
-  private baseUrl = "http://localhost:8181/quiz"
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +17,7 @@ export class QuizService {
   addQuestion(question: Object, id: Number): Observable<Object>{
     return this.http.post('http://localhost:8181/quiz/'+id+'/addquestion', question);
   }
-  getAllQuiz(quizzes: Object[]): Observable<Object>{
-    return this.http.get<Object[]>('http://localhost:8181/quiz/allQuiz');
+  getAllQuiz(): Observable<Quiz[]>{
+    return this.http.get<Quiz[]>('http://localhost:8181/quiz/allQuiz');
   }
 }
