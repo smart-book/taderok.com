@@ -44,7 +44,7 @@ public class QuizController {
     public void addProposition(@RequestBody Proposition proposition, @PathVariable int id){
         quizProfService.addProposition(proposition, id);
     }
-/*
+
     @RequestMapping("/findAll")
     public List<Quiz> getAllQuiz(){ return quizEtudiantService.getAllQuiz();
     }
@@ -54,7 +54,6 @@ public class QuizController {
     {
         return quizEtudiantService.getQuiz(id);
     }
-*/
 
 
 }
