@@ -11,7 +11,7 @@ declare const $: any;
 })
 export class ListQuizComponent implements OnInit {
 
-  quizzes: Quiz[]
+  quizzes: Object[];
   quiz: Quiz = new Quiz();
   quizadded: Object;
   question: Question = new Question();
