@@ -18,4 +18,7 @@ export class QuizService {
   addQuestion(question: Object, id: Number): Observable<Object>{
     return this.http.post('http://localhost:8181/quiz/'+id+'/addquestion', question);
   }
+  getAllQuiz(quizzes: Object[]): Observable<Object>{
+    return this.http.get<Object[]>('http://localhost:8181/quiz/allQuiz');
+  }
 }
