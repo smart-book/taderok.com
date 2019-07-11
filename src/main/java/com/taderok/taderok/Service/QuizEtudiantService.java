@@ -29,13 +29,13 @@ public class QuizEtudiantService {
     @Autowired
     private HelloResource helloResource;
     @Autowired
-    private QuizEtudiantRepository QuizEtudiantRepository;
+    private QuizEtudiantRepository quizEtudiantRepository;
 
 
 
     public List<QuizEtudiant> getAllQuizEtudiant(QuizEtudiant idE){
         System.out.println("Etudiant Id"+idE.getId().getEtudiant().getId());
-        return (List<QuizEtudiant>) QuizEtudiantRepository.findAllById((Iterable<QuizEtudiantId>)idE.getId());
+        return (List<QuizEtudiant>) quizEtudiantRepository.findAllById((Iterable<QuizEtudiantId>)idE.getId());
 
     }
 
