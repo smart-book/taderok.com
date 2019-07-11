@@ -18,7 +18,7 @@ import java.util.List;
 
 @Service
 public class QuizEtudiantService {
-
+/*
     @Autowired
     private QuizRepository quizRepository;
 
@@ -67,5 +67,5 @@ public class QuizEtudiantService {
         }
         return 0;
     }
-
+*/
 }

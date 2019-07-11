@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../../../../models/quiz";
-import {AjouterQuizService} from "../../../../services/prof/ajouter-quiz.service";
-import {Question} from "../../../../models/Question";
-import {Reponse} from "../../../../models/Reponse";
 import { Router } from '@angular/router';
 import {QuizService} from "../../../../services/prof/quiz.service";
 @Component({
@@ -17,6 +14,7 @@ export class AjouterQuizComponent implements OnInit {
 
   ngOnInit() {
   }
+
   addQuiz(p){
     this.quizService.addQuiz(p).subscribe(data => console.log('qui ajouté'));
   }

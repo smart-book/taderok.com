@@ -28,11 +28,12 @@ public class QuizProfService {
 
     }
 
-    public void addQuiz(Quiz quiz){
+    public Quiz addQuiz(Quiz quiz){
         Prof p = profRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         quiz.setId_prof(p);
         quiz.setDate(new Date());
         quizRepository.save(quiz);
+        return quiz;
     }
 
     public void deleteQuiz(int id){
