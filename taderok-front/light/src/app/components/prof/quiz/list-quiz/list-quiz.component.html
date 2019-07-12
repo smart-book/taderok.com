@@ -29,6 +29,78 @@
           </ul>
         </div>
         <div class="body">
+          <!-- Modal d'ajout d'un Quiz : exampleModal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+               aria-labelledby="formModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer un Quiz </h5><br><br>
+                  <button type="button" class="close" data-dismiss="modal"
+                          aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <label>Nom</label>
+                    <div class="form-group">
+                      <div class="form-line">
+                        <input type="text" name="type_reclamation" class="form-control"
+                               placeholder="Entrer le nom du Quiz" [(ngModel)]="quiz.nomQuiz" id="yamli">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Annuler</button>
+                      <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" (click)="addQuiz(quiz)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Fin div de modal d'ajout d'un Quiz -->
+          <button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
+                  data-target="#exampleModal">Ajouter un Quiz</button>
+          <!-- Modal d'ajout d'une question : exampleModal -->
+          <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+               aria-labelledby="formModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" style="padding-left: 150px" id="formModal1">Ajouter une question </h5><br><br>
+                  <button type="button" class="close" data-dismiss="modal"
+                          aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <label>Nom</label>
+                    <div class="form-group">
+                      <div class="form-line">
+                        <input type="text" name="type_reclamation" class="form-control"
+                               placeholder="Entrer le nom du Quiz" [(ngModel)]="question.question" id="yamli1">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-line">
+                        <input type="text" name="type_reclamation" class="form-control"
+                               placeholder="Entrer le nom du Quiz" [(ngModel)]="question.BonneProposition" id="yamli11">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Annuler</button>
+                      <button type="button"  (click)="addQuestion(question, quizadded.id)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Fin div de modal d'ajout d'une question -->
           <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover save-stage dataTable"
                    style="width:100%;">
@@ -36,26 +108,16 @@
               <tr>
                 <th>Nom Quiz</th>
                 <th>Date</th>
-                <th>Corrige</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let a of quiz">
-
+              <tr *ngFor="let q of quizzes">
                 <td>
-                  {{a.nomQuiz}}
-
+                  {{q.nomQuiz}}
                 </td>
                 <td>
-                  {{a.date | date: 'dd/MM/yyyy h:mm'}}
+                  {{q.date | date: 'dd/MM/yyyy h:mm'}}
                 </td>
-                <ng-template [ngIf]="!a.corrige" [ngIfElse]="elseBlock">
-                  <td ><a href="" style="color: red;font-weight: bold;">A Corrigé </a></td>
-                </ng-template>
-                <ng-template #elseBlock>
-                  <td  style="color: green">Corrigé</td>
-                </ng-template>
-
               </tr>
               </tbody>
             </table>

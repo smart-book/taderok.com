@@ -1,19 +1,18 @@
 package com.taderok.taderok.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
-public class Proposition {
+public class BonneReponses {
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     private String nom;
-    @ManyToOne
-    @JsonIgnore
-    private Question question;
 
     public int getId() {
         return id;
@@ -38,4 +37,11 @@ public class Proposition {
     public void setQuestion(Question question) {
         this.question = question;
     }
+
+    @ManyToOne
+    private Question question;
+
+
+
+
 }

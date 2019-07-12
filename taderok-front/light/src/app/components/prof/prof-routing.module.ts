@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AjouterComponent} from './reclamation/ajouter/ajouter.component';
 
-import {ListQuizComponent} from './quiz/list-quiz/list-quiz.component';
 import {AjouterQuizComponent} from './quiz/ajouter-quiz/ajouter-quiz.component';
+import { ListComponent } from './quiz/list/list.component';
 
 import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
@@ -31,7 +31,7 @@ const routes: Routes = [
   {
 
     path: 'ListQuiz',
-    component: ListQuizComponent
+    component: ListComponent
   },
 
   {

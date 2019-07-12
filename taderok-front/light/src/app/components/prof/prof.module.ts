@@ -29,13 +29,14 @@ import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarProfComponent } from './calendar-prof/calendar-prof.component';
 import { AfficherFeedbackComponent } from './feedback/afficher-feedback/afficher-feedback.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ListComponent } from './quiz/list/list.component';
 
 
 
 @NgModule({
 
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, AfficherFeedbackComponent],
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, AfficherFeedbackComponent, ListComponent],
 
 
   imports: [
@@ -60,7 +61,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class ProfModule { }

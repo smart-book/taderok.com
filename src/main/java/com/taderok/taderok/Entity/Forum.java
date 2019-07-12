@@ -18,10 +18,9 @@ public class Forum {
     private String matiere;
     private String niveau;
     @ManyToOne
-    @JsonIgnore
     private User user;
     @JsonIgnore
-    @OneToMany(mappedBy = "forum", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "forum", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
     private List<CommentaireForum> commentaireForumList;
 
     public int getId() {

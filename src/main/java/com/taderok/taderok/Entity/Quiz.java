@@ -11,18 +11,23 @@ import java.util.List;
 @Entity
 public class Quiz {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JsonIgnoreProperties("quiz")
     private Prof id_prof;
     private String nomQuiz;
     private Date date;
+    private Boolean visible;
+
+
+
+
     @ManyToMany
     @JsonIgnore
     private List<Seance> seanceList;
     @JsonIgnoreProperties("quiz")
-    @OneToMany(mappedBy = "quiz")
+    @OneToMany(mappedBy = "quiz", cascade = {CascadeType.REMOVE})
     private List<Question> questions;
     @OneToMany(mappedBy = "id.quiz")
     @JsonIgnore
@@ -84,4 +89,11 @@ public class Quiz {
         this.questions = questions;
     }
 
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
 }

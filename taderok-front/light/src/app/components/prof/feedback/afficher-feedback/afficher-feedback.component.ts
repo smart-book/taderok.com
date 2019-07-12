@@ -19,6 +19,7 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Feedback>;
   dataSource: AfficherFeedbackDataSource;
+  value:string;
 
   constructor(private feedbackService: FeedbackService) {
   }
@@ -43,8 +44,14 @@ export class AfficherFeedbackComponent implements AfterViewInit, OnInit {
 
   }
 
-  applyFilter(filterValue: string){
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(){
+    this.dataSource.filter = this.value.trim().toLowerCase();
+  }
+  onSearchClear(){
+    this.value = '';
+    this.applyFilter();
   }
 
+
 }
+

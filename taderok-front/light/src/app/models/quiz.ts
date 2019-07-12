@@ -1,13 +1,12 @@
-import {QuizEtudiantID} from "./QuizEtudiantID";
+import {Question} from "./Question";
 
 export class Quiz
 {
 
   id :number;
-  id_etudiant: number;
   id_prof:number;
-  note: number;
   nomQuiz:String;
-  corrige:boolean;
   date : Date;
+  questions: Question[];
+  visible: Boolean;
 }

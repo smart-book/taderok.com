@@ -1,3 +1,6 @@
+
+
+
 <section class="content">
   <div class="container-fluid">
     <div class="block-header">
@@ -25,7 +28,7 @@
         <div class="card">
           <div class="header">
             <h2>
-              <strong>Liste des</strong> Feedbacks</h2>
+              <strong>Liste des</strong> Quiz</h2>
             <ul class="header-dropdown m-r--5">
               <li class="dropdown">
                 <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
@@ -51,7 +54,7 @@
 
             <div class="search-div">
               <mat-form-field class="search-form-field" >
-                <input matInput name="value" class="toolbar-search" placeholder="chercher.." type="text" autocomplete="off" (keypress)="applyFilter()" [(ngModel)]="value">
+                <input matInput name="value" class="toolbar-search" placeholder="chercher.." type="text" autocomplete="off" [(ngModel)]="value">
                 <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="value" (click)="onSearchClear()">
                   <mat-icon>close</mat-icon>
                 </button>
@@ -59,45 +62,21 @@
             </div>
 
 
-            <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data | filter:value">
+            <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data">
 
 
               <!-- Nom Column -->
-              <ng-container matColumnDef="Nom">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.nom}}</td>
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>id </th>
+                <td mat-cell *matCellDef="let row">{{row.id}}</td>
               </ng-container>
 
               <!-- Prenom Column -->
-              <ng-container matColumnDef="Prenom">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.prenom}}</td>
+              <ng-container matColumnDef="nomQuiz">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>nom quiz</th>
+                <td mat-cell *matCellDef="let row">{{row.nomQuiz}}</td>
               </ng-container>
 
-              <!-- email Column -->
-              <ng-container matColumnDef="E-mail">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.email}}</td>
-              </ng-container>
-
-              <!-- Type Column -->
-              <ng-container matColumnDef="Type">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
-              </ng-container>
-
-              <!-- Description Column -->
-              <ng-container matColumnDef="Description">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>description</th>
-                <td mat-cell *matCellDef="let row">{{row.description}}</td>
-              </ng-container>
-
-
-              <!-- Matiere Column -->
-              <ng-container matColumnDef="Matiere">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
-                <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
-              </ng-container>
 
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -113,6 +92,7 @@
                            [pageSize]="10"
                            [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
             </mat-paginator>
+
           </div>
         </div>
       </div>
