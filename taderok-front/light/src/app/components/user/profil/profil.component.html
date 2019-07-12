@@ -7,14 +7,6 @@
             <li class="breadcrumb-item">
               <h4 class="page-title">Profile</h4>
             </li>
-            <li class="breadcrumb-item bcrumb-1">
-              <a routerLink="/dashboard/main">
-                <i class="fas fa-home"></i> Home</a>
-            </li>
-            <li class="breadcrumb-item bcrumb-2">
-              <a href="#" onClick="return false;">Apps</a>
-            </li>
-            <li class="breadcrumb-item active">Contact List</li>
           </ul>
         </div>
       </div>
@@ -28,21 +20,21 @@
           </div>
           <div class="row">
             <div class="contact-photo">
-              <img src="assets/images/usrbig.jpg" class="img-responsive" alt=""> </div>
+              <img src="assets/images/upload/uploadUser/{{profil.photo}}" class="img-responsive" alt="" style="height: 125px;"> </div>
           </div>
           <div class="contact-usertitle">
             <div class="contact-usertitle-job"> {{profil.diplome}} </div>
           </div>
           <ul class="list-group list-group-unbordered">
             <li class="list-group-item">
-                Adresse
-              <a class="pull-right">{{profil.adresse}}</a>
+                Email
+              <a class="pull-right">{{profil.email}}</a>
             </li>
             <li class="list-group-item">
               Numéro
               <a class="pull-right">{{profil.telephone}}</a>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item" *ngIf="profil.role==='Prof'">
               Nombre de groupe
               <a class="pull-right"></a>
             </li>
@@ -54,172 +46,155 @@
         </div>
       </div>
 
-      <div class="col-lg-8 col-md-12">
+      <div class="col-lg-9 col-md-12">
         <div class="card">
-          <div class="profile-tab-box">
-            <div class="p-l-20">
-              <ul class="nav ">
-                <li class="nav-item tab-all">
-                  <a class="nav-link active show" href="#project" data-toggle="tab">A propos</a>
-                </li>
-                <li class="nav-item tab-all p-l-20">
-                  <a class="nav-link" href="#usersettings" data-toggle="tab">Expérience</a>
-                </li>
-                <li class="nav-item tab-all p-l-20">
-                  <a class="nav-link" href="#listgroupe" data-toggle="tab">Liste de groupe</a>
-                </li>
-                <li class="nav-item tab-all p-l-20">
-                  <a class="nav-link" href="#emploi" data-toggle="tab">Emploi du temps</a>
-                </li>
-                <li class="nav-item tab-all p-l-20">
-                  <a class="nav-link" href="#avis" data-toggle="tab">Avis</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
-            <div class="row clearfix">
-              <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card project_widget">
-                  <div class="header">
-                    <h2>A propos</h2>
-                  </div>
-                  <div class="body">
-                    <div class="row">
-                      <div class="col-md-3 col-6 b-r">
-                        <strong>Full Name</strong>
-                        <br>
-                        <p class="text-muted">{{profil.nom}} {{profil.prenom}}</p>
-                      </div>
-                      <div class="col-md-3 col-6 b-r">
-                        <strong>Numéro de télèphone</strong>
-                        <br>
-                        <p class="text-muted">(+216){{profil.telephone}}</p>
-                      </div>
-                      <div class="col-md-3 col-6 b-r">
-                        <strong>Email</strong>
-                        <br>
-                        <p class="text-muted">{{profil.email}}</p>
-                      </div>
-                      <div class="col-md-3 col-6">
-                        <strong>Adresse</strong>
-                        <br>
-                        <p class="text-muted">Tunisie</p>
-                      </div>
-                    </div>
-                    <p class="m-t-30">Completed my graduation in Arts from the well known and
-                      renowned institution
-                      of India – SARDAR PATEL ARTS COLLEGE, BARODA in 2000-01, which was
-                      affiliated
-                      to M.S. University. I ranker in University exams from the same
-                      university
-                      from 1996-01.</p>
-                    <p>Worked as Professor and Head of the department at Sarda Collage, Rajkot,
-                      Gujarat
-                      from 2003-2015 </p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                      industry. Lorem
-                      Ipsum has been the industry's standard dummy text ever since the 1500s,
-                      when
-                      an unknown printer took a galley of type and scrambled it to make a
-                      type
-                      specimen book. It has survived not only five centuries, but also the
-                      leap
-                      into electronic typesetting, remaining essentially unchanged.</p>
-                    <br>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card project_widget">
-                  <div class="header">
-                    <h2>Education</h2>
-                  </div>
-                  <div class="body">
-                    <ul>
-                      <li>B.A.,Gujarat University, Ahmedabad,India.</li>
-                      <li>M.A.,Gujarat University, Ahmedabad, India.</li>
-                      <li>P.H.D., Shaurashtra University, Rajkot</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card project_widget">
-                  <div class="header">
-                    <h2>Experience</h2>
-                  </div>
-                  <div class="body">
 
+          <div class="body">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+              <li role="presentation">
+                <a href="#home" data-toggle="tab" class="active show"><i class="fa fa-user"></i> A propos</a>
+              </li>
+              <li role="presentation">
+                <a href="#profile" data-toggle="tab"><i class="fa fa-users"></i> Amis</a>
+              </li>
+              <li role="presentation" *ngIf="profil.role==='Prof'">
+                <a href="#messages" data-toggle="tab">Avis</a>
+              </li>
+              <li role="presentation">
+                <a href="#calendar" data-toggle="tab"><i class="fa fa-calendar-alt"></i> Emplois du temps</a>
+              </li>
+              <li role="presentation" >
+                <a href="#setting" data-toggle="tab" ><i class="fa fa-cogs"></i> Paramètres</a>
+              </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active show" id="home">
+                <div class="row">
+                  <div class="col-md-3 col-6 b-r">
+                    <strong>Nom et prénom</strong>
+                    <br>
+                    <p class="text-muted">{{profil.nom}} {{profil.prenom}}</p>
+                  </div>
+                  <div class="col-md-3 col-6 b-r">
+                    <strong>Numéro de télèphone</strong>
+                    <br>
+                    <p class="text-muted">(+216){{profil.telephone}}</p>
+                  </div>
+                  <div class="col-md-3 col-6 b-r">
+                    <strong>Email</strong>
+                    <br>
+                    <p class="text-muted">{{profil.email}}</p>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <strong>Adresse</strong>
+                    <br>
+                    <p class="text-muted">{{profil.adresse}}</p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="timeline" aria-expanded="false">
-          </div>
-          <div role="tabpanel" class="tab-pane" id="usersettings" aria-expanded="false">
-            <div class="card">
-              <div class="header">
-                <h2>
-                  <strong>Security</strong> Settings</h2>
+              <div role="tabpanel" class="tab-pane fade" id="profile">
+                <b>Profile Content</b>
+                <p>
+                  Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit
+                  mediocritatem an. Pri ut tation electram moderatius.
+                  Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent
+                  aliquid
+                  pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere
+                  gubergren
+                  sadipscing mel.
+                </p>
               </div>
-              <div class="body">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Current Password">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="New Password">
-                </div>
-                <button class="btn btn-info btn-round">Save Changes</button>
+              <div role="tabpanel" class="tab-pane fade" id="messages">
+                <b>Message Content</b>
+                <p>
+                  Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit
+                  mediocritatem an. Pri ut tation electram moderatius.
+                  Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent
+                  aliquid
+                  pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere
+                  gubergren
+                  sadipscing mel.
+                </p>
               </div>
-            </div>
-            <div class="card">
-              <div class="header">
-                <h2>
-                  <strong>Account</strong> Settings</h2>
+              <div role="tabpanel" class="tab-pane fade" id="calendar">
+                <full-calendar
+
+                  [plugins]="options.plugins"
+
+                  [header]="options.header"
+                  [editable]="true"
+                  defaultView="dayGridMonth"
+                  [weekends]="true">
+
+                </full-calendar>
               </div>
-              <div class="body">
-                <div class="row clearfix">
-                  <div class="col-lg-6 col-md-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="First Name">
+
+              <div role="tabpanel" class="tab-pane fade" id="setting">
+                <b>Paramètres du compte</b>
+
+                <div class="body">
+                  <div class="form-group">
+                    <input type="text" class="form-control" value="{{profil.email}}" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Mot de passe">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Nouveau mot de passe">
+                  </div>
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="text" name="nom" value="{{profil.nom}}" class="form-control"
+                             placeholder="Nom">
                     </div>
                   </div>
-                  <div class="col-lg-6 col-md-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Last Name">
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="text" name="prenom" value="{{profil.prenom}}" class="form-control"
+                             placeholder="Prenom">
                     </div>
                   </div>
-                  <div class="col-lg-4 col-md-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="City">
+                  <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                      <div class="form-check form-check-radio">
+                        <label>
+                          <input name="sexe" type="radio" checked value="homme" value="{{profil.sexe}}"/>
+                          <span>Homme</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                      <div class="form-check form-check-radio">
+                        <label>
+                          <input name="sexe" type="radio" value="femme"  />
+                          <span>Femme</span>
+                        </label>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-md-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="E-mail">
+
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="date" name="dateNaiss" value="{{profil.dateNaissance}}"  class="form-control"
+                             placeholder="Date de naissance">
                     </div>
                   </div>
-                  <div class="col-lg-4 col-md-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Country">
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="text" name="adresse" value="{{profil.adresse}}" class="form-control"
+                             placeholder="Adresse">
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                                            <textarea rows="4" class="form-control no-resize"
-                                                      placeholder="Address Line 1"></textarea>
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="number" name="telephone" value="{{profil.telephone}}" class="form-control"
+                             placeholder="Telephone">
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <button class="btn btn-primary btn-round">Save Changes</button>
-                  </div>
+                  <button class="btn btn-info btn-round">Save Changes</button>
                 </div>
               </div>
             </div>

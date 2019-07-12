@@ -210,8 +210,12 @@
                             </div>
                         </div>
                         <div class="profile-usertitle">
+                          <a routerLink="user/profil">
                             <div class="sidebar-userpic-name"> {{conntectedUser.nom}} {{conntectedUser.prenom}} </div>
+                          </a>
                             <div class="profile-usertitle-job ">{{conntectedUser.role}} </div>
+
+
                         </div>
                     </li>
                     <li routerLinkActive="active">
@@ -232,22 +236,7 @@
                         </ul>
                     </li>
 
-                    <li routerLinkActive="active">
-                        <a href="#" onClick="return false;" class="menu-toggle">
-                            <i class="far fa-file-alt"></i>
-                            <span>Extra Pages</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li routerLinkActive="active">
-                                <a routerLink="extra-pages/profile">Profile</a>
-                            </li>
-                          <li routerLinkActive="active">
-                            <a routerLink="extra-pages/blankPage">Page vide</a>
-                          </li>
 
-
-                        </ul>
-                    </li>
 
                   <li routerLinkActive="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
