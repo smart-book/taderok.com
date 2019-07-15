@@ -18,6 +18,8 @@ export class ListDataSource extends DataSource<Quiz> {
 
     this.data = [];
     this.quizService.getAllQuiz().subscribe((data)=>{
+      console.log("after subscribe");
+      console.log(data);
         data.map(e => {
           this.objectList = new Quiz();
           this.objectList = e;

@@ -37,6 +37,10 @@ public class User implements Serializable {
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<Reclamation> reclamationList;
+    @OneToMany(mappedBy = "receiver")
+    private List<DemandeAmis> demandeListReçues;
+    @OneToMany(mappedBy = "sender")
+    private List<DemandeAmis> demandeListEnvoyees;
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
     private List<Message> messageList;
@@ -193,6 +197,22 @@ public class User implements Serializable {
 
     public void setRole(String roles) {
         this.role = roles;
+    }
+
+    public List<DemandeAmis> getDemandeListReçues() {
+        return demandeListReçues;
+    }
+
+    public void setDemandeListReçues(List<DemandeAmis> demandeListReçues) {
+        this.demandeListReçues = demandeListReçues;
+    }
+
+    public List<DemandeAmis> getDemandeListEnvoyees() {
+        return demandeListEnvoyees;
+    }
+
+    public void setDemandeListEnvoyees(List<DemandeAmis> demandeListEnvoyees) {
+        this.demandeListEnvoyees = demandeListEnvoyees;
     }
 
     @Override
