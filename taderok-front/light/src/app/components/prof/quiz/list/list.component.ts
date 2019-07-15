@@ -3,6 +3,8 @@ import { MatPaginator, MatSort, MatTable} from '@angular/material';
 import { ListDataSource } from './list-datasource';
 import {Quiz} from "../../../../models/quiz";
 import {QuizService} from "../../../../services/prof/quiz.service";
+import {Question} from "../../../../models/Question";
+import {Proposition} from "../../../../models/Proposition";
 
 @Component({
   selector: 'app-list',
@@ -15,22 +17,42 @@ export class ListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable, {static: true}) table: MatTable<Quiz>;
   dataSource: ListDataSource;
   value:string;
+  quizadded: Object;
+  questionadded: Object;
+  question: Question = new Question();
+  quiz: Quiz = new Quiz();
+  proposition: Proposition = new Proposition();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'nomQuiz'];
   constructor(private quizService: QuizService) {
   }
+
   ngOnInit() {
+    setTimeout(()=>{
     this.dataSource = new ListDataSource(this.quizService);
+    })
   }
 
   ngAfterViewInit() {
+    setTimeout(()=>{
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+    })
   }
 
   onSearchClear(){
     this.value = '';
+  }
+
+  addQuiz(p){
+      this.quizService.addQuiz(p).subscribe(data => { this.quizadded = data });
+  }
+  addQuestion(q, id){
+    this.quizService.addQuestion(q, id).subscribe(data => { console.log(data)});
+  }
+  addProposition(pr, id){
+    this.quizService.addProposition(pr, id).subscribe(data => console.log('proposition ajouté'));
   }
 }
