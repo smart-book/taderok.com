@@ -1,6 +1,6 @@
 import {Question} from "./Question";
 
-export class BonneReponse
+export class BonneReponses
 {
   id: number;
   nom: String;

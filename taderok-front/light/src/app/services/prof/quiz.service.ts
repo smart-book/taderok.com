@@ -23,5 +23,8 @@ export class QuizService {
   addProposition(proposition: Object, id: Number): Observable<Object>{
     return this.http.post('http://localhost:8181/quiz/'+id+'/addproposition', proposition);
   }
+  addBR(br: Object, id: Number): Observable<Object>{
+    return this.http.post('http://localhost:8181/quiz/'+id+'/addbr', br);
+  }
 
 }

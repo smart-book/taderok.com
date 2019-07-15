@@ -83,7 +83,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Annuler</button>
-                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" (click)="addQuiz(quiz)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" (click)="addQuiz(quiz)" class="btn-hover btn-border-radius color-1"><i class="fa fa-plus"></i></button>
                         </div>
                       </form>
                     </div>
@@ -93,7 +93,7 @@
               </div>
               <!-- Fin div de modal d'ajout d'un Quiz -->
               <button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
-                      data-target="#exampleModal">Ajouter un Quiz</button>
+                      data-target="#exampleModal"><i class="fa fa-plus"></i>  Quiz</button>
               <!-- Modal d'ajout d'une question : exampleModal -->
               <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
                    aria-labelledby="formModal" aria-hidden="true">
@@ -112,13 +112,13 @@
                         <div class="form-group">
                           <div class="form-line">
                             <input type="text" name="type_reclamation" class="form-control"
-                                   placeholder="Entrer la question" [(ngModel)]="question.question" id="yamli1">
+                                   placeholder="Entrer une question" [(ngModel)]="question.question" id="yamli1">
                           </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Annuler</button>
                           <button type="button" data-dismiss="modal" data-toggle="modal"
-                                  data-target="#exampleModal2"(click)="addQuestion(question, quizadded.id)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                                  data-target="#exampleModal2"(click)="addQuestion(question, quizadded.id)" class="btn-hover btn-border-radius color-1"><i class="fa fa-plus"></i></button>
                         </div>
                       </form>
                     </div>
@@ -148,12 +148,13 @@
                         <div class="form-group">
                           <div class="form-line">
                             <input type="text" name="type_reclamation" class="form-control"
-                                   placeholder="Entrer le nom du Quiz" [(ngModel)]="proposition.nom" id="yamli2">
+                                   placeholder="Entrer une proposition" [(ngModel)]="proposition.nom" id="yamli2">
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Annuler</button>
-                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" (click)="addProposition(proposition, questionadded.id)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" class="btn-hover btn-border-radius color-4"><i class="fa fa-plus"></i> question</button>
+                          <button type="button" (click)="addProposition(proposition, questionadded.id)" class="btn-hover btn-border-radius color-1"><i class="fa fa-plus"></i></button>
+                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal3"  class="btn-hover btn-border-radius color-1"><i class="fa fa-plus"></i> Bonne réponses</button>
                         </div>
                       </form>
                     </div>
@@ -162,6 +163,41 @@
                 </div>
               </div>
               <!-- Fin div de modal d'ajout d'un Proposition -->
+              <!-- Modal d'ajout d'une Bonne Réponse : exampleModal -->
+              <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog"
+                   aria-labelledby="formModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" style="padding-left: 150px" id="formModal3">Ajouter une bonne réponse </h5><br><br>
+                      <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-header">
+                      <p style="padding-left: 150px" id="formModal23"> Question: {{question.question}} </p><br><br>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <label>Nom</label>
+                        <div class="form-group">
+                          <div class="form-line">
+                            <input type="text" name="type_reclamation" class="form-control"
+                                   placeholder="Entrer une bonne réponse" [(ngModel)]="br.nom" id="yamli3">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" class="btn-hover btn-border-radius color-4"><i class="fa fa-plus"></i> question</button>
+                          <button type="button" (click)="addBR(br, questionadded.id)" class="btn-hover btn-border-radius color-1"><i class="fa fa-plus"></i></button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- Fin div de modal d'ajout d'une Bonne Proposition -->
             </div>
 
             <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data">

@@ -5,6 +5,7 @@ import {Quiz} from "../../../../models/quiz";
 import {QuizService} from "../../../../services/prof/quiz.service";
 import {Question} from "../../../../models/Question";
 import {Proposition} from "../../../../models/Proposition";
+import {BonneReponses} from "../../../../models/BonneReponses";
 
 @Component({
   selector: 'app-list',
@@ -22,6 +23,7 @@ export class ListComponent implements AfterViewInit, OnInit {
   question: Question = new Question();
   quiz: Quiz = new Quiz();
   proposition: Proposition = new Proposition();
+  br: BonneReponses = new BonneReponses();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'nomQuiz'];
@@ -50,9 +52,15 @@ export class ListComponent implements AfterViewInit, OnInit {
       this.quizService.addQuiz(p).subscribe(data => { this.quizadded = data });
   }
   addQuestion(q, id){
-    this.quizService.addQuestion(q, id).subscribe(data => { console.log(data)});
+    this.quizService.addQuestion(q, id).subscribe(data => { this.questionadded=data;console.log(this.questionadded)});
+    this.question.question='';
   }
   addProposition(pr, id){
-    this.quizService.addProposition(pr, id).subscribe(data => console.log('proposition ajouté'));
+    this.quizService.addProposition(pr, id).subscribe(() => console.log('proposition ajouté'));
+    this.proposition.nom='';
+  }
+  addBR(pr, id){
+    this.quizService.addBR(pr, id).subscribe(() => console.log('bonne réponse ajouté'));
+    this.br.nom='';
   }
 }
