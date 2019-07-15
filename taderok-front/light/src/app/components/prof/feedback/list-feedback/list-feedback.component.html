@@ -47,20 +47,12 @@
             </ul>
           </div>
 
-          <div>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
 
-            <div class="search-div">
-              <mat-form-field class="search-form-field" >
-                <input matInput name="value" class="toolbar-search" placeholder="chercher.." type="text" autocomplete="off" (keypress)="applyFilter()" [(ngModel)]="value">
-                <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="value" (click)="onSearchClear()">
-                  <mat-icon>close</mat-icon>
-                </button>
-              </mat-form-field>
-            </div>
-
-
-            <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data | filter:value">
-
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort matSortActive>
 
               <!-- Nom Column -->
               <ng-container matColumnDef="Nom">
@@ -99,20 +91,11 @@
                 <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
               </ng-container>
 
-
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-
-
-
-            <mat-paginator #paginator
-
-                           [length]="100"
-                           [pageSize]="10"
-                           [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
-            </mat-paginator>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
           </div>
         </div>
       </div>

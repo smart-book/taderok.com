@@ -13,11 +13,10 @@ import {AjouterRessourceComponent} from './ressource/ajouter-ressource/ajouter-r
 import {AfficherRessourceComponent} from './ressource/afficher-ressource/afficher-ressource.component';
 import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
-import {AfficherFeedbackComponent} from './feedback/afficher-feedback/afficher-feedback.component';
 import {CalendarProfComponent} from './calendar-prof/calendar-prof.component';
 
 import {CalendarComponent} from "@fullcalendar/core/CalendarComponent";
-
+import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
 
 
 
@@ -70,8 +69,8 @@ const routes: Routes = [
     component: CalendarProfComponent
   },
   {
-    path: 'afficherFeedbacks',
-    component: AfficherFeedbackComponent
+    path: 'list',
+    component: ListFeedbackComponent
   }
 ];
 
