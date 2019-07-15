@@ -20,7 +20,7 @@ public class Forum {
     @ManyToOne
     private User user;
     @JsonIgnore
-    @OneToMany(mappedBy = "forum", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "forum", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
     private List<CommentaireForum> commentaireForumList;
 
     public int getId() {

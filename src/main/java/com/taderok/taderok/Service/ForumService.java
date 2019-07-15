@@ -1,15 +1,15 @@
 package com.taderok.taderok.Service;
 
 import com.taderok.taderok.Controller.AthenticationController;
-import com.taderok.taderok.Controller.HelloResource;
 import com.taderok.taderok.Entity.Forum;
 import com.taderok.taderok.Entity.User;
+import com.taderok.taderok.Repository.CommentaireForumRepository;
 import com.taderok.taderok.Repository.ForumRepository;
 import com.taderok.taderok.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service
@@ -21,7 +21,7 @@ public class ForumService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private HelloResource helloResource;
+    private CommentaireForumRepository commentaireForumRepository;
 
 
     public List<Forum> getAllForum(){
@@ -51,6 +51,7 @@ public class ForumService {
     }
     public void deleteForum(int id)
     {
+        //commentaireForumRepository.deleteByForum_Id(id);
         forumRepository.deleteById(id);
     }
 }

@@ -32,11 +32,14 @@
                   Event
                 </button>
               </form>
-              <div id="event_box" class="mg-bottom-10"></div>
+              <div id="event_box" class="mg-bottom-10">
+                  <div #customevents class='fc-event'>Event 1</div>
+              </div>
               <label>
                 <input type="checkbox" id='drop-remove' />
                 <span>remove after drop</span>
               </label>
+              <button type="button" (click)="addEvent()" id="addEvent">test add event</button>
             </div>
           </div>
         </div>
@@ -52,17 +55,19 @@
 
             <full-calendar
               *ngIf="options"
-              #fullcalendar
+              #calendar
               [editable]="true"
               [header]="options.header"
               [customButtons]="options.customButtons"
               (dateClick)="dateClick($event)"
               (eventDragStop)="eventDragStop($event)"
+              (eventReceive)="eventReceive($event)"
               [plugins]="options.plugins"
               (eventClick)="eventClick($event)"
               defaultView="dayGridMonth"
               [weekends]="true"
               [events]="calendarEvents"
+              draggable="true"
             ></full-calendar>
 
           </div>
@@ -71,3 +76,29 @@
     </div>
   </div>
 </section>
+<script>
+  import * as FullCalendar from "@fullcalendar/core";
+  import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
+
+  $(document).ready(function() {
+    var Calendar = FullCalendar.Calendar;
+
+    var Draggable = Draggable;
+
+    var containerEl = document.getElementById('external-events');
+    var calendarEl = document.getElementById('calendar');
+    var checkbox = document.getElementById('drop-remove');
+
+    // initialize the external events
+    // -----------------------------------------------------------------
+
+    new Draggable(containerEl, {
+      itemSelector: '.fc_event',
+      eventData: function (eventEl) {
+        return {
+          title: eventEl.innerText
+        };
+      }
+    });
+  })
+</script>

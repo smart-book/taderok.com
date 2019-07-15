@@ -19,6 +19,10 @@ public class Quiz {
     private String nomQuiz;
     private Date date;
     private Boolean visible;
+
+
+
+
     @ManyToMany
     @JsonIgnore
     private List<Seance> seanceList;
