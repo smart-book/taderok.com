@@ -1,6 +1,6 @@
 import {Quiz} from "./quiz";
 import {Proposition} from "./Proposition";
-import {BonneReponse} from "./BonneReponse";
+import {BonneReponses} from "./BonneReponses";
 
 export class Question
 {
@@ -10,5 +10,5 @@ export class Question
   BonneProposition:String;
   quiz:Quiz
   propositions: Proposition[];
-  bonneReponses: BonneReponse[];
+  bonneReponses: BonneReponses[];
 }

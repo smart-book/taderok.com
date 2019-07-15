@@ -2,10 +2,7 @@ package com.taderok.taderok.Service;
 
 import com.taderok.taderok.Controller.AthenticationController;
 import com.taderok.taderok.Entity.*;
-import com.taderok.taderok.Repository.ProfRepository;
-import com.taderok.taderok.Repository.PropositionRepository;
-import com.taderok.taderok.Repository.QuestionRepository;
-import com.taderok.taderok.Repository.QuizRepository;
+import com.taderok.taderok.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +19,8 @@ public class QuizProfService {
     private ProfRepository profRepository;
     @Autowired
     private PropositionRepository propositionRepository;
+    @Autowired
+    private BonneReponsesRepository bonneReponsesRepository;
 
     public List<Quiz> getAllQuiz(){
         return (List<Quiz>) quizRepository.findAll();
@@ -31,6 +30,7 @@ public class QuizProfService {
     public Quiz addQuiz(Quiz quiz){
         Prof p = profRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
         quiz.setId_prof(p);
+        quiz.setVisible(false);
         quiz.setDate(new Date());
         quizRepository.save(quiz);
         return quiz;
@@ -40,10 +40,11 @@ public class QuizProfService {
         quizRepository.deleteById(id);
     }
 
-    public void addQuestion(Question question, int id){
+    public Question addQuestion(Question question, int id){
         Quiz q = quizRepository.findById(id).orElse(null);
         question.setQuiz(q);
         questionRepository.save(question);
+        return question;
     }
 
     public void deleteQuestion(int id){
@@ -54,5 +55,10 @@ public class QuizProfService {
         Question q = questionRepository.findById(id).orElse(null);
         proposition.setQuestion(q);
         propositionRepository.save(proposition);
+    }
+    public void addBR(BonneReponses br, int id){
+        Question q = questionRepository.findById(id).orElse(null);
+        br.setQuestion(q);
+        bonneReponsesRepository.save(br);
     }
 }

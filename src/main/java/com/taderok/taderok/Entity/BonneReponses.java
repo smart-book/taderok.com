@@ -11,6 +11,8 @@ public class BonneReponses {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    private Question question;
 
     private String nom;
 
@@ -38,8 +40,9 @@ public class BonneReponses {
         this.question = question;
     }
 
-    @ManyToOne
-    private Question question;
+
+
+
 
 
 

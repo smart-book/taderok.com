@@ -1,5 +1,6 @@
 package com.taderok.taderok.Controller;
 
+import com.taderok.taderok.Entity.BonneReponses;
 import com.taderok.taderok.Entity.Proposition;
 import com.taderok.taderok.Entity.Question;
 import com.taderok.taderok.Entity.Quiz;
@@ -33,8 +34,8 @@ public class QuizController {
         quizProfService.deleteQuiz(id);
     }
     @RequestMapping(method = RequestMethod.POST, value = "/{id}/addquestion")
-    public void addQuestion(@RequestBody Question question, @PathVariable int id){
-        quizProfService.addQuestion(question, id);
+    public Question addQuestion(@RequestBody Question question, @PathVariable int id){
+        return quizProfService.addQuestion(question, id);
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}/deletequestion")
     public void deleteQuestion(@PathVariable int id){
@@ -43,6 +44,10 @@ public class QuizController {
     @RequestMapping(method = RequestMethod.POST, value = "/{id}/addproposition")
     public void addProposition(@RequestBody Proposition proposition, @PathVariable int id){
         quizProfService.addProposition(proposition, id);
+    }
+    @RequestMapping(method = RequestMethod.POST, value = "/{id}/addbr")
+    public void addBR(@RequestBody BonneReponses br, @PathVariable int id){
+        quizProfService.addBR(br, id);
     }
 
     @RequestMapping("/findAll")
