@@ -11,13 +11,17 @@ export class QuizService {
 
   constructor(private http: HttpClient) { }
 
+  getAllQuiz(): Observable<Quiz[]>{
+    return this.http.get<Quiz[]>('http://localhost:8181/quiz/allQuiz');
+  }
   addQuiz(quiz: Object): Observable<Object>{
     return this.http.post('http://localhost:8181/quiz/add', quiz);
   }
   addQuestion(question: Object, id: Number): Observable<Object>{
     return this.http.post('http://localhost:8181/quiz/'+id+'/addquestion', question);
   }
-  getAllQuiz(): Observable<Quiz[]>{
-    return this.http.get<Quiz[]>('http://localhost:8181/quiz/allQuiz');
+  addProposition(proposition: Object, id: Number): Observable<Object>{
+    return this.http.post('http://localhost:8181/quiz/'+id+'/addproposition', proposition);
   }
+
 }
