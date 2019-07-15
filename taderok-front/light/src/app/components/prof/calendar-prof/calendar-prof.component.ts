@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import {EventInput, OptionsInput} from '@fullcalendar/core';
 declare const $: any;
@@ -10,7 +11,7 @@ declare const jQuery: any;
   templateUrl: './calendar-prof.component.html',
   styleUrls: ['./calendar-prof.component.sass']
 })
-export class CalendarProfComponent implements OnInit {
+export class CalendarProfComponent implements OnInit , AfterViewInit {
 
   options: OptionsInput;
   eventsModel: any;
@@ -35,13 +36,16 @@ export class CalendarProfComponent implements OnInit {
       header: {
         left: 'prev,next today myCustomButton',
         center: 'title',
-        right: 'dayGridMonth'
+        //right: 'dayGridMonth timeGridWeek timeGrid '
+        right: 'dayGridMonth timeGridWeek timeGridDay listWeek'
       },
-      plugins: [dayGridPlugin, interactionPlugin]
+      plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
+      droppable: true,
+      navLinks: true
     };
 
 
-    var AppCalendar = function () {
+   /* var AppCalendar = function () {
       return {
         init: function () {
           this.initCalendar()
@@ -90,8 +94,8 @@ export class CalendarProfComponent implements OnInit {
                 n.start = e, n.allDay = t, n.className = $(this).attr("data-class"), $("#calendar").fullCalendar("renderEvent", n, !0), $("#drop-remove").is(":checked") && $(this).remove()
               },
 
-              /***** events ********/
-              events: [{
+     */         /***** events ********/
+     /*       events: [{
                 title: "Annual Day",
                 start: new Date(year, month, date - 5, 0, 0),
                 end: new Date(year, month, date - 2, 0, 0),
@@ -132,13 +136,40 @@ export class CalendarProfComponent implements OnInit {
     jQuery(document).ready(function () {
       'use strict';
       AppCalendar.init()
-    });
+    });*/
+  }
+
+  @ViewChildren('customevents') customevents: QueryList<any>;
+  ngAfterViewInit() {
+    setTimeout(()=>{
+      this.customevents.forEach(function (item) {
+        console.log("in foreach");
+        // store data so the calendar knows to render an event upon drop
+        $(item.nativeElement).data('events', {
+          title: $.trim($(item.nativeElement).text()), // use the element's text as the event title
+          stick: true // maintain when user navigates (see docs on the renderEvent method)
+        }, console.log(item));
+        // make the event draggable using jQuery UI
+        $(item.nativeElement).draggable({
+          zIndex: 999,
+          revert: true,      // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
+        });
+
+      });
+    }, 100);
   }
 
   calendarPlugins = [dayGridPlugin];
 
-  handleDateClick(arg) { // handler method
-    alert(arg.dateStr);
+  dateClick(arg) {
+    if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
+      this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
+        title: 'New Event',
+        start: arg.date,
+        allDay: arg.allDay
+      })
+    }
   }
 
   calendarEvents: EventInput[] = [
@@ -146,13 +177,44 @@ export class CalendarProfComponent implements OnInit {
   ];
 
   addEvent() {
-    this.calendarEvents.push(
-    { title: 'event 4', date: '2019-07-06' }
-  );
+    this.calendarEvents= this.calendarEvents.concat(
+    { title: 'event 4', start: new Date() }
+     );
   }
 
   modifyTitle(eventIndex, newTitle) {
     this.calendarEvents[eventIndex].title = newTitle;
   }
 
+  //////////////////////////
+
+  eventClick(model) {
+    console.log(model);
+    this.modifyTitle(0, "test")
+    alert('event click'+ model.toString())
+  }
+  eventDragStop(model) {
+    console.log(model);
+  }
+  eventReceive(model){
+    console.log(model)
+  }
+  updateHeader() {
+    this.options.header = {
+      left: 'prev,next myCustomButton',
+      center: 'title',
+      right: ''
+    };
+  }
+  updateEvents() {
+    this.calendarEvents = [{
+      title: 'Updaten Event',
+      start: this.yearMonth + '-01',
+      end: this.yearMonth + '-01'
+    }];
+  }
+  get yearMonth(): string {
+    const dateObj = new Date();
+    return dateObj.getUTCFullYear() + '-' + (dateObj.getUTCMonth() + 1);
+  }
 }

@@ -21,12 +21,12 @@ public class QuizController {
     private QuizEtudiantService quizEtudiantService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/allQuiz")
-    public List<Quiz> getAllQuiz(@RequestBody Quiz quiz){
+    public List<Quiz> getAllQuiz(){
         return quizProfService.getAllQuiz();
     }
     @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public void addQuiz(@RequestBody Quiz quiz){
-        quizProfService.addQuiz(quiz);
+    public Quiz addQuiz(@RequestBody Quiz quiz){
+        return quizProfService.addQuiz(quiz);
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}/delete")
     public void deleteQuiz(@PathVariable int id){
@@ -46,7 +46,7 @@ public class QuizController {
     }
 
     @RequestMapping("/findAll")
-    public List<Quiz> getAllQuiz(){ return quizEtudiantService.getAllQuiz();
+    public List<Quiz> getAllQuizEtudiant(){ return quizEtudiantService.getAllQuiz();
     }
 
     @RequestMapping("/{id}")
@@ -54,7 +54,6 @@ public class QuizController {
     {
         return quizEtudiantService.getQuiz(id);
     }
-
 
 
 }

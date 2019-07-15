@@ -66,13 +66,21 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarProfComponent } from './calendar-prof/calendar-prof.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
 import {CdkTableModule} from '@angular/cdk/table';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ListComponent } from './quiz/list/list.component';
+
+
+
 
 @NgModule({
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent, ListComponent],
 
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent],
+
+
 
 
   imports: [
