@@ -14,6 +14,12 @@ public class Seance {
     private Date date_debut;
     private Date date_fin;
     private String matiere;
+    private String titre;
+    private String description;
+    private int duree;
+    // if it is a one day or repetitive event
+    private String etat;
+
     @ManyToOne
     @JsonIgnoreProperties("seanceList")
     private Prof prof;
