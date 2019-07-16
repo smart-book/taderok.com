@@ -51,14 +51,24 @@ public class QuizProfService {
         questionRepository.deleteById(id);
     }
 
+    public List<Proposition> getAllPropositions(int question){
+        return propositionRepository.findAllByQuestion(questionRepository.findById(question).orElse(null));
+    }
+
     public void addProposition(Proposition proposition, int id){
         Question q = questionRepository.findById(id).orElse(null);
         proposition.setQuestion(q);
         propositionRepository.save(proposition);
     }
+
     public void addBR(BonneReponses br, int id){
         Question q = questionRepository.findById(id).orElse(null);
         br.setQuestion(q);
         bonneReponsesRepository.save(br);
     }
+
+    public void deleteProposition(int id){
+        propositionRepository.deleteById(id);
+    }
+
 }

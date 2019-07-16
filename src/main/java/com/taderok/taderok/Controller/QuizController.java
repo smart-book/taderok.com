@@ -4,6 +4,9 @@ import com.taderok.taderok.Entity.BonneReponses;
 import com.taderok.taderok.Entity.Proposition;
 import com.taderok.taderok.Entity.Question;
 import com.taderok.taderok.Entity.Quiz;
+import com.taderok.taderok.Repository.PropositionRepository;
+import com.taderok.taderok.Repository.QuestionRepository;
+import com.taderok.taderok.Service.PropositionService;
 import com.taderok.taderok.Service.QuizEtudiantService;
 import com.taderok.taderok.Service.QuizProfService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,8 @@ public class QuizController {
     private QuizProfService quizProfService;
     @Autowired
     private QuizEtudiantService quizEtudiantService;
+    @Autowired
+    private QuestionRepository questionRepository;
 
     @RequestMapping(method = RequestMethod.GET, value = "/allQuiz")
     public List<Quiz> getAllQuiz(){
@@ -48,6 +53,14 @@ public class QuizController {
     @RequestMapping(method = RequestMethod.POST, value = "/{id}/addbr")
     public void addBR(@RequestBody BonneReponses br, @PathVariable int id){
         quizProfService.addBR(br, id);
+    }
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/allprop")
+    public List<Proposition> getAllPropositions(@PathVariable int id){
+        return quizProfService.getAllPropositions(id);
+    }
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}/deleteprop")
+    public void deleteProposition(@PathVariable int id){
+        quizProfService.deleteProposition(id);
     }
 
     @RequestMapping("/findAll")

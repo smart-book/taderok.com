@@ -19,11 +19,12 @@ export class ListComponent implements AfterViewInit, OnInit {
   dataSource: ListDataSource;
   value:string;
   quizadded: Object;
-  questionadded: Object;
+  questionadded: Object= null;
   question: Question = new Question();
   quiz: Quiz = new Quiz();
   proposition: Proposition = new Proposition();
   br: BonneReponses = new BonneReponses();
+  propositions: Proposition[]=null;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'nomQuiz'];
@@ -50,15 +51,29 @@ export class ListComponent implements AfterViewInit, OnInit {
 
   addQuiz(p){
       this.quizService.addQuiz(p).subscribe(data => { this.quizadded = data });
+    setTimeout(()=>{
+      this.dataSource = new ListDataSource(this.quizService);
+    })
   }
   addQuestion(q, id){
     this.quizService.addQuestion(q, id).subscribe(data => { this.questionadded=data;console.log(this.questionadded)});
-    this.question.question='';
   }
   addProposition(pr, id){
-    this.quizService.addProposition(pr, id).subscribe(() => console.log('proposition ajouté'));
-    this.proposition.nom='';
+      this.quizService.addProposition(pr, id).subscribe(() => console.log('proposition ajouté'));
+      this.proposition.nom='';
+     setTimeout(()=> {
+      this.quizService.getAllPropositions(id).subscribe(data => {this.propositions=data ; console.log(this.propositions)});
+    })
+
   }
+
+  deleteProposition(id){
+      this.quizService.deleteProposition(id).subscribe(data => console.log(data));
+   // setTimeout(()=> {
+      this.quizService.getAllPropositions(id).subscribe(data => {this.propositions=data; console.log(this.propositions)});
+    //})
+  }
+
   addBR(pr, id){
     this.quizService.addBR(pr, id).subscribe(() => console.log('bonne réponse ajouté'));
     this.br.nom='';
