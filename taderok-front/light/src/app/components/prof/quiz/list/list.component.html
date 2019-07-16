@@ -8,7 +8,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="breadcrumb breadcrumb-style ">
             <li class="breadcrumb-item">
-              <h4 class="page-title">La liste des Feedbacks</h4>
+              <h4 class="page-title">La liste des Quiz</h4>
             </li>
             <li class="breadcrumb-item bcrumb-1">
               <a routerLink="/dashboard/main">
@@ -17,7 +17,7 @@
             <li class="breadcrumb-item bcrumb-2">
               <a href="#" onClick="return false;">Seances</a>
             </li>
-            <li class="breadcrumb-item active">Feedbacks</li>
+            <li class="breadcrumb-item active">Quiz</li>
           </ul>
         </div>
       </div>
@@ -59,8 +59,117 @@
                   <mat-icon>close</mat-icon>
                 </button>
               </mat-form-field>
-            </div>
 
+              <!-- Modal d'ajout d'un Quiz : exampleModal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                   aria-labelledby="formModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer un Quiz </h5><br><br>
+                      <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <label>Nom</label>
+                        <div class="form-group">
+                          <div class="form-line">
+                            <input type="text" name="type_reclamation" class="form-control"
+                                   placeholder="Entrer le nom du Quiz" [(ngModel)]="quiz.nomQuiz" id="yamli">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Annuler</button>
+                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" (click)="addQuiz(quiz)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- Fin div de modal d'ajout d'un Quiz -->
+              <button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
+                      data-target="#exampleModal">Ajouter un Quiz</button>
+              <!-- Modal d'ajout d'une question : exampleModal -->
+              <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                   aria-labelledby="formModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" style="padding-left: 150px" id="formModal1">Ajouter une question </h5><br><br>
+                      <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <label>Nom</label>
+                        <div class="form-group">
+                          <div class="form-line">
+                            <input type="text" name="type_reclamation" class="form-control"
+                                   placeholder="Entrer la question" [(ngModel)]="question.question" id="yamli1">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Annuler</button>
+                          <button type="button" data-dismiss="modal" data-toggle="modal"
+                                  data-target="#exampleModal2"(click)="addQuestion(question, quizadded.id)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- Fin div de modal d'ajout d'une question -->
+              <!-- Modal d'ajout d'un Propositon : exampleModal -->
+              <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                   aria-labelledby="formModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" style="padding-left: 150px" id="formModal2">Ajouter une proposition </h5><br><br>
+                      <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-header">
+                      <p style="padding-left: 150px" id="formModal21"> Question: {{question.question}} </p><br><br>
+                    </div>
+                    <div class="modal-header" *ngFor="let p of this.propositions">
+                      <p style="padding-left: 150px" id="formModal22"> {{p.nom}} </p><br><br>
+                      <button type="button" class="close" aria-label="Close" (click)="deleteProposition(p.id)" >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <label>Nom</label>
+                        <div class="form-group">
+                          <div class="form-line">
+                            <input type="text" name="type_reclamation" class="form-control"
+                                   placeholder="Entrer une proposition" [(ngModel)]="proposition.nom" id="yamli2">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal1" class="btn-hover btn-border-radius color-4">nouvelle question</button>
+                          <button type="button" (click)="addProposition(proposition, questionadded.id)" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- Fin div de modal d'ajout d'un Proposition -->
+
+            </div>
 
             <table mat-table class="full-width-table mat-elevation-z8" matSort aria-label="Elements" [dataSource]="dataSource.data">
 
@@ -78,13 +187,9 @@
               </ng-container>
 
 
-
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-
-
-
 
             <mat-paginator #paginator
 

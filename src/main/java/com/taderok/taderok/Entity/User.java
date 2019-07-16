@@ -24,6 +24,8 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String sexe;
+    @Column(length = 500)
+    private String bio;
     private boolean enabled;
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -64,7 +66,15 @@ public class User implements Serializable {
         this.commentaireForumList = u.getCommentaireForumList();
         this.reclamationList = u.getReclamationList();
         this.messageList = u.getMessageList();
+        this.bio=u.getBio();
         //this.roles = u.getRoles();
+    }
+
+    public String getBio() {
+        return bio;
+    }
+    public void setBio(String bio){
+        this.bio=bio;
     }
 
 
