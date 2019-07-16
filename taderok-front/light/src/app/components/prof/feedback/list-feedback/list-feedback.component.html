@@ -46,47 +46,52 @@
               </li>
             </ul>
           </div>
-
-          <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-          </mat-form-field>
+          <div class="container">
+            <mat-form-field FloatLabel="auto" >
+              <mat-label>Recherche</mat-label>
+              <input matInput  (keyup)="applyFilter($event.target.value)">
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
 
           <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort matSortActive>
+            <table class="table" mat-table [dataSource]="dataSource"  matSort >
 
               <!-- Nom Column -->
-              <ng-container matColumnDef="Nom">
+              <ng-container matColumnDef="etudiant.nom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
                 <td mat-cell *matCellDef="let row">{{row.etudiant.nom}}</td>
               </ng-container>
 
               <!-- Prenom Column -->
-              <ng-container matColumnDef="Prenom">
+              <ng-container matColumnDef="etudiant.prenom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
                 <td mat-cell *matCellDef="let row">{{row.etudiant.prenom}}</td>
               </ng-container>
 
               <!-- email Column -->
-              <ng-container matColumnDef="E-mail">
+              <ng-container matColumnDef="etudiant.email">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
                 <td mat-cell *matCellDef="let row">{{row.etudiant.email}}</td>
               </ng-container>
 
               <!-- Type Column -->
-              <ng-container matColumnDef="Type">
+              <ng-container matColumnDef="type">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
                 <td mat-cell *matCellDef="let row">{{row.type}}</td>
               </ng-container>
 
               <!-- Description Column -->
-              <ng-container matColumnDef="Description">
+              <ng-container matColumnDef="description">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>description</th>
                 <td mat-cell *matCellDef="let row">{{row.description}}</td>
               </ng-container>
 
 
               <!-- Matiere Column -->
-              <ng-container matColumnDef="Matiere">
+              <ng-container matColumnDef="seances.matiere">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
                 <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
               </ng-container>
@@ -95,7 +100,7 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
           </div>
         </div>
       </div>

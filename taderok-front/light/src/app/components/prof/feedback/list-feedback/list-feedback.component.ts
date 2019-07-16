@@ -1,9 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import {Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
+import { MatTableDataSource, MatSort, MatPaginator, Sort } from '@angular/material';
 import {Feedback} from "../../../../models/feedback";
 import {FeedbackService} from "../../../../services/prof/feedback.service";
-import {merge, Observable, of as observableOf} from "rxjs";
-import {map} from "rxjs/operators";
 
 
 @Component({
@@ -11,31 +9,47 @@ import {map} from "rxjs/operators";
   templateUrl: './list-feedback.component.html',
   styleUrls: ['./list-feedback.component.sass']
 })
-export class ListFeedbackComponent implements OnInit {
+export class ListFeedbackComponent implements OnInit,AfterViewInit{
 
-  allFeedback: Feedback[];
+
   dataSource: MatTableDataSource<Feedback>;
-  displayedColumns: string[] = ['Nom', 'Prenom', 'E-mail', 'Type', 'Description', 'Matiere'];
+  displayedColumns: string[] = ['etudiant.nom', 'etudiant.prenom', 'etudiant.email', 'type', 'description', 'seances.matiere'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
+  value:string;
   constructor(private service: FeedbackService) {
-    this.service.afficherFeedback().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      console.log(this.dataSource);
-      console.log(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+
   }
 
   ngOnInit() {
-    setTimeout(() => {
+
+    this.service.afficherFeedback().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      console.log(this.dataSource.data);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sortingDataAccessor = (item, property) => {
+        switch(property) {
+          case 'etudiant.nom': return item.etudiant.nom;
+          case 'etudiant.prenom': return item.etudiant.prenom;
+          case 'etudiant.email': return item.etudiant.email;
+          case 'type': return item.type;
+          case 'description': return item.description;
+          case 'seances.matiere': return item.seances.matiere;
+          default: return item[property];
+        }
+      };
       this.dataSource.sort = this.sort;
-    })
+
+    });
+
 
   }
+  ngAfterViewInit(){
+
+
+
+}
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -45,5 +59,9 @@ export class ListFeedbackComponent implements OnInit {
     }
   }
 
+  OnSearchClear(){
+    this.value='';
+  }
 
 }
+
