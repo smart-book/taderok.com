@@ -138,8 +138,17 @@
               </div>
 
               <div role="tabpanel" class="tab-pane fade" id="setting">
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                  <li role="presentation">
+                    <a href="#generale" data-toggle="tab" class="active show">Générale</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#securite" data-toggle="tab" >Sécurité</a>
+                  </li>
+                  </ul>
+                <div role="tabpanel" class="tab-pane fade" id="generale">
                 <b>Paramètres du compte</b>
-
+                </div>
                 <div class="body">
                   <div class="form-group">
                     <input type="text" class="form-control" value="{{profil.email}}" placeholder="Email" [(ngModel)]="profil.email">
@@ -207,12 +216,26 @@
                     </div>
                   </div>
                   <button  type="button" (click)="updateProfilProf()" class="btn btn-info btn-round">Save Changes</button>
+
+                  <div role="tabpanel" class="tab-pane fade" id="securite">
+                    <b>Paramètres du compte</b>
+                    <div class="body">
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Mot de passe">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Nouveau mot de passe">
+                      </div>
+
+                    </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
     </div>
+  </div>
   </div>
   </div>
 </section>
