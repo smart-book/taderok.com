@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator, Sort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
 import {Feedback} from "../../../../models/feedback";
 import {FeedbackService} from "../../../../services/prof/feedback.service";
-import Order = jasmine.Order;
+
+
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
 
 
   dataSource: MatTableDataSource<Feedback>;
-  displayedColumns: string[] = ['etudiant.nom', 'etudiant.prenom', 'etudiant.email', 'type', 'description', 'seances.matiere'];
+  displayedColumns: string[] = ['etudiant', 'etudiant.email', 'type', 'description', 'seances.matiere'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -23,47 +24,47 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
 
   }
 
-  ngOnInit() {
+    ngOnInit() {
+      setTimeout(()=>{
+      this.service.afficherFeedback().subscribe(data => {
+        this.dataSource = new MatTableDataSource(data);
+        console.log(this.dataSource.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch(property) {
+            case 'etudiant': return item.etudiant.nom && item.etudiant.prenom;
+            case 'etudiant.email': return item.etudiant.email;
+            case 'type': return item.type;
+            case 'description': return item.description;
+            case 'seances.matiere': return item.seances.matiere;
+            default: return item[property];
+          }
+        };
+        this.dataSource.sort = this.sort;
+        // @ts-ignore
+        this.dataSource.filterPredicate = (order: Order, filter: string) => {
+          const transformedFilter = filter.trim().toLowerCase();
 
-    this.service.afficherFeedback().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      console.log(this.dataSource.data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sortingDataAccessor = (item, property) => {
-        switch(property) {
-          case 'etudiant.nom': return item.etudiant.nom;
-          case 'etudiant.prenom': return item.etudiant.prenom;
-          case 'etudiant.email': return item.etudiant.email;
-          case 'type': return item.type;
-          case 'description': return item.description;
-          case 'seances.matiere': return item.seances.matiere;
-          default: return item[property];
-        }
-      };
-      this.dataSource.sort = this.sort;
-      this.dataSource.filterPredicate = (order: Order, filter: string) => {
-        const transformedFilter = filter.trim().toLowerCase();
+          const listAsFlatString = (obj): string => {
+            let returnVal = '';
 
-        const listAsFlatString = (obj): string => {
-          let returnVal = '';
+            Object.values(obj).forEach((val) => {
+              if (typeof val !== 'object') {
+                returnVal = returnVal + ' ' + val;
+              } else if (val !== null) {
+                returnVal = returnVal + ' ' + listAsFlatString(val);
+              }
+            });
 
-          Object.values(obj).forEach((val) => {
-            if (typeof val !== 'object') {
-              returnVal = returnVal + ' ' + val;
-            } else if (val !== null) {
-              returnVal = returnVal + ' ' + listAsFlatString(val);
-            }
-          });
+            return returnVal.trim().toLowerCase();
+          };
 
-          return returnVal.trim().toLowerCase();
+          return listAsFlatString(order).includes(transformedFilter);
         };
 
-        return listAsFlatString(order).includes(transformedFilter);
-      };
-
-    });
-
-  }
+      });
+      });
+    }
   ngAfterViewInit(){
 
   }
