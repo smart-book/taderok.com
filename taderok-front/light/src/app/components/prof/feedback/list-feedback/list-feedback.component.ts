@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, Sort } from '@angular/material';
 import {Feedback} from "../../../../models/feedback";
 import {FeedbackService} from "../../../../services/prof/feedback.service";
+import Order = jasmine.Order;
 
 
 @Component({
@@ -40,23 +41,36 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
         }
       };
       this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = (order: Order, filter: string) => {
+        const transformedFilter = filter.trim().toLowerCase();
+
+        const listAsFlatString = (obj): string => {
+          let returnVal = '';
+
+          Object.values(obj).forEach((val) => {
+            if (typeof val !== 'object') {
+              returnVal = returnVal + ' ' + val;
+            } else if (val !== null) {
+              returnVal = returnVal + ' ' + listAsFlatString(val);
+            }
+          });
+
+          return returnVal.trim().toLowerCase();
+        };
+
+        return listAsFlatString(order).includes(transformedFilter);
+      };
 
     });
-
 
   }
   ngAfterViewInit(){
 
-
-
-}
+  }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log(filterValue);
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    const filters = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filters;
   }
 
   OnSearchClear(){
@@ -64,4 +78,3 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
   }
 
 }
-
