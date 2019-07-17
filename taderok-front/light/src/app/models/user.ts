@@ -9,6 +9,7 @@ export class User {
   email:string;
   password:string;
   sexe:string;
+  bio:string;
 
   enabled:boolean;
 

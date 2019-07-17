@@ -20,7 +20,8 @@
           </div>
           <div class="row">
             <div class="contact-photo">
-              <img src="assets/images/upload/uploadUser/{{profil.photo}}" class="img-responsive" alt="" style="height: 125px;"> </div>
+              <img src="assets/images/upload/uploadUser/{{profil.photo}}" class="img-circle user-img-circle"
+                   alt="User Image" style="width: 118px;height: 83px;"> </div>
           </div>
           <div class="contact-usertitle">
             <div class="contact-usertitle-job"> {{profil.diplome}} </div>
@@ -59,7 +60,7 @@
                 <a href="#profile" data-toggle="tab"><i class="fa fa-users"></i> Amis</a>
               </li>
               <li role="presentation" *ngIf="profil.role==='Prof'">
-                <a href="#messages" data-toggle="tab">Avis</a>
+                <a href="#messages" data-toggle="tab"><i class="fa fa-comment-alt"></i> Avis</a>
               </li>
               <li role="presentation">
                 <a href="#calendar" data-toggle="tab"><i class="fa fa-calendar-alt"></i> Emplois du temps</a>
@@ -91,6 +92,11 @@
                     <strong>Adresse</strong>
                     <br>
                     <p class="text-muted">{{profil.adresse}}</p>
+                  </div>
+                  <div class="col-md-10 col-6">
+                    <strong>Biographie</strong>
+                    <br>
+                    <p class="text-muted">{{profil.bio}}</p>
                   </div>
                 </div>
               </div>
@@ -132,11 +138,20 @@
               </div>
 
               <div role="tabpanel" class="tab-pane fade" id="setting">
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                  <li role="presentation">
+                    <a href="#generale" data-toggle="tab" class="active show">Générale</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#securite" data-toggle="tab" >Sécurité</a>
+                  </li>
+                  </ul>
+                <div role="tabpanel" class="tab-pane fade" id="generale">
                 <b>Paramètres du compte</b>
-
+                </div>
                 <div class="body">
                   <div class="form-group">
-                    <input type="text" class="form-control" value="{{profil.email}}" placeholder="Email">
+                    <input type="text" class="form-control" value="{{profil.email}}" placeholder="Email" [(ngModel)]="profil.email">
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control" placeholder="Mot de passe">
@@ -147,20 +162,26 @@
                   <div class="form-group form-float">
                     <div class="form-line">
                       <input type="text" name="nom" value="{{profil.nom}}" class="form-control"
-                             placeholder="Nom">
+                             placeholder="Nom" [(ngModel)]="profil.nom" >
+                    </div>
+                  </div>
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="text" name="nom" value="{{profil.bio}}" class="form-control"
+                             placeholder="Nom" [(ngModel)]="profil.bio" >
                     </div>
                   </div>
                   <div class="form-group form-float">
                     <div class="form-line">
                       <input type="text" name="prenom" value="{{profil.prenom}}" class="form-control"
-                             placeholder="Prenom">
+                             placeholder="Prenom" [(ngModel)]="profil.prenom">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-6 col-lg-3">
                       <div class="form-check form-check-radio">
                         <label>
-                          <input name="sexe" type="radio" checked value="homme" value="{{profil.sexe}}"/>
+                          <input name="sexe" type="radio"  value="homme"  [(ngModel)]="profil.sexe"/>
                           <span>Homme</span>
                         </label>
                       </div>
@@ -169,7 +190,7 @@
                     <div class="col-sm-6 col-lg-3">
                       <div class="form-check form-check-radio">
                         <label>
-                          <input name="sexe" type="radio" value="femme"  />
+                          <input name="sexe" type="radio" value="femme" [(ngModel)]="profil.sexe" />
                           <span>Femme</span>
                         </label>
                       </div>
@@ -179,29 +200,42 @@
                   <div class="form-group form-float">
                     <div class="form-line">
                       <input type="date" name="dateNaiss" value="{{profil.dateNaissance}}"  class="form-control"
-                             placeholder="Date de naissance">
+                             placeholder="Date de naissance" [(ngModel)]="profil.dateNaissance">
                     </div>
                   </div>
                   <div class="form-group form-float">
                     <div class="form-line">
                       <input type="text" name="adresse" value="{{profil.adresse}}" class="form-control"
-                             placeholder="Adresse">
+                             placeholder="Adresse" [(ngModel)]="profil.adresse">
                     </div>
                   </div>
                   <div class="form-group form-float">
                     <div class="form-line">
                       <input type="number" name="telephone" value="{{profil.telephone}}" class="form-control"
-                             placeholder="Telephone">
+                             placeholder="Telephone" [(ngModel)]="profil.telephone">
                     </div>
                   </div>
-                  <button class="btn btn-info btn-round">Save Changes</button>
+                  <button  type="button" (click)="updateProfilProf()" class="btn btn-info btn-round">Save Changes</button>
+
+                  <div role="tabpanel" class="tab-pane fade" id="securite">
+                    <b>Paramètres du compte</b>
+                    <div class="body">
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Mot de passe">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Nouveau mot de passe">
+                      </div>
+
+                    </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
-
     </div>
+  </div>
   </div>
   </div>
 </section>

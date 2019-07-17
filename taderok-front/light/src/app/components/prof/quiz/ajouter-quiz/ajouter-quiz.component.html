@@ -50,7 +50,97 @@
                         </div>
 
                         <div class="text-left">
-                          <button type="submit" class="btn-hover btn-border-radius color-8" awNextStep (click)="addQuiz(quiz)">Ajouter</button>
+                          <button type="submit" awNextStep  class="btn-hover btn-border-radius color-8" (click)="addQuiz(quiz)">Ajouter</button>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+
+                </div>
+              </aw-wizard-step>
+              <aw-wizard-step [stepTitle]="'Ajouter une question'">
+                <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
+                <div class="centered-content">
+                  <div>
+                    <form class="form-horizontal validate-form">
+                      <div *ngIf="etat2">
+                      <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                          <label for="question">Question</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                          <div class="form-group">
+                            <div class="form-line">
+                              <input type="text" id="question" class="form-control"
+                                     placeholder="Entrer une question" name="question" [(ngModel)]="question.question">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
+                        </div>
+
+                        <div class="text-left">
+                          <button type="submit" class="btn-hover btn-border-radius color-8" (click)="addQuestion(question, quizadded.id); changementEtat()">Ajouter question</button>
+                        </div>
+                      </div>
+                      </div>
+                      <div *ngIf="etat">
+                      <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                          <label for="question">Proposition</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                          <div class="form-group">
+                            <div class="form-line">
+                              <input type="text" id="proposition" class="form-control"
+                                     placeholder="Entrer une proposition" name="nom" [(ngModel)]="proposition.nom">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
+                        </div>
+
+                        <div class="text-left">
+                          <button type="submit" class="btn-hover btn-border-radius color-8" (click)="addProposition(proposition, questionadded.id)">Ajouter proposition</button>
+                          <button type="submit" class="btn-hover btn-border-radius color-8" (click)="changementEtat()">Ajouter question</button>
+                          <button type="submit" class="btn-hover btn-border-radius color-8" awNextStep>Termier</button>
+                        </div>
+                      </div>
+                        <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
+                        </div>
+                          <h5>Question : {{this.questionadded.question}}</h5>
+                        </div>
+                        <div class="modal-header" *ngFor="let p of propositions">
+                          <p style="padding-left: 150px"> {{p.nom}} </p><br><br>
+                          <button type="button"  class="close" aria-label="Close" (click)="deleteProposition(p.id, questionadded.id)">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </aw-wizard-step>
+              <aw-wizard-step [stepTitle]="'Vérification du Quiz'">
+                <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
+                <div class="centered-content">
+                  <div>
+                    <form class="form-horizontal validate-form">
+
+
+                      <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
+                        </div>
+
+                        <div class="text-left">
+                          <button type="submit" awNextStep  class="btn-hover btn-border-radius color-8" (click)="addQuiz(quiz)">Ajouter</button>
                         </div>
                       </div>
                     </form>

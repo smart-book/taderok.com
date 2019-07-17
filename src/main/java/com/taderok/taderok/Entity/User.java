@@ -1,9 +1,6 @@
 package com.taderok.taderok.Entity;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,6 +24,8 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String sexe;
+    @Column(length = 500)
+    private String bio;
     private boolean enabled;
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -38,13 +37,16 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Reclamation> reclamationList;
     @OneToMany(mappedBy = "receiver")
+    @JsonIgnore
     private List<DemandeAmis> demandeListReçues;
     @OneToMany(mappedBy = "sender")
+    @JsonIgnore
     private List<DemandeAmis> demandeListEnvoyees;
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
     private List<Message> messageList;
     private String role;
+
 
 
     public User() {
@@ -64,7 +66,15 @@ public class User implements Serializable {
         this.commentaireForumList = u.getCommentaireForumList();
         this.reclamationList = u.getReclamationList();
         this.messageList = u.getMessageList();
+        this.bio=u.getBio();
         //this.roles = u.getRoles();
+    }
+
+    public String getBio() {
+        return bio;
+    }
+    public void setBio(String bio){
+        this.bio=bio;
     }
 
 
@@ -231,4 +241,6 @@ public class User implements Serializable {
 
                 '}';
     }
+
+
 }
