@@ -66,9 +66,7 @@ export class ListComponent implements AfterViewInit, OnInit {
 
   deleteProposition(id){
       this.quizService.deleteProposition(id).subscribe(data => console.log(data));
-   // setTimeout(()=> {
       this.quizService.getAllPropositions(id).subscribe(data => {this.propositions=data; console.log(this.propositions)});
-    //})
   }
 
   addBR(pr, id){

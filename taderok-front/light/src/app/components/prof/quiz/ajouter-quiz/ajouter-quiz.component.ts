@@ -32,6 +32,8 @@ export class AjouterQuizComponent implements OnInit {
       this.etat = true;
       this.etat2 = false;
     }
+    this.question.question='';
+    this.propositions=null;
   }
 
   addQuiz(p){
@@ -42,9 +44,19 @@ export class AjouterQuizComponent implements OnInit {
   }
 
   addProposition(proposition, questionid){
-  this.quizService.addProposition(proposition, questionid).subscribe(()=>console.log('proposition ajouté'));
-  this.proposition.nom='';
-  this.quizService.getAllPropositions(questionid).subscribe(data => {this.propositions=data ; console.log(this.propositions)});
+    setTimeout(()=>{
+      this.quizService.addProposition(proposition, questionid).subscribe(()=>console.log('proposition ajouté'));
+      this.proposition.nom='';
+      this.quizService.getAllPropositions(questionid).subscribe(data => {this.propositions=data ; console.log(this.propositions)});
+  })
+  }
+
+  deleteProposition(id, idquestion){
+    setTimeout(()=>{
+      this.quizService.deleteProposition(id).subscribe(data => console.log(data));
+      this.quizService.getAllPropositions(idquestion).subscribe(data => {this.propositions=data; console.log(this.propositions)});
+    })
+
   }
 
 }
