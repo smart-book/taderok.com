@@ -8,6 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {OptionsInput} from '@fullcalendar/core';
 import {AppComponent} from '../../../app.component';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/material';
 declare const $: any;
 declare const jQuery: any;
 @Component({
@@ -15,18 +16,26 @@ declare const jQuery: any;
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.sass']
 })
+
+
+
 export class ProfilComponent implements OnInit {
   constructor(private appComponent: AppComponent, private profilService: LoginService, private modifierProfilService: ProfilService, private router: Router ) {}
   profil: User;
 
   @ViewChild('calendar', {static: true})
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   calendarComponent: FullCalendarComponent;
+  dataSource:MatTableDataSource<User>;
+  displayedColumns: string[] = ['image', 'friend','telephone', 'email','actions']
+  value: string;
 
   options: OptionsInput;
   calendarPlugins = [dayGridPlugin];
 
   id: number ;
-  user = User ;
+  user : User ;
   friends : User[];
 
 
@@ -35,10 +44,52 @@ export class ProfilComponent implements OnInit {
       console.log(data);
       this.profil = data;
     }, error => console.log(error));*/
+
+
+
     this.modifierProfilService.getFriends().subscribe(data=> {
       console.log(data);
       this.friends = data;
     }, error => console.log(error) );
+
+    setTimeout(()=>{
+      this.modifierProfilService.getFriends().subscribe(data => {
+        this.dataSource = new MatTableDataSource(data);
+        console.log(this.dataSource.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch(property) {
+            case 'friend': return item.nom && item.prenom;
+            case 'telephone': return item.telephone;
+            case 'email': return item.email;
+            default: return item[property];
+          }
+        };
+        this.dataSource.sort = this.sort;
+        // @ts-ignore
+        this.dataSource.filterPredicate = (order: Order, filter: string) => {
+          const transformedFilter = filter.trim().toLowerCase();
+
+          const listAsFlatString = (obj): string => {
+            let returnVal = '';
+
+            Object.values(obj).forEach((val) => {
+              if (typeof val !== 'object') {
+                returnVal = returnVal + ' ' + val;
+              } else if (val !== null) {
+                returnVal = returnVal + ' ' + listAsFlatString(val);
+              }
+            });
+
+            return returnVal.trim().toLowerCase();
+          };
+
+          return listAsFlatString(order).includes(transformedFilter);
+        };
+
+      });
+    });
+
 
     this.profil = JSON.parse(localStorage.getItem('user')).user;
     console.log(typeof (this.profil));
@@ -165,5 +216,14 @@ updateProfilProf() {
     localStorage.removeItem('user');
     localStorage.setItem('user', JSON.stringify({user : this.profil}));
     console.log(localStorage.getItem('user'));
+  }
+
+  applyFilter(filterValue: string) {
+    const filters = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filters;
+  }
+
+  OnSearchClear(){
+    this.value='';
   }
 }
