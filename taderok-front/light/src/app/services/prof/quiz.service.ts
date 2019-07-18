@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Quiz} from "../../models/quiz";
 import {Observable} from "rxjs";
 import {Proposition} from "../../models/Proposition";
+import {Question} from "../../models/Question";
 
 @Injectable({
   providedIn: 'root'

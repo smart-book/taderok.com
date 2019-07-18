@@ -19,7 +19,7 @@ export class ListComponent implements AfterViewInit, OnInit {
   dataSource: ListDataSource;
   value:string;
   quizadded: Object;
-  questionadded: Object= null;
+  questionadded: Object;
   question: Question = new Question();
   quiz: Quiz = new Quiz();
   proposition: Proposition = new Proposition();
@@ -51,12 +51,9 @@ export class ListComponent implements AfterViewInit, OnInit {
 
   addQuiz(p){
       this.quizService.addQuiz(p).subscribe(data => { this.quizadded = data });
-    setTimeout(()=>{
-      this.dataSource = new ListDataSource(this.quizService);
-    })
   }
   addQuestion(q, id){
-    this.quizService.addQuestion(q, id).subscribe(data => { this.questionadded=data;console.log(this.questionadded)});
+    this.quizService.addQuestion(q, id).subscribe(data => { this.questionadded =data;console.log(this.questionadded)});
   }
   addProposition(pr, id){
       this.quizService.addProposition(pr, id).subscribe(() => console.log('proposition ajouté'));
@@ -69,9 +66,7 @@ export class ListComponent implements AfterViewInit, OnInit {
 
   deleteProposition(id){
       this.quizService.deleteProposition(id).subscribe(data => console.log(data));
-   // setTimeout(()=> {
       this.quizService.getAllPropositions(id).subscribe(data => {this.propositions=data; console.log(this.propositions)});
-    //})
   }
 
   addBR(pr, id){
