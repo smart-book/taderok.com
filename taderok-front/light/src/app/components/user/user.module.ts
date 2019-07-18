@@ -6,12 +6,13 @@ import { ProfilComponent } from './profil/profil.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import {FormsModule} from "@angular/forms";
+import { UserProfilComponent } from './user-profil/user-profil.component';
 
 
 
 
 @NgModule({
-  declarations: [ProfilComponent, AllUsersComponent],
+  declarations: [ProfilComponent, AllUsersComponent, UserProfilComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

@@ -31,12 +31,12 @@ public class DemandeAmisController {
         return demandeAmisService.userIsSender();
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/accepter/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/accepter/{id}")
     public void accepter(@PathVariable long id){
         demandeAmisService.accepterDemande(id);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/refuser/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/refuser/{id}")
     public void refuser(@PathVariable long id){
         demandeAmisService.refuserDemande(id);
     }
@@ -44,6 +44,11 @@ public class DemandeAmisController {
     @RequestMapping(method = RequestMethod.GET, value = "/friends")
     public List<User> getFriends(){
        return demandeAmisService.getAllFriends();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/isFriends/{id}")
+    public DemandeAmis isFriend(@PathVariable String id){
+        return demandeAmisService.isFriendsWith(id);
     }
 
 }

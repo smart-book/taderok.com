@@ -101,16 +101,45 @@
                 </div>
               </div>
               <div role="tabpanel" class="tab-pane fade" id="profile">
-                <b>Profile Content</b>
-                <p>
-                  Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit
-                  mediocritatem an. Pri ut tation electram moderatius.
-                  Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent
-                  aliquid
-                  pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere
-                  gubergren
-                  sadipscing mel.
-                </p>
+                <div class="body">
+                  <div class="table-responsive">
+                    <table class="table table-hover js-basic-example contact_list">
+                      <thead>
+                      <tr>
+                        <th class="center">Image</th>
+                        <th class="center">Nom complet</th>
+                        <th class="center">telephone</th>
+                        <th class="center">Email</th>
+                        <th class="center">Actions</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let friend of friends">
+                        <td class="table-img">
+                          <img src="assets/images/upload/uploadUser/{{friend.photo}}" alt="" style="width: 50px">
+                        </td>
+                        <td class="center">{{friend.nom}} {{friend.prenom}} </td>
+                        <td class="center">
+                                            <span class="phone">
+                                                <i class="material-icons"></i>{{friend.telephone}}</span>
+                        </td>
+                        <td class="center">
+                                            <span class="phone">
+                                                <i class="material-icons"></i>{{friend.email}}</span>
+                        </td>
+                        <td class="center">
+                          <button class="btn tblActnBtn">
+                            <i class="material-icons">mode_edit</i>
+                          </button>
+                          <button class="btn tblActnBtn">
+                            <i class="material-icons">delete</i>
+                          </button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div role="tabpanel" class="tab-pane fade" id="messages">
                 <b>Message Content</b>
@@ -217,21 +246,30 @@
                   </div>
                   <button  type="button" (click)="updateProfilProf()" class="btn btn-info btn-round">Save Changes</button>
 
-                  <div role="tabpanel" class="tab-pane fade" id="securite">
-                    <b>Paramètres du compte</b>
-                    <div class="body">
-                      <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Mot de passe">
-                      </div>
-                      <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Nouveau mot de passe">
-                      </div>
 
-                    </div>
-
-                </div>
               </div>
             </div>
+              <div role="tabpanel" class="tab-pane fade" id="securite">
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                  <li role="presentation">
+                    <a href="#generale" data-toggle="tab" >Générale</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#securite" data-toggle="tab" class="active show">Sécurité</a>
+                  </li>
+                </ul>
+                <b>Paramètres du compte</b>
+                <div class="body">
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Mot de passe">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Nouveau mot de passe">
+                  </div>
+
+                </div>
+
+              </div>
           </div>
         </div>
     </div>
