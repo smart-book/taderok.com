@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/material';
 import {Feedback} from "../../../../models/feedback";
 import {FeedbackService} from "../../../../services/prof/feedback.service";
 
@@ -15,12 +15,16 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
 
 
   dataSource: MatTableDataSource<Feedback>;
-  displayedColumns: string[] = ['etudiant', 'etudiant.email', 'type', 'description', 'seances.matiere'];
+  displayedColumns: string[] = ['etudiant', 'etudiant.email', /*'type', 'description',*/ 'seances.matiere'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  rowEtudiant;
+  rowType;
+  rowDescription;
+  dialogRef;
 
   value:string;
-  constructor(private service: FeedbackService) {
+  constructor(private service: FeedbackService, public dialog: MatDialog) {
 
   }
 
@@ -34,8 +38,8 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
           switch(property) {
             case 'etudiant': return item.etudiant.nom && item.etudiant.prenom;
             case 'etudiant.email': return item.etudiant.email;
-            case 'type': return item.type;
-            case 'description': return item.description;
+           // case 'type': return item.type;
+           // case 'description': return item.description;
             case 'seances.matiere': return item.seances.matiere;
             default: return item[property];
           }
@@ -64,11 +68,22 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
 
       });
       });
+
     }
   ngAfterViewInit(){
 
   }
+  selectRow(myTemplate, row) {
+    this.rowEtudiant = row['etudiant'].nom +' '+ row['etudiant'].prenom;
+    console.log(this.rowEtudiant);
+    this.rowType = row['type'];
+    this.rowDescription = row['description'];
+    const dialogRef = this.dialog.open(myTemplate);
+  }
 
+  onClick(): void {
+    this.dialogRef.close();
+  }
   applyFilter(filterValue: string) {
     const filters = filterValue.trim().toLowerCase();
     this.dataSource.filter = filters;

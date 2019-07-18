@@ -31,7 +31,7 @@ export class AllUsersComponent implements OnInit {
 
   ajouterAmis(id) {
     console.log(this.profil);
-  this.demandeAmis.idReceiver = id;
+  this.demandeAmis.receiver = id;
   this.demandeAmisService.ajouterAmi(this.demandeAmis).subscribe(data => {
     console.log(data);
   }, error => console.log(error) );

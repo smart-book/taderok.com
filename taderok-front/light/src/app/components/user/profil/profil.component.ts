@@ -27,6 +27,7 @@ export class ProfilComponent implements OnInit {
 
   id: number ;
   user = User ;
+  friends : User[];
 
 
   ngOnInit() {
@@ -34,6 +35,11 @@ export class ProfilComponent implements OnInit {
       console.log(data);
       this.profil = data;
     }, error => console.log(error));*/
+    this.modifierProfilService.getFriends().subscribe(data=> {
+      console.log(data);
+      this.friends = data;
+    }, error => console.log(error) );
+
     this.profil = JSON.parse(localStorage.getItem('user')).user;
     console.log(typeof (this.profil));
 

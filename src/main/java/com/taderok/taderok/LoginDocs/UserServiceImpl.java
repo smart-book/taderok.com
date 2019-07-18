@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -170,6 +171,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findByEmailIgnoreCase(email);
+    }
+
+    @Override
+    public Optional<User> getById(long id) {
+        return userRepository.findById(id);
     }
 
 

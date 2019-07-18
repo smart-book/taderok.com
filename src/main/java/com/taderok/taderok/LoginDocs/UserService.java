@@ -6,6 +6,7 @@ import com.taderok.taderok.Entity.Prof;
 import com.taderok.taderok.Entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     User save(User user);
@@ -17,11 +18,8 @@ public interface UserService {
     Etudiant updateEtudiant(Long id,Etudiant etudiant);
     Parent updateParent(Long id,Parent parent);
     Prof updateProf(Long id,Prof prof);
-
-
     List<User> findAll();
-
     List<User> findAllByRole(String role);
-
     User getUserByEmail(String email);
+    Optional<User> getById(long id);
 }
