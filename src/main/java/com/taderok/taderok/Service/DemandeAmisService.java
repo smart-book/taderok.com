@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 @Service
 public class DemandeAmisService {
 
@@ -49,6 +48,14 @@ public class DemandeAmisService {
         demandeAmisRepository.save(demande);
     }
 
+    public void bloquerDemande(long id){
+        DemandeAmis demande=demandeAmisRepository.findById(id).orElse(null);
+        demande.setStatus("blocked");
+        Date date = new Date();
+        demande.setDate(date);
+        demandeAmisRepository.save(demande);
+    }
+
     public void refuserDemande(long id){
         demandeAmisRepository.deleteById(id);
     }
@@ -58,5 +65,10 @@ public class DemandeAmisService {
         demandeAmisRepository.findAllBySenderAndStatus(AthenticationController.getConnectedUser().getUser(),"friends").forEach(user->amis.add(user.getReceiver()));
         demandeAmisRepository.findAllByReceiverAndStatus(AthenticationController.getConnectedUser().getUser(),"friends").forEach(user->amis.add(user.getSender()));
         return amis;
+    }
+
+    public DemandeAmis isFriendsWith(String id){
+        User u = userRepository.findByEmail(id);
+        return demandeAmisRepository.findRelationBySenderAndReceiver(u,AthenticationController.getConnectedUser().getUser());
     }
 }

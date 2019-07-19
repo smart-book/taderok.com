@@ -1,6 +1,8 @@
+import {User} from "./user";
+
 export class DemandeAmis{
   id:number;
-  idSender:number;
-  idReceiver:number;
+  sender:User;
+  receiver:User;
   status:string;
 }

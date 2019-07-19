@@ -13,6 +13,18 @@ export class DemandeAmisService {
 
   ajouterAmi(da: DemandeAmis): Observable<Object>{
     console.log(da);
-    return this.http.post(`${this.baseUrl}`+`/add/`+da.idReceiver, da);
+    return this.http.post(`${this.baseUrl}`+`/add/`+da.receiver.id, da);
+  }
+
+  accepterAmi(id:number): Observable<DemandeAmis>{
+    return this.http.get<DemandeAmis>(`${this.baseUrl}`+`/accepter/`+id);
+  }
+
+  supprimerOuRefuserrAmi(id:number): Observable<Object>{
+    return this.http.get(`${this.baseUrl}`+`/refuser/`+id);
+  }
+
+  isFriend(id:string): Observable<DemandeAmis>{
+    return this.http.get<DemandeAmis>(`${this.baseUrl}`+`/isFriends/`+id);
   }
 }

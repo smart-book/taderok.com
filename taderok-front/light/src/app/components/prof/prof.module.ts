@@ -70,7 +70,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
 import {CdkTableModule} from '@angular/cdk/table';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListComponent } from './quiz/list/list.component';
 import { DetailQuizComponent } from './quiz/detail-quiz/detail-quiz.component';
 

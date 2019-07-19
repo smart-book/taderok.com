@@ -49,7 +49,7 @@
           <div class="container">
             <mat-form-field FloatLabel="auto" >
               <mat-label>Recherche</mat-label>
-              <input matInput  (keyup)="applyFilter($event.target.value)">
+              <input matInput  (keyup)="applyFilter($event.target.value)" name="value" [(ngModel)]="value">
               <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
                 <mat-icon>close</mat-icon>
               </button>
@@ -60,15 +60,9 @@
             <table class="table" mat-table [dataSource]="dataSource"  matSort >
 
               <!-- Nom Column -->
-              <ng-container matColumnDef="etudiant.nom">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.nom}}</td>
-              </ng-container>
-
-              <!-- Prenom Column -->
-              <ng-container matColumnDef="etudiant.prenom">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.prenom}}</td>
+              <ng-container matColumnDef="etudiant">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Etudiant</th>
+                <td mat-cell *matCellDef="let row">{{row.etudiant.nom}} {{row.etudiant.prenom}} </td>
               </ng-container>
 
               <!-- email Column -->
@@ -77,30 +71,50 @@
                 <td mat-cell *matCellDef="let row">{{row.etudiant.email}}</td>
               </ng-container>
 
-              <!-- Type Column -->
+              <!-- Type Column
               <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
                 <td mat-cell *matCellDef="let row">{{row.type}}</td>
               </ng-container>
 
-              <!-- Description Column -->
+               Description Column
               <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>description</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
                 <td mat-cell *matCellDef="let row">{{row.description}}</td>
-              </ng-container>
+              </ng-container>-->
 
 
               <!-- Matiere Column -->
               <ng-container matColumnDef="seances.matiere">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matière</th>
                 <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <tr mat-row (click)="selectRow(myTemplate, row)" *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+          <ng-template #myTemplate>
+            <h4 style="padding: 20px 30px; font-weight: normal; color: #5b626b; ">
+              Feedback de <strong>{{rowEtudiant}}</strong>
+            </h4>
+            <div mat-dialog-content align="center">
+              <h6 style="font-size:small; color: #5b626b;">Type</h6>
+              <div style="font-size: medium">{{rowType}}</div>
+              <h6 style="font-size: small; color: #5b626b;">Description</h6>
+              <div style="font-size: medium">{{rowDescription}}</div>
+              <div></div>
+            </div>
+
+            <mat-dialog-actions align="center">
+              <button type="button" class="btn-hover btn-border-radius color-1">Contacter</button>
+              <button type="button" class="btn-hover btn-border-radius color-10" mat-dialog-close>Fermer</button>
+            </mat-dialog-actions>
+
+          </ng-template>
+
           </div>
         </div>
       </div>
