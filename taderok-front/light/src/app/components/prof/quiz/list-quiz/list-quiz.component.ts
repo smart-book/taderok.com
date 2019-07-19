@@ -12,24 +12,34 @@ declare const $: any;
 export class ListQuizComponent implements OnInit {
 
   quizzes: Object[];
-  quiz: Quiz = new Quiz();
-  quizadded: Object;
+  quiz: Object;
   question: Question = new Question();
-
+  etat = false;
+  etat2 = true;
 
   constructor(private quizService: QuizService) { }
 
   ngOnInit() {
-
-
-
+    this.quizService.getAllQuiz().subscribe(data => {this.quizzes=data; console.log(this.quizzes)});
   }
 
-  addQuiz(p){
-    this.quizService.addQuiz(p).subscribe(data => {this.quizadded = data });
+  changementEtat() {
+    if (this.etat === true) {
+      this.etat = false;
+      this.etat2=true;
+    } else {
+      this.etat = true;
+      this.etat2 = false;
+    }
   }
-  addQuestion(q, id){
-    this.quizService.addQuestion(q, id).subscribe(data => console.log('question ajouté'));
+
+  deleteQuiz(id){
+    this.quizService.deleteQuiz(id).subscribe(()=> console.log('Quiz supprimé'));
+    this.quizService.getAllQuiz().subscribe(data => {this.quizzes=data; console.log(this.quizzes)});
+  }
+
+  findQuiz(id){
+    this.quizService.findQuiz(id).subscribe(data=> {this.quiz=data; console.log(this.quiz)});
   }
 
 }

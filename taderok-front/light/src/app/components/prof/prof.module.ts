@@ -72,12 +72,13 @@ import {CdkTableModule} from '@angular/cdk/table';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListComponent } from './quiz/list/list.component';
+import { DetailQuizComponent } from './quiz/detail-quiz/detail-quiz.component';
 
 
 
 
 @NgModule({
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent, ListComponent],
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent, ListComponent, DetailQuizComponent],
 
 
 
