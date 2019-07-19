@@ -15,7 +15,7 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
 
 
   dataSource: MatTableDataSource<Feedback>;
-  displayedColumns: string[] = ['etudiant', 'etudiant.email', /*'type', 'description',*/ 'seances.matiere'];
+  displayedColumns: string[] = ['etudiant', 'etudiant.email', 'seances.matiere'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   rowEtudiant;
@@ -38,8 +38,8 @@ export class ListFeedbackComponent implements OnInit,AfterViewInit{
           switch(property) {
             case 'etudiant': return item.etudiant.nom && item.etudiant.prenom;
             case 'etudiant.email': return item.etudiant.email;
-           // case 'type': return item.type;
-           // case 'description': return item.description;
+            // case 'type': return item.type;
+            // case 'description': return item.description;
             case 'seances.matiere': return item.seances.matiere;
             default: return item[property];
           }
