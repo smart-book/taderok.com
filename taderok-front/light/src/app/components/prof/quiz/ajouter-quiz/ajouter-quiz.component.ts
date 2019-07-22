@@ -18,6 +18,7 @@ export class AjouterQuizComponent implements OnInit {
   etat = false;
   etat2 = true;
   propositions: Proposition[]=null;
+  quizfinal: Object;
 
   constructor(private quizService : QuizService, private router: Router) { }
 
@@ -57,6 +58,10 @@ export class AjouterQuizComponent implements OnInit {
       this.quizService.getAllPropositions(idquestion).subscribe(data => {this.propositions=data; console.log(this.propositions)});
     })
 
+  }
+
+  findQuiz(id){
+    this.quizService.findQuiz(id).subscribe(data=>{this.quizfinal=data; console.log(this.quizfinal)})
   }
 
 }
