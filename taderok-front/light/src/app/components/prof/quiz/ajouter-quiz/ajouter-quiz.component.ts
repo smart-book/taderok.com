@@ -18,7 +18,7 @@ export class AjouterQuizComponent implements OnInit {
   etat = false;
   etat2 = true;
   propositions: Proposition[]=null;
-  quizfinal: Object;
+  quizfinal: Object = new Object();
 
   constructor(private quizService : QuizService, private router: Router) { }
 
