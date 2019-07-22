@@ -16,8 +16,8 @@ export class ListQuizComponent implements OnInit {
   @ViewChild (MatPaginator, {static: true}) paginator : MatPaginator;
   @ViewChild (MatSort, {static: true}) sort: MatSort;
 
-  displayedColumns = ['nom', 'date'];
-
+  displayedColumns = ['nom', 'date', 'actions'];
+quizzes: Object[];
   quiz: Object;
   question: Question = new Question();
   etat = false;
@@ -64,7 +64,6 @@ export class ListQuizComponent implements OnInit {
 
       });
     });
-    this.quizService.getAllQuiz().subscribe(data => {this.quizzes=data; console.log(this.quizzes)});
   }
 
   changementEtat() {
