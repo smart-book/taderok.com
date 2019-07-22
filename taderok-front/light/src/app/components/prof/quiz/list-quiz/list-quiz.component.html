@@ -46,8 +46,8 @@
             </li>
           </ul>
         </div>
-        <div class="body" >
-          <mat-form-field FloatLabel="auto" *ngIf="etat2">
+        <div class="body" *ngIf="etat2" >
+          <mat-form-field FloatLabel="auto" >
             <mat-label>Recherche</mat-label>
             <input matInput  (keyup)="applyFilter($event.target.value)" name="value" [(ngModel)]="value">
             <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
@@ -56,18 +56,18 @@
           </mat-form-field>
         </div>
 
-        <div class="mat-elevation-z8" *ngIf="etat2">
+        <div class="mat-elevation-z8" >
           <table class="table" mat-table [dataSource]="dataSource"  matSort >
 
             <!-- Nom Column -->
             <ng-container matColumnDef="nom">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Etudiant</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom du Quiz</th>
               <td mat-cell *matCellDef="let row">{{row.nomQuiz}}</td>
             </ng-container>
 
             <!--Date Column -->
             <ng-container matColumnDef="date">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
               <td mat-cell *matCellDef="let row">{{row.date | date: 'dd/MM/yyyy'}}</td>
             </ng-container>
 
@@ -88,7 +88,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
 
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons *ngIf="etat2"></mat-paginator>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons ></mat-paginator>
 
         </div>
 <!--detail-->
