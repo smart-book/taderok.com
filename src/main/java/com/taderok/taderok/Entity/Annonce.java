@@ -15,6 +15,7 @@ public class Annonce {
     @ManyToOne
     private User user;
     private Date date;
+    private String titre;
     private String description;
     private float prix;
     private String categorie;
@@ -94,5 +95,13 @@ public class Annonce {
 
     public void setAnnoncePhotoList(List<AnnoncePhoto> annoncePhotoList) {
         this.annoncePhotoList = annoncePhotoList;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 }
