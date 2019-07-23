@@ -15,7 +15,7 @@ public class Question {
 
     @ManyToOne
     private Quiz quiz;
-    @JsonIgnore
+    @JsonIgnoreProperties("question")
     @OneToMany(mappedBy = "question", cascade = {CascadeType.REMOVE})
     private List<Proposition> propositions;
 

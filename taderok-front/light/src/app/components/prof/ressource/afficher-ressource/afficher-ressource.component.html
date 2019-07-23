@@ -23,74 +23,79 @@
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
           <div class="header">
-            <h2 style="padding-left: 400px">
+            <h2>
               <strong>Liste</strong> des Ressources</h2>
                     </div>
 
 
-          <div class="body">
-            <div class="table-responsive">
-              <table id="tableExport"
-                     class="display table table-hover table-checkable order-column m-t-20 width-per-100">
-                <thead>
+          <div class="container" style="margin-bottom: 20px;">
+            <mat-form-field FloatLabel="auto" >
+              <mat-label>Recherche</mat-label>
+              <input matInput type="special" (keyup)="applyFilter($event.target.value)" name="value" [(ngModel)]="value">
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
 
-                <br>
-                <br>
-
-                <tr>
-                  <th>Nom de la ressource</th>
-                  <th>Séance</th>
-                  <th>Télécharger</th>
-                  <th>Visualiser</th>
-                   </tr>
-                </thead>
-                <tbody>
+            <div class="mat-elevation-z8">
+              <table class="table" mat-table [dataSource]="dataSource"  matSort >
 
 
+                <ng-container matColumnDef="nom">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom de la ressource</th>
+                  <td mat-cell *matCellDef="let row">{{row.nom}}</td>
+                </ng-container>
 
-                <tr  *ngFor="let a of listRessources"  >
+                <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Séance </th>
+                  <td mat-cell *matCellDef="let row">{{row.seance.date_debut}}</td>
+                </ng-container>
 
-                  <td data-toggle="modal" [attr.data-target]="'#exampleModal' + a.id"   >{{a.nom}}</td>
-                  <td data-toggle="modal" [attr.data-target]="'#exampleModal' + a.id"    >{{a.seance}}</td>
-                  <td><a href="http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}"  download="{{a.fileName}}"><i class="fa fa-download"></i></a></td>
-                  <td><a href="http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}" target="_blank"><i class="fa fa-eye"></i></a></td>
+                Type Column
+                <ng-container matColumnDef="lien">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Lien</th>
+                  <td mat-cell *matCellDef="let row"><a href="http://localhost:4200/assets/images/upload/uploadUser/{{row.path}}"  download="{{row.fileName}}"><i matTooltip="Télécharger" class="fas fa-download"></i></a></td>
+                </ng-container>
 
-
-                  <div class="modal fade" [id]="'exampleModal' + a.id" tabindex="-1" role="dialog"
-                       aria-labelledby="formModal" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" style="padding-left: 150px" id="formModal">Détails de cette Séance </h5><br><br>
-                          <button type="button" class="close" data-dismiss="modal"
-                                  aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <!--<div class="modal-body" >
-                          <img _ngcontent-xte-c0=""  src="assets/images/upload/uploadRessources/{{a.path}}">
-                          <a href="http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}" target="_blank">"http://localhost:4200/assets/images/upload/uploadRessources/{{a.path}}"</a>
-                        </div>-->
-                        <div class="modal-footer">
-                          <button type="button" class="btn-hover btn-border-radius color-4"
-
-                                  data-dismiss="modal">Cancel</button>
-
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                </tr>
+                Description Column
+                <ng-container matColumnDef="image">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Visualisation</th>
+                  <td mat-cell *matCellDef="let row"><a href="http://localhost:4200/assets/images/upload/uploadUser/{{row.path}}" target="_blank"><i matTooltip="Visualiser" class="fas fa-eye"></i></a></td>
+                </ng-container>-->
 
 
-
-                </tbody>
-
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row (click)="selectRow(myTemplate, row)" *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+              <ng-template #myTemplate>
+                <h5 style="padding: 20px 30px;">
+                  Détails de cette Séance
+                </h5>
+                <div mat-dialog-content style="padding-left: 30px;">
+                  <h6 style="font-size: small; color: #5b626b; padding-bottom:5px;">Matiere</h6>
+                  <p style="font-size: medium">{{rowMatiere}}</p>
+                  <h6 style="font-size:small; color: #5b626b;padding-bottom:5px;">Groupe</h6>
+                  <p style="font-size: medium">{{rowGroupe}}</p>
+                  <h6 style="font-size: small; color: #5b626b;padding-bottom:5px;">Duree</h6>
+                  <p style="font-size: medium">{{rowDuree}}</p>
+
+                </div>
+
+                <mat-dialog-actions align="end">
+                  <button type="button" class="btn-hover btn-border-radius color-4" mat-dialog-close>Fermer</button>
+                </mat-dialog-actions>
+
+              </ng-template>
+
             </div>
           </div>
+
+
+
+
         </div>
       </div>
     </div>

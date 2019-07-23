@@ -30,6 +30,10 @@ public class QuizController {
     public List<Quiz> getAllQuiz(){
         return quizProfService.getAllQuiz();
     }
+    @RequestMapping(method = RequestMethod.GET, value = "/find/{id}")
+    public Quiz getQuizById(@PathVariable int id){
+        return quizProfService.getQuizById(id);
+    }
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public Quiz addQuiz(@RequestBody Quiz quiz){
         return quizProfService.addQuiz(quiz);

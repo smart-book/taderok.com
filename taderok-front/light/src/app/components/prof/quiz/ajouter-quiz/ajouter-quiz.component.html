@@ -25,7 +25,7 @@
             </ul>
           </div>
           <div class="body">
-            <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
+            <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'" >
               <aw-wizard-step [stepTitle]="'Ajouter un Quiz'">
                 <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
                 <div class="centered-content">
@@ -109,7 +109,7 @@
                         <div class="text-left">
                           <button type="submit" class="btn-hover btn-border-radius color-8" (click)="addProposition(proposition, questionadded.id)">Ajouter proposition</button>
                           <button type="submit" class="btn-hover btn-border-radius color-8" (click)="changementEtat()">Ajouter question</button>
-                          <button type="submit" class="btn-hover btn-border-radius color-8" awNextStep>Termier</button>
+                          <button type="submit" class="btn-hover btn-border-radius color-8" awNextStep (click)="findQuiz(quizadded.id)">Termier</button>
                         </div>
                       </div>
                         <div class="row clearfix">
@@ -131,22 +131,8 @@
               <aw-wizard-step [stepTitle]="'Vérification du Quiz'">
                 <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
                 <div class="centered-content">
-                  <div>
-                    <form class="form-horizontal validate-form">
-
-
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
-                        </div>
-
-                        <div class="text-left">
-                          <button type="submit" awNextStep  class="btn-hover btn-border-radius color-8" (click)="addQuiz(quiz)">Ajouter</button>
-                        </div>
-                      </div>
-                    </form>
-
-                  </div>
-
+                  <h1>{{this.quiz.nomQuiz}}</h1>
+                  <p *ngFor="let q of quizfinal.questions">{{q.question}}</p>
                 </div>
               </aw-wizard-step>
             </aw-wizard>
