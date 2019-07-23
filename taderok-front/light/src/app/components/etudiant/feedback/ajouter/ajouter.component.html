@@ -5,8 +5,8 @@
         <div class="header">
 
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
-                    data-target="#exampleModal">Ajouter un feedback</button>
+            <button type="button" class="btn-hover btn-border-radius color-1 " data-toggle="modal"
+                    data-target="#exampleModal">Ajouter feedback</button>
             <hr>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                  aria-labelledby="formModal" aria-hidden="true">
@@ -20,19 +20,23 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
+
+                   <form>
                       <label>Type du feedback</label>
                       <div class="form-group">
                         <div class="form-line">
-                          <input type="text" name="type" [(ngModel)]="feedback.type" class="form-control"
-                                 placeholder="Entrer le type de votre feedback">
+                          <select class="custom-select" [(ngModel)]="this.feedback.type" name="type">
+                            <option type="text" [value]="" disabled selected>Veuillez choisir votre type de Feedback ...</option>
+                            <option type="text" *ngFor="let type of types" [value]="type">{{type}}</option>
+                          </select>
+                          <br>
                         </div>
                       </div>
 
                       <label>Description</label>
                       <div class="form-group">
                         <div class="form-line">
-                          <input class="form-control" type="text" name="description" [(ngModel)]="feedback.description" placeholder="Entrer la description de votre feedback">
+                          <input class="form-control" type="textarea" name="description" [(ngModel)]="feedback.description" placeholder="Entrer la description de votre feedback">
                         </div>
                       </div>
                     </form>
@@ -47,7 +51,7 @@
                   </swal>
 
                   <div class="modal-footer">
-                    <button type="button" [swal]="deleteSwal" (click)="ajouterFeedback()" class="btn-hover btn-border-radius color-1">Ajouter</button>
+                    <button type="button" [swal]="deleteSwal" (click)="ajouterFeedback()" class="btn-hover btn-border-radius color-6">Envoyer</button>
                     <button type="button" class="btn-hover btn-border-radius color-4"
                             data-dismiss="modal">Fermer</button>
 
