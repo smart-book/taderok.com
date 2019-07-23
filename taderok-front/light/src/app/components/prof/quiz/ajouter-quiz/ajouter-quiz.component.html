@@ -30,6 +30,7 @@
                 <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
                 <div class="centered-content">
                   <div>
+                    <br><br>
                     <form class="form-horizontal validate-form">
                       <div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -63,6 +64,7 @@
                 <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
                 <div class="centered-content">
                   <div>
+                    <br><br>
                     <form class="form-horizontal validate-form">
                       <div *ngIf="etat2">
                       <div class="row clearfix">
@@ -117,8 +119,17 @@
                         </div>
                           <h5>Question : {{this.questionadded.question}}</h5>
                         </div>
-                        <div class="modal-header" *ngFor="let p of propositions">
-                          <p style="padding-left: 150px"> {{p.nom}} </p><br><br>
+                        <div class="modal-header" >
+                          <div class="col-sm-6 col-lg-3">
+                            <form>
+                              <p *ngFor="let p of propositions" style="padding-left: 150px">
+                                <label>
+                                  <input type="checkbox" class="filled-in" (change)="addBR(p.nom)" />
+                                  <span>{{p.nom}}</span>
+                                </label>
+                              </p>
+                            </form>
+                          </div>
                           <button type="button"  class="close" aria-label="Close" (click)="deleteProposition(p.id, questionadded.id)">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -131,9 +142,26 @@
               <aw-wizard-step [stepTitle]="'Vérification du Quiz'">
                 <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
                 <div class="centered-content">
-                  <h1>{{this.quiz.nomQuiz}}</h1>
-                  <p *ngFor="let q of quizfinal.questions">{{q.question}}</p>
-                </div>
+                  <button type="submit" class="btn-hover btn-border-radius color-8" awPreviousStep (click)="changementEtat()">Ajouter question</button>
+                  <br><br>
+                  <h1 align="center">{{this.quiz.nomQuiz}}</h1>
+                  <div *ngFor="let q of quizfinal.questions">
+                    <h5 style="padding-left: 150px"> Question : {{q.question}} </h5>
+                    <button type="button" (click)="deleteQuestion(q.id, quizfinal.id)" class="close" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <br>
+                    <div *ngFor="let q of quizfinal.questions">
+                      <div *ngFor="let p of q.propositions">
+                      <p style="padding-left: 160px; color: #0f9d58"> {{p.nom}}</p>
+                      <button type="button" style="padding-right: 150px" class="close" aria-label="Close" (click)="deleteProposition(p.id, q.id)">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  </div>
               </aw-wizard-step>
             </aw-wizard>
           </div>
