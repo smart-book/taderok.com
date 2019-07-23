@@ -20,61 +20,65 @@ export class ListQuizComponent implements OnInit {
 quizzes: Object[];
   quiz: Object;
   question: Question = new Question();
-  etat = false;
-  etat2 = true;
+  isViewable: boolean = true;
 
   value: string;
 
   constructor(private quizService: QuizService) { }
 
   ngOnInit() {
+
     setTimeout(()=>{
       this.quizService.getAllQuiz().subscribe(data => {
-        this.dataSource = new MatTableDataSource(data);
-        console.log(this.dataSource.data);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sortingDataAccessor = (item, property) => {
-          switch(property) {
-            case 'nom': return item.nomQuiz;
-            case 'date': return item.date;
-            default: return item[property];
-          }
-        };
-        this.dataSource.sort = this.sort;
-        // @ts-ignore
-        this.dataSource.filterPredicate = (order: Order, filter: string) => {
-          const transformedFilter = filter.trim().toLowerCase();
+          this.dataSource = new MatTableDataSource(data);
+          console.log(this.dataSource.data);
 
-          const listAsFlatString = (obj): string => {
-            let returnVal = '';
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sortingDataAccessor = (item, property) => {
+            switch (property) {
+              case 'nom':
+                return item.nomQuiz;
+              case 'date':
+                return item.date;
+              default:
+                return item[property];
+            }
+          };
+          this.dataSource.sort = this.sort;
+          // @ts-ignore
+          this.dataSource.filterPredicate = (order: Order, filter: string) => {
+            const transformedFilter = filter.trim().toLowerCase();
 
-            Object.values(obj).forEach((val) => {
-              if (typeof val !== 'object') {
-                returnVal = returnVal + ' ' + val;
-              } else if (val !== null) {
-                returnVal = returnVal + ' ' + listAsFlatString(val);
-              }
-            });
+            const listAsFlatString = (obj): string => {
+              let returnVal = '';
 
-            return returnVal.trim().toLowerCase();
+              Object.values(obj).forEach((val) => {
+                if (typeof val !== 'object') {
+                  returnVal = returnVal + ' ' + val;
+                } else if (val !== null) {
+                  returnVal = returnVal + ' ' + listAsFlatString(val);
+                }
+              });
+
+              return returnVal.trim().toLowerCase();
+            };
+
+            return listAsFlatString(order).includes(transformedFilter);
           };
 
-          return listAsFlatString(order).includes(transformedFilter);
-        };
-
-      });
+        });
     });
   }
 
+
+
   changementEtat() {
-    if (this.etat === true) {
-      this.etat = false;
-      this.etat2=true;
-    } else {
-      this.etat = true;
-      this.etat2 = false;
-    }
+    this.isViewable = !this.isViewable;
   }
+
+
+
+
 
   deleteQuiz(id){
     this.quizService.deleteQuiz(id).subscribe(()=> console.log('Quiz supprimé'));
