@@ -30,7 +30,17 @@ export class UploadFileService {
       reportProgress: true  ,
       responseType: 'text'
     });
+    return this.http.request(req);
+  }
 
+  pushFileToStoragePhotoAnnonce(file: File, fname: string): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+    formdata.append('file', file, fname );
+
+    const req = new HttpRequest('POST', 'http://localhost:8181/postAnnoncePhoto', formdata, {
+      reportProgress: true  ,
+      responseType: 'text'
+    });
     return this.http.request(req);
   }
 

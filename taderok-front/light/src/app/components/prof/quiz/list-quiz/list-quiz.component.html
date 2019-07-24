@@ -1,95 +1,126 @@
-
 <section class="content">
   <div class="container-fluid">
-  <!-- #START# Table With State Save -->
-  <div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="card">
-        <div class="header" *ngIf="etat2">
-          <h2>Liste des
-            <strong>Quiz</strong> </h2>
-          <ul class="header-dropdown m-r--5">
-            <li class="dropdown">
-              <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
-                 role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">more_vert</i>
-              </a>
-              <ul class="dropdown-menu pull-right">
-                <li>
-                  <a href="#" onClick="return false;">Action</a>
-                </li>
-                <li>
-                  <a href="#" onClick="return false;">Another action</a>
-                </li>
-                <li>
-                  <a href="#" onClick="return false;">Something else here</a>
-                </li>
-              </ul>
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">liste des Quiz</h4>
             </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Seances</a>
+            </li>
+            <li class="breadcrumb-item active">Liste des Quiz</li>
           </ul>
         </div>
-        <div class="body">
-          <div class="table-responsive" *ngIf="etat2">
-            <table class="table table-bordered table-striped table-hover save-stage dataTable"
-                   style="width:100%;">
-              <thead>
-              <tr>
-                <th>Nom Quiz</th>
-                <th>Date</th>
-                <th>Actions</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let q of quizzes">
-                <td>
-                  {{q.nomQuiz}}
-                </td>
-                <td>
-                  {{q.date | date: 'dd/MM/yyyy'}}
-                </td>
-                <td>
-                  <button class="btn btn-tbl-delete" (click)="deleteQuiz(q.id)">
-                    <i class="material-icons">delete_forever</i>
-                  </button>
-                  <button class="btn btn-tbl-edit" (click)="findQuiz(q.id); changementEtat()">
-                    <i class="material-icons">edit</i>
-                  </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+      </div>
+    </div>
+    <!-- #START# Table With State Save -->
+    <div class="row clearfix" >
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        <div class="card" >
+          <div class="header" >
+            <h2>La Liste des <strong>Quiz</strong> </h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown">
+                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                </a>
+                <ul class="dropdown-menu pull-right" style="border-radius:10px;">
+                  <li>
+                    <a href="#" onClick="return false;">Action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Another action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
-<!--detail-->
-          <section class="content" *ngIf="etat">
-            <div class="container-fluid">
-              <!-- #START# Table With State Save -->
-              <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="card">
-                    <div class="body">
-                      <div>
-                        <h1> {{quiz.nomQuiz}} </h1>
-                        <br><br>
-                        <div *ngFor="let q of quiz.questions">
-                          <h5>question : {{q.question}}</h5>
-                          <ul>
-                            <li *ngFor="let prop of q.propositions"> {{prop.nom}}</li>
-                          </ul>
-                        </div>
-                        <button class="btn btn-tbl-edit" (click)="changementEtat()">
-                          <i class="material-icons">edit</i>
-                        </button>
+
+          <div class="container" style="margin-bottom: 20px;" >
+            <mat-form-field FloatLabel="auto">
+              <mat-label>Recherche</mat-label>
+              <input matInput type="special" (keyup)="applyFilter($event.target.value)" name="value" [(ngModel)]="value">
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+          <div >
+            <table class="table" mat-table [dataSource]="dataSource" matSort>
+
+              <!-- Nom Column -->
+              <ng-container matColumnDef="nom">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom du Quiz</th>
+                <td mat-cell *matCellDef="let row">{{row.nomQuiz}}</td>
+              </ng-container>
+
+              <!--Date Column -->
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                <td mat-cell *matCellDef="let row">{{row.date | date: 'dd/MM/yyyy'}}</td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-icon-button matTooltip="Editer" class="iconbutton" color="primary">
+                    <i class="far fa-edit" aria-label="Edit" (click)="findQuiz(row.id); changementEtat()"></i>
+                  </button>
+                  <button mat-icon-button matTooltip="Supprimer" class="iconbutton" color="warn">
+                    <mat-icon aria-label="Delete" (click)="deleteQuiz(row.id)">delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons ></mat-paginator>
+
+          </div>
+          </div>
+
+
+        </div>
+        <div class="container" *ngIf="!isViewable">
+          <div class="container-fluid">
+            <!-- #START# Table With State Save -->
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="body">
+                    <div>
+                      <h1> {{quiz.nomQuiz}} </h1>
+                      <br><br>
+                      <div *ngFor="let q of quiz.questions">
+                        <h5>question : {{q.question}}</h5>
+                        <ul>
+                          <li *ngFor="let prop of q.propositions"> {{prop.nom}}</li>
+                        </ul>
                       </div>
+                      <button class="btn btn-tbl-edit" (click)="changementEtat()">
+                        <i class="material-icons">edit</i>
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-<!--fin detail -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </section>
