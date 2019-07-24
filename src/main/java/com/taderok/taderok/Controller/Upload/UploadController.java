@@ -55,6 +55,20 @@ public class UploadController {
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
 	}
+	@PostMapping("/postAnnoncePhoto")
+	public ResponseEntity<String> handleFileUploadAnnoncePhoto(@RequestParam("file") MultipartFile file) {
+		String message = "";
+		try {
+			storageService.storeAnnoncePhoto(file);
+			files.add(file.getOriginalFilename());
+
+			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.OK).body(message);
+		} catch (Exception e) {
+			message = "FAIL to upload " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+		}
+	}
 
 	@GetMapping("/getallfiles")
 	public ResponseEntity<List<String>> getListFiles(Model model) {

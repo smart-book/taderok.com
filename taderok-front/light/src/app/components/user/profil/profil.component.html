@@ -69,7 +69,7 @@
                 <a href="#setting" data-toggle="tab" ><i class="fa fa-cogs"></i> Paramètres</a>
               </li>
             </ul>
-            <!-- Tab panes -->
+
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane fade in active show" id="home">
                 <div class="row">
@@ -101,16 +101,61 @@
                 </div>
               </div>
               <div role="tabpanel" class="tab-pane fade" id="profile">
-                <b>Profile Content</b>
-                <p>
-                  Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit
-                  mediocritatem an. Pri ut tation electram moderatius.
-                  Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent
-                  aliquid
-                  pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere
-                  gubergren
-                  sadipscing mel.
-                </p>
+                <div class="container">
+                  <mat-form-field FloatLabel="auto" >
+                    <mat-label>Recherche</mat-label>
+                    <input matInput  (keyup)="applyFilter($event.target.value)" name="value" [(ngModel)]="value">
+                    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+
+                <div class="mat-elevation-z8">
+                  <table class="table" mat-table [dataSource]="dataSource"  matSort >
+
+                    <!-- image Column -->
+                    <ng-container matColumnDef="image">
+                      <th mat-header-cell *matHeaderCellDef >Image</th>
+                      <td mat-cell *matCellDef="let row" style="width: 50px"> <img [src]="'assets/images/upload/uploadUser/'+row.photo" /> </td>
+                    </ng-container>
+
+                    <!-- full name Column -->
+                    <ng-container matColumnDef="friend">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom complet</th>
+                      <td mat-cell *matCellDef="let row">{{row.nom}} {{row.prenom}}</td>
+                    </ng-container>
+
+                    <!-- phone Column -->
+                    <ng-container matColumnDef="telephone">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Telephone</th>
+                      <td mat-cell *matCellDef="let row">{{row.telephone}}</td>
+                    </ng-container>
+                    <!-- email Column -->
+                    <ng-container matColumnDef="email">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                      <td mat-cell *matCellDef="let row">{{row.email}}</td>
+                    </ng-container>
+                    <!-- actions Column -->
+                    <ng-container matColumnDef="actions">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+                      <td mat-cell *matCellDef="let row">
+                        <button mat-icon-button matTooltip="Bloquer" class="iconbutton" color="primary">
+                          <i class="fas fa-user-slash" aria-label="Edit"></i>
+                        </button>
+                        <button mat-icon-button matTooltip="Supprimer" class="iconbutton" color="warn">
+                          <mat-icon aria-label="Delete">delete</mat-icon>
+                        </button>
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+                </div>
               </div>
               <div role="tabpanel" class="tab-pane fade" id="messages">
                 <b>Message Content</b>
@@ -217,21 +262,30 @@
                   </div>
                   <button  type="button" (click)="updateProfilProf()" class="btn btn-info btn-round">Save Changes</button>
 
-                  <div role="tabpanel" class="tab-pane fade" id="securite">
-                    <b>Paramètres du compte</b>
-                    <div class="body">
-                      <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Mot de passe">
-                      </div>
-                      <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Nouveau mot de passe">
-                      </div>
 
-                    </div>
-
-                </div>
               </div>
             </div>
+              <div role="tabpanel" class="tab-pane fade" id="securite">
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                  <li role="presentation">
+                    <a href="#generale" data-toggle="tab" >Générale</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#securite" data-toggle="tab" class="active show">Sécurité</a>
+                  </li>
+                </ul>
+                <b>Paramètres du compte</b>
+                <div class="body">
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Mot de passe">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Nouveau mot de passe">
+                  </div>
+
+                </div>
+
+              </div>
           </div>
         </div>
     </div>

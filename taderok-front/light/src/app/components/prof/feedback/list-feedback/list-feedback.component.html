@@ -32,7 +32,7 @@
                    role="button" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">more_vert</i>
                 </a>
-                <ul class="dropdown-menu pull-right">
+                <ul class="dropdown-menu pull-right" style="border-radius:10px;">
                   <li>
                     <a href="#" onClick="return false;">Action</a>
                   </li>
@@ -46,62 +46,65 @@
               </li>
             </ul>
           </div>
-          <div class="container">
+          <div class="container" style="margin-bottom: 20px;">
             <mat-form-field FloatLabel="auto" >
               <mat-label>Recherche</mat-label>
-              <input matInput  (keyup)="applyFilter($event.target.value)">
+              <input matInput type="special"  (keyup)="applyFilter($event.target.value)" name="value" [(ngModel)]="value">
               <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
                 <mat-icon>close</mat-icon>
               </button>
             </mat-form-field>
+
+            <div >
+              <table class="table" mat-table [dataSource]="dataSource"  matSort >
+
+                <!-- Nom Column -->
+                <ng-container matColumnDef="etudiant">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Etudiant</th>
+                  <td mat-cell *matCellDef="let row">{{row.etudiant.nom}} {{row.etudiant.prenom}} </td>
+                </ng-container>
+
+                <!-- email Column -->
+                <ng-container matColumnDef="etudiant.email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
+                  <td mat-cell *matCellDef="let row">{{row.etudiant.email}}</td>
+                </ng-container>
+
+
+                <!-- Matiere Column -->
+                <ng-container matColumnDef="seances.matiere">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Matière</th>
+                  <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row (click)="selectRow(myTemplate, row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+              <ng-template #myTemplate>
+                <h4 style="padding: 20px 30px; font-weight: normal; color: #5b626b; ">
+                  Feedback de <strong>{{rowEtudiant}}</strong>
+                </h4>
+                <div mat-dialog-content align="center">
+                  <h6 style="font-size:small; color: #5b626b;">Type</h6>
+                  <div style="font-size: medium; padding-bottom: 25px;">{{rowType}}</div>
+                  <h6 style="font-size: small; color: #5b626b;">Description</h6>
+                  <div style="font-size: medium ;padding-bottom: 25px;">{{rowDescription}}</div>
+                  <div></div>
+                </div>
+
+                <mat-dialog-actions align="center">
+                  <button type="button" class="btn-hover btn-border-radius color-6">Contacter</button>
+                  <button type="button" class="btn-hover btn-border-radius color-4" mat-dialog-close>Fermer</button>
+                </mat-dialog-actions>
+
+              </ng-template>
+
+            </div>
           </div>
 
-          <div class="mat-elevation-z8">
-            <table class="table" mat-table [dataSource]="dataSource"  matSort >
-
-              <!-- Nom Column -->
-              <ng-container matColumnDef="etudiant.nom">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.nom}}</td>
-              </ng-container>
-
-              <!-- Prenom Column -->
-              <ng-container matColumnDef="etudiant.prenom">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>prenom</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.prenom}}</td>
-              </ng-container>
-
-              <!-- email Column -->
-              <ng-container matColumnDef="etudiant.email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
-                <td mat-cell *matCellDef="let row">{{row.etudiant.email}}</td>
-              </ng-container>
-
-              <!-- Type Column -->
-              <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
-                <td mat-cell *matCellDef="let row">{{row.type}}</td>
-              </ng-container>
-
-              <!-- Description Column -->
-              <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>description</th>
-                <td mat-cell *matCellDef="let row">{{row.description}}</td>
-              </ng-container>
-
-
-              <!-- Matiere Column -->
-              <ng-container matColumnDef="seances.matiere">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matiere</th>
-                <td mat-cell *matCellDef="let row">{{row.seances.matiere}}</td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-          </div>
         </div>
       </div>
     </div>

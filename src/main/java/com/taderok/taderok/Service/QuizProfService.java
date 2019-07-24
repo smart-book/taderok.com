@@ -71,4 +71,12 @@ public class QuizProfService {
         propositionRepository.deleteById(id);
     }
 
+    public Quiz getQuizById(int id){
+        return quizRepository.findById(id).orElse(null);
+    }
+
+    public List<Question> getAllQuestions(int quiz){
+        return questionRepository.findAllByQuiz(quizRepository.findById(quiz).orElse(null));
+    }
+
 }

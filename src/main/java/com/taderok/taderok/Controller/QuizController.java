@@ -30,6 +30,10 @@ public class QuizController {
     public List<Quiz> getAllQuiz(){
         return quizProfService.getAllQuiz();
     }
+    @RequestMapping(method = RequestMethod.GET, value = "/find/{id}")
+    public Quiz getQuizById(@PathVariable int id){
+        return quizProfService.getQuizById(id);
+    }
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public Quiz addQuiz(@RequestBody Quiz quiz){
         return quizProfService.addQuiz(quiz);
@@ -62,11 +66,13 @@ public class QuizController {
     public void deleteProposition(@PathVariable int id){
         quizProfService.deleteProposition(id);
     }
-
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/allquestions")
+    public List<Question> getAllQuestions(@PathVariable int id){
+        return quizProfService.getAllQuestions(id);
+    }
     @RequestMapping("/findAll")
     public List<Quiz> getAllQuizEtudiant(){ return quizEtudiantService.getAllQuiz();
     }
-
     @RequestMapping("/{id}")
     public Quiz getQuiz(@PathVariable int id)
     {

@@ -34,5 +34,17 @@ export class QuizService {
   deleteProposition(id: number): Observable<Object>{
     return this.http.delete('http://localhost:8181/quiz/'+id+'/deleteprop');
   }
+  deleteQuiz(id: number): Observable<Object>{
+    return this.http.delete('http://localhost:8181/quiz/'+id+'/delete');
+  }
+  findQuiz(id: number): Observable<Quiz>{
+    return this.http.get<Quiz>('http://localhost:8181/quiz/find/'+id);
+  }
+  deleteQuestion(id: number): Observable<Object>{
+    return this.http.delete('http://localhost:8181/quiz/'+id+'/deletequestion');
+  }
+  getAllQuestions(id: number): Observable<Question[]>{
+    return this.http.get<Question[]>('http://localhost:8181/quiz/'+id+'/allquestions');
+  }
 
 }

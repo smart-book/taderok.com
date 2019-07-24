@@ -56,7 +56,7 @@ import java.util.List;
         return (List<Feedback>) feedbackRepository.findAllByEtudiant(e);
     }
 
-    public List<Feedback> getAllFeedbackBySeanceId(int id){
+    public List<Feedback> getAllFeedbackBySeanceId(Long id){
         Seance s =  seanceRepository.findById(id).orElse(null);
         return  feedbackRepository.findAllFeedbackBySeances(s);
     }

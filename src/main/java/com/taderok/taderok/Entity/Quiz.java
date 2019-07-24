@@ -20,9 +20,6 @@ public class Quiz {
     private Date date;
     private Boolean visible;
 
-
-
-
     @ManyToMany
     @JsonIgnore
     private List<Seance> seanceList;

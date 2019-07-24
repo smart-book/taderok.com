@@ -41,20 +41,22 @@ public class RessourcesService {
     private final Path rootLocation = Paths.get("upload-dir");
 
 
-    public void ajouterRessources(int id,Ressources ressources){
+    public void ajouterRessources(Long id,Ressources ressources){
 
 
         Seance seance = seanceRepository.findById(id).orElse(null);
 
         ressources.setSeance(seance);
+        ressources.setEtat(true);
         ressourcesRespository.save(ressources);
     }
+
     public List<Ressources> getListRessources()
 
     {
         return (List<Ressources>) ressourcesRespository.findAll();
     }
-    public List<Ressources> getListRessourceBySeance(int id)
+    public List<Ressources> getListRessourceBySeance(Long id)
     {
         Seance seance = seanceRepository.findById(id).orElse(null);
         return ressourcesRespository.findAllBySeance(seance);
@@ -71,6 +73,10 @@ public class RessourcesService {
 
         return ressources;
     }
-
-
+   public void supprimerRessource(Long id){ressourcesRespository.deleteById(id);}
+   public void archiverRessources(Long id,Ressources ressources ){
+        Ressources ressources1 = ressourcesRespository.findById(id).orElse(null);
+        ressources1.setEtat(false);
+        ressourcesRespository.save(ressources1);
+   }
 }

@@ -99,6 +99,8 @@
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "ng2-search-filter": "latest",
+    "ngx-dropzone": "^1.2.0",
+
     "ngx-dropzone-wrapper": "^7.2.1",
     "rxjs": "~6.5.2",
     "sweetalert2": "^8.12.2",

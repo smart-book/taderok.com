@@ -47,6 +47,10 @@ public class User implements Serializable {
     private List<Message> messageList;
     private String role;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Annonce> annonceList;
+
 
 
     public User() {
@@ -242,5 +246,11 @@ public class User implements Serializable {
                 '}';
     }
 
+    public List<Annonce> getAnnonceList() {
+        return annonceList;
+    }
 
+    public void setAnnonceList(List<Annonce> annonceList) {
+        this.annonceList = annonceList;
+    }
 }
