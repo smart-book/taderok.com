@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/material';
 import {Ressource} from '../../../../models/ressource';
-import {UploadFileService} from '../../../../services/upload/upload-file.service';
 import {RessourceService} from '../../../../services/prof/ressource.service';
 
 
@@ -13,60 +12,70 @@ import {RessourceService} from '../../../../services/prof/ressource.service';
 })
 
 export class AfficherRessourceComponent implements OnInit {
-  uploadRessource: UploadFileService;
-  ressource: Ressource = new Ressource();
 
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  displayedColumns: string[] = ['nom', 'date', 'lien', 'image'];
+  displayedColumns: string[] = ['nom', 'date', 'lien', 'image', 'archivage', 'suppression'];
   dataSource: MatTableDataSource<Ressource>;
   rowMatiere;
   rowGroupe;
   rowDuree;
   value;
   dialogRef;
+  array: Ressource[] = [];
 
   constructor(private ressourceService: RessourceService, public dialog: MatDialog) {}
+
   ngOnInit() {
-    this.ressourceService.afficherRessource().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      console.log(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sortingDataAccessor = (item, property) => {
-        switch (property) {
-          case 'nom': return item.nom;
-          case 'date': return item.seance.date_debut;
+    setTimeout(()=>{
+      this.ressourceService.afficherRessource().subscribe(data => {
+        data.forEach(element=> {
+          if (element.etat) {
+            this.array.push(element)
+          }
+          ;
+        });
 
-          default: return item[property];
-        }
-      };
-      this.dataSource.sort = this.sort;
-      // @ts-ignore
-      this.dataSource.filterPredicate = (order: Order, filter: string) => {
-        const transformedFilter = filter.trim().toLowerCase();
+        this.dataSource = new MatTableDataSource(this.array)
 
-        const listAsFlatString = (obj): string => {
-          let returnVal = '';
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch(property) {
+            case 'nom': return item.nom;
+            case 'date': return item.seance.date_debut;
 
-          Object.values(obj).forEach((val) => {
-            if (typeof val !== 'object') {
-              returnVal = returnVal + ' ' + val;
-            } else if (val !== null) {
-              returnVal = returnVal + ' ' + listAsFlatString(val);
-            }
-          });
+            default: return item[property];
+          }
+        };
+        this.dataSource.sort = this.sort;
+        // @ts-ignore
+        this.dataSource.filterPredicate = (order: Order, filter: string) => {
+          const transformedFilter = filter.trim().toLowerCase();
 
-          return returnVal.trim().toLowerCase();
+          const listAsFlatString = (obj): string => {
+            let returnVal = '';
+
+            Object.values(obj).forEach((val) => {
+              if (typeof val !== 'object') {
+                returnVal = returnVal + ' ' + val;
+              } else if (val !== null) {
+                returnVal = returnVal + ' ' + listAsFlatString(val);
+              }
+            });
+
+            return returnVal.trim().toLowerCase();
+          };
+
+          return listAsFlatString(order).includes(transformedFilter);
         };
 
-        return listAsFlatString(order).includes(transformedFilter);
-      };
-    }, error => console.log(error));
-  }
+      });
+    });
 
-  selectRow(myTemplate, row) {
+  }
+  showDiag(myTemplate, row) {
     this.rowMatiere = row.seance.matiere;
     this.rowGroupe = row.seance.groupes.nom;
     this.rowDuree = row.seance.duree;
@@ -86,7 +95,7 @@ export class AfficherRessourceComponent implements OnInit {
     this.value = '';
   }
 
-  archiverImage(id, ressources) {
-    this.ressourceService.archiverRessource(id, ressources).subscribe(data => console.log(data), error => console.log(error));
+  archiverImage(id){
+    this.ressourceService.archiverRessource(id).subscribe(data => console.log(data), error => console.log(error));
   }
 }

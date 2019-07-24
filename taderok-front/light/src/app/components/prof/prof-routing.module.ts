@@ -15,10 +15,11 @@ import {ListSeanceComponent} from './seance/list/list.component';
 import {ListGroupeComponent} from './groupes/list/list.component';
 import {CalendarProfComponent} from './calendar-prof/calendar-prof.component';
 
-import {CalendarComponent} from "@fullcalendar/core/CalendarComponent";
+import {CalendarComponent} from '@fullcalendar/core/CalendarComponent';
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
-import {ListQuizComponent} from "./quiz/list-quiz/list-quiz.component";
-import {DetailQuizComponent} from "./quiz/detail-quiz/detail-quiz.component";
+import {ListQuizComponent} from './quiz/list-quiz/list-quiz.component';
+import {DetailQuizComponent} from './quiz/detail-quiz/detail-quiz.component';
+import {ArchiverRessourceComponent} from './ressource/archiver-ressource/archiver-ressource.component';
 
 
 
@@ -65,6 +66,10 @@ const routes: Routes = [
     component: AfficherRessourceComponent
   },
   {
+    path: 'archiverRessource',
+    component: ArchiverRessourceComponent
+  },
+  {
     path: 'lister',
     component: ListerComponent
   },
@@ -77,6 +82,7 @@ const routes: Routes = [
     path: 'list',
     component: ListFeedbackComponent
   }
+
 ];
 
 @NgModule({
