@@ -8,19 +8,20 @@ import javax.persistence.*;
 public class Ressources {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nom;
     private String fileName;
     private String path;
+    private boolean etat;
     @ManyToOne
     @JsonIgnoreProperties("ressourcesList")
     private Seance seance;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -54,5 +55,13 @@ public class Ressources {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public boolean isEtat() {
+        return etat;
+    }
+
+    public void setEtat(boolean etat) {
+        this.etat = etat;
     }
 }

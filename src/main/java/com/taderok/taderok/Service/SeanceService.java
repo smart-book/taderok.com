@@ -32,7 +32,7 @@ public class SeanceService {
 
     }
 
-    public Seance getSeance(int id){
+    public Seance getSeance(Long id){
         return seanceRepository.findById(id).orElse(null);
     }
 
@@ -42,7 +42,7 @@ public class SeanceService {
         seanceRepository.save(seance);
     }
 
-    public void updateSeance(Seance seance, int id ){
+    public void updateSeance(Seance seance, Long id ){
 
         Seance seanc = seanceRepository.findById(id).orElse( null );
 
@@ -51,7 +51,7 @@ public class SeanceService {
 
         seanceRepository.save(seanc);
     }
-    public void deleteSeance(int id)
+    public void deleteSeance(Long id)
     {
         seanceRepository.deleteById(id);
     }
