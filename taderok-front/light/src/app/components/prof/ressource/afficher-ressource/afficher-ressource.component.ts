@@ -20,8 +20,8 @@ export class AfficherRessourceComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  displayedColumns: string[]=['nom','date','lien', 'image'];
-  dataSource: MatTableDataSource<Ressource>
+  displayedColumns: string[] = ['nom', 'date', 'lien', 'image'];
+  dataSource: MatTableDataSource<Ressource>;
   rowMatiere;
   rowGroupe;
   rowDuree;
@@ -31,11 +31,11 @@ export class AfficherRessourceComponent implements OnInit {
   constructor(private ressourceService: RessourceService, public dialog: MatDialog) {}
   ngOnInit() {
     this.ressourceService.afficherRessource().subscribe(data => {
-      this.dataSource= new MatTableDataSource(data);
+      this.dataSource = new MatTableDataSource(data);
       console.log(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sortingDataAccessor = (item, property) => {
-        switch(property) {
+        switch (property) {
           case 'nom': return item.nom;
           case 'date': return item.seance.date_debut;
 
@@ -67,9 +67,9 @@ export class AfficherRessourceComponent implements OnInit {
   }
 
   selectRow(myTemplate, row) {
-    this.rowMatiere = row['seance'].matiere;
-    this.rowGroupe = row['seance'].groupes.nom;
-    this.rowDuree = row['seance'].duree;
+    this.rowMatiere = row.seance.matiere;
+    this.rowGroupe = row.seance.groupes.nom;
+    this.rowDuree = row.seance.duree;
 
     const dialogRef = this.dialog.open(myTemplate);
   }
@@ -82,10 +82,11 @@ export class AfficherRessourceComponent implements OnInit {
     this.dataSource.filter = filters;
   }
 
-  OnSearchClear(){
-    this.value='';
+  OnSearchClear() {
+    this.value = '';
   }
 
-  afficherImage() {
+  archiverImage(id, ressources) {
+    this.ressourceService.archiverRessource(id, ressources).subscribe(data => console.log(data), error => console.log(error));
   }
 }
