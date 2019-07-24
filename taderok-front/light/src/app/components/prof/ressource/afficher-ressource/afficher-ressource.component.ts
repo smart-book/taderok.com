@@ -22,6 +22,7 @@ export class AfficherRessourceComponent implements OnInit {
   rowMatiere;
   rowGroupe;
   rowDuree;
+  rowId;
   value;
   dialogRef;
   array: Ressource[] = [];
@@ -29,20 +30,20 @@ export class AfficherRessourceComponent implements OnInit {
   constructor(private ressourceService: RessourceService, public dialog: MatDialog) {}
 
   ngOnInit() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.ressourceService.afficherRessource().subscribe(data => {
-        data.forEach(element=> {
+        data.forEach(element => {
           if (element.etat) {
-            this.array.push(element)
+            this.array.push(element);
           }
-          ;
+          
         });
 
-        this.dataSource = new MatTableDataSource(this.array)
+        this.dataSource = new MatTableDataSource(this.array);
 
         this.dataSource.paginator = this.paginator;
         this.dataSource.sortingDataAccessor = (item, property) => {
-          switch(property) {
+          switch (property) {
             case 'nom': return item.nom;
             case 'date': return item.seance.date_debut;
 
@@ -95,7 +96,8 @@ export class AfficherRessourceComponent implements OnInit {
     this.value = '';
   }
 
-  archiverImage(id){
-    this.ressourceService.archiverRessource(id).subscribe(data => console.log(data), error => console.log(error));
+  archiverRessource(data, row) {
+    this.rowId = row.id;
+    this.ressourceService.archiverRessource(this.dataSource.data, this.rowId).subscribe(data => console.log(data), error => console.log(error));
   }
 }

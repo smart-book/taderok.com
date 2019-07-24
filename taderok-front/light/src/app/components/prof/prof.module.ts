@@ -72,7 +72,6 @@ import {CdkTableModule} from '@angular/cdk/table';
 
 import { ListComponent } from './quiz/list/list.component';
 import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
-import { ScheduleComponent } from './schedule/schedule.component';
 
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 
@@ -91,7 +90,6 @@ import { DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule } fro
 import { NumericTextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
 
 import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-angular-schedule';
-import { ScheduleProfComponent } from './schedule-prof/schedule-prof.component';
 
 import { DetailQuizComponent } from './quiz/detail-quiz/detail-quiz.component';
 import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archiver-ressource.component';
@@ -101,7 +99,7 @@ import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archi
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ListComponent, ListeSeancesProfComponent, ScheduleComponent, ScheduleProfComponent, DetailQuizComponent, ArchiverRessourceComponent],
+    ListFeedbackComponent, ListComponent, ListeSeancesProfComponent, DetailQuizComponent, ArchiverRessourceComponent],
 
 
 

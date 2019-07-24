@@ -24,7 +24,7 @@ export class RessourceService {
   supprimerRessource(id: number): Observable<Ressource> {
     return this.http.delete<Ressource>(`${this.baseUrl}` + `/supprimerRessources/` + `${id}`);
   }
-  archiverRessource(ressource: Ressource, id: number): Observable<Ressource> {
+  archiverRessource(ressource: Ressource[], id: number): Observable<Ressource> {
     return this.http.put<Ressource>(`${this.baseUrl}` + `/archiverRessources/` + `${id}`, ressource);
   }
 }

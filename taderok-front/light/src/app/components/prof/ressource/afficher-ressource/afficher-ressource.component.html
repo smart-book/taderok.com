@@ -71,9 +71,9 @@
                   </td>
               </ng-container>
                 <ng-container matColumnDef="archivage">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>azea</th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Archiver</th>
                   <td mat-cell *matCellDef="let row">
-                    <i matTooltip="Archiver" class="fas fa-edit"></i>
+                    <i matTooltip="Archiver" class="fas fa-edit" (click)="archiverRessource(dataSource.data,row)"></i>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="suppression">
