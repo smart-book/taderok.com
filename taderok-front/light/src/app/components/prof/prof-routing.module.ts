@@ -17,8 +17,9 @@ import {CalendarProfComponent} from './calendar-prof/calendar-prof.component';
 
 import {CalendarComponent} from "@fullcalendar/core/CalendarComponent";
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
+import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
 
-
+import { ScheduleProfComponent } from './schedule-prof/schedule-prof.component';
 
 
 // @ts-ignore
@@ -71,6 +72,14 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListFeedbackComponent
+  },
+  {
+    path: 'listeSeances',
+    component: ListeSeancesProfComponent
+  },
+  {
+    path: 'schedule',
+    component: ScheduleProfComponent
   }
 ];
 

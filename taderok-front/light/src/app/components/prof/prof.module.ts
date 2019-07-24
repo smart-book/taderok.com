@@ -72,12 +72,34 @@ import {CdkTableModule} from '@angular/cdk/table';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListComponent } from './quiz/list/list.component';
+import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+
+import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
+
+import { DropDownListAllModule, MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
+
+import { MaskedTextBoxModule, UploaderAllModule } from '@syncfusion/ej2-angular-inputs';
+
+import { ToolbarAllModule, ContextMenuAllModule } from '@syncfusion/ej2-angular-navigations';
+
+import { ButtonAllModule  } from '@syncfusion/ej2-angular-buttons';
+
+import { CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons';
+
+import { DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule } from '@syncfusion/ej2-angular-calendars';
+
+import { NumericTextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
+
+import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-angular-schedule';
+import { ScheduleProfComponent } from './schedule-prof/schedule-prof.component';
 
 
 
 
 @NgModule({
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent, ListComponent],
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
+    ListFeedbackComponent, ListComponent, ListeSeancesProfComponent, ScheduleComponent, ScheduleProfComponent],
 
 
 
@@ -142,6 +164,7 @@ import { ListComponent } from './quiz/list/list.component';
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
+    ScheduleAllModule, RecurrenceEditorAllModule,   NumericTextBoxAllModule, DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule, CheckBoxAllModule, ToolbarAllModule,   DropDownListAllModule, ContextMenuAllModule, MaskedTextBoxModule, UploaderAllModule, MultiSelectAllModule, TreeViewModule, ButtonAllModule
   ]
 })
 export class ProfModule { }
