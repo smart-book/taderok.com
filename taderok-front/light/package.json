@@ -28,6 +28,7 @@
     "@fullcalendar/interaction": "^4.2.0",
     "@fullcalendar/timegrid": "^4.2.0",
     "@sweetalert2/ngx-sweetalert2": "latest",
+    "@syncfusion/ej2-angular-inputs": "^17.2.36",
     "@syncfusion/ej2-base": "17.2.34",
     "@syncfusion/ej2-buttons": "17.2.34",
     "@syncfusion/ej2-splitbuttons": "17.2.34",

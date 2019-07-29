@@ -18,8 +18,15 @@ export class AnnonceServiceService {
     return this.http.post(`${this.baseUrl}`+`/add/`, annonce);
   }
 
-  ajouterPhotoAnnonce(annonce: AnnoncePhoto): Observable<Object>{
+  ajouterPhotoAnnonce(id:number,annonce: AnnoncePhoto): Observable<Object>{
     console.log(annonce);
-    return this.http.post(`${this.baseUrl2}`+`/add/`+annonce.annonce.id, annonce);
+    return this.http.post(`${this.baseUrl2}`+`/add/`+id, annonce);
+  }
+
+  getAnnonce(id:number): Observable<Annonce>{
+    return this.http.get<Annonce>(`${this.baseUrl}`+`/findOne/`+id);
+  }
+  getPhotosAnnonce(id:number): Observable<AnnoncePhoto[]>{
+    return this.http.get<AnnoncePhoto[]>(`${this.baseUrl2}`+`/get/`+id);
   }
 }

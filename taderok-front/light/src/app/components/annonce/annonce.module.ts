@@ -10,16 +10,19 @@ import {DropzoneModule} from "ngx-dropzone-wrapper";
 import { PhotosAnnonceComponent } from './photos-annonce/photos-annonce.component';
 import { DragDropDirectiveDirective } from './drag-drop-directive.directive';
 import {NgxDropzoneModule} from "ngx-dropzone";
+import {UploaderModule} from "@syncfusion/ej2-angular-inputs";
+import { ShowAnnonceComponent } from './show-annonce/show-annonce.component';
 
 @NgModule({
-  declarations: [AddAnnonceComponent, ListAnnonceComponent, PhotosAnnonceComponent, DragDropDirectiveDirective, DragDropDirectiveDirective],
+  declarations: [AddAnnonceComponent, ListAnnonceComponent, PhotosAnnonceComponent, DragDropDirectiveDirective, DragDropDirectiveDirective, ShowAnnonceComponent],
   imports: [
     CommonModule,
     AnnonceRoutingModule,
     ArchwizardModule,
     FormsModule,
     DropzoneModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    UploaderModule
   ]
 })
 export class AnnonceModule { }
