@@ -5,5 +5,6 @@ export class Ressource {
   fileName: string;
   nom: string;
   path: string;
+  etat:boolean;
   seance: Seance;
 }

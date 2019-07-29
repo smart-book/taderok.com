@@ -48,15 +48,11 @@
           </div>
           <div class="body">
             <form>
-            <ngx-dropzone [showPreviews]="true" #dropzone
-                          (filesAdded)="onFilesAdded($event)"
-                          (filesRejected)="onFilesRejected($event)"
-                          [maxFileSize]="4000"
-                          >
-            </ngx-dropzone>
-              <button (click)="dropzone.reset()">Reset</button>
-              <button (click)="sout()">sout</button>
-              <button (click)="ajouterPhotos()">add</button>
-            </form>
+              <ngx-dropzone class="custom-dropzone" [showPreviews]="true" (filesAdded)="onFilesAdded($event)" #dropzone></ngx-dropzone>
 
+              <div style="float: right">
+               <button class="btn-hover btn-border-radius color-10" (click)="dropzone.reset()">Reset</button>
+               <button class="btn-hover btn-border-radius color-5" (click)="ajouterPhotos()">add</button>
+             </div>
+            </form>
           </div></div></div></div></div></section>

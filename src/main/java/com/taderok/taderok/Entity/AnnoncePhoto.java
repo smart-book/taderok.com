@@ -1,5 +1,7 @@
 package com.taderok.taderok.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class AnnoncePhoto {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     @ManyToOne
+    @JsonIgnore
     private Annonce annonce;
     private String path;
 

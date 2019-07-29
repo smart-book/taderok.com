@@ -10,7 +10,7 @@ import java.util.List;
 public class Seance {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private Date date_debut;
     private Date date_fin;
     private String matiere;
@@ -33,11 +33,11 @@ public class Seance {
     @OneToMany(mappedBy = "seances")
     private List<Feedback> feedbackList;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

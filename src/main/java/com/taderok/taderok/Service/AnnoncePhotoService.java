@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class AnnoncePhotoService {
@@ -26,6 +27,10 @@ public class AnnoncePhotoService {
         Annonce a = annonceRepository.findById(id).orElse(null);
         photo.setAnnonce(a);
         annoncePhotoRepository.save(photo);
+    }
 
+    public List<AnnoncePhoto> getAllPhotoAnnonce(long id){
+        Annonce a = annonceRepository.findById(id).orElse(null);
+        return annoncePhotoRepository.findAllByAnnonceId(a);
     }
 }

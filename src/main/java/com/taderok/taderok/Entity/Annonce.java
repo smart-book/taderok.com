@@ -22,7 +22,6 @@ public class Annonce {
     private boolean valide;
     private boolean archive;
     @OneToMany(mappedBy = "annonce")
-    @JsonIgnore
     private List<AnnoncePhoto> annoncePhotoList;
 
     public long getId() {

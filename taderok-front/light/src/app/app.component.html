@@ -220,7 +220,7 @@
                     </li>
                     <li routerLinkActive="active">
                         <a href="#" onClick="return false;" class="menu-toggle">
-                            <i class="fas fa-tachometer-alt"></i>
+                            <i class="fas fa-home"></i>
                             <span>Home</span>
                         </a>
                         <ul class="ml-menu">
@@ -238,9 +238,44 @@
 
 
 
+
+
                   <li routerLinkActive="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
-                      <i class="fas fa-id-card"></i>
+                      <i _ngcontent-vqj-c3="" class="fas fa-chalkboard-teacher"></i>
+                      <span>Seances</span>
+                    </a>
+                    <ul class="ml-menu">
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ajouterSeance">Ajouter</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ListSeance">list</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/list">feedbacks</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                      <i _ngcontent-vqj-c3="" class="fas fa-users"></i>
+                      <span>Groupes</span>
+                    </a>
+                    <ul class="ml-menu">
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ajouterGroupe">Ajouter</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ListGroupe">list</a>
+                      </li>
+                    </ul>
+                  </li>
+
+
+                  <li routerLinkActive="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                      <i class="fas fa-question"></i>
                       <span>Quiz</span>
                     </a>
                     <ul class="ml-menu">
@@ -272,9 +307,28 @@
                     </ul>
                   </li>
 
+                  
                   <li routerLinkActive="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
-                      <i _ngcontent-vqj-c3="" class="material-icons">cancel</i>
+                      <i _ngcontent-vqj-c3="" class="far fa-file-alt"></i>
+                      <span>Ressources</span>
+                    </a>
+                    <ul class="ml-menu">
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/ajouterRessource">Ajouter Ressources</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/afficherRessource">Afficher Ressources</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="prof/archiverRessource">Archiver Ressources</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li routerLinkActive="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                      <i _ngcontent-vqj-c3="" class="fas fa-bullhorn"></i>
                       <span>Réclamations</span>
                     </a>
                     <ul class="ml-menu">
@@ -292,57 +346,29 @@
 
                   <li routerLinkActive="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
-                      <i _ngcontent-vqj-c3="" class="material-icons">class</i>
-                      <span>Seances</span>
+                      <i _ngcontent-vqj-c3="" class="fas fa-box-open"></i>
+                      <span>Annonces</span>
                     </a>
                     <ul class="ml-menu">
                       <li routerLinkActive="active">
-                        <a routerLink="prof/ajouterSeance">Ajouter</a>
+                        <a routerLink="annonce/add">Ajouter une annonce</a>
                       </li>
                       <li routerLinkActive="active">
-                        <a routerLink="prof/ListSeance">list</a>
+                        <a routerLink="annonce/list">Consulter les annonces</a>
                       </li>
                       <li routerLinkActive="active">
-                        <a routerLink="prof/list">feedbacks</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a href="#" onClick="return false;" class="menu-toggle">
-                      <i _ngcontent-vqj-c3="" class="material-icons">people</i>
-                      <span>Groupes</span>
-                    </a>
-                    <ul class="ml-menu">
-                      <li routerLinkActive="active">
-                        <a routerLink="prof/ajouterGroupe">Ajouter</a>
-                      </li>
-                      <li routerLinkActive="active">
-                        <a routerLink="prof/ListGroupe">list</a>
+                        <a routerLink="components/lister">Mes annonces</a>
                       </li>
                     </ul>
                   </li>
 
                   <li routerLinkActive="active">
                     <a routerLink="forum/list">
-                      <i class="far fa-file-alt"></i>
+                      <i class="far fa-newspaper"></i>
                       <span>Forum</span>
                     </a>
                   </li>
 
-                  <li routerLinkActive="active">
-                    <a href="#" onClick="return false;" class="menu-toggle">
-                      <i _ngcontent-vqj-c3="" class="material-icons">class</i>
-                      <span>Ressources</span>
-                    </a>
-                    <ul class="ml-menu">
-                      <li routerLinkActive="active">
-                        <a routerLink="prof/ajouterRessource">Ajouter Ressources</a>
-                      </li>
-                      <li routerLinkActive="active">
-                        <a routerLink="prof/afficherRessource">Afficher Ressources</a>
-                      </li>
-                    </ul>
-                  </li>
 
                 </ul>
             </div>

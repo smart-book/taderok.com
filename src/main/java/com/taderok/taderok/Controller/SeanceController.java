@@ -24,23 +24,18 @@ public class SeanceController {
     }
 
     @RequestMapping("/{id}")
-    public Seance getGroupe(@PathVariable int id){
+    public Seance getGroupe(@PathVariable Long id){
         return seanceService.getSeance(id);
     }
     @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
-    public void update(@RequestBody Seance seance,@PathVariable int id){
+    public void update(@RequestBody Seance seance,@PathVariable Long id){
          seanceService.updateSeance(seance,id);
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
-    public void delete(@PathVariable int id)
+    public void delete(@PathVariable Long id)
     {
         seanceService.deleteSeance(id);
     }
-
-
-
-
-
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public void addGroupe(@RequestBody Seance seance){
