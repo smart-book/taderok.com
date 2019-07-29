@@ -17,7 +17,6 @@ import {CalendarProfComponent} from './calendar-prof/calendar-prof.component';
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
 
 import {ListQuizComponent} from './quiz/list-quiz/list-quiz.component';
-import {DetailQuizComponent} from './quiz/detail-quiz/detail-quiz.component';
 import {ArchiverRessourceComponent} from './ressource/archiver-ressource/archiver-ressource.component';
 
 import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';

@@ -72,7 +72,6 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {Ng2SmartTableModule} from "ng2-smart-table";
 
 
-import { ListComponent } from './quiz/list/list.component';
 import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
 
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
@@ -101,12 +100,7 @@ import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archi
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ListComponent, ListeSeancesProfComponent, ArchiverRessourceComponent],
-
-
-
-@NgModule({
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent],
+    ListFeedbackComponent, ListeSeancesProfComponent, ArchiverRessourceComponent],
 
 
   imports: [
@@ -169,7 +163,23 @@ import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archi
     MatTreeModule,
     ScrollingModule,
     Ng2SmartTableModule,
-    ScheduleAllModule, RecurrenceEditorAllModule,   NumericTextBoxAllModule, DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule, CheckBoxAllModule, ToolbarAllModule,   DropDownListAllModule, ContextMenuAllModule, MaskedTextBoxModule, UploaderAllModule, MultiSelectAllModule, TreeViewModule, ButtonAllModule
+    ScheduleAllModule,
+    RecurrenceEditorAllModule,
+    NumericTextBoxAllModule,
+    DatePickerAllModule,
+    TimePickerAllModule,
+    DateTimePickerAllModule,
+    CheckBoxAllModule,
+    ToolbarAllModule,
+    DropDownListAllModule,
+    ContextMenuAllModule,
+    MaskedTextBoxModule,
+    UploaderAllModule,
+    MultiSelectAllModule,
+    TreeViewModule,
+    ButtonAllModule
   ]
 })
+
+
 export class ProfModule { }
