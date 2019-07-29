@@ -56,9 +56,9 @@ public class RessourcesController {
         ressourcesService.supprimerRessource(id);
     }
     @RequestMapping(method = RequestMethod.PUT,value = "/archiverRessources/{id}")
-    public void archiverRessources(@PathVariable Long id,@RequestBody Ressources ressources)
+    public void archiverRessources(@RequestBody Ressources ressources,@PathVariable Long id)
     {
-        ressourcesService.archiverRessources(id,ressources);
+        ressourcesService.archiverRessources(ressources,id);
     }
 
 

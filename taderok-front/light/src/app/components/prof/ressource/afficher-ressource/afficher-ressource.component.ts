@@ -36,7 +36,7 @@ export class AfficherRessourceComponent implements OnInit {
           if (element.etat) {
             this.array.push(element);
           }
-          
+
         });
 
         this.dataSource = new MatTableDataSource(this.array);
@@ -97,7 +97,10 @@ export class AfficherRessourceComponent implements OnInit {
   }
 
   archiverRessource(data, row) {
-    this.rowId = row.id;
-    this.ressourceService.archiverRessource(this.dataSource.data, this.rowId).subscribe(data => console.log(data), error => console.log(error));
+
+  this.rowId = row.id;
+  this.ressourceService.archiverRessource(this.dataSource.data, this.rowId).subscribe(data => console.log(data), error => console.log(error));
+    console.log('mechmech jawo behi');
   }
+
 }
