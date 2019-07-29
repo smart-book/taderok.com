@@ -69,6 +69,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
 import {CdkTableModule} from '@angular/cdk/table';
+import {Ng2SmartTableModule} from "ng2-smart-table";
+
 
 import { ListComponent } from './quiz/list/list.component';
 import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
@@ -91,18 +93,20 @@ import { NumericTextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
 
 import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-angular-schedule';
 
-import { DetailQuizComponent } from './quiz/detail-quiz/detail-quiz.component';
 import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archiver-ressource.component';
+
 
 
 
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ListComponent, ListeSeancesProfComponent, DetailQuizComponent, ArchiverRessourceComponent],
+    ListFeedbackComponent, ListComponent, ListeSeancesProfComponent, ArchiverRessourceComponent],
 
 
 
+@NgModule({
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent],
 
 
   imports: [
@@ -164,6 +168,7 @@ import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archi
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
+    Ng2SmartTableModule,
     ScheduleAllModule, RecurrenceEditorAllModule,   NumericTextBoxAllModule, DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule, CheckBoxAllModule, ToolbarAllModule,   DropDownListAllModule, ContextMenuAllModule, MaskedTextBoxModule, UploaderAllModule, MultiSelectAllModule, TreeViewModule, ButtonAllModule
   ]
 })
