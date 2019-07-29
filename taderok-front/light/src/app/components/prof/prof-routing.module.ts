@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {AjouterComponent} from './reclamation/ajouter/ajouter.component';
 
 import {AjouterQuizComponent} from './quiz/ajouter-quiz/ajouter-quiz.component';
-import { ListComponent } from './quiz/list/list.component';
 
 import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
@@ -18,7 +17,6 @@ import {CalendarProfComponent} from './calendar-prof/calendar-prof.component';
 import {CalendarComponent} from "@fullcalendar/core/CalendarComponent";
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
 import {ListQuizComponent} from "./quiz/list-quiz/list-quiz.component";
-import {DetailQuizComponent} from "./quiz/detail-quiz/detail-quiz.component";
 
 
 
@@ -32,10 +30,6 @@ const routes: Routes = [
   {
     path: 'ListQuiz',
     component: ListQuizComponent
-  },
-  {
-    path: 'DetailQuiz/:id',
-    component: DetailQuizComponent
   },
 
   {

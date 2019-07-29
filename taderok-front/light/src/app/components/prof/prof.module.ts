@@ -69,18 +69,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ListFeedbackComponent } from './feedback/list-feedback/list-feedback.component';
 import {CdkTableModule} from '@angular/cdk/table';
+import {Ng2SmartTableModule} from "ng2-smart-table";
 
-import { ListComponent } from './quiz/list/list.component';
-import { DetailQuizComponent } from './quiz/detail-quiz/detail-quiz.component';
+
 
 
 
 
 @NgModule({
-  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent, ListComponent, DetailQuizComponent],
-
-
-
+  declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent, ListFeedbackComponent],
 
 
   imports: [
@@ -142,6 +139,7 @@ import { DetailQuizComponent } from './quiz/detail-quiz/detail-quiz.component';
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
+    Ng2SmartTableModule,
   ]
 })
 export class ProfModule { }
