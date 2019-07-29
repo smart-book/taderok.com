@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/material';
 import {Ressource} from '../../../../models/ressource';
 import {RessourceService} from '../../../../services/prof/ressource.service';
+import {ej} from "@syncfusion/ej2-data/dist/global";
+import data = ej.data;
 
 
 
@@ -23,6 +25,7 @@ export class AfficherRessourceComponent implements OnInit {
   rowGroupe;
   rowDuree;
   rowId;
+  idColumn = 'id';
   value;
   dialogRef;
   array: Ressource[] = [];
@@ -97,10 +100,23 @@ export class AfficherRessourceComponent implements OnInit {
   }
 
   archiverRessource(data, row) {
-
   this.rowId = row.id;
   this.ressourceService.archiverRessource(this.dataSource.data, this.rowId).subscribe(data => console.log(data), error => console.log(error));
-    console.log('mechmech jawo behi');
+  this.deleteRowTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
   }
 
+  supprimerRessources(row) {
+    this.rowId = row.id;
+    this.ressourceService.supprimerRessource(this.rowId).subscribe(() => console.log(' successful deletion '));
+    this.deleteRowTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
+  }
+
+  deleteRowTable(rowId, idColumn, paginator, dataSource) {
+    this.dataSource.data = dataSource.data;
+    const itemIndex = this.dataSource.data.findIndex(obj => obj[idColumn] === rowId);
+    console.log(itemIndex);
+    dataSource.data.splice(itemIndex, 1);
+    console.log(dataSource.data);
+    dataSource.paginator = paginator;
+  }
 }

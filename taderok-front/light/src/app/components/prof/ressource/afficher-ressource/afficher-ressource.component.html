@@ -51,7 +51,7 @@
                 <ng-container matColumnDef="date">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Séance </th>
                   <td mat-cell *matCellDef="let row" (click)="showDiag(myTemplate, row)">
-                    {{row.seance.date_debut}}
+                    {{row.seance.date_debut | date : 'short'}}
 
                     </td>
                 </ng-container>
@@ -77,9 +77,9 @@
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="suppression">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>azea</th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Supprimer</th>
                   <td mat-cell *matCellDef="let row">
-                    <i matTooltip="Supprimer" class="fas fa-trash"></i>
+                    <i matTooltip="Supprimer" class="fas fa-trash" (click)="supprimerRessources(row)"></i>
 
                     </td>
                 </ng-container>

@@ -74,9 +74,14 @@ public class RessourcesService {
         return ressources;
     }
    public void supprimerRessource(Long id){ressourcesRespository.deleteById(id);}
-   public void archiverRessources(Ressources ressources,Long id ){
+   public void archiverRessources(Long id ){
         Ressources ressources1 = ressourcesRespository.findById(id).orElse(null);
         ressources1.setEtat(false);
         ressourcesRespository.save(ressources1);
    }
+    public void déarchiverRessources(Long id ){
+        Ressources ressources1 = ressourcesRespository.findById(id).orElse(null);
+        ressources1.setEtat(true);
+        ressourcesRespository.save(ressources1);
+    }
 }
