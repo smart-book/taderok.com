@@ -60,7 +60,7 @@ public class RessourcesController {
     {
         ressourcesService.archiverRessources(id);
     }
-    @RequestMapping(method = RequestMethod.PUT,value = "/archiverRessources/{id}")
+    @RequestMapping(method = RequestMethod.PUT,value = "/dearchiverRessources/{id}")
     public void déarchiverRessources(@PathVariable Long id)
     {
         ressourcesService.déarchiverRessources(id);
