@@ -6,6 +6,7 @@ import {AllUsersComponent} from "../user/all-users/all-users.component";
 import {ListAnnonceComponent} from "./list-annonce/list-annonce.component";
 import {AddAnnonceComponent} from "./add-annonce/add-annonce.component";
 import {PhotosAnnonceComponent} from "./photos-annonce/photos-annonce.component";
+import {ShowAnnonceComponent} from "./show-annonce/show-annonce.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'photo/:id',
     component: PhotosAnnonceComponent
+  },
+  {
+    path: 'show/:id',
+    component: ShowAnnonceComponent
   },
 ];
 @NgModule({

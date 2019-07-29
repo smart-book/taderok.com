@@ -29,7 +29,7 @@ public class AnnonceService {
     }
 
     public List<Annonce> getAllAnnonce(){
-        return (List<Annonce>) annonceRepository.findAllByArchiveAndValideOrderByDateDesc(true,false);
+        return annonceRepository.findAllByArchiveAndValideOrderByDateDesc(false,false);
     }
 
     public void modifierAnnonce(Annonce annonce,long id){
