@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/material';
 import {Ressource} from '../../../../models/ressource';
 import {RessourceService} from '../../../../services/prof/ressource.service';
-import {ej} from "@syncfusion/ej2-data/dist/global";
+import {ej} from '@syncfusion/ej2-data/dist/global';
 import data = ej.data;
 
 
@@ -19,7 +19,7 @@ export class AfficherRessourceComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  displayedColumns: string[] = ['nom', 'date', 'lien', 'image', 'archivage', 'suppression'];
+  displayedColumns: string[] = ['nom', 'date', 'dateUpload', 'lien', 'image', 'archivage', 'suppression'];
   dataSource: MatTableDataSource<Ressource>;
   rowMatiere;
   rowGroupe;
@@ -43,12 +43,13 @@ export class AfficherRessourceComponent implements OnInit {
         });
 
         this.dataSource = new MatTableDataSource(this.array);
-
+        console.log(this.dataSource.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sortingDataAccessor = (item, property) => {
           switch (property) {
             case 'nom': return item.nom;
             case 'date': return item.seance.date_debut;
+            case 'dateUpload': return item.date;
 
             default: return item[property];
           }

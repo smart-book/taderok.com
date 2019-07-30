@@ -103,7 +103,7 @@ export class ArchiverRessourceComponent implements OnInit {
   }
   desarchiverRessource(data, row) {
     this.rowId = row.id;
-    this.ressourceService.déarchiverRessource(this.dataSource.data, this.rowId).subscribe(data => console.log(data), error => console.log(error));
+    this.ressourceService.dearchiverRessource(this.dataSource.data, this.rowId).subscribe(data => console.log(data), error => console.log(error));
     this.deleteRowTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
   }
   supprimerRessources(row) {
