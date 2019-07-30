@@ -8,9 +8,7 @@ export class Seance{
   duree: number;
   matiere : string;
   groupes: Groupes;
-  Subject: string;
-  StartTime:Date;
-  EndTime:Date;
-
-
+  Subject : string;
+  StartTime : any ;
+  EndTime : any ;
 }
