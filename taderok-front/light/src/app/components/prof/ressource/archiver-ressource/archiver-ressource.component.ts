@@ -20,25 +20,27 @@ export class ArchiverRessourceComponent implements OnInit {
   rowDuree;
   value;
   dialogRef;
+  rowId;
+  idColumn = 'id';
   array: Ressource[] = [];
 
   constructor(private ressourceService: RessourceService, public dialog: MatDialog) {}
 
   ngOnInit() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.ressourceService.afficherRessource().subscribe(data => {
-        data.forEach(element=> {
+        data.forEach(element => {
           if (!element.etat) {
-            this.array.push(element)
+            this.array.push(element);
           }
-          ;
+          
         });
 
-        this.dataSource = new MatTableDataSource(this.array)
+        this.dataSource = new MatTableDataSource(this.array);
 
         this.dataSource.paginator = this.paginator;
         this.dataSource.sortingDataAccessor = (item, property) => {
-          switch(property) {
+          switch (property) {
             case 'nom': return item.nom;
             case 'date': return item.seance.date_debut;
 
@@ -76,6 +78,7 @@ export class ArchiverRessourceComponent implements OnInit {
     this.rowGroupe = row.seance.groupes.nom;
     this.rowDuree = row.seance.duree;
 
+
     const dialogRef = this.dialog.open(myTemplate);
   }
 
@@ -90,6 +93,23 @@ export class ArchiverRessourceComponent implements OnInit {
   OnSearchClear() {
     this.value = '';
   }
-
+  deleteRowTable(rowId, idColumn, paginator, dataSource) {
+    this.dataSource.data = dataSource.data;
+    const itemIndex = this.dataSource.data.findIndex(obj => obj[idColumn] === rowId);
+    console.log(itemIndex);
+    dataSource.data.splice(itemIndex, 1);
+    console.log(dataSource.data);
+    dataSource.paginator = paginator;
+  }
+  desarchiverRessource(data, row) {
+    this.rowId = row.id;
+    this.ressourceService.déarchiverRessource(this.dataSource.data, this.rowId).subscribe(data => console.log(data), error => console.log(error));
+    this.deleteRowTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
+  }
+  supprimerRessources(row) {
+    this.rowId = row.id;
+    this.ressourceService.supprimerRessource(this.rowId).subscribe(() => console.log(' successful deletion '));
+    this.deleteRowTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
+  }
 
 }

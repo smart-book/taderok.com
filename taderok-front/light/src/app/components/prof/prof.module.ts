@@ -20,6 +20,7 @@ import {PortalModule} from '@angular/cdk/portal';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTreeModule} from '@angular/cdk/tree';
+
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -104,7 +105,6 @@ import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archi
 
 
 
-
   imports: [
     CommonModule,
     ProfRoutingModule,
@@ -165,7 +165,23 @@ import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archi
     MatTreeModule,
     ScrollingModule,
     Ng2SmartTableModule,
-    ScheduleAllModule, RecurrenceEditorAllModule,   NumericTextBoxAllModule, DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule, CheckBoxAllModule, ToolbarAllModule,   DropDownListAllModule, ContextMenuAllModule, MaskedTextBoxModule, UploaderAllModule, MultiSelectAllModule, TreeViewModule, ButtonAllModule
+    ScheduleAllModule,
+    RecurrenceEditorAllModule,
+    NumericTextBoxAllModule,
+    DatePickerAllModule,
+    TimePickerAllModule,
+    DateTimePickerAllModule,
+    CheckBoxAllModule,
+    ToolbarAllModule,
+    DropDownListAllModule,
+    ContextMenuAllModule,
+    MaskedTextBoxModule,
+    UploaderAllModule,
+    MultiSelectAllModule,
+    TreeViewModule,
+    ButtonAllModule
   ]
 })
+
+
 export class ProfModule { }

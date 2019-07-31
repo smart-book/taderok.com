@@ -17,26 +17,18 @@ export class ShowAnnonceComponent implements OnInit {
   annonce: Annonce=new Annonce();
   listPhoto : AnnoncePhoto[];
   id=this.route.snapshot.paramMap.get("id");
+  imageTalbe: string;
+
 
   ngOnInit() {
 
-    'use strict';
-    $('#basic_demo').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 3
-        },
-        1000: {
-          items: 5
-        }
-      }
+    this.annonceService.getPhotosAnnonce(Number(this.id)).subscribe(data=>{
+      console.log(data)
+      this.listPhoto=data;
     });
+
+
+
     $('#single_slide').owlCarousel({
       loop: true,
       margin: 10,
@@ -56,10 +48,10 @@ export class ShowAnnonceComponent implements OnInit {
     });
     $('.play').on('click', function () {
       $('#single_slide_autoplay').trigger('play.owl.autoplay', [3000])
-    })
+    });
     $('.stop').on('click', function () {
       $('#single_slide_autoplay').trigger('stop.owl.autoplay')
-    })
+    });
     $('#withloop').owlCarousel({
       center: true,
       items: 2,

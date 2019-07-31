@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/material';
 import {Quiz} from "../../../../models/quiz";
 import {QuizService} from "../../../../services/prof/quiz.service";
 import {Question} from "../../../../models/Question";
@@ -21,7 +21,9 @@ quizzes: Object[];
   quiz: Object;
   question: Question = new Question();
   isViewable: boolean = true;
-
+  opened: boolean = false;
+  rowId;
+  idColumn = 'id';
   value: string;
 
   constructor(private quizService: QuizService) { }
@@ -80,9 +82,13 @@ quizzes: Object[];
 
 
 
-  deleteQuiz(id){
-    this.quizService.deleteQuiz(id).subscribe(()=> console.log('Quiz supprimé'));
-    this.quizService.getAllQuiz().subscribe(data => {this.quizzes=data; console.log(this.quizzes)});
+  deleteQuiz(row){
+    this.rowId = row.id
+    this.quizService.deleteQuiz(this.rowId).subscribe(()=> console.log('Quiz supprimé'));
+    this.quizService.getAllQuiz().subscribe(data => {this.quizzes=data;
+   });
+    this.deleteRowDataTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
+
   }
 
   findQuiz(id){
@@ -97,5 +103,15 @@ quizzes: Object[];
   OnSearchClear(){
     this.value='';
   }
+
+  deleteRowDataTable (recordId, idColumn, paginator, dataSource) {
+    this.dataSource.data = dataSource.data;
+    const itemIndex = this.dataSource.data.findIndex(obj => obj[idColumn] === recordId);
+    console.log(itemIndex);
+    dataSource.data.splice(itemIndex, 1);
+    console.log(dataSource.data);
+    dataSource.paginator = paginator;
+  }
+
 
 }
