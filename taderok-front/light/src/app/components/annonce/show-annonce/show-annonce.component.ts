@@ -29,6 +29,7 @@ export class ShowAnnonceComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
+    animateOut: 'fadeOut',
     responsive: {
       0: {
         items: 1

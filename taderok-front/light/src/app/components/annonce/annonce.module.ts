@@ -12,7 +12,7 @@ import { DragDropDirectiveDirective } from './drag-drop-directive.directive';
 import {NgxDropzoneModule} from "ngx-dropzone";
 import {UploaderModule} from "@syncfusion/ej2-angular-inputs";
 import { ShowAnnonceComponent } from './show-annonce/show-annonce.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselModule } from "ngx-owl-carousel-o";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
