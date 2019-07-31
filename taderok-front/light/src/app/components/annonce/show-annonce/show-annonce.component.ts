@@ -3,6 +3,8 @@ import {AnnonceServiceService} from "../../../services/annonce/annonce-service.s
 import {Annonce} from "../../../models/Annonce";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AnnoncePhoto} from "../../../models/AnnoncePhoto";
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
 declare const $: any;
 
 @Component({
@@ -19,6 +21,30 @@ export class ShowAnnonceComponent implements OnInit {
   id=this.route.snapshot.paramMap.get("id");
   imageTalbe: string;
 
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
 
   ngOnInit() {
 
@@ -29,69 +55,6 @@ export class ShowAnnonceComponent implements OnInit {
 
 
 
-    $('#single_slide').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      items: 1,
-      animateOut: 'fadeOut',
-      animateIn: 'fadeIn',
-      smartSpeed: 450
-    });
-    $('#single_slide_autoplay').owlCarousel({
-      items: 1,
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 3000,
-      autoplayHoverPause: true
-    });
-    $('.play').on('click', function () {
-      $('#single_slide_autoplay').trigger('play.owl.autoplay', [3000])
-    });
-    $('.stop').on('click', function () {
-      $('#single_slide_autoplay').trigger('stop.owl.autoplay')
-    });
-    $('#withloop').owlCarousel({
-      center: true,
-      items: 2,
-      loop: true,
-      margin: 10,
-      responsive: {
-        600: {
-          items: 4
-        }
-      }
-    });
-    $('#nonloop').owlCarousel({
-      center: true,
-      items: 2,
-      loop: false,
-      margin: 10,
-      responsive: {
-        600: {
-          items: 4
-        }
-      }
-    });
-    $('#dashboard_slide').owlCarousel({
-      items: 1,
-      loop: true,
-      margin: 10,
-      autoplay: false,
-      autoplayTimeout: 2000,
-      dots: false,
-      autoplayHoverPause: true
-    });
-    $('#dashboard_slide2').owlCarousel({
-      items: 1,
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 3000,
-      dots: false,
-      autoplayHoverPause: true
-    });
 
     this.annonceService.getAnnonce(Number(this.id)).subscribe(data=>{
       console.log(data)
