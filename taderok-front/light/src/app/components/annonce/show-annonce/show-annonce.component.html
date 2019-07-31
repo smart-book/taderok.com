@@ -25,16 +25,16 @@
         </ul>
       </div>
       <div class="body">
-        <owl-carousel-o [options]="customOptions">
+        <div class="owl-carousel owl-theme" id="single_slide_autoplay" *ngFor="let photo of listPhoto">
+          <div class="item">
+            <img src="assets/images/upload/uploadAnnonce/{{photo.path}}" alt="">
+          </div>
 
-          <ng-container *ngFor="let photo of listPhoto">
-            <ng-template carouselSlide>
-              <img [src]="'assets/images/upload/uploadUser/'+photo.path">
-            </ng-template>
-          </ng-container>
-
-        </owl-carousel-o>
-
+        </div>
+        <div class="owl-btns">
+          <div class="owl-play play">Play</div>
+          <div class="owl-stop stop">Stop</div>
+        </div>
       </div>
     </div>
   </div>
