@@ -5,6 +5,7 @@ import {LocalDataSource, Ng2SmartTableModule} from "ng2-smart-table";
 import {Proposition} from "../../../../models/Proposition";
 import {Quiz} from "../../../../models/quiz";
 import {Question} from "../../../../models/Question";
+import {BonneReponses} from "../../../../models/BonneReponses";
 
 @Component({
   selector: 'app-ajouter-quiz',
@@ -13,58 +14,21 @@ import {Question} from "../../../../models/Question";
 })
 export class AjouterQuizComponent implements OnInit {
 
-  proposition: Object = new Proposition();
+  proposition: Proposition = new Proposition();
   quiz: Quiz = new Quiz();
   question: Question = new Question();
-  quizadded: Object = new Object();
+  quizadded: Object = null;
   questionadded: Object = new Object();
   etat = false;
   etat2 = true;
-
-  settings = {
-    delete: {
-      confirmDelete: true,
-      deleteButtonContent: 'Delete',
-      saveButtonContent: 'save',
-      cancelButtonContent: 'cancel'
-    },
-    create:{
-      confirmCreate: true
-    },
-    columns: {
-      id:{
-        title: 'Id'
-      },
-      nom: {
-        title: 'Proposition'
-      }
-    }
-  };
-
-  data = [];
-
-  source: LocalDataSource;
+  propositions: Proposition[];
+  questions: Question[];
+  br: BonneReponses = new BonneReponses();
 
   constructor(private quizService: QuizService, private router: Router) {
-    this.source = new LocalDataSource(this.data);
   }
 
   ngOnInit() {
-    this.quizService.getAllPropositions(251).subscribe(data => {
-      this.data = data;
-      console.log(this.data);
-  })
-  }
-
-  changementEtat() {
-    if (this.etat === true) {
-      this.etat = false;
-      this.etat2 = true;
-    } else {
-      this.etat = true;
-      this.etat2 = false;
-    }
-    this.question.question = '';
   }
 
   addQuiz(p) {
@@ -73,19 +37,34 @@ export class AjouterQuizComponent implements OnInit {
     });
   }
   addQuestion(question, quizid) {
-    this.quizService.addQuestion(question, quizid).subscribe(data => {
+    setTimeout(()=>{
+
+      this.quizService.addQuestion(question, quizid).subscribe(data => {
       this.questionadded = data;
       console.log(this.questionadded)
     });
+    this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
+    })
   }
-  addProposition(proposition, questionid) {
-    proposition=this.settings;
+  addProposition(proposition, questionid, quizid) {
     this.quizService.addProposition(proposition, questionid).subscribe(() => console.log('proposition ajouté'));
-    console.log('ajouté');
+    proposition.nom='';
+    this.quizService.getAllPropositions(questionid).subscribe(data => {this.propositions=data;})
   }
-
-  deleteProposition(id) {
-    this.quizService.deleteProposition(id).subscribe(data => console.log('supprimé'));
+  deleteProposition(id, idquestion) {
+    this.quizService.deleteProposition(id).subscribe(() => console.log('supprimé'));
+    this.quizService.getAllPropositions(idquestion).subscribe(data => {this.propositions=data;})
+  }
+  addBR(b, idquestion){
+    this.quizService.addBR(b,idquestion).subscribe(data=>console.log(data));
+  }
+  newQuestion(quizid){
+    setTimeout(()=>{
+    this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
+    this.question.question='';
+    this.proposition.nom='';
+    this.propositions=null;
+  })
   }
 
 }
