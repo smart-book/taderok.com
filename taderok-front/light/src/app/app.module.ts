@@ -22,7 +22,6 @@ import {ShowAnnonceComponent} from "./components/annonce/show-annonce/show-annon
 
   ],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

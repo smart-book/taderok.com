@@ -7,8 +7,7 @@ import {Groupes} from "../../../../models/groupes";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {DynamicScriptLoaderService} from "../../../../dynamic-script-loader-service.service";
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 
 
 
@@ -32,10 +31,9 @@ export class AjouterComponentSeance implements OnInit {
   groupe : Groupes = new Groupes();
   seance : Seance = new Seance();
   private modal ;
-  modalRef: BsModalRef;
 
 
-  constructor(private modalService: BsModalService,private seanceService : SeanceService,public fb: FormBuilder,private groupesService : GroupesService, private router: Router,private dynamicScriptLoader: DynamicScriptLoaderService) { }
+  constructor(private seanceService : SeanceService,public fb: FormBuilder,private groupesService : GroupesService, private router: Router,private dynamicScriptLoader: DynamicScriptLoaderService) { }
   user : any;
   ngOnInit() {
     let AppCalendar = function () {

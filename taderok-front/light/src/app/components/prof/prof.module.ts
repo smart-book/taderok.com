@@ -20,6 +20,7 @@ import {PortalModule} from '@angular/cdk/portal';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTreeModule} from '@angular/cdk/tree';
+
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -102,6 +103,7 @@ import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-sea
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
     ListFeedbackComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent],
+
 
 
   imports: [
