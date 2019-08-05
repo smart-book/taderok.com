@@ -1,0 +1,74 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Ajouter des ressources</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Acceuil</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Ressources</a>
+            </li>
+            <li class="breadcrumb-item active">Ajout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <div class="card">
+          <div class="header">
+            <h2>
+              <strong>Ajouter</strong> des Ressources</h2>
+          </div>
+
+
+          <div class="modal-body">
+            <form>
+              <label>Nom de Ressource</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <input type="text" name="type_reclamation" [(ngModel)]="ressource.nom" class="form-control"
+                         placeholder="Entrer le type de votre réclamation">
+                </div>
+              </div>
+
+              <!-- <label>Path de Ressource</label>
+               <div class="form-group">
+                 <div class="form-line">
+                   <input class="form-control" type="file" name="description" [(ngModel)]="ressource.path" placeholder="Entrer la description de votre réclamation">
+                 </div>
+               </div> -->
+
+              <!--
+
+                                    <div *ngIf="currentFileUpload" class="progress">
+                                      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                                           aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                                        {{progress.percentage}}%</div>
+                                    </div>
+              -->
+              <label >
+                <input type="file" (change)="selectFile($event)">
+              </label>
+              <!--
+                                    <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+              -->
+
+            </form>
+          </div>
+          <div align="right">
+            <button type="button" (click)="ajouterRessources()" class="btn-hover btn-border-radius color-1" >Ajouter</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -25,6 +26,10 @@ public class Prof extends User {
     @OneToMany(mappedBy = "prof")
     @JsonIgnore
     private List<GroupeChat> groupeChatList;
+    @JsonIgnore
+    @OneToMany(mappedBy = "prof")
+    private List<Ressources> ressourcesList;
+
 
 
     public Prof(User u) {
@@ -98,5 +103,11 @@ public class Prof extends User {
         this.groupeChatList = groupeChatList;
     }
 
+    public List<Ressources> getRessourcesList() {
+        return ressourcesList;
+    }
 
+    public void setRessourcesList(List<Ressources> ressourcesList) {
+        this.ressourcesList = ressourcesList;
+    }
 }

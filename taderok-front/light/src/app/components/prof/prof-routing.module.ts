@@ -20,6 +20,7 @@ import {ListQuizComponent} from './quiz/list-quiz/list-quiz.component';
 import {ArchiverRessourceComponent} from './ressource/archiver-ressource/archiver-ressource.component';
 
 import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
+import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
 
 
 
@@ -80,6 +81,14 @@ const routes: Routes = [
   {
     path: 'listeSeances',
     component: ListeSeancesProfComponent
+  },
+  {
+    path: 'ajouterRessourceSeance',
+    component: AjouterComponentSeance
+  },
+  {
+    path: 'AjouterRessourceSeance',
+    component: AjouterRessourceSeanceComponent
   }
 
 ];

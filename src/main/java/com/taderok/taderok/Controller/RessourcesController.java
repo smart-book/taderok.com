@@ -33,6 +33,12 @@ public class RessourcesController {
     {
          ressourcesService.ajouterRessources(id,ressources);
     }
+    @RequestMapping(method = RequestMethod.POST, value = "/ajouterRessourcesHorsSeance")
+    public void ajouterRessourcesHorsSeance(@RequestBody Ressources ressources)
+    {
+
+         ressourcesService.ajouterRessourcesHorsSeance(ressources);
+    }
     @RequestMapping(method = RequestMethod.GET,value = "/afficherRessources")
     public List<Ressources> afficherRessources()
     {

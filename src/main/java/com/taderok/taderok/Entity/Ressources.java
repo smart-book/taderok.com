@@ -3,6 +3,7 @@ package com.taderok.taderok.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Ressources {
@@ -13,9 +14,13 @@ public class Ressources {
     private String fileName;
     private String path;
     private boolean etat;
+    private Date date;
     @ManyToOne
     @JsonIgnoreProperties("ressourcesList")
     private Seance seance;
+    @JsonIgnoreProperties("ressourcesList")
+    @ManyToOne
+    private Prof prof;
 
     public Long getId() {
         return id;
@@ -63,5 +68,21 @@ public class Ressources {
 
     public void setEtat(boolean etat) {
         this.etat = etat;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Prof getProf() {
+        return prof;
+    }
+
+    public void setProf(Prof prof) {
+        this.prof = prof;
     }
 }

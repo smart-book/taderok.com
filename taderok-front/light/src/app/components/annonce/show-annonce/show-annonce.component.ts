@@ -19,15 +19,12 @@ export class ShowAnnonceComponent implements OnInit {
   id=this.route.snapshot.paramMap.get("id");
   imageTalbe: string;
 
-
   ngOnInit() {
 
     this.annonceService.getPhotosAnnonce(Number(this.id)).subscribe(data=>{
       console.log(data)
       this.listPhoto=data;
     });
-
-
 
     $('#single_slide').owlCarousel({
       loop: true,
@@ -92,6 +89,7 @@ export class ShowAnnonceComponent implements OnInit {
       dots: false,
       autoplayHoverPause: true
     });
+
 
     this.annonceService.getAnnonce(Number(this.id)).subscribe(data=>{
       console.log(data)
