@@ -48,7 +48,7 @@
 
                 <ng-container matColumnDef="date">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Séance </th>
-                  <td mat-cell *matCellDef="let row" *ngIf="">
+                  <td mat-cell>
                     {{row.seance.date_debut | date : 'short'}}
 
                     </td>
