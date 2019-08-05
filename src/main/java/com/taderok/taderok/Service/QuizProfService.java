@@ -79,4 +79,17 @@ public class QuizProfService {
         return questionRepository.findAllByQuiz(quizRepository.findById(quiz).orElse(null));
     }
 
+    public Quiz updateQuiz(int id, Quiz quiz){
+        Quiz q = quizRepository.findById(id).orElse(null);
+        q.setNomQuiz(quiz.getNomQuiz());
+        quizRepository.save(q);
+        return q;
+    }
+    public Question updateQuestion(int id, Question question){
+        Question q = questionRepository.findById(id).orElse(null);
+        q.setQuestion(question.getQuestion());
+        questionRepository.save(q);
+        return q;
+    }
+
 }

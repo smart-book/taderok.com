@@ -79,5 +79,12 @@ public class QuizController {
         return quizEtudiantService.getQuiz(id);
     }
 
-
+    @RequestMapping("/{id}/updatequiz")
+    public Quiz updateQuiz(@PathVariable int id, @RequestBody Quiz q ){
+        return quizProfService.updateQuiz(id, q);
+    }
+    @RequestMapping("/{id}/updatequestion")
+    public Question updateQuiz(@PathVariable int id, @RequestBody Question q ){
+        return quizProfService.updateQuestion(id, q);
+    }
 }
