@@ -20,4 +20,8 @@ export class SeanceService {
   afficherSeance(): Observable<Seance[]>{
     return this.http.get<Seance[]>(`${this.baseUrl}`+`/findAll`);
   }
+
+  async afficherSeanceAsync(){
+    return await this.http.get<Seance[]>(`${this.baseUrl}`+`/findAll`).toPromise();
+  }
 }
