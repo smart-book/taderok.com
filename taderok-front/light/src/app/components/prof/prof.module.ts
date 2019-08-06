@@ -9,6 +9,7 @@ import { AjouterQuizComponent } from './quiz/ajouter-quiz/ajouter-quiz.component
 import {ReactiveFormsModule} from '@angular/forms';
 import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
+import {ScheduleProfComponent} from "./schedule-prof/schedule-prof.component";
 
 
 import {BidiModule} from '@angular/cdk/bidi';
@@ -102,7 +103,7 @@ import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-sea
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent],
+    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent],
 
 
 

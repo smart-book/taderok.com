@@ -21,6 +21,7 @@ import {ArchiverRessourceComponent} from './ressource/archiver-ressource/archive
 
 import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
 import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
+import {ScheduleProfComponent} from "./schedule-prof/schedule-prof.component";
 
 
 
@@ -89,6 +90,10 @@ const routes: Routes = [
   {
     path: 'AjouterRessourceSeance',
     component: AjouterRessourceSeanceComponent
+  },
+  {
+    path: 'schedule',
+    component: ScheduleProfComponent
   }
 
 ];
