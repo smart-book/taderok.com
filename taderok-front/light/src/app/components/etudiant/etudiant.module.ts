@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { EtudiantRoutingModule } from './etudiant-routing.module';
 import { AjouterComponent } from './feedback/ajouter/ajouter.component';
 import {FormsModule} from "@angular/forms";
-import { ListQuizComponent } from './list-quiz/list-quiz.component';
-
+import { ListQuizComponent } from './quiz/list-quiz/list-quiz.component';
+import {ListquizComponent} from "./quiz/listquiz/listquiz.component";
 import { PasserQuizComponent } from './passer-quiz/passer-quiz.component';
 import {ArchwizardModule} from "angular-archwizard";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -54,7 +54,7 @@ import { SeanceDetailsComponent } from './seances/seance-details/seance-details.
 
 @NgModule({
 
-  declarations: [AjouterComponent, ListQuizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent],
+  declarations: [AjouterComponent, ListQuizComponent,ListquizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent],
 
   imports: [
     ArchwizardModule,

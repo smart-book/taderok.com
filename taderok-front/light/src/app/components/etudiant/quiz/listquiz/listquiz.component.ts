@@ -34,14 +34,14 @@ export class ListquizComponent implements OnInit,AfterViewInit {
 
 
   constructor(private service:ListQuizService) {
-    this.service.getAllQuiz().subscribe(data => {
+   /* this.service.getAllQuiz().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       console.log(this.dataSource);
       console.log(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-  }
+*/  }
 
   ngOnInit() {
 
