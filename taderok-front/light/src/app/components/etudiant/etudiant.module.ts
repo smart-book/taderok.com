@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EtudiantRoutingModule } from './etudiant-routing.module';
 import { AjouterComponent } from './feedback/ajouter/ajouter.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import { ListQuizComponent } from './list-quiz/list-quiz.component';
 
 import { PasserQuizComponent } from './passer-quiz/passer-quiz.component';
@@ -51,6 +51,7 @@ import { SeanceDetailsComponent } from './seances/seance-details/seance-details.
 
 
 
+
 @NgModule({
 
   declarations: [AjouterComponent, ListQuizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent],
@@ -59,59 +60,13 @@ import { SeanceDetailsComponent } from './seances/seance-details/seance-details.
     ArchwizardModule,
     CommonModule,
     EtudiantRoutingModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    BidiModule,
-    ObserversModule,
-    OverlayModule,
-    PlatformModule,
-    PortalModule,
-    CdkStepperModule,
-    CdkTableModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
     }),
-    FormsModule,
-    MatSelectModule,
-    A11yModule,
-    CdkTreeModule,
-    MatBadgeModule,
-    MatBottomSheetModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatTreeModule,
-    ScrollingModule,
+    FormsModule
   ]
 })
 export class EtudiantModule { }
