@@ -19,9 +19,8 @@ public class Quiz {
     private String nomQuiz;
     private Date date;
     private Boolean visible;
-
-
-
+    @ManyToOne
+    private Mooc mooc;
 
     @ManyToMany
     @JsonIgnore
@@ -95,5 +94,13 @@ public class Quiz {
 
     public void setVisible(Boolean visible) {
         this.visible = visible;
+    }
+
+    public Mooc getMooc() {
+        return mooc;
+    }
+
+    public void setMooc(Mooc mooc) {
+        this.mooc = mooc;
     }
 }

@@ -17,8 +17,10 @@ export class PublicationDetailsComponent implements OnInit {
   idPublication : number;
 
   contenu : string = "";
+  emojiText : string = "";
+  sendEmoji : boolean = false;
 
-  contenuWithEmojiCode : string;
+  contenuWithEmojiCode : string = "";
   forum : Forum = new Forum();
   listCommentaires : CommentaireForum[] ;
   commentaire : CommentaireForum = new CommentaireForum();
@@ -56,28 +58,38 @@ export class PublicationDetailsComponent implements OnInit {
   }
 
   addEmoji(event) {
+    this.sendEmoji = true;
     const { contenu } = this;
-    const text = `${contenu}${event.emoji.native}`;
-
-    console.log(event.emoji.unified);
-
-    this.contenuWithEmojiCode = text.replace(`${event.emoji.native}`,`${event.emoji.colons}`);
-    this.contenu = text;
+    const text = `${event.emoji.native}`;
+    console.log(text);
+    this.contenu += text;
+    console.log(this.contenu.replace(text,`${event.emoji.colons}`));
+    this.contenuWithEmojiCode += this.contenu.replace(text,`${event.emoji.colons}`);
+    console.log(this.contenuWithEmojiCode);
     this.showEmojiPicker = false;
+    //this.contenuWithEmojiCode = "";
   }
 
   commenter(){
     this.ngOnInit();
     let now = new Date();
     this.commentaire.date = now;
-    this.commentaire.contenu = this.contenuWithEmojiCode;
+    console.log(this.contenu);
+    if (!this.sendEmoji){
+      this.commentaire.contenu = this.contenu;
+    }else {
+      console.log(this.contenu.substring(this.contenuWithEmojiCode.length , this.contenu.length));
+      this.commentaire.contenu = this.contenuWithEmojiCode + ' '+ this.contenu.substring(this.contenuWithEmojiCode.length , this.contenu.length);
+    }
     this.forumService.ajouterCommentaire(this.forum.id, this.commentaire).subscribe(
       data =>{
         console.log(data)
       },
       error1 => console.log(error1)
     );
-    this.commentaire.contenu = "";
+    this.contenu = "";
+    this.emojiText = "";
+    this.contenuWithEmojiCode ="";
     this.ngOnInit();
   }
 

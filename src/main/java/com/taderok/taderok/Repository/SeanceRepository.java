@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SeanceRepository extends CrudRepository<Seance,Integer>{
+public interface SeanceRepository extends CrudRepository<Seance,Long>{
 
     List<Seance> findAllByProf(Prof prof);
 }

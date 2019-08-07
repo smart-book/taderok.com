@@ -47,6 +47,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
   },
   {
+    path: 'annonce',
+    loadChildren: () => import('./components/annonce/annonce.module').then(m => m.AnnonceModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./index/index.module').then(m => m.IndexModule)
   },

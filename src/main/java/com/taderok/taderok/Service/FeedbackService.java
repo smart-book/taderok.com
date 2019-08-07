@@ -2,17 +2,14 @@ package com.taderok.taderok.Service;
 
 import com.taderok.taderok.Controller.AthenticationController;
 import com.taderok.taderok.Controller.HelloResource;
-import com.taderok.taderok.Domain.UserDTO;
 import com.taderok.taderok.Entity.Etudiant;
 import com.taderok.taderok.Entity.Feedback;
-import com.taderok.taderok.Entity.Reclamation;
 import com.taderok.taderok.Entity.Seance;
 import com.taderok.taderok.Repository.FeedbackRepository;
 import com.taderok.taderok.Repository.EtudiantRepository;
 import com.taderok.taderok.Repository.SeanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.util.logging.resources.logging;
 
 
 import java.util.List;
@@ -56,7 +53,7 @@ import java.util.List;
         return (List<Feedback>) feedbackRepository.findAllByEtudiant(e);
     }
 
-    public List<Feedback> getAllFeedbackBySeanceId(int id){
+    public List<Feedback> getAllFeedbackBySeanceId(Long id){
         Seance s =  seanceRepository.findById(id).orElse(null);
         return  feedbackRepository.findAllFeedbackBySeances(s);
     }

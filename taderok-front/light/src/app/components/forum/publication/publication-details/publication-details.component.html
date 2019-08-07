@@ -1,7 +1,8 @@
+
 <section class="content">
   <div class="container-fluid">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="card">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="position: sticky; position: -webkit-sticky; top: 78px; padding: 5px; z-index: 99999; border: 5px">
+      <div class="card" >
         <div class="header">
           <h2 style="padding-left: 22px">
             Titre :<strong>{{forum.titre}}</strong>
@@ -14,11 +15,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="content">
-  <div class="container-fluid">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="card">
         <div class="header">
@@ -57,7 +53,7 @@
                         <a _ngcontent-nlp-c20="" href="#" onclick="return false;">{{comment.user.prenom}}
                           {{comment.user.nom}}</a></h2>
                       <h2><a href="#" onClick="return false;"></a></h2>
-                      <p>{{comment.contenu}}</p>
+                      <p>{{comment.contenu | emojify}}</p>
                     </div>
                   </li>
 

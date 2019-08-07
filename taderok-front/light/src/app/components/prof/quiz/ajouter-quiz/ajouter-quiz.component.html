@@ -1,159 +1,294 @@
 <section class="content">
   <div class="container-fluid">
-    <div class="row clearfix">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-          <div class="header">
-            <ul class="header-dropdown m-r--5">
-              <li class="dropdown">
-                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
-                   role="button" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">more_vert</i>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                  <li>
-                    <a href="#" onClick="return false;">Action</a>
-                  </li>
-                  <li>
-                    <a href="#" onClick="return false;">Another action</a>
-                  </li>
-                  <li>
-                    <a href="#" onClick="return false;">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="body">
-            <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
-              <aw-wizard-step [stepTitle]="'Ajouter un Quiz'">
-                <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
-                <div class="centered-content">
-                  <div>
-                    <form class="form-horizontal validate-form">
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                          <label for="nomQuiz">Nom</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                          <div class="form-group">
-                            <div class="form-line">
-                              <input type="text" id="nomQuiz" class="form-control"
-                                     placeholder="Entrer le nom du Quiz" name="nomQuiz" [(ngModel)]="quiz.nomQuiz">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
-                        </div>
-
-                        <div class="text-left">
-                          <button type="submit" awNextStep  class="btn-hover btn-border-radius color-8" (click)="addQuiz(quiz)">Ajouter</button>
-                        </div>
-                      </div>
-                    </form>
-
-                  </div>
-
-                </div>
-              </aw-wizard-step>
-              <aw-wizard-step [stepTitle]="'Ajouter une question'">
-                <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
-                <div class="centered-content">
-                  <div>
-                    <form class="form-horizontal validate-form">
-                      <div *ngIf="etat2">
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                          <label for="question">Question</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                          <div class="form-group">
-                            <div class="form-line">
-                              <input type="text" id="question" class="form-control"
-                                     placeholder="Entrer une question" name="question" [(ngModel)]="question.question">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
-                        </div>
-
-                        <div class="text-left">
-                          <button type="submit" class="btn-hover btn-border-radius color-8" (click)="addQuestion(question, quizadded.id); changementEtat()">Ajouter question</button>
-                        </div>
-                      </div>
-                      </div>
-                      <div *ngIf="etat">
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                          <label for="question">Proposition</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                          <div class="form-group">
-                            <div class="form-line">
-                              <input type="text" id="proposition" class="form-control"
-                                     placeholder="Entrer une proposition" name="nom" [(ngModel)]="proposition.nom">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
-                        </div>
-
-                        <div class="text-left">
-                          <button type="submit" class="btn-hover btn-border-radius color-8" (click)="addProposition(proposition, questionadded.id)">Ajouter proposition</button>
-                          <button type="submit" class="btn-hover btn-border-radius color-8" (click)="changementEtat()">Ajouter question</button>
-                          <button type="submit" class="btn-hover btn-border-radius color-8" awNextStep>Termier</button>
-                        </div>
-                      </div>
+    <!-- #START# Table With State Save -->
+    <div class="row clearfix" >
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        <div class="card" >
+            <div class="body">
+              <!---------------------------------------------------------------------------------------------->
+              <div class="centered-content">
+                    <div>
+                      <form class="form-horizontal validate-form">
                         <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
+                          <div class="col form-control-label">
+                            <label for="nomQuiz">Nom du quiz</label>
+                          </div>
+                          <div class="col-8">
+                            <div class="form-group">
+                              <div >
+                                <input *ngIf="quizadded===null" type="text" id="nomQuiz"
+                                       placeholder="Entrer le nom du Quiz" name="nomQuiz" [(ngModel)]="quiz.nomQuiz">
+                              </div>
+                              <h4 *ngIf="quizadded!==null" style="text-align: center">quiz: {{quiz.nomQuiz}}</h4>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <button *ngIf="quizadded===null" mat-icon-button matTooltip="Ajouter quiz" (click)="addQuiz(quiz)" class="iconbutton" style="color: #0f9d58">
+                              <mat-icon aria-label="Add" >add</mat-icon>
+                            </button>
+                            <!-- Modal d'ajout de publication : exampleModal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="formModal" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer une publication </h5><br><br>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form>
+                                      <label>Titre</label>
+                                      <div class="form-group">
+                                        <div class="form-line">
+                                          <input type="text" id="yamli"
+                                                 placeholder="Entrer le nom du Quiz" name="nomQuiz" [(ngModel)]="quiz.nomQuiz">
+                                        </div>
+                                      </div>
+
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" (click)="updateQuiz(quizadded.id, quiz)" data-dismiss="modal" class="btn-hover btn-border-radius color-1">Valider</button>
+                                    <button type="button" class="btn-hover btn-border-radius color-4"
+                                            data-dismiss="modal">Annuler</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Fin div de modal d'ajout de la publication -->
+                            <button *ngIf="quizadded!==null" data-toggle="modal" data-target="#exampleModal"
+                                    mat-icon-button matTooltip="modifier quiz" class="iconbutton" color="accent">
+                              <i class="far fa-edit" aria-label="Edit" ></i>
+                            </button>
+                          </div>
+                          </div>
+                      </form>
+                    </div>
+              </div>
+              <br><br>
+<!---------------------------------------------------------------------------------------------------------------------->
+                  <div class="centered-content">
+                    <div>
+                      <form class="form-horizontal validate-form">
+                        <div class="row clearfix">
+                          <div class="col form-control-label">
+                            <label for="question">Question   </label>
+                          </div>
+                          <div class="col-8">
+                            <div class="form-group" >
+                              <div>
+                                <input *ngIf="questionadded===null" type="text" class="form-control" id="question"
+                                       placeholder="Entrer une question" name="question" [(ngModel)]="question.question">
+                                <h4 *ngIf="questionadded!==null" style="text-align: center">{{question.question}}</h4>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <button *ngIf="questionadded===null" mat-icon-button matTooltip="Ajouter question" (click)="addQuestion(question, quizadded.id)" class="iconbutton" style="color: #0f9d58">
+                              <mat-icon aria-label="Add" >add</mat-icon>
+                            </button>
+                            <!-- Modal d'ajout de publication : exampleModal -->
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                                 aria-labelledby="formModal" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" style="padding-left: 150px" id="formModal1">Créer une publication </h5><br><br>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form>
+                                      <label>Titre</label>
+                                      <div class="form-group">
+                                        <div class="form-line">
+                                          <input type="text" id="yaml"
+                                                 placeholder="Entrer une question" name="question" [(ngModel)]="question.question">
+                                        </div>
+                                      </div>
+
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" (click)="updateQuestion(questionadded.id, question)" data-dismiss="modal" class="btn-hover btn-border-radius color-1">Valider</button>
+                                    <button type="button" class="btn-hover btn-border-radius color-4"
+                                            data-dismiss="modal">Annuler</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Fin div de modal d'ajout de la publication -->
+                            <button *ngIf="questionadded!==null" data-toggle="modal" data-target="#exampleModal1"
+                                    mat-icon-button matTooltip="modifier quiz" class="iconbutton" color="accent">
+                              <i class="far fa-edit" aria-label="Edit" ></i>
+                            </button>
+                            <!--<button *ngIf="questionadded!==null" mat-icon-button (click)="deleteQuestion(questionadded.id, quizadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                              <mat-icon aria-label="Delete" >delete</mat-icon>
+                            </button>-->
+                          </div>
                         </div>
-                          <h5>Question : {{this.questionadded.question}}</h5>
-                        </div>
-                        <div class="modal-header" *ngFor="let p of propositions">
-                          <p style="padding-left: 150px"> {{p.nom}} </p><br><br>
-                          <button type="button"  class="close" aria-label="Close" (click)="deleteProposition(p.id, questionadded.id)">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                      </div>
-                    </form>
+                      </form>
+                    </div>
+
                   </div>
-                </div>
-              </aw-wizard-step>
-              <aw-wizard-step [stepTitle]="'Vérification du Quiz'">
-                <ng-template awWizardStepSymbol><i class="fa fa-file-code"></i></ng-template>
-                <div class="centered-content">
                   <div>
-                    <form class="form-horizontal validate-form">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-hover save-stage dataTable"
+                             style="width:60%;">
+                        <tbody>
+                        <tr>
+                          <td>
+                          <form class="form-horizontal validate-form">
+                            <div class="row clearfix">
+                              <div class="col form-control-label">
+                                <label >proposition   </label>
+                              </div>
+                              <div class="col-8">
+                                <div class="form-group" >
+                                  <div>
+                                    <input type="text" id="proposition" class="form-control"
+                                           placeholder="Entrer une question" name="nom" [(ngModel)]="proposition.nom">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <button mat-icon-button (click)="addProposition(proposition, questionadded.id)" matTooltip="Ajouter proposition" class="iconbutton" style="color: #0f9d58">
+                                  <mat-icon aria-label="Add" >add</mat-icon>
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+                          </td>
+                          <td></td>
+                        </tr>
+                        <tr *ngFor="let p of propositions" >
+                          <td>
+                            <form class="form-horizontal validate-form">
+                              <div class="row clearfix">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                  <div class="form-group">
+                                    <div class="form-line">
+                                      <p>
+                                        <label>
+                                          <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="br.nom"(click)="addBR(br,questionadded.id)" class="filled-in"/>
+                                          <span>{{p.nom}}</span>
+                                        </label>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </td>
+                          <td>
+                            <button mat-icon-button (click)="deleteProposition(p.id, quizadded.id, questionadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                              <mat-icon aria-label="Delete" >delete</mat-icon>
+                            </button>
+                          </td>
 
-
-                      <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
-                        </div>
-
-                        <div class="text-left">
-                          <button type="submit" awNextStep  class="btn-hover btn-border-radius color-8" (click)="addQuiz(quiz)">Ajouter</button>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+              <button type="submit" (click)="newQuestion(quizadded.id)" class="btn-hover btn-border-radius color-8">nouvelle question</button>
+<!---------------------------------------------------------------------------------------------------------------------->
+              <div class="centered-content" *ngFor="let q of questions">
+                <div>
+                  <form class="form-horizontal validate-form">
+                    <div class="row clearfix">
+                      <div class="col form-control-label">
+                      </div>
+                      <div class="col-8">
+                        <div class="form-group" >
+                          <div>
+                            <h5 style="text-align: center">{{q.question}}</h5>
+                          </div>
                         </div>
                       </div>
-                    </form>
-
-                  </div>
-
+                      <div class="col">
+                        <button mat-icon-button matTooltip="modifier question" class="iconbutton" color="accent">
+                          <i class="far fa-edit" aria-label="Edit" ></i>
+                        </button>
+                        <button mat-icon-button (click)="deleteQuestion(q.id, quizadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                          <mat-icon aria-label="Delete" >delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              </aw-wizard-step>
-            </aw-wizard>
+
+
+                <div class="table-responsive">
+                  <table class="table table-striped table-hover save-stage dataTable"
+                         style="width:60%;">
+                    <tbody>
+                    <tr>
+                      <td>
+                        <form class="form-horizontal validate-form">
+                          <div class="row clearfix">
+                            <div class="col form-control-label">
+                              <label for="question">proposition   </label>
+                            </div>
+                            <div class="col-8">
+                              <div class="form-group" >
+                                <div>
+                                  <input type="text" class="form-control"
+                                         placeholder="Entrer une question" name="question" [(ngModel)]="proposition.nom">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <button mat-icon-button (click)="addProposition(proposition, questionadded.id)" matTooltip="Ajouter proposition" class="iconbutton" style="color: #0f9d58">
+                                <mat-icon aria-label="Add" >add</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr *ngFor="let p of q.propositions" >
+                      <td>
+                        <form class="form-horizontal validate-form">
+                          <div class="row clearfix">
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                              <div class="form-group">
+                                <div class="form-line">
+                                  <p>
+                                    <label>
+                                      <input type="checkbox" [(ngModel)]="br.nom" [ngModelOptions]="{standalone: true}" (click)="addBR(br,questionadded.id)" class="filled-in"/>
+                                      <span>{{p.nom}}</span>
+                                    </label>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </td>
+                      <td>
+                        <button mat-icon-button (click)="deleteProposition(p.id, quizadded.id, questionadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                          <mat-icon aria-label="Delete" >delete</mat-icon>
+                        </button>
+                      </td>
+
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
 </section>
-
