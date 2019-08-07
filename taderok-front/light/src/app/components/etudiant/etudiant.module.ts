@@ -48,13 +48,13 @@ import {CdkStepperModule} from "@angular/cdk/stepper";
 import {CdkTableModule} from "@angular/cdk/table";
 import { ListeSeancesComponent } from './seances/liste-seances/liste-seances.component';
 import { SeanceDetailsComponent } from './seances/seance-details/seance-details.component';
-
+import {AddquizComponent} from "./quiz/addquiz/addquiz/addquiz.component";
 
 
 
 @NgModule({
 
-  declarations: [AjouterComponent, ListQuizComponent,ListquizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent],
+  declarations: [AjouterComponent,AddquizComponent, ListQuizComponent,ListquizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent],
 
   imports: [
     ArchwizardModule,
@@ -66,7 +66,32 @@ import { SeanceDetailsComponent } from './seances/seance-details/seance-details.
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
     }),
-    FormsModule
+    FormsModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule,
+    MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatTreeModule
   ]
 })
 export class EtudiantModule { }
