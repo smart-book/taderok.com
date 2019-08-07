@@ -1,5 +1,6 @@
 import * as G from "glob";
 import {Groupes} from "./groupes";
+import {Prof} from "./prof";
 
 export class Seance{
   id : number;
@@ -11,4 +12,5 @@ export class Seance{
   description : string;
   etat : string;
   groupes: Groupes;
+  prof: Prof
 }

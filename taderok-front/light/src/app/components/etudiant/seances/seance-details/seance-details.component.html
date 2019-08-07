@@ -1,0 +1,23 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="position: sticky; position: -webkit-sticky; top: 78px; padding: 5px; z-index: 99999; border: 5px">
+      <div class="card" >
+        <div class="header">
+          <button *ngIf="rejoindreBoolean" (click)="rejoindre(seance.groupes.id)">{{statusBouton}}</button>
+          <button *ngIf="!rejoindreBoolean">{{statusBouton}}</button>
+          <h2 style="padding-left: 22px">
+            Seance :<strong></strong>
+          </h2>
+          <br>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            Description :
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            Prof :
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

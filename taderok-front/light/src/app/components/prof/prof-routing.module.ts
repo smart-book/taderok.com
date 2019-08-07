@@ -22,6 +22,7 @@ import {ArchiverRessourceComponent} from './ressource/archiver-ressource/archive
 import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-seances-prof.component';
 import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
 import {ScheduleProfComponent} from "./schedule-prof/schedule-prof.component";
+import {SeanceDetailsComponent} from "./seance/seance-details/seance-details.component";
 
 
 
@@ -94,6 +95,10 @@ const routes: Routes = [
   {
     path: 'schedule',
     component: ScheduleProfComponent
+  },
+  {
+    path: 'seance/details/:id',
+    component: SeanceDetailsComponent
   }
 
 ];

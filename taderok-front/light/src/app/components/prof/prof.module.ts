@@ -96,6 +96,7 @@ import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-an
 
 import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archiver-ressource.component';
 import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
+import { SeanceDetailsComponent } from './seance/seance-details/seance-details.component';
 
 
 
@@ -103,7 +104,7 @@ import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-sea
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent],
+    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent, SeanceDetailsComponent],
 
 
 

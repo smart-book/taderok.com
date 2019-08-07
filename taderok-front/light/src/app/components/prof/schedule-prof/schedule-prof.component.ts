@@ -52,33 +52,26 @@ export class ScheduleProfComponent implements OnInit {
           CategoryColor: '#1aaa55'
         };
       });
-
       console.log(this.out);
       //console.log(this.data);
     }, error => console.log(error));*/
-
     this.data = await this.seanceService.afficherSeanceAsync();
-
     console.log(this.data);
-
     this.out = this.data.map(function (obj) {
       return {
         Id: obj.id,
         Subject: 'test',
-        Location: 'Office',
         StartTime : new Date(obj.date_debut),
         EndTime : new Date(obj.date_fin),
-        RecurrenceRule: 'FREQ=WEEKLY',
         CategoryColor: '#1aaa55'
       };
     });
-    console.log(this.out);
   }
 
   public test: Object[] = <Object[]>extend([], this.out, null, true);
   public selectedDate: Date = new Date();
   public eventSettings: EventSettingsModel = {
-    dataSource: recurrenceData,
+    dataSource: this.out,
     /*fields :{
       subject : {name :'subject'},
       startTime : {name : 'dateDebut'},
