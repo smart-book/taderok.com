@@ -54,8 +54,11 @@ export class AjouterQuizComponent implements OnInit {
     this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
   }
 
-  addBR(b, idquestion){
-    this.quizService.addBR(b,idquestion).subscribe(data=>console.log(data));
+  addBR(p, idquestion){
+    this.br.nom = p;
+    console.log(this.br);
+    console.log(p);
+    this.quizService.addBR(this.br,idquestion).subscribe(data=>console.log(data));
   }
   newQuestion(quizid){
     setTimeout(()=>{

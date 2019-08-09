@@ -2,6 +2,7 @@ package com.taderok.taderok.Controller;
 
 import com.taderok.taderok.Entity.Etudiant;
 import com.taderok.taderok.Entity.Groupes;
+import com.taderok.taderok.Service.EtudiantService;
 import com.taderok.taderok.Service.ForumService;
 import com.taderok.taderok.Service.GroupeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class GroupesController {
     @Autowired
     private GroupeService groupeService;
     @Autowired
+    private EtudiantService etudiantService;
+    @Autowired
     private HelloResource helloResource;
 
 
@@ -30,20 +33,17 @@ public class GroupesController {
     public Groupes getGroupe(@PathVariable int id){
         return groupeService.getGroupe(id);
     }
+
     @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
     public void update(@RequestBody Groupes groupe,@PathVariable int id){
          groupeService.updateGroupe(groupe,id);
     }
+
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
     public void deleteGroupe(@PathVariable int id)
     {
         groupeService.deleteGroupe(id);
     }
-
-
-
-
-
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public void addGroupe(@RequestBody Groupes groupe){
@@ -51,11 +51,23 @@ public class GroupesController {
         groupeService.addGroupe(groupe);
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/addWithResponse")
+    public Groupes addGroupeWithResponse(@RequestBody Groupes groupe){
+
+        return groupeService.addGroupeWithResponse(groupe);
+    }
+
 
     @RequestMapping(method = RequestMethod.POST, value = "/addGE/{idG}/{idE}")
-    public void addGroupeEtudiants(@PathVariable int idG ,@PathVariable Long idE){
-
+    public void addGroupeEtudiants(@PathVariable int idG ,@PathVariable Long idE)
+    {
         groupeService.affecterGroupeEtudiants(idG,idE);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/student/{idGroupe}/{idEtudiant}")
+    public void deleteStudentFromGroup(@PathVariable int idGroupe, @PathVariable Long idEtudiant)
+    {
+        groupeService.deleteStudentFromGroup(idGroupe,idEtudiant);
     }
 
 }
