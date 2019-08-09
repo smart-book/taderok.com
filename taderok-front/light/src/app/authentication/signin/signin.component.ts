@@ -21,22 +21,14 @@ export class SigninComponent implements OnInit {
   idConnected: number = null ;
   isConnected = false;
 
-  login() {
+  async login() {
     console.log(this.user.email);
-    this.loginService.login(this.user).subscribe(data => {
+   /* this.loginService.login(this.user).subscribe(data => {
 
         this.router.navigateByUrl('/components/ajouter');
 
         console.log(data);
-        //  this.idConnected = + data;
-        /*if (this.idConnected > 0) {
-          this.isConnected = true;
-        }*/
-        // console.log(typeof (this.idConnected));
-        // if (this.isConnected) {
         this.router.navigateByUrl('/dashboard/main');
-        // } else { alert('Veuillez verifier vos données'); }
-
       },
       error => console.log(error));
 
@@ -44,7 +36,10 @@ export class SigninComponent implements OnInit {
       data => {console.log(data);
       this.connectedUser = data;
       localStorage.setItem('user',JSON.stringify({user : data}));}
-    )
+    )*/
+   await  this.loginService.loginAsync(this.user).then(()=>this.router.navigateByUrl('/dashboard/main'));
+   this.connectedUser = await this.loginService.getConnectedUserAsync() as User;
+    localStorage.setItem('user',JSON.stringify({user : this.connectedUser}));
   }
 
     ngOnInit() {
