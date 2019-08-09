@@ -11,6 +11,7 @@ export class Seance{
   titre : string;
   description : string;
   etat : string;
+  niveau : string;
   groupes: Groupes;
   prof: Prof
 }

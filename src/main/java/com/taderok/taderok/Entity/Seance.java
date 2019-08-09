@@ -19,6 +19,7 @@ public class Seance {
     private int duree;
     // if it is a one day or repetitive event
     private String etat;
+    private String niveau;
 
     @ManyToOne
     @JsonIgnoreProperties("seanceList")
@@ -120,5 +121,13 @@ public class Seance {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public String getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
     }
 }
