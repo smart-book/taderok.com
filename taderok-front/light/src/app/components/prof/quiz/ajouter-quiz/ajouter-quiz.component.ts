@@ -53,11 +53,7 @@ export class AjouterQuizComponent implements OnInit {
     this.quizService.getAllPropositions(questionid).subscribe(data => {this.propositions=data;})
     this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
   }
-  /*deletePropositionlist(id, quizid, questionid) {
-    this.quizService.deleteProposition(id).subscribe(() => console.log('supprimé'));
-    this.quizService.getAllPropositions(questionid).subscribe(data => {this.propositions=data;})
-    this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
-  }*/
+
   addBR(b, idquestion){
     this.quizService.addBR(b,idquestion).subscribe(data=>console.log(data));
   }

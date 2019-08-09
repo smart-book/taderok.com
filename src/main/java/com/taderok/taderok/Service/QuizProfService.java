@@ -92,4 +92,11 @@ public class QuizProfService {
         return q;
     }
 
+    public void validateQuiz(int id){
+        Quiz quiz = quizRepository.findById(id).orElse(null);
+            quiz.setVisible(true);
+        quizRepository.save(quiz);
+
+    }
+
 }

@@ -87,4 +87,8 @@ public class QuizController {
     public Question updateQuiz(@PathVariable int id, @RequestBody Question q ){
         return quizProfService.updateQuestion(id, q);
     }
+    @RequestMapping("/{id}/validatequiz")
+    public void validateQuiz(@PathVariable int id){
+        quizProfService.validateQuiz(id);
+    }
 }

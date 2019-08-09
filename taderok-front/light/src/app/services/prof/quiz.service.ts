@@ -52,5 +52,8 @@ export class QuizService {
   updateQuestion(id: number, question: Question): Observable<Question>{
     return this.http.put<Question>('http://localhost:8181/quiz/'+id+'/updatequestion', question);
   }
+  validateQuiz(id: number){
+    return this.http.put('http://localhost:8181/quiz/'+id+'/validatequiz', null);
+  }
 
 }
