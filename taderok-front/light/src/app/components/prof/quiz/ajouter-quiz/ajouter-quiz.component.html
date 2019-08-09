@@ -264,7 +264,7 @@
                                 <div class="form-line">
                                   <p>
                                     <label>
-                                      <input type="checkbox" [(ngModel)]="br.nom" [ngModelOptions]="{standalone: true}" (click)="addBR(br,questionadded.id)" class="filled-in"/>
+                                      <input type="checkbox" [(ngModel)]="br.nom" [ngModelOptions]="{standalone: true}" (ngModelChange)="addBR(br,q.id)" class="filled-in"/>
                                       <span>{{p.nom}}</span>
                                     </label>
                                   </p>
@@ -275,7 +275,7 @@
                         </form>
                       </td>
                       <td>
-                        <button mat-icon-button (click)="deleteProposition(p.id, quizadded.id, questionadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                        <button mat-icon-button (click)="deleteProposition(p.id, quizadded.id, q.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
                           <mat-icon aria-label="Delete" >delete</mat-icon>
                         </button>
                       </td>
