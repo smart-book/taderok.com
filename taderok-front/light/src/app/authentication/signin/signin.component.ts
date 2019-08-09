@@ -37,7 +37,7 @@ export class SigninComponent implements OnInit {
       this.connectedUser = data;
       localStorage.setItem('user',JSON.stringify({user : data}));}
     )*/
-   await  this.loginService.loginAsync(this.user).then(()=>this.router.navigateByUrl('/dashboard/main'));
+   await  this.loginService.loginAsync(this.user).then(()=> window.location.href='http://localhost:4200/#/dashboard/main');
    this.connectedUser = await this.loginService.getConnectedUserAsync() as User;
     localStorage.setItem('user',JSON.stringify({user : this.connectedUser}));
   }
