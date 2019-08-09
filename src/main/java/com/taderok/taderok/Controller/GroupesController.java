@@ -52,10 +52,10 @@ public class GroupesController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/addGE/{idG}")
-    public void addGroupeEtudiants(@PathVariable int idG ,@RequestBody Etudiant et){
+    @RequestMapping(method = RequestMethod.POST, value = "/addGE/{idG}/{idE}")
+    public void addGroupeEtudiants(@PathVariable int idG ,@PathVariable Long idE){
 
-        groupeService.affecterGroupeEtudiants(idG,et.getId());
+        groupeService.affecterGroupeEtudiants(idG,idE);
     }
 
 }

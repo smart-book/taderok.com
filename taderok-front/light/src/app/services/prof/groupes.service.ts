@@ -21,4 +21,8 @@ export class GroupesService {
   afficherGroupe(): Observable<Groupes[]>{
     return this.http.get<Groupes[]>(`${this.baseUrl}`+`/findAll`);
   }
+
+  affecterEtudiantAGroupe(idGroupe , idEtudiant){
+    return this.http.post(`${this.baseUrl}`+`/addGE/`+ idGroupe + `/` + idEtudiant, null)
+  }
 }

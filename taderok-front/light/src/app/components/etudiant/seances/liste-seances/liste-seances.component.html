@@ -9,7 +9,7 @@
           </div>
           <div class="text p-b-10">
             <p>{{seance.date_debut | date: 'yyyy-MM-dd'}}</p>
-                        <span>Lorem ipsum dolor sit amet, id quo eruditi
+            <span>Lorem ipsum dolor sit amet, id quo eruditi
                             eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui
                             ad.</span>
           </div>
@@ -69,7 +69,7 @@
                   <div class="row">
                     <article class="col-md-4 col-sm-6 portfolio-item web-design" *ngFor="let seance of listeSeance">
                       <div class="portfolio-thumb in">
-                        <a [routerLink]="['/prof/seance/details', seance.id]" class="main-link">
+                        <a [routerLink]="['/etudiant/seance/details', seance.id]" class="main-link">
                           <img class="img-responsive img-center"
                                src="assets/images/posts/post4.jpg" alt="">
                           <span class="project-title">{{seance.matiere}}</span>

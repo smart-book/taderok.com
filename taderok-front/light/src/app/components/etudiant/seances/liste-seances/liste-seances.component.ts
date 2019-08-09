@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {SeanceService} from "../../../../services/prof/seance.service";
 import {Seance} from "../../../../models/seance";
+import {SeanceService} from "../../../../services/prof/seance.service";
 declare const $: any;
 
 @Component({
-  selector: 'app-liste-seances-prof',
-  templateUrl: './liste-seances-prof.component.html',
-  styleUrls: ['./liste-seances-prof.component.sass']
+  selector: 'app-liste-seances',
+  templateUrl: './liste-seances.component.html',
+  styleUrls: ['./liste-seances.component.sass']
 })
-export class ListeSeancesProfComponent implements OnInit {
-
+export class ListeSeancesComponent implements OnInit {
   listeSeance: Seance[];
   constructor(private seanceService: SeanceService) { }
 

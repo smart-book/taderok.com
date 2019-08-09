@@ -19,13 +19,16 @@ export class ScheduleProfComponent implements OnInit {
   seance : Seance = new Seance();
   public aa : Object[];
   public items: object[];
+  data : Seance[];
+  out : Object[];
 
   constructor(private seanceService: SeanceService) {
-    this.seanceService.afficherSeance().subscribe(data => {
+    /*this.seanceService.afficherSeance().subscribe(data => {
       console.log(data);
       this.aa = data;
       //console.log(this.data);
-    }, error => console.log(error));
+    }, error => console.log(error));*/
+    //this.out = [];
   }
 
   private dataManger: DataManager = new DataManager({
@@ -33,24 +36,42 @@ export class ScheduleProfComponent implements OnInit {
     adaptor: new WebApiAdaptor,
     crossDomain: true
   });
-  public data: Object[] = <Object[]>extend([], this.aa, null, true);
-  ngOnInit() {
-
-    new DataManager({ url: 'http://localhost:8181/seance/findAll'}).executeQuery(new Query()).then((e: ReturnOption) => {
-      this.items = e.result as object[];
-      console.log(this.items);
-    }).catch((e) => true);
+  //public data: Object[] = <Object[]>extend([], this.aa, null, true);
+  async ngOnInit() {
     /*this.seanceService.afficherSeance().subscribe(data => {
       console.log(data);
       this.data = data;
+      this.out = data.map(function (obj) {
+        return {
+          Id: obj.id,
+          Subject: 'test',
+          Location: 'Office',
+          StartTime : new Date(obj.date_debut),
+          EndTime : new Date(obj.date_fin),
+          RecurrenceRule: 'FREQ=WEEKLY;INTERVAL=2;BYDAY=MO;COUNT=10',
+          CategoryColor: '#1aaa55'
+        };
+      });
+      console.log(this.out);
       //console.log(this.data);
-    }, error => console.log(error));
-*/
-    console.log(recurrenceData);
+    }, error => console.log(error));*/
+    this.data = await this.seanceService.afficherSeanceAsync();
+    console.log(this.data);
+    this.out = this.data.map(function (obj) {
+      return {
+        Id: obj.id,
+        Subject: 'test',
+        StartTime : new Date(obj.date_debut),
+        EndTime : new Date(obj.date_fin),
+        CategoryColor: '#1aaa55'
+      };
+    });
   }
+
+  public test: Object[] = <Object[]>extend([], this.out, null, true);
   public selectedDate: Date = new Date();
   public eventSettings: EventSettingsModel = {
-    dataSource: this.items,
+    dataSource: this.out,
     /*fields :{
       subject : {name :'subject'},
       startTime : {name : 'dateDebut'},
@@ -80,7 +101,7 @@ export class ScheduleProfComponent implements OnInit {
 
     if (args.type === 'Editor') {
       let statusElement: HTMLInputElement = args.element.querySelector('#EventType') as HTMLInputElement;
-      this.seance.Subject = statusElement.value;
+      this.seance.titre = statusElement.value;
       if (!statusElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
           placeholder: 'Choose status', value: statusElement.value,
@@ -92,12 +113,12 @@ export class ScheduleProfComponent implements OnInit {
       let startElement: HTMLInputElement = args.element.querySelector('#StartTime') as HTMLInputElement;
       if (!startElement.classList.contains('e-datetimepicker')) {
         new DateTimePicker({ value: new Date(startElement.value) || new Date() }, startElement);
-        this.seance.StartTime = new Date(startElement.value) || new Date();
+        this.seance.date_debut = new Date(startElement.value) || new Date();
       }
       let endElement: HTMLInputElement = args.element.querySelector('#EndTime') as HTMLInputElement;
       if (!endElement.classList.contains('e-datetimepicker')) {
         new DateTimePicker({ value: new Date(endElement.value) || new Date() }, endElement);
-        this.seance.EndTime = new Date(endElement.value) || new Date()
+        this.seance.date_fin = new Date(endElement.value) || new Date()
       }
 
       this.seanceService.ajouterSeance(this.seance).subscribe(data=>
