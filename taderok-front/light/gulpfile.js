@@ -12,16 +12,18 @@ paths = {
 
 function scss() {
 	return gulp.src(['src/assets/scss/**/*.scss',
-		'scss/*.scss'
+		'scss/*.scss',paths.nodes+'owl.carousel/dist/assets/owl.carousel.css'
 	])
 		.pipe(sass())
 		.pipe(uglifycss())
 		.pipe(gulp.dest('src/assets/css/'))
+    .pipe(gulp.dest(paths.dev+'/owl'))
 };
 
 //Copy, compile, minify all scripts
 function scripts(done) {
 	gulp.src([
+	  paths.node+'owl.carousel/dist/owl.carousel.js',
 		paths.bower + '/jquery/dist/jquery.js',
 		paths.bower + '/materialize/dist/js/materialize.min.js',
 		paths.bower + '/jquery-validation/dist/jquery.validate.js',
@@ -46,7 +48,8 @@ function scripts(done) {
 	])
 		.pipe(concat('app.min.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('src/assets/js/'));
+		.pipe(gulp.dest('src/assets/js/'))
+    .pipe(gulp.dest(paths.dev+'owl'));
 	done();
 };
 

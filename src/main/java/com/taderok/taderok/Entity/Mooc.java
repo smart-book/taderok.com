@@ -14,6 +14,7 @@ public class Mooc {
     private String matiere;
     private Date date;
     private String niveau;
+    private boolean archive;
     @OneToMany(mappedBy = "mooc")
     private List<MoocVideo> moocVideos;
     @OneToMany(mappedBy = "mooc")
@@ -73,5 +74,13 @@ public class Mooc {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public boolean isArchive() {
+        return archive;
+    }
+
+    public void setArchive(boolean archive) {
+        this.archive = archive;
     }
 }
