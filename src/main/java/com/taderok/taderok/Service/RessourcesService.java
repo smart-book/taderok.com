@@ -22,8 +22,10 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 @Service
 public class RessourcesService {
@@ -40,12 +42,22 @@ public class RessourcesService {
     Logger log = LoggerFactory.getLogger(this.getClass().getName());
     private final Path rootLocation = Paths.get("upload-dir");
 
+    public void ajouterRessourcesHorsSeance(Ressources ressources)
+    {
+        Prof prof = profRepository.findById(athenticationController.getConnectedUser().getUser().getId()).orElse(null);
+        ressources.setProf(prof);
+        Date date = new Date();
+        ressources.setDate(date);
+        ressourcesRespository.save(ressources);
+
+    }
 
     public void ajouterRessources(Long id,Ressources ressources){
 
 
         Seance seance = seanceRepository.findById(id).orElse(null);
-
+        Date date = new Date();
+        ressources.setDate(date);
         ressources.setSeance(seance);
         ressources.setEtat(true);
         ressourcesRespository.save(ressources);
@@ -80,8 +92,8 @@ public class RessourcesService {
         ressourcesRespository.save(ressources1);
    }
     public void déarchiverRessources(Long id ){
-        Ressources ressources1 = ressourcesRespository.findById(id).orElse(null);
-        ressources1.setEtat(true);
-        ressourcesRespository.save(ressources1);
+        Ressources ressources2 = ressourcesRespository.findById(id).orElse(null);
+        ressources2.setEtat(true);
+        ressourcesRespository.save(ressources2);
     }
 }

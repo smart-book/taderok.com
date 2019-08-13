@@ -46,7 +46,7 @@ export class AjouterComponentGroupe implements OnInit {
     this.etudiantss = this.etudiantss.filter(obj => obj !== this.etudiant);
     console.log("etuiants");
     console.log(this.tabEtudiant);
-    this.groupes.etudiants=this.tabEtudiant
+    this.groupes.etudiantList=this.tabEtudiant
  this.groupesService.ajouterGroupe(this.groupes).subscribe(data=>console.log(data), error => console.log(error))
 
 

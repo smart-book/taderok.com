@@ -27,7 +27,10 @@ export class RessourceService {
   archiverRessource(ressource: Ressource[], id: number): Observable<Ressource> {
     return this.http.put<Ressource>(`${this.baseUrl}` + `/archiverRessources/` + `${id}`, ressource);
   }
-  déarchiverRessource(ressource: Ressource[], id: number): Observable<Ressource> {
-    return this.http.put<Ressource>(`${this.baseUrl}` + `/archiverRessources/` + `${id}`, ressource);
+  dearchiverRessource(ressource: Ressource[], id: number): Observable<Ressource> {
+    return this.http.put<Ressource>(`${this.baseUrl}` + `/dearchiverRessources/` + `${id}`, ressource);
+  }
+  ajouterRessourceHorsSeance(ressource: Ressource): Observable<Ressource> {
+    return this.http.post<Ressource>(`${this.baseUrl}` + `/ajouterRessourcesHorsSeance/`, ressource);
   }
 }

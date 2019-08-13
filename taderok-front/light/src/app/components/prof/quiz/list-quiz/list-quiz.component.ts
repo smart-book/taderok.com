@@ -3,6 +3,8 @@ import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/ma
 import {Quiz} from "../../../../models/quiz";
 import {QuizService} from "../../../../services/prof/quiz.service";
 import {Question} from "../../../../models/Question";
+import {Proposition} from "../../../../models/Proposition";
+import Swal from "sweetalert2";
 declare const $: any;
 @Component({
   selector: 'app-list-quiz',
@@ -17,19 +19,32 @@ export class ListQuizComponent implements OnInit {
   @ViewChild (MatSort, {static: true}) sort: MatSort;
 
   displayedColumns = ['nom', 'date', 'actions'];
-quizzes: Object[];
-  quiz: Object;
+  quizzes: Object[];
+  quiz: Quiz = new Quiz();
   question: Question = new Question();
-  isViewable: boolean = true;
+  proposition: Proposition = new Proposition();
+  questionadded: Object;
   opened: boolean = false;
   rowId;
   idColumn = 'id';
   value: string;
-
+  etat1 = false;
+  etat2 = true;
   constructor(private quizService: QuizService) { }
 
+  changementEtat() {
+    if (this.etat1 === true) {
+      this.etat1 = false;
+    } else {
+      this.etat1 = true;
+    }
+    if (this.etat2 === true) {
+      this.etat2 = false;
+    } else {
+      this.etat2 = true;
+    }
+  }
   ngOnInit() {
-
     setTimeout(()=>{
       this.quizService.getAllQuiz().subscribe(data => {
           this.dataSource = new MatTableDataSource(data);
@@ -72,27 +87,34 @@ quizzes: Object[];
     });
   }
 
-
-
-  changementEtat() {
-    this.isViewable = !this.isViewable;
-  }
-
-
-
-
-
   deleteQuiz(row){
-    this.rowId = row.id
+    this.rowId = row.id;
     this.quizService.deleteQuiz(this.rowId).subscribe(()=> console.log('Quiz supprimé'));
     this.quizService.getAllQuiz().subscribe(data => {this.quizzes=data;
    });
     this.deleteRowDataTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
 
   }
+  addProposition(proposition, questionid) {
+    this.quizService.addProposition(proposition, questionid).subscribe(() => console.log('proposition ajouté'));
+    proposition.nom='';
+    this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
+  }
+  editQuiz(row){
+    this.rowId = row.id;
+    this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
+  }
 
-  findQuiz(id){
-    this.quizService.findQuiz(id).subscribe(data=> {this.quiz=data; console.log(this.quiz)});
+  deleteQuestion(questionid){
+    setTimeout(()=>{
+      this.quizService.deleteQuestion(questionid).subscribe(()=>console.log('question supprimé!'));
+      this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
+    })
+  }
+
+  deleteProposition(id) {
+    this.quizService.deleteProposition(id).subscribe(() => console.log('supprimé'));
+    this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
   }
 
   applyFilter(filterValue: string) {
@@ -113,5 +135,24 @@ quizzes: Object[];
     dataSource.paginator = paginator;
   }
 
+  updateQuiz(id, quiz){
+    this.quizService.updateQuiz(id, quiz).subscribe(data=>{this.quiz=data});
+  }
+  updateQuestion(id, question){
+    this.quizService.updateQuestion(id, question).subscribe(data=>{this.question=data});
+  }
+  validateQuiz(id){
+    this.quizService.validateQuiz(id).subscribe(()=>{console.log('quiz validé')});
+      Swal.fire({
+        type: 'success',
+        title: 'Félicitation',
+        text: 'votre quiz est validé',
+      });
+  }
+  addQuestion(question, quizid) {
+    this.quizService.addQuestion(question, quizid).subscribe(data => this.questionadded=data);
+    this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
+    this.question.question='';
+  }
 
 }

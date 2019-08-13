@@ -46,5 +46,14 @@ export class QuizService {
   getAllQuestions(id: number): Observable<Question[]>{
     return this.http.get<Question[]>('http://localhost:8181/quiz/'+id+'/allquestions');
   }
+  updateQuiz(id: number, quiz: Quiz): Observable<Quiz>{
+    return this.http.put<Quiz>('http://localhost:8181/quiz/'+id+'/updatequiz', quiz);
+  }
+  updateQuestion(id: number, question: Question): Observable<Question>{
+    return this.http.put<Question>('http://localhost:8181/quiz/'+id+'/updatequestion', question);
+  }
+  validateQuiz(id: number){
+    return this.http.put('http://localhost:8181/quiz/'+id+'/validatequiz', null);
+  }
 
 }

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { EtudiantRoutingModule } from './etudiant-routing.module';
 import { AjouterComponent } from './feedback/ajouter/ajouter.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ListQuizComponent } from './list-quiz/list-quiz.component';
-
+import {FormsModule} from "@angular/forms";
+import { ListQuizComponent } from './quiz/list-quiz/list-quiz.component';
+import {ListquizComponent} from "./quiz/listquiz/listquiz.component";
 import { PasserQuizComponent } from './passer-quiz/passer-quiz.component';
 import {ArchwizardModule} from "angular-archwizard";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -46,26 +46,20 @@ import {PlatformModule} from "@angular/cdk/platform";
 import {PortalModule} from "@angular/cdk/portal";
 import {CdkStepperModule} from "@angular/cdk/stepper";
 import {CdkTableModule} from "@angular/cdk/table";
+import { ListeSeancesComponent } from './seances/liste-seances/liste-seances.component';
+import { SeanceDetailsComponent } from './seances/seance-details/seance-details.component';
+import {AddquizComponent} from "./quiz/addquiz/addquiz/addquiz.component";
 
 
 
 @NgModule({
 
-  declarations: [AjouterComponent, ListQuizComponent, PasserQuizComponent],
+  declarations: [AjouterComponent,AddquizComponent, ListQuizComponent,ListquizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent],
 
   imports: [
     ArchwizardModule,
     CommonModule,
     EtudiantRoutingModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    BidiModule,
-    ObserversModule,
-    OverlayModule,
-    PlatformModule,
-    PortalModule,
-    CdkStepperModule,
-    CdkTableModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',
@@ -73,9 +67,7 @@ import {CdkTableModule} from "@angular/cdk/table";
       cancelButtonClass: 'btn'
     }),
     FormsModule,
-    MatSelectModule,
-    A11yModule,
-    CdkTreeModule,
+    MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonModule,
@@ -83,7 +75,6 @@ import {CdkTableModule} from "@angular/cdk/table";
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatStepperModule,
     MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
@@ -99,17 +90,8 @@ import {CdkTableModule} from "@angular/cdk/table";
     MatProgressSpinnerModule,
     MatRadioModule,
     MatRippleModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatTreeModule,
-    ScrollingModule,
+    MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule,
+    MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatTreeModule
   ]
 })
 export class EtudiantModule { }

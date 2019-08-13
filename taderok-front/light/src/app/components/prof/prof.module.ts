@@ -9,6 +9,7 @@ import { AjouterQuizComponent } from './quiz/ajouter-quiz/ajouter-quiz.component
 import {ReactiveFormsModule} from '@angular/forms';
 import {AjouterComponentGroupe} from './groupes/ajouter/ajouter.component';
 import {AjouterComponentSeance} from './seance/ajouter/ajouter.component';
+import {ScheduleProfComponent} from "./schedule-prof/schedule-prof.component";
 
 
 import {BidiModule} from '@angular/cdk/bidi';
@@ -94,6 +95,8 @@ import { NumericTextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
 import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-angular-schedule';
 
 import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archiver-ressource.component';
+import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
+import { SeanceDetailsComponent } from './seance/seance-details/seance-details.component';
 
 
 
@@ -101,7 +104,7 @@ import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archi
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ListeSeancesProfComponent, ArchiverRessourceComponent],
+    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent, SeanceDetailsComponent],
 
 
 

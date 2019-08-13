@@ -26,7 +26,42 @@
                             <button *ngIf="quizadded===null" mat-icon-button matTooltip="Ajouter quiz" (click)="addQuiz(quiz)" class="iconbutton" style="color: #0f9d58">
                               <mat-icon aria-label="Add" >add</mat-icon>
                             </button>
-                            <button *ngIf="quizadded!==null" mat-icon-button matTooltip="modifier quiz" class="iconbutton" color="accent">
+                            <!-- Modal d'ajout de publication : exampleModal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="formModal" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer une publication </h5><br><br>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form>
+                                      <label>Titre</label>
+                                      <div class="form-group">
+                                        <div class="form-line">
+                                          <input type="text" id="yamli"
+                                                 placeholder="Entrer le nom du Quiz" name="nomQuiz" [(ngModel)]="quiz.nomQuiz">
+                                        </div>
+                                      </div>
+
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" (click)="updateQuiz(quizadded.id, quiz)" data-dismiss="modal" class="btn-hover btn-border-radius color-1">Valider</button>
+                                    <button type="button" class="btn-hover btn-border-radius color-4"
+                                            data-dismiss="modal">Annuler</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Fin div de modal d'ajout de la publication -->
+                            <button *ngIf="quizadded!==null" data-toggle="modal" data-target="#exampleModal"
+                                    mat-icon-button matTooltip="modifier quiz" class="iconbutton" color="accent">
                               <i class="far fa-edit" aria-label="Edit" ></i>
                             </button>
                           </div>
@@ -46,15 +81,57 @@
                           <div class="col-8">
                             <div class="form-group" >
                               <div>
-                                <input type="text" class="form-control"
+                                <input *ngIf="questionadded===null" type="text" class="form-control" id="question"
                                        placeholder="Entrer une question" name="question" [(ngModel)]="question.question">
+                                <h4 *ngIf="questionadded!==null" style="text-align: center">{{question.question}}</h4>
                               </div>
                             </div>
                           </div>
                           <div class="col">
-                            <button mat-icon-button matTooltip="Ajouter question" (click)="addQuestion(question, quizadded.id)" class="iconbutton" style="color: #0f9d58">
+                            <button *ngIf="questionadded===null" mat-icon-button matTooltip="Ajouter question" (click)="addQuestion(question, quizadded.id)" class="iconbutton" style="color: #0f9d58">
                               <mat-icon aria-label="Add" >add</mat-icon>
                             </button>
+                            <!-- Modal d'ajout de publication : exampleModal -->
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                                 aria-labelledby="formModal" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" style="padding-left: 150px" id="formModal1">Créer une publication </h5><br><br>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form>
+                                      <label>Titre</label>
+                                      <div class="form-group">
+                                        <div class="form-line">
+                                          <input type="text" id="yaml"
+                                                 placeholder="Entrer une question" name="question" [(ngModel)]="question.question">
+                                        </div>
+                                      </div>
+
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" (click)="updateQuestion(questionadded.id, question)" data-dismiss="modal" class="btn-hover btn-border-radius color-1">Valider</button>
+                                    <button type="button" class="btn-hover btn-border-radius color-4"
+                                            data-dismiss="modal">Annuler</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Fin div de modal d'ajout de la publication -->
+                            <button *ngIf="questionadded!==null" data-toggle="modal" data-target="#exampleModal1"
+                                    mat-icon-button matTooltip="modifier quiz" class="iconbutton" color="accent">
+                              <i class="far fa-edit" aria-label="Edit" ></i>
+                            </button>
+                            <!--<button *ngIf="questionadded!==null" mat-icon-button (click)="deleteQuestion(questionadded.id, quizadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                              <mat-icon aria-label="Delete" >delete</mat-icon>
+                            </button>-->
                           </div>
                         </div>
                       </form>
@@ -71,18 +148,18 @@
                           <form class="form-horizontal validate-form">
                             <div class="row clearfix">
                               <div class="col form-control-label">
-                                <label for="question">proposition   </label>
+                                <label >proposition   </label>
                               </div>
                               <div class="col-8">
                                 <div class="form-group" >
                                   <div>
                                     <input type="text" id="proposition" class="form-control"
-                                           placeholder="Entrer une question" name="question" [(ngModel)]="proposition.nom">
+                                           placeholder="Entrer une question" name="nom" [(ngModel)]="proposition.nom">
                                   </div>
                                 </div>
                               </div>
                               <div class="col">
-                                <button mat-icon-button (click)="addProposition(proposition, questionadded.id, quizadded.id)" matTooltip="Ajouter proposition" class="iconbutton" style="color: #0f9d58">
+                                <button mat-icon-button (click)="addProposition(proposition, questionadded.id)" matTooltip="Ajouter proposition" class="iconbutton" style="color: #0f9d58">
                                   <mat-icon aria-label="Add" >add</mat-icon>
                                 </button>
                               </div>
@@ -100,7 +177,7 @@
                                     <div class="form-line">
                                       <p>
                                         <label>
-                                          <input type="checkbox" [(ngModel)]="br.nom" (click)="addBR(br,questionadded.id)" class="filled-in"/>
+                                          <input type="checkbox"   [(ngModel)]="br.nom" (click)="addBR(p.nom ,questionadded.id)" class="filled-in"/>
                                           <span>{{p.nom}}</span>
                                         </label>
                                       </p>
@@ -111,10 +188,7 @@
                             </form>
                           </td>
                           <td>
-                            <button mat-icon-button matTooltip="Editer" class="iconbutton" color="primary">
-                              <i class="far fa-edit" aria-label="Edit" ></i>
-                            </button>
-                            <button mat-icon-button (click)="deleteProposition(p.id, questionadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                            <button mat-icon-button (click)="deleteProposition(p.id, quizadded.id, questionadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
                               <mat-icon aria-label="Delete" >delete</mat-icon>
                             </button>
                           </td>
@@ -143,6 +217,9 @@
                         <button mat-icon-button matTooltip="modifier question" class="iconbutton" color="accent">
                           <i class="far fa-edit" aria-label="Edit" ></i>
                         </button>
+                        <button mat-icon-button (click)="deleteQuestion(q.id, quizadded.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                          <mat-icon aria-label="Delete" >delete</mat-icon>
+                        </button>
                       </div>
                     </div>
                   </form>
@@ -169,7 +246,7 @@
                               </div>
                             </div>
                             <div class="col">
-                              <button mat-icon-button (click)="addProposition(proposition, questionadded.id, quizadded.id)" matTooltip="Ajouter proposition" class="iconbutton" style="color: #0f9d58">
+                              <button mat-icon-button (click)="addProposition(proposition, questionadded.id)" matTooltip="Ajouter proposition" class="iconbutton" style="color: #0f9d58">
                                 <mat-icon aria-label="Add" >add</mat-icon>
                               </button>
                             </div>
@@ -180,14 +257,25 @@
                     </tr>
                     <tr *ngFor="let p of q.propositions" >
                       <td>
-                        <p>
-                          <label>
-                            <span>{{p.nom}}</span>
-                          </label>
-                        </p>
+                        <form class="form-horizontal validate-form">
+                          <div class="row clearfix">
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                              <div class="form-group">
+                                <div class="form-line">
+                                  <p>
+                                    <label>
+                                      <input type="checkbox" [(ngModel)]="br.nom" [ngModelOptions]="{standalone: true}" (ngModelChange)="addBR(br,q.id)" class="filled-in"/>
+                                      <span>{{p.nom}}</span>
+                                    </label>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
                       </td>
                       <td>
-                        <button mat-icon-button (click)="deleteProposition(p.id, q.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
+                        <button mat-icon-button (click)="deleteProposition(p.id, quizadded.id, q.id)" matTooltip="Supprimer" class="iconbutton" color="warn">
                           <mat-icon aria-label="Delete" >delete</mat-icon>
                         </button>
                       </td>
@@ -197,8 +285,7 @@
                   </table>
                 </div>
               </div>
-<!---------------------------------------------------------------------------------------------------------------------->
-
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
             </div>
           </div>
       </div>

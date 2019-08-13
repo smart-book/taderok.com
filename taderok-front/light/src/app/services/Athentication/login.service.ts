@@ -20,6 +20,15 @@ export class LoginService {
   getConnectedUser(): any {
     return this.http.get<any>('http://localhost:8181/getuser');
   }
+/////////// async functions
+  async loginAsync(user: Object){
+    console.log(user);
+    return await this.http.post(`${this.baseUrl}`, user).toPromise();
+  }
+
+  async getConnectedUserAsync(){
+    return await this.http.get<any>('http://localhost:8181/getuser').toPromise();
+  }
 
   logout(){
     localStorage.removeItem('user');

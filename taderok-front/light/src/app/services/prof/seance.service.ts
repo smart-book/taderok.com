@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Reclamation} from "../../models/reclamation";
 import {Seance} from "../../models/seance";
+import {__await} from "tslib";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,17 @@ export class SeanceService {
 
   afficherSeance(): Observable<Seance[]>{
     return this.http.get<Seance[]>(`${this.baseUrl}`+`/findAll`);
+  }
+
+  async afficherSeanceAsync(){
+    return await this.http.get<Seance[]>(`${this.baseUrl}`+`/findAll`).toPromise();
+  }
+
+  afficherSeanceParId(id): Observable<Seance>{
+    return this.http.get<Seance>(`${this.baseUrl}`+`/` + id);
+  }
+
+  async afficherSeanceParIdAsync(id){
+    return await this.http.get<Seance>(`${this.baseUrl}`+`/` + id).toPromise();
   }
 }

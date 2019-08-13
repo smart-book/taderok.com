@@ -1,4 +1,5 @@
 import {Question} from "./Question";
+import {Prof} from "./prof";
 
 export class Quiz
 {
@@ -9,4 +10,5 @@ export class Quiz
   date : Date;
   questions: Question[];
   visible: Boolean;
+  prof: Prof
 }

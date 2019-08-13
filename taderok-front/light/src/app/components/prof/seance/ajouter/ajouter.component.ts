@@ -29,6 +29,8 @@ export class AjouterComponentSeance implements OnInit {
   groupes : Groupes = new Groupes();
   groupees : Groupes[];
   groupe : Groupes = new Groupes();
+  newGroupe : Groupes = new Groupes();
+  newGroupeFromDb : Groupes = new Groupes();
   seance : Seance = new Seance();
   private modal ;
 
@@ -168,20 +170,33 @@ export class AjouterComponentSeance implements OnInit {
   ajouterSeance(){
     console.log(this.seance.date_debut);
       console.log(this.seance.matiere);
-    this.seanceService.ajouterSeance(this.seance).subscribe(data=>{console.log(data);
-      $.notify("Access granted", "success");
-      /*Swal.fire(
-        'Succes!',
-        'Votre seance a été ajoutée!',
-        'success'
-      )*/
-    }, error => {console.log(error);
-      Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'Veuillez remplir à nouveau les informations de la seance!',
+
+      this.newGroupe.nom = this.seance.titre;
+      this.groupesService.ajouterGroupe(this.newGroupe).subscribe(data=>{
+        this.newGroupeFromDb = data as Groupes;
+        console.log(data);
+        console.log(this.newGroupeFromDb);
+        this.seance.groupes = this.newGroupeFromDb;
+        this.seanceService.ajouterSeance(this.seance).subscribe(data=>{console.log(data);
+          $.notify("Access granted", "success");
+          /*Swal.fire(
+            'Succes!',
+            'Votre seance a été ajoutée!',
+            'success'
+          )*/
+        }, error => {console.log(error);
+          Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Veuillez remplir à nouveau les informations de la seance!',
+          });
+        });
+
       });
-    })
+  }
+
+  ajouterGroupe(){
+
   }
 
 

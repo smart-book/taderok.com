@@ -38,11 +38,16 @@ export class AppComponent {
   }
   user: any ;
 
-  ngOnInit(){
-    this.loginService.getConnectedUser().subscribe(data=> {
+  async ngOnInit(){
+    setTimeout(()=>{
+      console.log('timeout')
+    });
+    /*this.loginService.getConnectedUser().subscribe(data=> {
       console.log(data);
       this.conntectedUser = data;
-    }, error => console.log(error) );
+    }, error => console.log(error) );*/
+
+    this.conntectedUser = await this.loginService.getConnectedUserAsync();
   }
 
   logout(){
