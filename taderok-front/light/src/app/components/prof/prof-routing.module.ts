@@ -23,6 +23,7 @@ import { ListeSeancesProfComponent } from './seance/liste-seances-prof/liste-sea
 import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
 import {ScheduleProfComponent} from "./schedule-prof/schedule-prof.component";
 import {SeanceDetailsComponent} from "./seance/seance-details/seance-details.component";
+import {MesSeancesComponent} from "./seance/mes-seances/mes-seances.component";
 
 
 
@@ -99,6 +100,10 @@ const routes: Routes = [
   {
     path: 'seance/details/:id',
     component: SeanceDetailsComponent
+  },
+  {
+    path: 'mesSeances',
+    component: MesSeancesComponent
   }
 
 ];

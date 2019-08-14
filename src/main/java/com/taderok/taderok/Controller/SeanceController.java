@@ -23,6 +23,16 @@ public class SeanceController {
         return seanceService.getAllSeances();
     }
 
+    @RequestMapping("/findAllByProf")
+    public List<Seance> getAllSeancesByProf(){
+        return seanceService.getAllSeancesByProf();
+    }
+
+    @RequestMapping("/findAllByStudent")
+    public List<Seance> getAllSeancesByStudent(){
+        return seanceService.getAllSeancesByStudent();
+    }
+
     @RequestMapping("/{id}")
     public Seance getGroupe(@PathVariable Long id){
         return seanceService.getSeance(id);

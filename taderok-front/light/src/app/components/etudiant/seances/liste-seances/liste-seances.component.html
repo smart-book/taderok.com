@@ -48,26 +48,41 @@
             <div class="bootstrap snippet">
               <section id="portfolio" class="gray-bg padding-top-bottom">
                 <!--==== Portfolio Filters ====-->
+                <div class="search-hero">
+                  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Recherche par titre , description ,matiere ou niveau ">
+                </div>
                 <div class="categories">
                   <ul>
                     <li class="active">
-                      <a data-filter="*">All Categories</a>
+                      <a data-filter="*">Tous les matières</a>
                     </li>
                     <li>
-                      <a data-filter=".web-design">Web Design</a>
+                      <a data-filter=".Informatique">Informatique</a>
                     </li>
                     <li>
-                      <a data-filter=".apps">Apps</a>
+                      <a data-filter=".Chimie">Chimie</a>
                     </li>
                     <li>
-                      <a data-filter=".psd">PSD</a>
+                      <a data-filter=".Physique">Physique</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Mathematiques">Mathematiques</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Arabe">Arabe</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Francais">Francais</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Anglais">Anglais</a>
                     </li>
                   </ul>
                 </div>
                 <!-- ======= Portfolio items ===-->
                 <div class="projects-container scrollimation in">
                   <div class="row">
-                    <article class="col-md-4 col-sm-6 portfolio-item web-design" *ngFor="let seance of listeSeance">
+                    <article *ngFor="let seance of listeSeance | filter:searchText" class="col-md-4 col-sm-6 portfolio-item {{seance.matiere}}">
                       <div class="portfolio-thumb in">
                         <a [routerLink]="['/etudiant/seance/details', seance.id]" class="main-link">
                           <img class="img-responsive img-center"

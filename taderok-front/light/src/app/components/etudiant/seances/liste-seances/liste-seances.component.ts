@@ -10,6 +10,7 @@ declare const $: any;
 })
 export class ListeSeancesComponent implements OnInit {
   listeSeance: Seance[];
+  searchText;
   constructor(private seanceService: SeanceService) { }
 
   ngOnInit() {
