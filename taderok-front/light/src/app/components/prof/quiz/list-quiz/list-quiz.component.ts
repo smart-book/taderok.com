@@ -5,6 +5,7 @@ import {QuizService} from "../../../../services/prof/quiz.service";
 import {Question} from "../../../../models/Question";
 import {Proposition} from "../../../../models/Proposition";
 import Swal from "sweetalert2";
+import {BonneReponses} from "../../../../models/BonneReponses";
 declare const $: any;
 @Component({
   selector: 'app-list-quiz',
@@ -30,6 +31,8 @@ export class ListQuizComponent implements OnInit {
   value: string;
   etat1 = false;
   etat2 = true;
+  br: BonneReponses = new BonneReponses();
+
   constructor(private quizService: QuizService) { }
 
   changementEtat() {
@@ -95,8 +98,8 @@ export class ListQuizComponent implements OnInit {
     this.deleteRowDataTable(this.rowId, this.idColumn, this.paginator, this.dataSource);
 
   }
-  addProposition(proposition, questionid) {
-    this.quizService.addProposition(proposition, questionid).subscribe(() => console.log('proposition ajouté'));
+  async addProposition(proposition, questionid) {
+    await this.quizService.addPropositionAsync(proposition, questionid).then(()=>console.log('prop aadded'));
     proposition.nom='';
     this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
   }
@@ -105,15 +108,13 @@ export class ListQuizComponent implements OnInit {
     this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
   }
 
-  deleteQuestion(questionid){
-    setTimeout(()=>{
-      this.quizService.deleteQuestion(questionid).subscribe(()=>console.log('question supprimé!'));
-      this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
-    })
+  async deleteQuestion(questionid){
+    await this.quizService.deleteQuestionAsync(questionid).then(()=>console.log('question deleted'))
+    this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
   }
 
-  deleteProposition(id) {
-    this.quizService.deleteProposition(id).subscribe(() => console.log('supprimé'));
+  async deleteProposition(id) {
+    await this.quizService.deletePropositionAsync(id).then(()=>console.log('propo deleted'));
     this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
   }
 
@@ -153,6 +154,19 @@ export class ListQuizComponent implements OnInit {
     this.quizService.addQuestion(question, quizid).subscribe(data => this.questionadded=data);
     this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
     this.question.question='';
+  }
+
+  async addBR(p, idquestion){
+    this.br.nom = p;
+    console.log(this.br);
+    console.log(p);
+    await this.quizService.addBR(this.br,idquestion).then(()=>console.log('br ajouté'));
+    this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
+  }
+
+  async deleteBR(id){
+    await this.quizService.deleteBR(id).then(()=>console.log(''));
+    this.quizService.findQuiz(this.rowId).subscribe(data => this.quiz=data);
   }
 
 }

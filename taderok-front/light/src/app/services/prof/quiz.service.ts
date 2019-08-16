@@ -25,24 +25,20 @@ export class QuizService {
   addProposition(proposition: Object, id: Number): Observable<Object>{
     return this.http.post('http://localhost:8181/quiz/'+id+'/addproposition', proposition);
   }
-  addBR(br: Object, id: Number): Observable<Object>{
-    return this.http.post('http://localhost:8181/quiz/'+id+'/addbr', br);
+  async addBR(br: Object, id: Number){
+    return await this.http.post('http://localhost:8181/quiz/'+id+'/addbr', br).toPromise();
   }
-  getAllPropositions(id: number): Observable<Proposition[]>{
-    return this.http.get<Proposition[]>('http://localhost:8181/quiz/'+id+'/allprop');
+  async deleteBR(id: number){
+    return await this.http.delete('http://localhost:8181/quiz/'+id+'/deletebr').toPromise();
   }
-  deleteProposition(id: number): Observable<Object>{
-    return this.http.delete('http://localhost:8181/quiz/'+id+'/deleteprop');
-  }
+
   deleteQuiz(id: number): Observable<Object>{
     return this.http.delete('http://localhost:8181/quiz/'+id+'/delete');
   }
   findQuiz(id: number): Observable<Quiz>{
     return this.http.get<Quiz>('http://localhost:8181/quiz/find/'+id);
   }
-  deleteQuestion(id: number): Observable<Object>{
-    return this.http.delete('http://localhost:8181/quiz/'+id+'/deletequestion');
-  }
+
   getAllQuestions(id: number): Observable<Question[]>{
     return this.http.get<Question[]>('http://localhost:8181/quiz/'+id+'/allquestions');
   }
@@ -56,4 +52,16 @@ export class QuizService {
     return this.http.put('http://localhost:8181/quiz/'+id+'/validatequiz', null);
   }
 
+  async getAllPropositionsAsync(id: number){
+    return await this.http.get<Proposition[]>('http://localhost:8181/quiz/'+id+'/allprop').toPromise();
+  }
+  async addPropositionAsync(proposition: Object, id: Number){
+    return await this.http.post('http://localhost:8181/quiz/'+id+'/addproposition', proposition).toPromise();
+  }
+  async deletePropositionAsync(id: number){
+    return await this.http.delete('http://localhost:8181/quiz/'+id+'/deleteprop').toPromise();
+  }
+  async deleteQuestionAsync(id: number){
+    return await this.http.delete('http://localhost:8181/quiz/'+id+'/deletequestion').toPromise();
+  }
 }

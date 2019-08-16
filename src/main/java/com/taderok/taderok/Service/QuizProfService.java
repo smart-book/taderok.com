@@ -61,10 +61,15 @@ public class QuizProfService {
         propositionRepository.save(proposition);
     }
 
-    public void addBR(BonneReponses br, int id){
+    public BonneReponses addBR(BonneReponses br, int id){
         Question q = questionRepository.findById(id).orElse(null);
         br.setQuestion(q);
         bonneReponsesRepository.save(br);
+        return br;
+    }
+
+    public void deleteBR(int id){
+        bonneReponsesRepository.deleteById(id);
     }
 
     public void deleteProposition(int id){
