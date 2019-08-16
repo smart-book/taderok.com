@@ -9,6 +9,8 @@ import {SeanceDetailsComponent} from "./seances/seance-details/seance-details.co
 import {ListquizComponent} from "./quiz/listquiz/listquiz.component";
 import {AddquizComponent} from "./quiz/addquiz/addquiz/addquiz.component";
 import {ListQuizComponent} from "./quiz/list-quiz/list-quiz.component";
+import {MesSeancesComponent} from "./seances/mes-seances/mes-seances.component";
+import {SeanceEnCoursComponent} from "./seances/seance-en-cours/seance-en-cours.component";
 
 
 
@@ -45,6 +47,14 @@ const routes: Routes = [
   {
     path: 'seance/details/:id',
     component: SeanceDetailsComponent
+  },
+  {
+    path: 'mesSeances',
+    component: MesSeancesComponent
+  },
+  {
+    path: 'seanceEnCours/:id/:token',
+    component: SeanceEnCoursComponent
   }
 ];
 

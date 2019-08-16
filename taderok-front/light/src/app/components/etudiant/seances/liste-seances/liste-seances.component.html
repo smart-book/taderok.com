@@ -1,27 +1,5 @@
 <section class="content">
   <div class="container-fluid">
-    <div class="row clearfix">
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" *ngFor="let seance of listeSeance">
-        <div class="box-part text-center">
-          <i class="fab fa-twitter fa-3x col-blue"></i>
-          <div class="title p-t-15">
-            <h3>{{seance.matiere}}</h3>
-          </div>
-          <div class="text p-b-10">
-            <p>{{seance.date_debut | date: 'yyyy-MM-dd'}}</p>
-            <span>Lorem ipsum dolor sit amet, id quo eruditi
-                            eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui
-                            ad.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="content">
-  <div class="container-fluid">
     <div class="block-header">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -48,35 +26,73 @@
             <div class="bootstrap snippet">
               <section id="portfolio" class="gray-bg padding-top-bottom">
                 <!--==== Portfolio Filters ====-->
+                <div class="search-hero">
+                  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Recherche par titre , description ,matiere ou niveau ">
+                </div>
                 <div class="categories">
                   <ul>
                     <li class="active">
-                      <a data-filter="*">All Categories</a>
+                      <a data-filter="*">Tous les matières</a>
                     </li>
                     <li>
-                      <a data-filter=".web-design">Web Design</a>
+                      <a data-filter=".Informatique">Informatique</a>
                     </li>
                     <li>
-                      <a data-filter=".apps">Apps</a>
+                      <a data-filter=".Chimie">Chimie</a>
                     </li>
                     <li>
-                      <a data-filter=".psd">PSD</a>
+                      <a data-filter=".Physique">Physique</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Mathematiques">Mathematiques</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Arabe">Arabe</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Francais">Francais</a>
+                    </li>
+                    <li>
+                      <a data-filter=".Anglais">Anglais</a>
                     </li>
                   </ul>
                 </div>
                 <!-- ======= Portfolio items ===-->
                 <div class="projects-container scrollimation in">
                   <div class="row">
-                    <article class="col-md-4 col-sm-6 portfolio-item web-design" *ngFor="let seance of listeSeance">
-                      <div class="portfolio-thumb in">
+                    <article *ngFor="let seance of listeSeance | filter:searchText" class="col-md-4 col-sm-6 portfolio-item {{seance.matiere}}">
+                      <div class="portfolio-thumb in" style="box-shadow: 0 2px 8px rgba(202, 200, 200, 0.85)">
                         <a [routerLink]="['/etudiant/seance/details', seance.id]" class="main-link">
-                          <img class="img-responsive img-center"
+                         <img class="img-responsive img-center"
                                src="assets/images/posts/post4.jpg" alt="">
                           <span class="project-title">{{seance.matiere}}</span>
-                          <span class="overlay-mask">{{seance.id}}</span>
+                          <span class="overlay-mask" style="background-color: #0000009e">
+                           </span>
                         </a>
-                        <a class="link centered" href=""><i class="fa fa-eye fa-fw"></i></a>
+                        <a class="link centered" [routerLink]="['/etudiant/seance/details', seance.id]" ><i class="fa fa-eye fa-fw"></i></a>
                       </div>
+                      <br>
+                      <!-- details -->
+                        <div class="info-box5 animate-bar bg-b-purple">
+                          <div class="knob-icon">
+                            <td class="table-img">
+                              <img src="assets/images/user/user6.jpg" alt="">
+                            </td>
+                          </div>
+                          <div class="info-box-content">
+                            <h6 class="text-muted">{{seance.titre}}</h6>
+                            <!--<span class="info-box-text p-b-10">{{seance.titre}}</span>-->
+                            <span class="progress-description">
+                                <small>Prof :{{seance.prof.prenom}} {{seance.prof.nom}}</small>
+                            </span>
+                            <div class="progress m-t-20">
+                              <div class="progress-bar l-bg-cyan shadow-style width-per-100" role="progressbar"
+                                   aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </div>
+                          <!-- /.info-box-content -->
+                        </div>
+                      <!-- end details -->
                     </article>
                   </div>
                 </div>

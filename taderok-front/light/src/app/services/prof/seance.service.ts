@@ -33,4 +33,12 @@ export class SeanceService {
   async afficherSeanceParIdAsync(id){
     return await this.http.get<Seance>(`${this.baseUrl}`+`/` + id).toPromise();
   }
+
+  async afficherSeancesParProf(){
+    return await this.http.get<Seance[]>(`${this.baseUrl}`+`/findAllByProf`).toPromise();
+  }
+
+  async afficherSeancesParEtudiant(){
+    return await this.http.get<Seance[]>(`${this.baseUrl}`+`/findAllByStudent`).toPromise();
+  }
 }

@@ -97,14 +97,14 @@ import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-an
 import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archiver-ressource.component';
 import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
 import { SeanceDetailsComponent } from './seance/seance-details/seance-details.component';
+import { MesSeancesComponent } from './seance/mes-seances/mes-seances.component';
+import { SeanceEnCoursComponent } from './seance/seance-en-cours/seance-en-cours.component';
 
-
-
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent, SeanceDetailsComponent],
+    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent, SeanceDetailsComponent, MesSeancesComponent, SeanceEnCoursComponent],
 
 
 
@@ -182,7 +182,8 @@ import { SeanceDetailsComponent } from './seance/seance-details/seance-details.c
     UploaderAllModule,
     MultiSelectAllModule,
     TreeViewModule,
-    ButtonAllModule
+    ButtonAllModule,
+    Ng2SearchPipeModule
   ]
 })
 
