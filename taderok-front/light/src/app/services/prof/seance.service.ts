@@ -41,4 +41,22 @@ export class SeanceService {
   async afficherSeancesParEtudiant(){
     return await this.http.get<Seance[]>(`${this.baseUrl}`+`/findAllByStudent`).toPromise();
   }
+
+  modifierSeance(seance , id): Observable<Seance> {
+    return this.http.put<Seance>(`${this.baseUrl}`+`/update/` + id, seance, {
+      headers: {
+        'Content-Type': 'application/json'
+      }});
+  }
+
+  modifierSeance2(titre, description , id): Observable<Seance> {
+    return this.http.put<Seance>(`${this.baseUrl}`+`/update/` + id, titre, {
+      headers: {
+        'Content-Type': 'application/json'
+      }});
+  }
+
+  async modifierSeanceAsync(seance , id) {
+    return await this.http.put<Seance>(`${this.baseUrl}`+`/update/` + id, seance).toPromise();
+  }
 }

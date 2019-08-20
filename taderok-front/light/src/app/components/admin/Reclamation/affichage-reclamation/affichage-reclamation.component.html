@@ -46,6 +46,9 @@
               </li>
             </ul>
           </div>
+          <div class="mat-elevation-z8">
+            <table mat-table class="full-width-table" matSort  aria-label="Elements" [dataSource]="dataSource.data">
+
           <div class="container">
             <mat-form-field FloatLabel="auto" >
               <mat-label>Recherche</mat-label>
@@ -55,7 +58,6 @@
               </button>
             </mat-form-field>
           </div>
-
           <div class="mat-elevation-z8">
             <table class="table" mat-table [dataSource]="dataSource"  matSort >
 

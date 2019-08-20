@@ -10,6 +10,8 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji'
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatButtonModule} from "@angular/material";
+
 import { EmojifyModule } from 'angular-emojify';
 
 
@@ -29,7 +31,11 @@ import { EmojifyModule } from 'angular-emojify';
       cancelButtonClass: 'btn'
     }),
     Ng2SearchPipeModule,
+
+    MatButtonModule,
+
     EmojifyModule,
+
   ]
 })
 export class ForumModule { }

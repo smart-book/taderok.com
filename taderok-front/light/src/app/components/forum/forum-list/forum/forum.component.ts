@@ -4,6 +4,8 @@ import {Forum} from "../../../../models/forum";
 import {User} from "../../../../models/user";
 import Swal from "sweetalert2";
 import {CommentaireForum} from "../../../../models/commentaireForum";
+import { DynamicScriptLoaderService } from '../../../../dynamic-script-loader-service.service';
+declare const CKEDITOR: any;
 declare const $: any;
 
 @Component({
@@ -15,7 +17,7 @@ export class ForumComponent implements OnInit {
 
   forum : Forum = new Forum();
   ListPublications : Forum[];
-  user: any;
+  user: User;
   userParse: User = new User();
 
   niveauChoisi;
@@ -26,7 +28,7 @@ export class ForumComponent implements OnInit {
   count : number = 0;
 
   listCommentaires : CommentaireForum[] ;
-  constructor(private forumService: ForumService) { }
+  constructor(private forumService: ForumService,private dynamicScriptLoader: DynamicScriptLoaderService) { }
 
   ngOnInit() {
     this.forumService.afficherForum().subscribe(data=> {
@@ -34,10 +36,11 @@ export class ForumComponent implements OnInit {
       this.ListPublications = data;
     }, error => console.log(error) );
 
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem('user')).user;
     console.log(this.user);
-    this.userParse = this.user.user ;
-    console.log(this.userParse);
+    //this.userParse = this.user.user ;
+    //console.log(this.userParse);
+    this.startScript();
   }
 
   RedirectForum()
@@ -81,5 +84,20 @@ export class ForumComponent implements OnInit {
     console.log(this.ListPublicationsParNiveau);
 
   }
+  async startScript() {
+    await this.dynamicScriptLoader.load('ckeditor').then( data => {
+      this.loadData();
+
+    }).catch(error => console.log(error));
+  }
+
+
+  private loadData(){
+    //CKEditor
+    CKEDITOR.replace('ckeditor');
+    CKEDITOR.config.height = 150;
+  }
+
+
 
 }

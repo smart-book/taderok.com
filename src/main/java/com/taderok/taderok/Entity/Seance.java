@@ -130,4 +130,26 @@ public class Seance {
     public void setNiveau(String niveau) {
         this.niveau = niveau;
     }
+
+    public List<Feedback> getFeedbackList() {
+        return feedbackList;
+    }
+
+    public void setFeedbackList(List<Feedback> feedbackList) {
+        this.feedbackList = feedbackList;
+    }
+
+    public Seance() {
+    }
+
+    public Seance(Date date_debut, Date date_fin, String matiere, String titre, String description, int duree, String etat, String niveau) {
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.matiere = matiere;
+        this.titre = titre;
+        this.description = description;
+        this.duree = duree;
+        this.etat = etat;
+        this.niveau = niveau;
+    }
 }

@@ -7,6 +7,10 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import {User} from "../../../../models/user";
 import {LoginService} from "../../../../services/Athentication/login.service";
 import {AppComponent} from "../../../../app.component";
+import { DynamicScriptLoaderService } from '../../../../dynamic-script-loader-service.service';
+declare const CKEDITOR: any;
+declare const $: any;
+
 
 @Component({
   selector: 'app-publication-details',
@@ -22,12 +26,18 @@ export class PublicationDetailsComponent implements OnInit {
 
   contenuWithEmojiCode : string = "";
   forum : Forum = new Forum();
+  ListPublications : Forum[];
   listCommentaires : CommentaireForum[] ;
   commentaire : CommentaireForum = new CommentaireForum();
   public conntectedUser = User;
-  constructor(private appComponent: AppComponent, private readonly router: Router,private readonly route: ActivatedRoute, private forumService : ForumService) { }
+  constructor(private appComponent: AppComponent, private readonly router: Router,private readonly route: ActivatedRoute, private forumService : ForumService,private dynamicScriptLoader: DynamicScriptLoaderService) { }
 
   ngOnInit() {
+    this.forumService.afficherForum().subscribe(data=> {
+      console.log(data);
+      this.ListPublications = data;
+    }, error => console.log(error) );
+
     this.conntectedUser = this.appComponent.conntectedUser;
     console.log(this.conntectedUser);
     this.idPublication =+ this.route.snapshot.paramMap.get("id");
@@ -48,6 +58,8 @@ export class PublicationDetailsComponent implements OnInit {
         this.listCommentaires = data;
       }, error1 => console.log(error1)
     );
+    this.startScript();
+
   }
 
   showEmojiPicker = false;
@@ -74,6 +86,7 @@ export class PublicationDetailsComponent implements OnInit {
     this.ngOnInit();
     let now = new Date();
     this.commentaire.date = now;
+    //this.commentaire.contenu = this.contenuWithEmojiCode;
     console.log(this.contenu);
     if (!this.sendEmoji){
       this.commentaire.contenu = this.contenu;
@@ -93,4 +106,20 @@ export class PublicationDetailsComponent implements OnInit {
     this.ngOnInit();
   }
 
+  async startScript() {
+    await this.dynamicScriptLoader.load('ckeditor').then( data => {
+      this.loadData();
+    }).catch(error => console.log(error));
+  }
+
+
+  private loadData(){
+    //CKEditor
+    CKEDITOR.replace('ckeditor');
+    CKEDITOR.config.height = 300;
+  }
+
+
 }
+
+

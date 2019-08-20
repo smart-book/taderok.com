@@ -61,14 +61,31 @@ public class SeanceService {
         seanceRepository.save(seance);
     }
 
-    public void updateSeance(Seance seance, Long id ){
+    public Seance updateSeance(Seance seance, Long id ){
 
         Seance seanc = seanceRepository.findById(id).orElse( null );
 
+        seanc.setTitre(seance.getTitre());
+        seanc.setDescription(seance.getDescription());
+        seanc.setMatiere(seance.getMatiere());
+        seanc.setNiveau(seance.getNiveau());
         seanc.setDate_debut(seance.getDate_debut());
         seanc.setDate_fin(seance.getDate_fin());
+        //seanc.setGroupes(seanc.getGroupes());
 
         seanceRepository.save(seanc);
+        return seanc;
+    }
+
+    public Seance updateSeance2(String titre , String description, Long id ){
+
+        Seance seanc = seanceRepository.findById(id).orElse( null );
+
+        seanc.setTitre(titre);
+        seanc.setDescription(description);
+
+        seanceRepository.save(seanc);
+        return seanc;
     }
     public void deleteSeance(Long id)
     {

@@ -1,94 +1,335 @@
 
-
 <section class="content">
+
+
   <div class="container-fluid">
-   <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="card">
-        <div class="header">
 
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-       -->     <!--<button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
-                    data-target="#exampleModal">Ajouter</button>
-            <hr>-->
-            <!-- Modal d'ajout de publication : exampleModal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                 aria-labelledby="formModal" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer une publication </h5><br><br>
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <label>Titre</label>
-                      <div class="form-group">
-                        <div class="form-line">
-                          <input type="text" name="type_reclamation" [(ngModel)]="forum.titre" class="form-control"
-                                 placeholder="Entrer le titre de votre publication" id="yamli">
-                        </div>
-                      </div>
+    <div class="row clearfix" >
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7" style="bottom: 24px;"> <br><br>
 
-                      <label>Description</label>
-                      <div class="form-group">
-                        <div class="form-line">
-                          <input id="description" class="form-control" type="text" name="description" [(ngModel)]="forum.description" placeholder="Entrer la description de votre réclamation">
-                        </div>
-                      </div>
+      </div>
 
-                      <label>Matière</label>
-                      <div class="form-group">
-                        <div class="form-line">
-                          <select class="custom-select" [(ngModel)]="forum.matiere" name="matiere">
-                            <option type="text">Francais</option>
-                            <option type="text">Anglais</option>
-                            <option type="text">Math</option>
-                            <option type="text">Physique</option>
-                            <option type="text">Sciences</option>
-                          </select>
-                        </div>
-                      </div>
 
-                      <label>Niveau d'étude</label>
-                      <div class="form-group">
-                        <div class="form-line">
-                          <select class="custom-select" [(ngModel)]="forum.niveau" name="niveau">
-                            <option type="text">1ére année</option>
-                            <option type="text">2ére année</option>
-                            <option type="text">3ére année</option>
-                            <option type="text">4ére année</option>
-                            <option type="text">5ére année</option>
-                          </select>
-                        </div>
-                      </div>
 
-                    </form>
-                    <swal
-                      #deleteSwal
-                      title="Succes!"
-                      message="This cannot be undone"
-                      type="success"
-                      (confirm)="RedirectForum()">
-                    </swal>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" [swal]="deleteSwal" (click)="ajouterStatus()" class="btn-hover btn-border-radius color-1">Ajouter</button>
-                    <button type="button" class="btn-hover btn-border-radius color-4"
-                            data-dismiss="modal">Annuler</button>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5" style="
+    top: 36px;
+    right: 0px;
+    border-right-width: 12px;
+    height: 1379px;position: sticky;position: -webkit-sticky;top: 78px; padding: 5px">
+        <div class="card" >
+          <div class="header">
 
+
+            <div class="body">
+
+
+            </div>
+
+
+            <div class="body">
+              <div class="totalEarning">
+                <h6 style=" margin-top: -7px;">Chercher selon votre niveau d'étude</h6>
+              </div>
+              <br>
+              <select class="custom-select" [(ngModel)]="niveauChoisi">
+                <option type="text">1ére année</option>
+                <option type="text">2éme année</option>
+                <option type="text">3éme année</option>
+                <option type="text">4ére année</option>
+                <option type="text">5éme année</option>
+              </select>
+              <br>
+             </div>
+
+
+
+            <hr>
+            <h2>
+              <br>
+
+              <strong>Latest</strong> Posts</h2>
+
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown">
+                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                  <li>
+                    <a href="#" onClick="return false;">Action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Another action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="body">
+            <div class="card-block">
+              <div class="row m-b-20" *ngFor="let publication of ListPublications;  let i=index">
+
+                <div class="col-auto p-r-0">
+                  <img src="assets/images/posts/post1.jpg" alt="user image"
+                       class="latest-posts-img">
+                </div>
+
+                <div class="col">
+                  <div *ngIf="i<5">
+                    <h6>{{publication.titre}}</h6>
+                    <p class="text-muted m-b-5">
+                      <i class="fa fa-play-circle-o"></i>{{publication.date | date: 'yyyy-MM-dd \' à \'hh:mm a'}}</p>
+                    <p class="text-muted ">{{publication.matiere}}</p>
                   </div>
                 </div>
+
+              </div>
+
+
+
+              <div class="text-center">
+                <a href="#!" class="b-b-primary text-primary">View All Posts</a>
               </div>
             </div>
-            <!-- Fin div de modal d'ajout de la publication -->
-         <!-- </div>
+          </div>
+        </div>
+
+
+
+
+
 
         </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7"style="bottom: 793px;" data-toggle="modal"
+           data-target="#exampleModal" style="bottom: 1367px;">
+        <div class="card" style="height: 175px;">
+          <div class="chat"  style="height: 11px;">
+            <div class="chat-header clearfix" style="background-color: #E9EBEE;max-height: 15px;border-top-left-radius: 0.55rem;">
+              <h6 style=" margin-top: -7px;">Créer une publication</h6>
+
+            </div>
+            <div class="chat-header clearfix" >
+            <img src="assets/images/upload/uploadUser/{{user.photo}}" alt="">
+            <div class="chat-about">
+              <p class="text-muted " style="margin-top: 10px;margin-left: 28px;">Exprimez-vous , {{user.nom}} {{user.prenom}} ... </p>
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>-->
+
+
+
+
+
+      <!-- affichage-->
+
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7" style="bottom: 1364px;" *ngFor="let publication of ListPublications  | filter:niveauChoisi">
+        <div class="card" style="height: 330px; ">
+          <div class="chat">
+            <div class="chat-header clearfix">
+              <img src="assets/images/upload/uploadUser/{{publication.user.photo}}" alt="">
+              <div class="chat-about">
+                <div class="chat-with">{{publication.user.prenom}} {{publication.user.nom}}</div>
+                <div class="chat-num-messages">{{publication.date | date: 'yyyy-MM-dd \' à \'hh:mm a'}}</div>
+                  <small _ngcontent-gdg-c3="" class="text-muted">{{publication.matiere}} / {{publication.niveau}}</small>
+              </div>
+            </div>
+            <div class="chat-history" id="chat-conversation">
+              <ul>
+                <li class="clearfix">
+                  <p _ngcontent-gdg-c3="" class="text-default"><a [routerLink]="['/forum/details', publication.id]">{{publication.titre}}</a></p>
+                  <p _ngcontent-gdg-c3="" class="text-default">{{publication.description}}</p>
+                 </li>
+              </ul>
+            </div>
+            <div class="chat-message clearfix">
+              <div class="form-group">
+                <div class="form-line">
+                  <input type="text" class="form-control" placeholder="Enter text here.."  />
+                </div>
+              </div>
+              <div class="chat-upload">
+                <a href="#">
+                <i class="material-icons">attach_file</i>
+                </a>
+                <a href="#">
+                  <i class="material-icons">insert_emoticon</i>
+                </a>
+
+                 <i _ngcontent-fnf-c2="" class="material-icons" data-toggle="modal" [attr.data-target]="'#exampleModal' + publication.id"
+                   (click)="afficherListeDesCommentaires(publication.id)" style="color:#007bff;height: 100px">chat</i>
+
+
+                <!-- modal commentaires -->
+                <div class="modal fade" [id]="'exampleModal' + publication.id" tabindex="-1" role="dialog"
+                     aria-labelledby="formModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <form>
+                          <label>Liste des commentaires</label>
+                          <div class="form-group" *ngFor="let commentaire of listCommentaires">
+                            <div class="form-line">
+                              <p><strong>Contenu: </strong>{{commentaire.contenu}}</p>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn-hover btn-border-radius color-4"
+                                data-dismiss="modal">Annuler</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Fin modal commentaires -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+</section>
+<!-- YAMLI CODE START -->
+<!--
+<script type="text/javascript" src="https://api.yamli.com/js/yamli_api.js"></script>
+<script type="text/javascript">
+  if (typeof(Yamli) == "object" && Yamli.init( { uiLanguage: "fr" , startMode: "onOrUserDefault" } ))
+  {
+    Yamli.yamlify( "yamli", { settingsPlacement: "bottomLeft" } );
+  }
+</script>
+-->
+<!-- YAMLI CODE END -->
+
+
+
+
+
+
+
+
+<style>
+  #cke_1_contents{height: 153px}
+  .cke_contents.cke_reset{height: 153px}
+
+</style>
+<section class="content">
+  <div class="container-fluid">
+    <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+       <div class="card">
+         <div class="header">
+
+           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        -->     <!--<button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
+                    data-target="#exampleModal">Ajouter</button>
+            <hr>-->
+    <!-- Modal d'ajout de publication : exampleModal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+         aria-labelledby="formModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer une publication </h5><br><br>
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <label>Titre</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <input type="text" name="type_reclamation" [(ngModel)]="forum.titre" class="form-control"
+                         placeholder="Entrer le titre de votre publication" id="yamli">
+                </div>
+              </div>
+
+              <label>Description</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <input id="description" class="form-control" type="text" name="description" [(ngModel)]="forum.description" placeholder="Entrer la description de votre réclamation">
+                </div>
+              </div>
+
+              <label>Matière</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <select class="custom-select" [(ngModel)]="forum.matiere" name="matiere">
+                    <option type="text">Francais</option>
+                    <option type="text">Anglais</option>
+                    <option type="text">Math</option>
+                    <option type="text">Physique</option>
+                    <option type="text">Sciences</option>
+                  </select>
+                </div>
+              </div>
+
+              <label>Niveau d'étude</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <select class="custom-select" [(ngModel)]="forum.niveau" name="niveau">
+                    <option type="text">1ére année</option>
+                    <option type="text">2ére année</option>
+                    <option type="text">3ére année</option>
+                    <option type="text">4ére année</option>
+                    <option type="text">5ére année</option>
+                  </select>
+                </div>
+              </div>
+
+            </form>
+            <swal
+              #deleteSwal
+              title="Succes!"
+              message="This cannot be undone"
+              type="success"
+              (confirm)="RedirectForum()">
+            </swal>
+          </div>
+          <div class="modal-footer">
+            <button type="button" [swal]="deleteSwal" (click)="ajouterStatus()" class="btn-hover btn-border-radius color-1">Ajouter</button>
+            <button type="button" class="btn-hover btn-border-radius color-4"
+                    data-dismiss="modal">Annuler</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin div de modal d'ajout de la publication -->
+    <!-- </div>
+
+   </div>
+ </div>
+</div>-->
     <div class="row clearfix">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div class="card" style="position: sticky; position: -webkit-sticky; top: 78px; padding: 5px">
@@ -98,7 +339,7 @@
             <hr>
             <h2>
               <strong>Filter</strong></h2>
-           </div>
+          </div>
           <div class="body">
             <div class="totalEarning">
               <h2>Choisir votre niveau d'étude</h2>
@@ -185,6 +426,7 @@
       <!-- #END# Customer Review -->
     </div>
   </div>
+
 </section>
 <!-- YAMLI CODE START -->
 <!--
