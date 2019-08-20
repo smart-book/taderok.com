@@ -16,7 +16,7 @@ public class Etudiant extends User {
     @OneToMany(mappedBy = "etudiant")
     private List<Rating> ratingList;
     @JsonIgnoreProperties("etudiantList")
-    @ManyToMany(mappedBy = "etudiantList")
+    @ManyToMany(mappedBy = "etudiantList", cascade = {CascadeType.ALL})
     private List<Groupes> groupesList;
 
     @OneToMany
@@ -110,5 +110,26 @@ public class Etudiant extends User {
 
     public void setParent(Parent parent) {
         this.parent = parent;
+    }
+
+    public Etudiant() {
+    }
+
+    public Etudiant(User user) {
+        super(user);
+    }
+
+    public Etudiant(User u, String niveau, String etablissement, boolean paiement, List<Rating> ratingList, List<Groupes> groupesList, List<GroupeChat> groupeChatList, Parent parent, String codeEnfant, List<Feedback> feedbackList, List<QuizEtudiant> quizEtudiants) {
+        super(u);
+        this.niveau = niveau;
+        this.etablissement = etablissement;
+        this.paiement = paiement;
+        this.ratingList = ratingList;
+        this.groupesList = groupesList;
+        this.groupeChatList = groupeChatList;
+        this.parent = parent;
+        this.codeEnfant = codeEnfant;
+        this.feedbackList = feedbackList;
+        this.quizEtudiants = quizEtudiants;
     }
 }

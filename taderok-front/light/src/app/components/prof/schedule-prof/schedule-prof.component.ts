@@ -1,19 +1,43 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { recurrenceData } from './data';
-import { extend } from '@syncfusion/ej2-base';
-import { ScheduleComponent, EventSettingsModel, EventRenderedArgs, View, DayService, WeekService, MonthService, ResizeService, DragAndDropService, PopupOpenEventArgs  } from '@syncfusion/ej2-angular-schedule';
+import {extend, L10n} from '@syncfusion/ej2-base';
+import {
+  ScheduleComponent,
+  EventSettingsModel,
+  EventRenderedArgs,
+  View,
+  DayService,
+  WeekService,
+  MonthService,
+  AgendaService,
+  ResizeService,
+  DragAndDropService,
+  PopupOpenEventArgs,
+  RecurrenceEditor
+} from '@syncfusion/ej2-angular-schedule';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import {SeanceService} from "../../../services/prof/seance.service";
 import {DropDownList} from "@syncfusion/ej2-dropdowns";
 import {DateTimePicker} from "@syncfusion/ej2-calendars";
 import {Seance} from "../../../models/seance";
-import {DataManager, Query, ReturnOption, WebApiAdaptor} from '@syncfusion/ej2-data';
+import {DataManager, Query, RemoteSaveAdaptor, ReturnOption, WebApiAdaptor} from '@syncfusion/ej2-data';
+
+L10n.load({
+  'en-US': {
+    'schedule': {
+      'saveButton': 'Valider',
+      'cancelButton': 'Fermer',
+      'deleteButton': 'Supprimer',
+      'newEvent': 'Ajouter séance',
+    },
+  }
+});
 
 @Component({
   selector: 'app-schedule-prof',
   templateUrl: './schedule-prof.component.html',
   styleUrls: ['./schedule-prof.component.sass'],
-  providers: [DayService, WeekService, MonthService, ResizeService, DragAndDropService]
+  providers: [DayService, WeekService, MonthService, AgendaService, ResizeService, DragAndDropService]
 })
 export class ScheduleProfComponent implements OnInit {
   seance : Seance = new Seance();
@@ -21,64 +45,48 @@ export class ScheduleProfComponent implements OnInit {
   public items: object[];
   data : Seance[];
   out : Object[];
+  public outData: Object[];
+  public dataManager: DataManager;
+  public eventSettings: EventSettingsModel;
 
-  constructor(private seanceService: SeanceService) {
-    /*this.seanceService.afficherSeance().subscribe(data => {
-      console.log(data);
-      this.aa = data;
-      //console.log(this.data);
-    }, error => console.log(error));*/
-    //this.out = [];
-  }
+  constructor(private seanceService: SeanceService) {}
 
-  private dataManger: DataManager = new DataManager({
-    url: 'https://js.syncfusion.com/demos/ejservices/api/Schedule/LoadData',
-    adaptor: new WebApiAdaptor,
-    crossDomain: true
-  });
-  //public data: Object[] = <Object[]>extend([], this.aa, null, true);
   async ngOnInit() {
-    /*this.seanceService.afficherSeance().subscribe(data => {
-      console.log(data);
-      this.data = data;
-      this.out = data.map(function (obj) {
-        return {
-          Id: obj.id,
-          Subject: 'test',
-          Location: 'Office',
-          StartTime : new Date(obj.date_debut),
-          EndTime : new Date(obj.date_fin),
-          RecurrenceRule: 'FREQ=WEEKLY;INTERVAL=2;BYDAY=MO;COUNT=10',
-          CategoryColor: '#1aaa55'
-        };
-      });
-      console.log(this.out);
-      //console.log(this.data);
-    }, error => console.log(error));*/
+
     this.data = await this.seanceService.afficherSeanceAsync();
     console.log(this.data);
     this.out = this.data.map(function (obj) {
       return {
         Id: obj.id,
-        Subject: 'test',
+        Subject: obj.titre,
         StartTime : new Date(obj.date_debut),
         EndTime : new Date(obj.date_fin),
         CategoryColor: '#1aaa55'
       };
     });
+
+    this.outData = this.data;
+    console.log(this.out);
+    this.dataManager = new DataManager({
+      json: JSON.parse(JSON.stringify(this.out)),
+      adaptor: new RemoteSaveAdaptor()
+
+
+    });
+
+    this.eventSettings = {
+      dataSource: this.out,
+    };
+
+
+    console.log(this.dataManager);
   }
 
   public test: Object[] = <Object[]>extend([], this.out, null, true);
   public selectedDate: Date = new Date();
-  public eventSettings: EventSettingsModel = {
-    dataSource: this.out,
-    /*fields :{
-      subject : {name :'subject'},
-      startTime : {name : 'dateDebut'},
-      endTime : {name : 'dateFin'}
-    }*/
-  };
+
   public currentView: View = 'Month';
+
   @ViewChild('scheduleObj',{static: true})
   public scheduleObj: ScheduleComponent;
 
@@ -96,34 +104,34 @@ export class ScheduleProfComponent implements OnInit {
   onChange(args: ChangeEventArgs): void {
     this.scheduleObj.eventSettings.editFollowingEvents = args.checked;
   }
+  public dateParser(data: string) {
+    return new Date(data);
+  }
 
-  onPopupOpen(args: PopupOpenEventArgs): void {
-
-    if (args.type === 'Editor') {
-      let statusElement: HTMLInputElement = args.element.querySelector('#EventType') as HTMLInputElement;
-      this.seance.titre = statusElement.value;
-      if (!statusElement.classList.contains('e-dropdownlist')) {
-        let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose status', value: statusElement.value,
-          dataSource: ['New', 'Requested', 'Confirmed']
-        });
-        dropDownListObject.appendTo(statusElement);
-        statusElement.setAttribute('name', 'EventType');
+  /*public onEventRendered(args: EventRenderedArgs): void {
+    switch (args.data.EventType) {
+      case 'Requested':
+        (args.element as HTMLElement).style.backgroundColor = '#F57F17';
+        break;
+      case 'Confirmed':
+        (args.element as HTMLElement).style.backgroundColor = '#7fa900';
+        break;
+      case 'New':
+        (args.element as HTMLElement).style.backgroundColor = '#8e24aa';
+        break;
+    }
+  }*/
+  public onActionBegin(args: { [key: string]: Object }): void {
+    if (args.requestType === 'eventCreate' || args.requestType === 'eventChange') {
+      let data: any;
+      if (args.requestType === 'eventCreate') {
+        data = <any>args.data[0];
+      } else if (args.requestType === 'eventChange') {
+        data = <any>args.data;
       }
-      let startElement: HTMLInputElement = args.element.querySelector('#StartTime') as HTMLInputElement;
-      if (!startElement.classList.contains('e-datetimepicker')) {
-        new DateTimePicker({ value: new Date(startElement.value) || new Date() }, startElement);
-        this.seance.date_debut = new Date(startElement.value) || new Date();
+      if (!this.scheduleObj.isSlotAvailable(data.StartTime as Date, data.EndTime as Date)) {
+        args.cancel = true;
       }
-      let endElement: HTMLInputElement = args.element.querySelector('#EndTime') as HTMLInputElement;
-      if (!endElement.classList.contains('e-datetimepicker')) {
-        new DateTimePicker({ value: new Date(endElement.value) || new Date() }, endElement);
-        this.seance.date_fin = new Date(endElement.value) || new Date()
-      }
-
-      this.seanceService.ajouterSeance(this.seance).subscribe(data=>
-           console.log(data),
-          error1 => console.log(error1))
     }
   }
 

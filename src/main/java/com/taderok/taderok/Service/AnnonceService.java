@@ -57,6 +57,8 @@ public class AnnonceService {
     }
 
 
-
-
+    public List<Annonce> getAllAnnonceConnected() {
+        User u = userRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
+        return annonceRepository.findAllByUser(u);
+    }
 }
