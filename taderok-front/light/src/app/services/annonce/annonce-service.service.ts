@@ -29,4 +29,8 @@ export class AnnonceServiceService {
   getPhotosAnnonce(id:number): Observable<AnnoncePhoto[]>{
     return this.http.get<AnnoncePhoto[]>(`${this.baseUrl2}`+`/get/`+id);
   }
+
+  getAllAnnonce(): Observable<Annonce[]>{
+    return this.http.get<Annonce[]>(`${this.baseUrl}`+`/findAll`);
+  }
 }

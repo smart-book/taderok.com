@@ -20,6 +20,11 @@ public class AnnonceController {
         return annonceService.getAllAnnonce();
     }
 
+    @RequestMapping(method = RequestMethod.GET,value = "/findAllConnected")
+    public List<Annonce> getAllUserAnnonce(){
+        return annonceService.getAllAnnonceConnected();
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public long addAnnonce(@RequestBody Annonce annonce){
         annonceService.addAnnonce(annonce);
