@@ -180,10 +180,13 @@
                 <div class="modal fade" [id]="'exampleModal' + publication.id" tabindex="-1" role="dialog"
                      aria-labelledby="formModal" aria-hidden="true">
                   <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content" style="border-radius: 1.3rem;">
                       <div class="modal-body">
                         <form>
-                          <label>Liste des commentaires</label>
+                          <div class="totalEarning">
+                            <h6 style=" margin-top: -7px;">Liste des commentaires </h6>
+                          </div>
+                          <br>
                           <div class="form-group" *ngFor="let commentaire of listCommentaires">
                             <div class="form-line">
                               <p><strong>Contenu: </strong>{{commentaire.contenu}}</p>
@@ -253,9 +256,9 @@
             <hr>-->
     <!-- Modal d'ajout de publication : exampleModal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-         aria-labelledby="formModal" aria-hidden="true">
+         aria-labelledby="formModal" aria-hidden="true" >
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="border-radius: 1.3rem;">
           <div class="modal-header">
             <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer une publication </h5><br><br>
             <button type="button" class="close" data-dismiss="modal"

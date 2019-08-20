@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ListReclamationsComponent} from "./Reclamation/list-reclamations/list-reclamations.component";
 import {ReclamationsTraiteesComponent} from "./Reclamation/reclamations-traitees/reclamations-traitees.component";
-import {AffichageReclamationComponent} from "./Reclamation/affichage-reclamation/affichage-reclamation.component";
+import {AfficherReclamationComponent} from "./Reclamation/affichage-reclamation/affichage-reclamation.component";
 
 const routes: Routes = [
   {
@@ -13,10 +13,9 @@ const routes: Routes = [
     path: 'ReclamationsTraite',
     component: ReclamationsTraiteesComponent
   },
-  ,
   {
     path: 'affichageReclamation',
-    component: AffichageReclamationComponent
+    component: AfficherReclamationComponent
   },
 ];
 

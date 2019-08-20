@@ -58,7 +58,6 @@ export class PublicationDetailsComponent implements OnInit {
         this.listCommentaires = data;
       }, error1 => console.log(error1)
     );
-    this.startScript();
 
   }
 
@@ -106,18 +105,6 @@ export class PublicationDetailsComponent implements OnInit {
     this.ngOnInit();
   }
 
-  async startScript() {
-    await this.dynamicScriptLoader.load('ckeditor').then( data => {
-      this.loadData();
-    }).catch(error => console.log(error));
-  }
-
-
-  private loadData(){
-    //CKEditor
-    CKEDITOR.replace('ckeditor');
-    CKEDITOR.config.height = 300;
-  }
 
 
 }
