@@ -38,8 +38,13 @@ public class SeanceController {
         return seanceService.getSeance(id);
     }
     @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
-    public void update(@RequestBody Seance seance,@PathVariable Long id){
-         seanceService.updateSeance(seance,id);
+    public Seance update(@RequestBody Seance seance,@PathVariable Long id){
+         return seanceService.updateSeance(seance,id);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/update2/{id}")
+    public Seance update2(@RequestBody String titre,@RequestBody String description,@PathVariable Long id){
+        return seanceService.updateSeance2(titre, description,id);
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
     public void delete(@PathVariable Long id)

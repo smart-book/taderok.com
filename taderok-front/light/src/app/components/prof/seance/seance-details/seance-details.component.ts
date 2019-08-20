@@ -18,11 +18,8 @@ export class SeanceDetailsComponent implements OnInit {
   idSeance : number;
   idUserConnected : number;
   seance :  Seance = new Seance();
-  groupe : Groupes = new Groupes();
+  seanceModifiee :  Seance = new Seance();
   user : User;
-  listeEtudiants : Object[] = [];
-  statusBouton : string;
-  rejoindreBoolean : boolean;
   unknown : unknown;
 
   constructor(private readonly route: ActivatedRoute, private seanceService : SeanceService, private groupesService : GroupesService,private appComponent: AppComponent,) { }
@@ -41,29 +38,18 @@ export class SeanceDetailsComponent implements OnInit {
     console.log(this.user);
     this.idUserConnected = this.user.id;
     console.log(this.idUserConnected);
-
-    // listeEtudiants is a list of Objects in which we put the students of the group of this course to compare each one of them with the current user
-    this.listeEtudiants = this.seance.groupes.etudiantList;
-    console.log(this.listeEtudiants);
-
-    // here we compare each student with the current user to change the button action and name
-    this.listeEtudiants.map((etudiant: Etudiant) =>{
-      console.log(etudiant);
-      if (etudiant.id === this.idUserConnected) {
-        this.statusBouton = 'Déjà dans ce groupe';
-        this.rejoindreBoolean = false
-      } else {
-        this.statusBouton = 'Rejoindre';
-        this.rejoindreBoolean = true;
-      }
-    })
-
   }
 
-  rejoindre(idGroupe){
-    this.groupesService.affecterEtudiantAGroupe(idGroupe,this.idUserConnected ).subscribe(
-      data => console.log('success'),
-      error=> console.log(error));
+  /*async */modifierSeance() {
+    console.log(this.seance
+
+
+
+    )
+    this.seanceService.modifierSeance(this.seance, this.seance.id).subscribe(data=> console.log(data),
+      error1 => console.log(error1))
+    //await this.seanceService.modifierSeanceAsync(this.seance, id);
   }
+
 
 }
