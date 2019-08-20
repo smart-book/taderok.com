@@ -123,7 +123,7 @@
             </div>
             <div class="notice-body">
               <h6 _ngcontent-gdg-c3="" class="b-b-primary text-primary" style="color: #0f74a8">{{comment.user.prenom}} {{comment.user.nom}}</h6>
-              <p>{{comment.contenu}}</p>
+              <p>{{comment.contenu | emojify}}</p>
               <small class="text-muted">{{comment.date | date: 'yyyy-MM-dd'}} {{comment.date | date: 'h:mm a'}}</small>
 
               <br><br>

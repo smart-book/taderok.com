@@ -1,7 +1,5 @@
 package com.taderok.taderok.Controller;
 
-import com.taderok.taderok.Domain.Response;
-import com.taderok.taderok.Domain.UserDTO;
 import com.taderok.taderok.Entity.Etudiant;
 import com.taderok.taderok.Entity.Parent;
 import com.taderok.taderok.Entity.Prof;
@@ -11,11 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import static com.taderok.taderok.Controller.AthenticationController.getConnectedUser;
 
@@ -75,9 +72,10 @@ public class UserController {
         return userService.findAllByRole(role);
     }
 
-
-
-
+    @GetMapping(value = "/user/{id}")
+    public Optional<User> findOneUser(@PathVariable long id){
+        return userService.getById(id);
+    }
 
 
 }

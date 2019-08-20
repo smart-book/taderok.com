@@ -18,6 +18,10 @@ public class Quiz {
     private Prof id_prof;
     private String nomQuiz;
     private Date date;
+    private Boolean visible;
+    @ManyToOne
+    private Mooc mooc;
+
     @ManyToMany
     @JsonIgnore
     private List<Seance> seanceList;
@@ -84,4 +88,19 @@ public class Quiz {
         this.questions = questions;
     }
 
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
+
+    public Mooc getMooc() {
+        return mooc;
+    }
+
+    public void setMooc(Mooc mooc) {
+        this.mooc = mooc;
+    }
 }

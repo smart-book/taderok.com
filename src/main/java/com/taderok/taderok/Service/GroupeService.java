@@ -32,6 +32,11 @@ public class GroupeService {
 
         groupeRepository.save(groupe);
     }
+
+    public Groupes addGroupeWithResponse(Groupes groupe){
+        groupeRepository.save(groupe);
+        return groupe;
+    }
     public void affecterGroupeEtudiants(int idG,Long idE){
         Groupes group = groupeRepository.findById(idG).orElse( null );
         Etudiant et = etudiantRepository.findById(idE).orElse( null );
@@ -53,6 +58,16 @@ public class GroupeService {
     public void deleteGroupe(int id)
     {
         groupeRepository.deleteById(id);
+    }
+
+    public void deleteStudentFromGroup(int idGroupe, Long idEtudiant)
+    {
+        Groupes groupes = groupeRepository.findById(idGroupe).orElse(null);
+        Etudiant etudiant = etudiantRepository.findById(idEtudiant).orElse(null);
+        if (groupes.getEtudiantList().size() != 0){
+            groupes.getEtudiantList().remove(etudiant);
+            groupeRepository.save(groupes);
+        }
     }
 
 }

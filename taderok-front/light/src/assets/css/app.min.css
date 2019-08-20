@@ -5965,7 +5965,7 @@ select:focus {
 
 button:focus {
   outline: 0;
-  background-color: #2ab7a9
+  background-color: lightgrey;
 }
 
 label {
@@ -6098,9 +6098,18 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #26a69a;
-  -webkit-box-shadow: 0 1px 0 0 #26a69a;
-  box-shadow: 0 1px 0 0 #26a69a
+  border-bottom: 1px solid black;
+  -webkit-box-shadow: 0 1px 0 0 black;
+  box-shadow: 0 1px 0 0 black
+  border-bottom: 1px solid #9e9e9e;
+  -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+  box-shadow: 0 1px 0 0 #9e9e9e;
+}
+
+input[type=special]:not(.browser-default):focus:not([readonly]){
+  border-bottom: 1px solid white;
+  -webkit-box-shadow: 0 1px 0 0 white;
+  box-shadow: 0 1px 0 0 white;
 }
 
 input:not([type]):focus:not([readonly])+label,

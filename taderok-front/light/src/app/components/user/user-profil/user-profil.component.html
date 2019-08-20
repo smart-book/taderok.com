@@ -1,0 +1,147 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Profile</h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="card body">
+
+          <div class="contact-usertitle">
+            <div class="contact-usertitle-name"> {{user.nom}} {{user.prenom}}</div>
+          </div>
+          <div class="row">
+            <div class="contact-photo">
+              <img src="assets/images/upload/uploadUser/{{user.photo}}" class="img-circle user-img-circle"
+                   alt="User Image" style="width: 118px;height: 83px;"> </div>
+          </div>
+          <div class="contact-usertitle">
+            <div class="contact-usertitle-job"> {{user.diplome}} </div>
+          </div>
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              Email
+              <a class="pull-right">{{user.email}}</a>
+            </li>
+            <li class="list-group-item">
+              Numéro
+              <a class="pull-right">{{user.telephone}}</a>
+            </li>
+            <li class="list-group-item" *ngIf="user.role==='Prof'">
+              Nombre de groupe
+
+              <a class="pull-right"></a>
+            </li>
+
+          </ul>
+          <div class="newLabelBtn" *ngIf="relation===false">
+            <button type="button" class="btn-hover btn-border-radius color-8" (click)="ajouterAmi()"><i class="fas fa-user-plus"></i> Ajouter</button>
+          </div>
+          <div *ngIf="relation===true">
+          <div class="newLabelBtn" *ngIf="demandeAmis2.status==='friends'">
+            <button type="button" class="btn-hover btn-border-radius color-10" (click)="supprimerAmi(demandeAmis2.id)"><i class="fas fa-user-minus"></i> Supprimer</button>
+          </div>
+
+          <div class="newLabelBtn" *ngIf="demandeAmis2.status==='en attente' && demandeAmis2.sender.id===id2">
+            <button type="button" class="btn-hover btn-border-radius color-5" (click)="accepterAmi(demandeAmis2.id)"><i class="fas fa-user-plus"></i> Accepter</button>
+            <button type="button" class="btn-hover btn-border-radius color-10" (click)="supprimerAmi(demandeAmis2.id)"><i class="fas fa-user-plus"></i> Refuser</button>
+          </div>
+
+          <div class="newLabelBtn" *ngIf="demandeAmis2.receiver.id===id2">
+            <button type="button" class="btn-hover btn-border-radius color-10" (click)="supprimerAmi(demandeAmis2.id)"><i class="fas fa-user-plus"></i> Annuler</button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-9 col-md-12">
+        <div class="card">
+
+          <div class="body">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+              <li role="presentation">
+                <a href="#home" data-toggle="tab" class="active show"><i class="fa fa-user"></i> A propos</a>
+              </li>
+              <li role="presentation">
+                <a href="#profile" data-toggle="tab"><i class="fa fa-users"></i> Amis</a>
+              </li>
+              <li role="presentation" *ngIf="user.role==='Prof'">
+                <a href="#messages" data-toggle="tab"><i class="fa fa-comment-alt"></i> Avis</a>
+              </li>
+              <li role="presentation">
+                <a href="#calendar" data-toggle="tab"><i class="fa fa-calendar-alt"></i> Emplois du temps</a>
+              </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active show" id="home">
+                <div class="row">
+                  <div class="col-md-3 col-6 b-r">
+                    <strong>Nom et prénom</strong>
+                    <br>
+                    <p class="text-muted">{{user.nom}} {{user.prenom}}</p>
+                  </div>
+                  <div class="col-md-3 col-6 b-r">
+                    <strong>Numéro de télèphone</strong>
+                    <br>
+                    <p class="text-muted">(+216){{user.telephone}}</p>
+                  </div>
+                  <div class="col-md-3 col-6 b-r">
+                    <strong>Email</strong>
+                    <br>
+                    <p class="text-muted">{{user.email}}</p>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <strong>Adresse</strong>
+                    <br>
+                    <p class="text-muted">{{user.adresse}}</p>
+                  </div>
+                  <div class="col-md-10 col-6">
+                    <strong>Biographie</strong>
+                    <br>
+                    <p class="text-muted">{{user.bio}}</p>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="profile">
+                <b>Profile Content</b>
+                <p>
+                  Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit
+                  mediocritatem an. Pri ut tation electram moderatius.
+                  Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent
+                  aliquid
+                  pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere
+                  gubergren
+                  sadipscing mel.
+                </p>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="messages">
+                <b>Message Content</b>
+                <p>
+                  Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit
+                  mediocritatem an. Pri ut tation electram moderatius.
+                  Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent
+                  aliquid
+                  pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere
+                  gubergren
+                  sadipscing mel.
+                </p>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="calendar">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

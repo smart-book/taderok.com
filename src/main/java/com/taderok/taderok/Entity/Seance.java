@@ -10,10 +10,17 @@ import java.util.List;
 public class Seance {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private Date date_debut;
     private Date date_fin;
     private String matiere;
+    private String titre;
+    private String description;
+    private int duree;
+    // if it is a one day or repetitive event
+    private String etat;
+    private String niveau;
+
     @ManyToOne
     @JsonIgnoreProperties("seanceList")
     private Prof prof;
@@ -27,11 +34,11 @@ public class Seance {
     @OneToMany(mappedBy = "seances")
     private List<Feedback> feedbackList;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -82,5 +89,45 @@ public class Seance {
 
     public void setGroupes(Groupes groupes) {
         this.groupes = groupes;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public String getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
     }
 }

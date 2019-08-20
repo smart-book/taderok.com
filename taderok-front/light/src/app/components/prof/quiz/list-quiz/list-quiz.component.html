@@ -1,58 +1,332 @@
-
-<section class="content">
+<section *ngIf="etat2" class="content">
   <div class="container-fluid">
-  <!-- #START# Table With State Save -->
-  <div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="card">
-        <div class="header">
-          <h2>Liste des
-            <strong>Quiz</strong> </h2>
-          <ul class="header-dropdown m-r--5">
-            <li class="dropdown">
-              <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
-                 role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">more_vert</i>
-              </a>
-              <ul class="dropdown-menu pull-right">
-                <li>
-                  <a href="#" onClick="return false;">Action</a>
-                </li>
-                <li>
-                  <a href="#" onClick="return false;">Another action</a>
-                </li>
-                <li>
-                  <a href="#" onClick="return false;">Something else here</a>
-                </li>
-              </ul>
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">liste des Quiz</h4>
             </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Seances</a>
+            </li>
+            <li class="breadcrumb-item active">Liste des Quiz</li>
           </ul>
         </div>
-        <div class="body">
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover save-stage dataTable"
-                   style="width:100%;">
-              <thead>
-              <tr>
-                <th>Nom Quiz</th>
-                <th>Date</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let q of quiz">
-                <td>
-                  {{q.nomQuiz}}
+      </div>
+    </div>
+    <!-- #START# Table With State Save -->
+    <div class="row clearfix" >
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        <div class="card" >
+          <div class="header" >
+            <h2>La Liste des <strong>Quiz</strong> </h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown">
+                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                </a>
+                <ul class="dropdown-menu pull-right" style="border-radius:10px;">
+                  <li>
+                    <a href="#" onClick="return false;">Action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Another action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="container" style="margin-bottom: 20px;" >
+            <mat-form-field FloatLabel="auto">
+              <mat-label>Recherche</mat-label>
+              <input matInput type="special" (keyup)="applyFilter($event.target.value)" name="value" [(ngModel)]="value">
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="OnSearchClear()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+          <div >
+            <table class="table" mat-table [dataSource]="dataSource" matSort>
+
+              <!-- Nom Column -->
+              <ng-container matColumnDef="nom">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom du Quiz</th>
+                <td mat-cell *matCellDef="let row">{{row.nomQuiz}}</td>
+              </ng-container>
+
+              <!--Date Column -->
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                <td mat-cell *matCellDef="let row">{{row.date | date: 'dd/MM/yyyy'}}</td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-icon-button matTooltip="Modifier" (click)="editQuiz(row);changementEtat()" class="iconbutton" color="accent">
+                    <mat-icon aria-label="edit" >edit</mat-icon>
+                  </button>
+                  <button mat-icon-button matTooltip="Supprimer" class="iconbutton" color="warn">
+                    <mat-icon aria-label="Delete" (click)="deleteQuiz(row)" >delete</mat-icon>
+                  </button>
                 </td>
-                <td>
-                  {{q.date | date: 'dd/MM/yyyy h:mm'}}
-                </td>
-              </tr>
-              </tbody>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
             </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons ></mat-paginator>
+
+            <ng-template #myTemplate >
+              <div mat-dialog-content align="center">
+                <h5>Êtes-vous sûr de vouloir supprimer ce Quiz?</h5>
+              </div>
+              <mat-dialog-actions align="center">
+                <button type="button" class="btn-hover btn-border-radius color-6" (click)="deleteQuiz(rowId)" >Oui</button>
+                <button type="button" class="btn-hover btn-border-radius color-4" mat-dialog-close>Non</button>
+              </mat-dialog-actions>
+            </ng-template>
+          </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+<section *ngIf="etat1" class="content">
+  <div class="container-fluid">
+    <!-- #START# Table With State Save -->
+    <div class="row clearfix" >
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        <div class="card" >
+          <div class="header" >
+            <div class="row clearfix">
+            <div class="col"></div>
+            <div class="col-8">
+              <h1 style="text-align: center"> <strong>{{quiz.nomQuiz}}</strong> </h1>
+              <!-- Modal d'ajout de publication : exampleModal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                   aria-labelledby="formModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" style="padding-left: 150px" id="formModal">Créer une publication </h5><br><br>
+                      <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <label>Titre</label>
+                        <div class="form-group">
+                          <div class="form-line">
+                            <input type="text" id="yamli"
+                                   placeholder="Entrer le nom du Quiz" name="nomQuiz" [(ngModel)]="quiz.nomQuiz">
+                          </div>
+                        </div>
+
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" (click)="updateQuiz(quiz.id, quiz)" data-dismiss="modal" class="btn-hover btn-border-radius color-1">Valider</button>
+                      <button type="button" class="btn-hover btn-border-radius color-4"
+                              data-dismiss="modal">Annuler</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Fin div de modal d'ajout de la publication -->
+            </div>
+            <div class="col">
+              <button mat-icon-button matTooltip="modifier question" data-toggle="modal" data-target="#exampleModal"
+                      class="iconbutton" color="accent">
+                <i class="far fa-edit" aria-label="Edit" ></i>
+              </button>
+            </div>
+            </div>
+          </div>
+          <div class="container" style="margin-bottom: 20px;" >
+            <div class="centered-content" *ngFor="let q of quiz.questions">
+              <div>
+                <form class="form-horizontal validate-form">
+                  <div class="row clearfix">
+                    <div class="col form-control-label">
+                      <h5 >{{q.question}}</h5>
+                    </div>
+                    <div class="col-5">
+                    </div>
+                    <div class="col">
+                      <!-- Modal d'ajout de publication : exampleModal -->
+                      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                           aria-labelledby="formModal" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" style="padding-left: 150px" id="formModal1">Créer une publication </h5><br><br>
+                              <button type="button" class="close" data-dismiss="modal"
+                                      aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form>
+                                <label>Titre</label>
+                                <div class="form-group">
+                                  <div class="form-line">
+                                    <input type="text" id="yaml"
+                                           placeholder="Entrer une question"  name="question" [(ngModel)]="question.question">
+                                  </div>
+                                </div>
+
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" (click)="updateQuestion(q.id, question)" data-dismiss="modal" class="btn-hover btn-border-radius color-1">Valider</button>
+                              <button type="button" class="btn-hover btn-border-radius color-4"
+                                      data-dismiss="modal">Annuler</button>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Fin div de modal d'ajout de la publication -->
+                      <button mat-icon-button matTooltip="modifier question" data-toggle="modal" data-target="#exampleModal1"
+                              class="iconbutton" color="accent">
+                        <i class="far fa-edit" aria-label="Edit" ></i>
+                      </button>
+                      <button mat-icon-button matTooltip="Supprimer" (click)="deleteQuestion(q.id)" class="iconbutton" color="warn">
+                        <mat-icon aria-label="Delete" >delete</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+              <div class="table-responsive" style="padding-left: 300px">
+                <table class="table table-striped table-hover save-stage dataTable"
+                       style="width:60%;">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <form class="form-horizontal validate-form">
+                        <div class="row clearfix">
+                          <div class="col form-control-label">
+                            <label >proposition   </label>
+                          </div>
+                          <div class="col-8">
+                            <div class="form-group" >
+                              <div>
+                                <input type="text" class="form-control" [(ngModel)]="proposition.nom"
+                                       placeholder="Entrer une question" name="question" >
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <button mat-icon-button (click)="addProposition(proposition, q.id)"  matTooltip="Ajouter proposition" class="iconbutton" style="color: #0f9d58">
+                              <mat-icon aria-label="Add" >add</mat-icon>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr *ngFor="let p of q.propositions" >
+                    <td *ngFor="let b of q.bonneReponses">
+                      <form class="form-horizontal validate-form">
+                        <div class="row clearfix">
+                          <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                            <div class="form-group">
+                              <div class="form-line">
+                                <p>
+                                  <label>
+                                    <div *ngIf="p.nom===b.nom; then si else sinon"></div>
+                                    <ng-template #si><input type="checkbox" checked (change)="deleteBR(b.id)" class="filled-in"/></ng-template>
+                                    <ng-template #sinon><input type="checkbox" [(ngModel)]="br.nom" (change)="addBR(p.nom,q.id)" class="filled-in"/></ng-template>
+                                    <span>{{p.nom}}</span>
+                                  </label>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </td>
+                    <td>
+                      <button mat-icon-button matTooltip="Supprimer" (click)="deleteProposition(p.id)" class="iconbutton" color="warn">
+                        <mat-icon aria-label="Delete" >delete</mat-icon>
+                      </button>
+                    </td>
+
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Modal d'ajout de publication : exampleModal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                 aria-labelledby="formModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" style="padding-left: 150px">Créer une publication </h5><br><br>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <label>question</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text"
+                                 placeholder="Entrer une question"  name="question" [(ngModel)]="question.question">
+                        </div>
+                      </div>
+                      <button type="button" (click)="addQuestion(question, quiz.id)" class="btn-hover btn-border-radius color-1">ajouter</button>
+                    </form>
+                    <form>
+                      <label>proposition</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text"
+                                 placeholder="Entrer une proposition"  name="nom" [(ngModel)]="proposition.nom">
+                        </div>
+                      </div>
+                      <button type="button" (click)="addProposition(proposition, questionadded.id)" class="btn-hover btn-border-radius color-1">ajouter</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn-hover btn-border-radius color-4" data-dismiss="modal">Fermer</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fin div de modal d'ajout de la publication -->
+            <button type="button" class="btn-hover btn-border-radius color-8" data-toggle="modal" data-target="#exampleModal2">nouvelle question</button>
+            <button type="button" class="btn-hover btn-border-radius color-8" (click)="changementEtat()">retour à la liste</button>
+            <button type="button" class="btn-hover btn-border-radius color-8" *ngIf="quiz.visible===false" (click)="validateQuiz(quiz.id); changementEtat()">valider quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

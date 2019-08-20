@@ -16,7 +16,7 @@ export class AjouterComponent implements OnInit {
   feedback: Feedback = new Feedback();
 
   constructor(private feedbackService: FeedbackService) { }
-
+  types: string[] = ['Contenu','Technique','Seance','Prof','Quiz'];
   ngOnInit() {
   }
   ajouterFeedback(){

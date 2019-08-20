@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -112,6 +113,7 @@ public class UserServiceImpl implements UserService{
         etu.setPhoto(etudiant.getPhoto());
         etu.setPrenom(etudiant.getPrenom());
         etu.setSexe(etudiant.getSexe());
+        etu.setBio(etudiant.getBio());
         etu.setTelephone(etudiant.getTelephone());
         etudiantRepository.save(etu);
         return etu;
@@ -129,6 +131,7 @@ public class UserServiceImpl implements UserService{
         par.setPrenom(parent.getPrenom());
         par.setSexe(parent.getSexe());
         par.setTelephone(parent.getTelephone());
+        par.setBio(parent.getBio());
         par=parent;
         parentRepository.save(par);
         return par;
@@ -148,6 +151,7 @@ public class UserServiceImpl implements UserService{
         pro.setPhoto(prof.getPhoto());
         pro.setPrenom(prof.getPrenom());
         pro.setSexe(prof.getSexe());
+        pro.setBio(prof.getBio());
         pro.setTelephone(prof.getTelephone());
         pro=prof;
         profRepository.save(pro);
@@ -167,6 +171,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findByEmailIgnoreCase(email);
+    }
+
+    @Override
+    public Optional<User> getById(long id) {
+        return userRepository.findById(id);
     }
 
 
