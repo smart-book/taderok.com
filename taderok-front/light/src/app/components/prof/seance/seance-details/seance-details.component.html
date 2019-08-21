@@ -65,3 +65,121 @@
     </div>
   </div>
 </section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="header">
+            <br>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+              <img
+                src="assets/images/posts/post14.png" alt="">
+            </div>
+            <hr>
+            <table>
+              <td>
+                <div>
+                  <i class="material-icons">schedule</i>
+                  <span class="icon-name">{{seance.date_debut | date: 'EEEE'}}</span>
+                  <span> à {{seance.date_debut | date: 'hh:mm a'}}</span>
+                </div>
+              </td>
+
+              <h4 class="page-title">
+                <strong>{{seance.titre}}</strong>
+              </h4>
+              <div class="text font-17 m-b-5" *ngIf="seance.prof != undefined">
+                <td class="table-img">
+                  <img src="assets/images/user/user6.jpg" alt="">
+                  {{seance.prof.prenom}} {{seance.prof.nom}}
+                </td>
+                Organisée le : {{seance.date_debut | date: 'yyyy-MM-dd \' à \'hh:mm a'}}
+              </div>
+            </table>
+            <hr>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+              <span>
+              <i class="material-icons">date_range</i>
+              Date début : {{seance.date_debut | date: 'yyyy-MM-dd \' à \'hh:mm a'}}
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+          <div class="header">
+            <h2>
+              <strong>Séances</strong> Associées</h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown">
+                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                  <li>
+                    <a href="#" onClick="return false;">Action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Another action</a>
+                  </li>
+                  <li>
+                    <a href="#" onClick="return false;">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="body">
+            <div class="card-block">
+              <div class="row m-b-20">
+                <div class="col-auto p-r-0">
+                  <img src="assets/images/posts/post1.jpg" alt="user image"
+                       class="latest-posts-img">
+                </div>
+                <div class="col">
+                  <h6>About Something</h6>
+                  <p class="text-muted m-b-5">
+                    <i class="fa fa-play-circle-o"></i> Video | 10 minutes ago</p>
+                  <p class="text-muted ">Lorem Ipsum is simply dummy text of the.</p>
+                </div>
+              </div>
+              <div class="row m-b-20">
+                <div class="col-auto p-r-0">
+                  <img src="assets/images/posts/post2.jpg" alt="user image"
+                       class="latest-posts-img">
+                </div>
+                <div class="col">
+                  <h6>Relationship</h6>
+                  <p class="text-muted m-b-5">
+                    <i class="fa fa-play-circle-o"></i> Video | 24 minutes ago</p>
+                  <p class="text-muted ">Lorem Ipsum is simply dummy text of the.</p>
+                </div>
+              </div>
+              <div class="row m-b-20">
+                <div class="col-auto p-r-0">
+                  <img src="assets/images/posts/post3.jpg" alt="user image"
+                       class="latest-posts-img">
+                </div>
+                <div class="col">
+                  <h6>Human body</h6>
+                  <p class="text-muted m-b-5">
+                    <i class="fa fa-play-circle-o"></i> Video | 53 minutes ago</p>
+                  <p class="text-muted ">Lorem Ipsum is simply dummy text of the.</p>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="#!" class="b-b-primary text-primary">View All Posts</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
