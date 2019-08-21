@@ -16,19 +16,13 @@
         <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">
           <tbody>
           <tr>
-            <td class="e-textlabel">Summary</td>
+            <td class="e-textlabel">Titre</td>
             <td colspan="4">
-              <input id="Subject" class="e-field e-input" type="text"  value="{{data.Subject}}" name="Subject" style="width: 100%" />
+              <input id="Subject" class="e-field e-input" type="text"  value="{{data.Subject}}"  name="Subject" style="width: 100%" />
             </td>
           </tr>
           <tr>
-            <td class="e-textlabel">Status</td>
-            <td colspan="4">
-              <input type="text" id="EventType" name="EventType" class="e-field" style="width: 100%" />
-            </td>
-          </tr>
-          <tr>
-            <td class="e-textlabel">From</td>
+            <td class="e-textlabel">De</td>
             <td colspan="4">
               <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"
                                   format="M/dd/yy h:mm a" [value]="dateParser(data.startTime || data.StartTime)">
@@ -36,22 +30,32 @@
             </td>
           </tr>
           <tr>
-            <td class="e-textlabel">To</td>
+            <td class="e-textlabel">A</td>
             <td colspan="4">
               <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
                                   [value]='dateParser(data.endTime || data.EndTime)'></ejs-datetimepicker>
             </td>
           </tr>
           <tr>
+            <td class="e-textlabel">Couleur de votre séance</td>
+            <td colspan="4">
+              <input ejs-colorpicker id="CategoryColor" class="e-field" data-name="CategoryColor"
+                     value="{{data.CategoryColor}}" type='color'
+                     cssClass="e-hide-palette" mode="Palette" [inline]="true" [showButtons]="false" [modeSwitcher]="false"/>
+            </td>
+          </tr>
+          <tr>
           <tr>
             <td colspan="4">
-              <div id='RecurrenceEditor'></div>
+              <div>
+                <ejs-recurrenceeditor #recObject [value]='data.RecurrenceRule' id="RecurrenceRule" class="e-field" data-name="RecurrenceRule" (change)="onChange($event)"></ejs-recurrenceeditor>
+              </div>
             </td>
           </tr>
           <tr>
             <td class="e-textlabel">Description</td>
             <td colspan="4">
-              <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+              <textarea id="Description" class="e-field e-input" name="Description" data-name="Description" value="{{data.Description}}" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
             </td>
           </tr>
           </tbody>

@@ -12,6 +12,7 @@ export class Seance{
   description : string;
   etat : string;
   niveau : string;
+  couleur : string;
   groupes: Groupes;
   prof: Prof
 }

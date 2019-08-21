@@ -20,6 +20,7 @@ public class Seance {
     // if it is a one day or repetitive event
     private String etat;
     private String niveau;
+    private String couleur;
 
     @ManyToOne
     @JsonIgnoreProperties("seanceList")
@@ -137,6 +138,14 @@ public class Seance {
 
     public void setFeedbackList(List<Feedback> feedbackList) {
         this.feedbackList = feedbackList;
+    }
+
+    public String getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
     }
 
     public Seance() {
