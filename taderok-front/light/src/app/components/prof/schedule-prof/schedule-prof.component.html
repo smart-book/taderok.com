@@ -58,6 +58,11 @@
               <textarea id="Description" class="e-field e-input" name="Description" data-name="Description" value="{{data.Description}}" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
             </td>
           </tr>
+          <tr *ngIf="data.Id != undefined">
+            <td class="e-textlabel">Plus de détails</td>
+            <td colspan="4"> <a [routerLink]="['/prof/seance/details', data.Id]" >Voir plus</a>
+            </td>
+          </tr>
           </tbody>
         </table>
       </ng-template>

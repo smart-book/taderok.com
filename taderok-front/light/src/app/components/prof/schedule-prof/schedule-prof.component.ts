@@ -178,9 +178,6 @@ export class ScheduleProfComponent implements OnInit {
     }
   }
 
-  public paletteOnChange(args: ColorPickerEventArgs): void {
-    (this.splitBtn.element.querySelector(".e-font-icon") as HTMLElement).style.borderBottomColor = args.currentValue.rgba;
-  }
 
 }
 
