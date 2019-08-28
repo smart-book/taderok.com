@@ -10,6 +10,7 @@ declare const $: any;
 })
 export class ListeSeancesProfComponent implements OnInit {
 
+  searchText;
   listeSeance: Seance[];
   constructor(private seanceService: SeanceService) { }
 

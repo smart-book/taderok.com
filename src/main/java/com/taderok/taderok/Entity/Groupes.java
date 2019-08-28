@@ -11,7 +11,7 @@ public class Groupes {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String nom;
-    @OneToMany(mappedBy = "groupes")
+    @OneToMany(mappedBy = "groupes", cascade = {CascadeType.REMOVE})
     @JsonIgnoreProperties("groupes")
     private List<Seance> seanceList;
     @ManyToMany
@@ -59,6 +59,16 @@ public class Groupes {
     }
 
     public void setGroupeChatList(List<GroupeChat> groupeChatList) {
+        this.groupeChatList = groupeChatList;
+    }
+
+    public Groupes() {
+    }
+
+    public Groupes(String nom, List<Seance> seanceList, List<Etudiant> etudiantList, List<GroupeChat> groupeChatList) {
+        this.nom = nom;
+        this.seanceList = seanceList;
+        this.etudiantList = etudiantList;
         this.groupeChatList = groupeChatList;
     }
 }

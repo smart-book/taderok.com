@@ -12,6 +12,7 @@ import { DragDropDirectiveDirective } from './drag-drop-directive.directive';
 import {NgxDropzoneModule} from "ngx-dropzone";
 import {UploaderModule} from "@syncfusion/ej2-angular-inputs";
 import { ShowAnnonceComponent } from './show-annonce/show-annonce.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [AddAnnonceComponent, ListAnnonceComponent, PhotosAnnonceComponent, DragDropDirectiveDirective, DragDropDirectiveDirective, ShowAnnonceComponent],
@@ -22,7 +23,8 @@ import { ShowAnnonceComponent } from './show-annonce/show-annonce.component';
     FormsModule,
     DropzoneModule,
     NgxDropzoneModule,
-    UploaderModule
+    UploaderModule,
+    Ng2SearchPipeModule
   ]
 })
 export class AnnonceModule { }

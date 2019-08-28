@@ -55,8 +55,8 @@ public class QuizController {
         quizProfService.addProposition(proposition, id);
     }
     @RequestMapping(method = RequestMethod.POST, value = "/{id}/addbr")
-    public void addBR(@RequestBody BonneReponses br, @PathVariable int id){
-        quizProfService.addBR(br, id);
+    public BonneReponses addBR(@RequestBody BonneReponses br, @PathVariable int id){
+        return quizProfService.addBR(br, id);
     }
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/allprop")
     public List<Proposition> getAllPropositions(@PathVariable int id){
@@ -90,5 +90,10 @@ public class QuizController {
     @RequestMapping("/{id}/validatequiz")
     public void validateQuiz(@PathVariable int id){
         quizProfService.validateQuiz(id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}/deletebr")
+    public void deleteBR(@PathVariable int id){
+        quizProfService.deleteBR(id);
     }
 }

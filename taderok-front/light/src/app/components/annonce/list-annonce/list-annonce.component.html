@@ -29,29 +29,29 @@
                 <div class="categories">
                   <ul>
                     <li class="active">
-                      <a data-filter="*">All Categories</a>
+                      <a data-filter="*">Toutes les categories</a>
                     </li>
                     <li>
-                      <a data-filter=".web-design">Web Design</a>
+                      <a data-filter=".Ventes">Ventes</a>
                     </li>
                     <li>
-                      <a data-filter=".apps">Apps</a>
+                      <a data-filter=".Offres">Offres</a>
                     </li>
                     <li>
-                      <a data-filter=".psd">PSD</a>
+                      <a data-filter=".Dons">Dons</a>
                     </li>
                   </ul>
                 </div>
                 <!-- ======= Portfolio items ===-->
                 <div class="projects-container scrollimation in">
                   <div class="row">
-                    <article class="col-md-4 col-sm-6 portfolio-item apps">
-                      <div class="portfolio-thumb in">
-                        <a href="#" class="main-link">
-                          <img class="img-responsive img-center"
-                               src="assets/images/posts/post5.jpg" alt="">
-                          <span class="project-title">Title 2</span>
-                          <span class="overlay-mask"></span>
+                    <article *ngFor="let annonce of ListAnnonce " class="col-md-4 col-sm-6 portfolio-item {{annonce.categorie}}">
+                    <div class="portfolio-thumb in"  style="box-shadow: 0 2px 8px rgba(202, 200, 200, 0.85)">
+                        <a [routerLink]="['/annonce/show/', annonce.id]" class="main-link">
+                          <img class="img-responsive img-center" src="assets/images/posts/post5.jpg" alt="">
+                          <span class="project-title">{{annonce.titre}}<br>
+                          {{annonce.prix}} DT</span>
+                          <span class="overlay-mask" style="background-color: #0000009e"></span>
                         </a>
                         <a class="link centered" href=""><i class="fa fa-eye fa-fw"></i></a>
                       </div>

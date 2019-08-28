@@ -4,6 +4,7 @@ import {Proposition} from "../../../../models/Proposition";
 import {Quiz} from "../../../../models/quiz";
 import {Question} from "../../../../models/Question";
 import {BonneReponses} from "../../../../models/BonneReponses";
+import {__await} from "tslib";
 
 @Component({
   selector: 'app-ajouter-quiz',
@@ -43,19 +44,37 @@ export class AjouterQuizComponent implements OnInit {
     this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
   }
 
-  addProposition(proposition, questionid) {
-      this.quizService.addProposition(proposition, questionid).subscribe(() => console.log('proposition ajouté'));
+  async addProposition(proposition, questionid) {
+    await this.quizService.addPropositionAsync(proposition, questionid).then(()=>console.log('prop aadded'));
     proposition.nom='';
-    this.quizService.getAllPropositions(questionid).subscribe(data => {this.propositions=data;})
+    this.propositions= await this.quizService.getAllPropositionsAsync(questionid);
   }
-  deleteProposition(id, quizid, questionid) {
-    this.quizService.deleteProposition(id).subscribe(() => console.log('supprimé'));
-    this.quizService.getAllPropositions(questionid).subscribe(data => {this.propositions=data;})
+  async deleteProposition(id, quizid, questionid) {
+    await this.quizService.deletePropositionAsync(id).then(()=>console.log('propo deleted'));
+    this.propositions= await this.quizService.getAllPropositionsAsync(questionid);
+  }
+  async deletePropositionlist(id, quizid) {
+    await this.quizService.deletePropositionAsync(id).then(()=>console.log('propo deleted'));
     this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
   }
 
-  addBR(b, idquestion){
-    this.quizService.addBR(b,idquestion).subscribe(data=>console.log(data));
+  async deleteBR(id,quizid){
+    await this.quizService.deleteBR(id).then(()=>console.log(''))
+    this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
+  }
+
+  async addBR(p, idquestion){
+    this.br.nom = p;
+    console.log(this.br);
+    console.log(p);
+    await this.quizService.addBR(this.br,idquestion).then(()=>console.log('br ajouté'));
+  }
+  async addBRlist(p, idquestion, quizid){
+    this.br.nom = p;
+    console.log(this.br);
+    console.log(p);
+    await this.quizService.addBR(this.br,idquestion).then(()=>console.log('br ajoutés'));
+    this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
   }
   newQuestion(quizid){
     setTimeout(()=>{
@@ -66,20 +85,23 @@ export class AjouterQuizComponent implements OnInit {
       this.questionadded=null;
   })
   }
-  deleteQuestion(questionid, quizid){
-    setTimeout(()=>{
-      this.quizService.deleteQuestion(questionid).subscribe(()=>console.log('question supprimé!'));
+  async deleteQuestion(questionid, quizid){
+      await this.quizService.deleteQuestionAsync(questionid).then(()=>console.log('question deleted'))
       this.quizService.getAllQuestions(quizid).subscribe(data=>{this.questions=data});
       this.questionadded=null;
       this.propositions=null;
       this.question.question='';
-    })
   }
 
   updateQuiz(id, quiz){
     this.quizService.updateQuiz(id, quiz).subscribe(data=>{this.quiz=data});
+    this.quizService.getAllQuestions(quiz).subscribe(data=>{this.questions=data});
   }
   updateQuestion(id, question){
-    this.quizService.updateQuestion(id, question).subscribe(data=>{this.question=data});
+    setTimeout(()=>{
+      this.quizService.updateQuestion(id, question).subscribe(data=>{this.question=data});
+      this.question.question=''
+    })
   }
+
 }

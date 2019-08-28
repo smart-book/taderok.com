@@ -49,14 +49,17 @@ import {CdkTableModule} from "@angular/cdk/table";
 import { ListeSeancesComponent } from './seances/liste-seances/liste-seances.component';
 import { SeanceDetailsComponent } from './seances/seance-details/seance-details.component';
 import {AddquizComponent} from "./quiz/addquiz/addquiz/addquiz.component";
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MesSeancesComponent } from './seances/mes-seances/mes-seances.component';
+import { SeanceEnCoursComponent } from './seances/seance-en-cours/seance-en-cours.component';
 
 
 @NgModule({
 
-  declarations: [AjouterComponent,AddquizComponent, ListQuizComponent,ListquizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent],
+  declarations: [AjouterComponent,AddquizComponent, ListQuizComponent,ListquizComponent, PasserQuizComponent, ListeSeancesComponent, SeanceDetailsComponent, MesSeancesComponent, SeanceEnCoursComponent],
 
   imports: [
+    Ng2SearchPipeModule,
     ArchwizardModule,
     CommonModule,
     EtudiantRoutingModule,

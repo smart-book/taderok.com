@@ -19,6 +19,8 @@ public class Seance {
     private int duree;
     // if it is a one day or repetitive event
     private String etat;
+    private String niveau;
+    private String couleur;
 
     @ManyToOne
     @JsonIgnoreProperties("seanceList")
@@ -88,5 +90,75 @@ public class Seance {
 
     public void setGroupes(Groupes groupes) {
         this.groupes = groupes;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public String getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
+    }
+
+    public List<Feedback> getFeedbackList() {
+        return feedbackList;
+    }
+
+    public void setFeedbackList(List<Feedback> feedbackList) {
+        this.feedbackList = feedbackList;
+    }
+
+    public String getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
+    }
+
+    public Seance() {
+    }
+
+    public Seance(Date date_debut, Date date_fin, String matiere, String titre, String description, int duree, String etat, String niveau) {
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.matiere = matiere;
+        this.titre = titre;
+        this.description = description;
+        this.duree = duree;
+        this.etat = etat;
+        this.niveau = niveau;
     }
 }

@@ -80,7 +80,7 @@ import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 
 import { DropDownListAllModule, MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
-import { MaskedTextBoxModule, UploaderAllModule } from '@syncfusion/ej2-angular-inputs';
+import { MaskedTextBoxModule, UploaderAllModule, ColorPickerModule } from '@syncfusion/ej2-angular-inputs';
 
 import { ToolbarAllModule, ContextMenuAllModule } from '@syncfusion/ej2-angular-navigations';
 
@@ -92,19 +92,19 @@ import { DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule } fro
 
 import { NumericTextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
 
-import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-angular-schedule';
+import { ScheduleAllModule, RecurrenceEditorAllModule, RecurrenceEditorModule  } from '@syncfusion/ej2-angular-schedule';
 
 import { ArchiverRessourceComponent } from './ressource/archiver-ressource/archiver-ressource.component';
 import {AjouterRessourceSeanceComponent} from './ressource/ajouter-ressource-seance/ajouter-ressource-seance.component';
 import { SeanceDetailsComponent } from './seance/seance-details/seance-details.component';
+import { MesSeancesComponent } from './seance/mes-seances/mes-seances.component';
+import { SeanceEnCoursComponent } from './seance/seance-en-cours/seance-en-cours.component';
 
-
-
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [AjouterComponent, AjouterComponentGroupe, AjouterComponentSeance, ListSeanceComponent, ListGroupeComponent, AjouterRessourceComponent, AfficherRessourceComponent,AjouterComponent, AjouterComponentGroupe,AjouterComponentSeance, ListerComponent ,ListQuizComponent,AjouterQuizComponent,CalendarProfComponent,
-    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent, SeanceDetailsComponent],
+    ListFeedbackComponent, ScheduleProfComponent, ListeSeancesProfComponent, ArchiverRessourceComponent, AjouterRessourceSeanceComponent, SeanceDetailsComponent, MesSeancesComponent, SeanceEnCoursComponent],
 
 
 
@@ -170,6 +170,7 @@ import { SeanceDetailsComponent } from './seance/seance-details/seance-details.c
     Ng2SmartTableModule,
     ScheduleAllModule,
     RecurrenceEditorAllModule,
+    RecurrenceEditorModule,
     NumericTextBoxAllModule,
     DatePickerAllModule,
     TimePickerAllModule,
@@ -182,7 +183,9 @@ import { SeanceDetailsComponent } from './seance/seance-details/seance-details.c
     UploaderAllModule,
     MultiSelectAllModule,
     TreeViewModule,
-    ButtonAllModule
+    ButtonAllModule,
+    ColorPickerModule,
+    Ng2SearchPipeModule
   ]
 })
 

@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ListReclamationsComponent } from './Reclamation/list-reclamations/list-reclamations.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ReclamationsTraiteesComponent } from './Reclamation/reclamations-traitees/reclamations-traitees.component';
-import { AffichageReclamationComponent } from './Reclamation/affichage-reclamation/affichage-reclamation.component';
+import { AfficherReclamationComponent } from './Reclamation/affichage-reclamation/affichage-reclamation.component';
 
 import {
   MatAutocompleteModule,
@@ -55,7 +55,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
 import {CdkTableModule} from "@angular/cdk/table";
 
 @NgModule({
-  declarations: [ListReclamationsComponent, ReclamationsTraiteesComponent, AffichageReclamationComponent],
+  declarations: [ListReclamationsComponent, ReclamationsTraiteesComponent, AfficherReclamationComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

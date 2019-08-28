@@ -5,43 +5,62 @@
   <div class="col-lg-9 content-wrapper">
     <ejs-schedule #scheduleObj width='100%' height='650px' [selectedDate]="selectedDate" [eventSettings]="eventSettings"
                   [currentView]="currentView" (eventRendered)="oneventRendered($event)"
-                  (popupOpen)='onPopupOpen($event)'>
+                  (actionBegin)="onActionBegin($event)" [showQuickInfo]="showQuickInfo">
       <e-views>
         <e-view option="Day"></e-view>
         <e-view option="Week"></e-view>
         <e-view option="Month"></e-view>
+        <e-view option="Agenda"></e-view>
       </e-views>
-      <ng-template #editorTemplate>
-        <table class="custom-event-editor" width="100%" cellpadding="5">
+      <ng-template #editorTemplate let-data>
+        <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">
           <tbody>
           <tr>
-            <td class="e-textlabel">Summary</td>
+            <td class="e-textlabel">Titre</td>
             <td colspan="4">
-              <input id="Subject" [(ngModel)]="seance.titre" class="e-field e-input" type="text" value="" name="Subject" style="width: 100%" />
+              <input id="Subject" class="e-field e-input" type="text"  value="{{data.Subject}}"  name="Subject" style="width: 100%" />
             </td>
           </tr>
           <tr>
-            <td class="e-textlabel">Status</td>
+            <td class="e-textlabel">De</td>
             <td colspan="4">
-              <input type="text" id="EventType" name="EventType" class="e-field" style="width: 100%" />
+              <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"
+                                  format="M/dd/yy h:mm a" [value]="dateParser(data.startTime || data.StartTime)">
+              </ejs-datetimepicker>
             </td>
           </tr>
           <tr>
-            <td class="e-textlabel">From</td>
+            <td class="e-textlabel">A</td>
             <td colspan="4">
-              <input id="StartTime" class="e-field" type="text" name="StartTime" [(ngModel)]="seance.date_debut" />
+              <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                                  [value]='dateParser(data.endTime || data.EndTime)'></ejs-datetimepicker>
             </td>
           </tr>
           <tr>
-            <td class="e-textlabel">To</td>
+            <td class="e-textlabel">Couleur de votre séance</td>
             <td colspan="4">
-              <input id="EndTime" class="e-field" type="text" name="EndTime" />
+              <input ejs-colorpicker id="CategoryColor" class="e-field" data-name="CategoryColor"
+                     value="{{data.CategoryColor}}" type='color'
+                     cssClass="e-hide-palette" mode="Palette" [inline]="true" [showButtons]="false" [modeSwitcher]="false"/>
             </td>
           </tr>
           <tr>
-            <td class="e-textlabel">Reason</td>
+          <tr>
             <td colspan="4">
-              <textarea id="Description" class="e-field e-input" name="Description" [(ngModel)]="seance.description" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+              <div>
+                <ejs-recurrenceeditor #recObject [value]='data.RecurrenceRule' id="RecurrenceRule" class="e-field" data-name="RecurrenceRule" (change)="onChange($event)"></ejs-recurrenceeditor>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="e-textlabel">Description</td>
+            <td colspan="4">
+              <textarea id="Description" class="e-field e-input" name="Description" data-name="Description" value="{{data.Description}}" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+            </td>
+          </tr>
+          <tr *ngIf="data.Id != undefined">
+            <td class="e-textlabel">Plus de détails</td>
+            <td colspan="4"> <a [routerLink]="['/prof/seance/details', data.Id]" >Voir plus</a>
             </td>
           </tr>
           </tbody>

@@ -23,3 +23,4 @@ describe('ForumComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
