@@ -1,16 +1,13 @@
 
-
-
 <section class="content">
 <div class="row clearfix">
   <!-- Customer Review -->
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="position: sticky; position: -webkit-sticky;">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
     <div class="card">
       <div class="header">
         <h2>
           <strong>Publication</strong> details</h2>
       </div>
-      <div class="body">
         <div class="review-block">
           <div class="row">
             <div class="review-img">
@@ -22,47 +19,20 @@
               </h6>
             <br>
               <h6 _ngcontent-gdg-c3="" class="b-b-primary text-primary" style="color: #0f74a8">{{forum.titre}}</h6>
-              <p class="m-t-15 m-b-15 text-muted">{{forum.description}}</p>
-              <a href="#!">
-                <i class="material-icons m-r-10">thumb_up</i>
-              </a>
-              <a href="#!">
-                <i class="material-icons m-r-10 col-red">thumb_down</i>
-              </a>
+              <p class="m-t-15 m-b-15 text-muted"><b>Description</b>: {{forum.description}}</p>
+              <p class="m-t-15 m-b-15 text-muted">Matiére: {{forum.matiere}}</p>
+              <p class="m-t-15 m-b-15 text-muted">Niveau: {{forum.niveau}}</p>
+
             </div>
           </div>
-          <div class="text-center  m-b-5">
-            <a href="#!" class="b-b-primary text-primary">View all Customer Reviews</a>
-          </div>
         </div>
-      </div>
     </div>
   </div>
-  <!-- #END# Customer Review -->
-  <div class="col-md-4 col-sm-12 col-12" style="position: sticky;position: -webkit-sticky;">
+  <div class="col-md-4 col-sm-12 col-12" >
     <div class="card">
       <div class="header">
         <h2>
-          <strong>Latest</strong> posts </h2>
-        <ul class="header-dropdown m-r--5">
-          <li class="dropdown">
-            <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
-               role="button" aria-haspopup="true" aria-expanded="false">
-              <i class="material-icons">more_vert</i>
-            </a>
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="#" onClick="return false;">Action</a>
-              </li>
-              <li>
-                <a href="#" onClick="return false;">Another action</a>
-              </li>
-              <li>
-                <a href="#" onClick="return false;">Something else here</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+          <strong>Publications</strong> récentes</h2>
       </div>
       <div class="body">
         <div class="card-block">
@@ -84,16 +54,15 @@
 
           </div>
           <div class="text-center">
-            <a href="#!" class="b-b-primary text-primary">View All Posts</a>
+            <a routerLink="/forum/list" class="b-b-primary text-primary">Voir plus</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+  <!-- #END# Customer Review -->
   <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-    <div class="card"  style="margin-top: -228px;">
+    <div class="card"  >
       <div class="header">
         <ul class="header-dropdown m-r--5">
           <li class="dropdown">
@@ -135,7 +104,7 @@
           <hr>
           <div class="form-group">
             <div class="form-line">
-              <input type="text" class="form-control"  id="textarea1" [(ngModel)]="commentaire.contenu" placeholder="Enter text here.." />
+              <input type="text" class="form-control"  id="textarea1" [(ngModel)]="contenu" placeholder="Enter text here.." />
               <br>
               <button
                 type="button"
@@ -158,6 +127,8 @@
       </div>
     </div>
   </div>
+
+</div>
 
 </section>
 

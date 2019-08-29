@@ -1,14 +1,12 @@
-
 <section class="content">
 
 
   <div class="container-fluid">
 
-    <div class="row clearfix" >
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7" style="bottom: 24px;"> <br><br>
+    <div class="row clearfix">
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7" style="bottom: 24px;"><br><br>
 
       </div>
-
 
 
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5" style="
@@ -16,7 +14,7 @@
     right: 0px;
     border-right-width: 12px;
     height: 1379px;position: sticky;position: -webkit-sticky;top: 78px; padding: 5px">
-        <div class="card" >
+        <div class="card">
           <div class="header">
 
 
@@ -39,15 +37,14 @@
                 <option type="text">5éme année</option>
               </select>
               <br>
-             </div>
-
+            </div>
 
 
             <hr>
             <h2>
               <br>
 
-              <strong>Latest</strong> Posts</h2>
+              <strong>Derniéres</strong> Status</h2>
 
             <ul class="header-dropdown m-r--5">
               <li class="dropdown">
@@ -90,56 +87,43 @@
               </div>
 
 
-
               <div class="text-center">
-                <a href="#!" class="b-b-primary text-primary">View All Posts</a>
+                <a href="/forum/list" class="b-b-primary text-primary">Voir plus</a>
               </div>
             </div>
           </div>
         </div>
 
 
+      </div>
 
 
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7"style="bottom: 793px;" data-toggle="modal"
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7" style="bottom: 793px;" data-toggle="modal"
            data-target="#exampleModal" style="bottom: 1367px;">
-        <div class="card" style="height: 175px;">
-          <div class="chat"  style="height: 11px;">
-            <div class="chat-header clearfix" style="background-color: #E9EBEE;max-height: 15px;border-top-left-radius: 0.55rem;">
+        <div class="card" data-toggle="modal"
+             data-target="#exampleModal" style="height: 175px;">
+          <div class="chat" style="height: 11px;">
+            <div class="chat-header clearfix"
+                 style="background-color: #E9EBEE;max-height: 15px;border-top-left-radius: 0.55rem;">
               <h6 style=" margin-top: -7px;">Créer une publication</h6>
 
             </div>
-            <div class="chat-header clearfix" >
-            <img src="assets/images/upload/uploadUser/{{user.photo}}" alt="">
-            <div class="chat-about">
-              <p class="text-muted " style="margin-top: 10px;margin-left: 28px;">Exprimez-vous , {{user.nom}} {{user.prenom}} ... </p>
-            </div>
+            <div class="chat-header clearfix">
+              <img src="assets/images/upload/uploadUser/{{user.photo}}" alt="">
+              <div class="chat-about">
+                <p class="text-muted" style="margin-top: 10px;margin-left: 28px;">Exprimez-vous , {{user.nom}}
+                  {{user.prenom}} ... </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
 
-
-
-
       <!-- affichage-->
 
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7" style="bottom: 1364px;" *ngFor="let publication of ListPublications  | filter:niveauChoisi">
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-7" style="bottom: 1364px;"
+           *ngFor="let publication of ListPublications  | filter:niveauChoisi">
         <div class="card" style="height: 330px; ">
           <div class="chat">
             <div class="chat-header clearfix">
@@ -147,32 +131,35 @@
               <div class="chat-about">
                 <div class="chat-with">{{publication.user.prenom}} {{publication.user.nom}}</div>
                 <div class="chat-num-messages">{{publication.date | date: 'yyyy-MM-dd \' à \'hh:mm a'}}</div>
-                  <small _ngcontent-gdg-c3="" class="text-muted">{{publication.matiere}} / {{publication.niveau}}</small>
+                <small _ngcontent-gdg-c3="" class="text-muted">{{publication.matiere}} / {{publication.niveau}}</small>
               </div>
             </div>
             <div class="chat-history" id="chat-conversation">
               <ul>
                 <li class="clearfix">
-                  <p _ngcontent-gdg-c3="" class="text-default"><a [routerLink]="['/forum/details', publication.id]">{{publication.titre}}</a></p>
+                  <p _ngcontent-gdg-c3="" class="text-default"><a [routerLink]="['/forum/details', publication.id]">{{publication.titre}}</a>
+                  </p>
                   <p _ngcontent-gdg-c3="" class="text-default">{{publication.description}}</p>
-                 </li>
+                </li>
               </ul>
+              <hr>
             </div>
             <div class="chat-message clearfix">
               <div class="form-group">
                 <div class="form-line">
-                  <input type="text" class="form-control" placeholder="Enter text here.."  />
+                  <input type="text" class="form-control" placeholder="Enter text here.."/>
                 </div>
               </div>
               <div class="chat-upload">
-                <a href="#">
-                <i class="material-icons">attach_file</i>
+                <a >
+
                 </a>
-                <a href="#">
-                  <i class="material-icons">insert_emoticon</i>
+                <a >
+
                 </a>
 
-                 <i _ngcontent-fnf-c2="" class="material-icons" data-toggle="modal" [attr.data-target]="'#exampleModal' + publication.id"
+                <i _ngcontent-fnf-c2="" class="material-icons" data-toggle="modal"
+                   [attr.data-target]="'#exampleModal' + publication.id"
                    (click)="afficherListeDesCommentaires(publication.id)" style="color:#007bff;height: 100px">chat</i>
 
 
@@ -196,7 +183,8 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn-hover btn-border-radius color-4"
-                                data-dismiss="modal">Annuler</button>
+                                data-dismiss="modal">Annuler
+                        </button>
 
                       </div>
                     </div>
@@ -210,13 +198,10 @@
       </div>
 
 
-
     </div>
 
 
   </div>
-
-
 
 
 </section>
@@ -233,15 +218,14 @@
 <!-- YAMLI CODE END -->
 
 
-
-
-
-
-
-
 <style>
-  #cke_1_contents{height: 153px}
-  .cke_contents.cke_reset{height: 153px}
+  #cke_1_contents {
+    height: 153px
+  }
+
+  .cke_contents.cke_reset {
+    height: 153px
+  }
 
 </style>
 <section class="content">
@@ -256,7 +240,7 @@
             <hr>-->
     <!-- Modal d'ajout de publication : exampleModal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-         aria-labelledby="formModal" aria-hidden="true" >
+         aria-labelledby="formModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-radius: 1.3rem;">
           <div class="modal-header">
@@ -279,7 +263,8 @@
               <label>Description</label>
               <div class="form-group">
                 <div class="form-line">
-                  <input id="description" class="form-control" type="text" name="description" [(ngModel)]="forum.description" placeholder="Entrer la description de votre réclamation">
+                  <input id="description" class="form-control" type="text" name="description"
+                         [(ngModel)]="forum.description" placeholder="Entrer la description de votre réclamation">
                 </div>
               </div>
 
@@ -319,9 +304,12 @@
             </swal>
           </div>
           <div class="modal-footer">
-            <button type="button" [swal]="deleteSwal" (click)="ajouterStatus()" class="btn-hover btn-border-radius color-1">Ajouter</button>
+            <button type="button" [swal]="deleteSwal" (click)="ajouterStatus()"
+                    class="btn-hover btn-border-radius color-1">Ajouter
+            </button>
             <button type="button" class="btn-hover btn-border-radius color-4"
-                    data-dismiss="modal">Annuler</button>
+                    data-dismiss="modal">Annuler
+            </button>
 
           </div>
         </div>
@@ -338,7 +326,8 @@
         <div class="card" style="position: sticky; position: -webkit-sticky; top: 78px; padding: 5px">
           <div class="header">
             <button type="button" class="btn-hover btn-border-radius color-8 " data-toggle="modal"
-                    data-target="#exampleModal">Ajouter une publication</button>
+                    data-target="#exampleModal">Ajouter une publication
+            </button>
             <hr>
             <h2>
               <strong>Filter</strong></h2>
@@ -372,14 +361,15 @@
             <div class="review-block">
               <div class="row" *ngFor="let publication of ListPublications  | filter:niveauChoisi">
                 <div class="review-img">
-                  <img style="width: 50px; height: 50px" src="assets/images/upload/uploadUser/{{publication.user.photo}}" alt="">
+                  <img style="width: 50px; height: 50px"
+                       src="assets/images/upload/uploadUser/{{publication.user.photo}}" alt="">
                 </div>
                 <div class="col">
                   <h6 class="m-b-15">{{publication.user.prenom}} {{publication.user.nom}}
                     <span class="float-right m-r-10 text-muted"> {{publication.date | date: 'yyyy-MM-dd \' à \'hh:mm a'}}
                                         </span>
                   </h6>
-                  <h6 class="m-b-15" ><a [routerLink]="['/forum/details', publication.id]">{{publication.titre}}</a>
+                  <h6 class="m-b-15"><a [routerLink]="['/forum/details', publication.id]">{{publication.titre}}</a>
                   </h6>
                   <p class="m-t-15 m-b-15">Description :{{publication.description}}
                   </p>
@@ -412,7 +402,8 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn-hover btn-border-radius color-4"
-                                  data-dismiss="modal">Annuler</button>
+                                  data-dismiss="modal">Annuler
+                          </button>
 
                         </div>
                       </div>

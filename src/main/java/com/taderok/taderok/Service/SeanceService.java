@@ -71,6 +71,8 @@ public class SeanceService {
         seanc.setNiveau(seance.getNiveau());
         seanc.setDate_debut(seance.getDate_debut());
         seanc.setDate_fin(seance.getDate_fin());
+        seanc.setCouleur(seance.getCouleur());
+        seanc.setEtat(seance.getEtat());
         //seanc.setGroupes(seanc.getGroupes());
 
         seanceRepository.save(seanc);

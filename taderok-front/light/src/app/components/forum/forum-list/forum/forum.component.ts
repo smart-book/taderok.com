@@ -40,7 +40,6 @@ export class ForumComponent implements OnInit {
     console.log(this.user);
     //this.userParse = this.user.user ;
     //console.log(this.userParse);
-    this.startScript();
   }
 
   RedirectForum()
@@ -83,19 +82,6 @@ export class ForumComponent implements OnInit {
 
     console.log(this.ListPublicationsParNiveau);
 
-  }
-  async startScript() {
-    await this.dynamicScriptLoader.load('ckeditor').then( data => {
-      this.loadData();
-
-    }).catch(error => console.log(error));
-  }
-
-
-  private loadData(){
-    //CKEditor
-    CKEDITOR.replace('ckeditor');
-    CKEDITOR.config.height = 150;
   }
 
 
