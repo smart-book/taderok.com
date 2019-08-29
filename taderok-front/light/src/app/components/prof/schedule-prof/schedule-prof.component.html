@@ -27,7 +27,7 @@
               <tr>
                 <td class="e-textlabel">De</td>
                 <td colspan="4">
-                  <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"
+                  <ejs-datetimepicker locale="fr-CH" id="StartTime" class="e-field" data-name="StartTime"
                                       format="M/dd/yy h:mm a" [value]="dateParser(data.startTime || data.StartTime)">
                   </ejs-datetimepicker>
                 </td>
@@ -35,7 +35,7 @@
               <tr>
                 <td class="e-textlabel">A</td>
                 <td colspan="4">
-                  <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                  <ejs-datetimepicker locale="fr-CH" id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
                                       [value]='dateParser(data.endTime || data.EndTime)'></ejs-datetimepicker>
                 </td>
               </tr>
@@ -52,7 +52,7 @@
               <tr>
                 <td colspan="4">
                   <div>
-                    <ejs-recurrenceeditor #recObject [value]='data.RecurrenceRule' id="RecurrenceRule" class="e-field" data-name="RecurrenceRule" (change)="onChangeRecurrence($event)"></ejs-recurrenceeditor>
+                    <ejs-recurrenceeditor locale="fr-CH" #recObject [value]='data.RecurrenceRule' id="RecurrenceRule" class="e-field" data-name="RecurrenceRule" (change)="onChangeRecurrence($event)"></ejs-recurrenceeditor>
                   </div>
                 </td>
               </tr>

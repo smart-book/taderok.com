@@ -56,9 +56,11 @@ L10n.load({
       'week': 'Semaine',
       'month': 'Mois',
 
-      'Sunday': 'Dimanche'
+      'Sunday': 'Dimanche',
+      "repeat": "Répéter",
     },
-    "recurrenceeditor": {
+    'recurrenceeditor': {
+      'monday': 'lundi',
       "none": "None",
       "daily": "Tous les jours",
       "weekly": "Chaque semaine",
@@ -92,7 +94,7 @@ L10n.load({
       "summaryMonth": "month(s)",
       "summaryYear": "year(s)"
     }
-  }
+  },
 });
 
 @Component({
