@@ -29,11 +29,11 @@ export class AllUsersComponent implements OnInit {
     }, error => console.log(error));
   }
 
-  ajouterAmis(id) {
+ /* ajouterAmis(id) {
     console.log(this.profil);
   this.demandeAmis.receiver = id;
   this.demandeAmisService.ajouterAmi(this.demandeAmis).subscribe(data => {
     console.log(data);
   }, error => console.log(error) );
-  }
+  }*/
 }
