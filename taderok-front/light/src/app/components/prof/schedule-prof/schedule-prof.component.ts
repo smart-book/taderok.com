@@ -27,7 +27,7 @@ import {Groupes} from "../../../models/groupes";
 import Swal from "sweetalert2";
 declare const $: any;
 
-/*import { loadCldr} from '@syncfusion/ej2-base';
+import { loadCldr} from '@syncfusion/ej2-base';
 loadCldr(
   require('cldr-data/supplemental/numberingSystems.json'),
   require('cldr-data/main/fr-CH/ca-gregorian.json'),
@@ -40,9 +40,9 @@ import * as numbers from 'cldr-data/main/fr-CH/numbers.json';
 import * as timeZoneNames from 'cldr-data/main/fr-CH/timeZoneNames.json';
 
 loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
-*/
+
 L10n.load({
-  'en-US': {
+  'fr-CH': {
     'schedule': {
       'saveButton': 'Valider',
       'cancelButton': 'Fermer',
