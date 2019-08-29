@@ -17,7 +17,7 @@ export class ListQuizComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   dataSource: MatTableDataSource<Quiz>
-  displayedColumns = ['nom', 'nomProf','list'];
+  displayedColumns = ['nom', 'nomProf','progressbar','list'];
 
   value: string;
   timeLeft: number = 60;
@@ -84,9 +84,19 @@ export class ListQuizComponent implements OnInit {
     })
 
 
+
+
   }
+  beginQuiz() {
+
+    Swal.fire({
+      title: "Quiz will begin shortly",
+      type: "success",
+      timer: 5000
+    })
 
 
+  }
 
   startTimer() {
     this.interval = setInterval(() => {
@@ -97,7 +107,7 @@ export class ListQuizComponent implements OnInit {
         clearInterval(this.interval);
 
       }
-    },1000)
+    },5000)
   }
 
   getQuizId(row){

@@ -35,11 +35,6 @@ export class AjouterComponent implements OnInit {
 
   afficherReclamtion()
   {
-    /*this.reclamationService.AfficherReclamationUser().subscribe(data => {
-      console.log(data);
-      this.list = data;
-    }, error => console.log(error));
-     */
     this.router.navigate(['/components/lister']);
     window.location.reload();
   }

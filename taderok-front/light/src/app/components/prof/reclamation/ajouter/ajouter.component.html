@@ -7,7 +7,7 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                  aria-labelledby="formModal" aria-hidden="true">
               <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="modal-content" style="border-radius: 0.55rem;">
                   <div class="modal-header">
                     <h5 class="modal-title" style="padding-left: 150px" id="formModal">Nouvelle Réclamation </h5><br><br>
                     <button type="button" class="close" data-dismiss="modal"
@@ -29,7 +29,7 @@
                       <label>Description</label>
                         <div class="form-group">
                           <div class="form-line">
-                            <input class="form-control" type="text" name="description"  [(ngModel)]="reclamation.description" placeholder="Entrer la description de votre réclamation">
+                            <textarea class="form-control" type="text" name="description"  [(ngModel)]="reclamation.description" placeholder=" Veuillez entrer la description de votre réclamation ..."></textarea>
                           </div>
                       </div>
                     </form>
