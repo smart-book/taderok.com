@@ -13,9 +13,17 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import {UploaderModule} from "@syncfusion/ej2-angular-inputs";
 import { ShowAnnonceComponent } from './show-annonce/show-annonce.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ConnectedUserListAnnonceComponent } from './connected-user-list-annonce/connected-user-list-annonce.component';
+import {
+  MatButtonModule, MatFormFieldModule,
+  MatIconModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTableModule, MatTooltipModule,
+} from "@angular/material";
 
 @NgModule({
-  declarations: [AddAnnonceComponent, ListAnnonceComponent, PhotosAnnonceComponent, DragDropDirectiveDirective, DragDropDirectiveDirective, ShowAnnonceComponent],
+  declarations: [AddAnnonceComponent, ListAnnonceComponent, PhotosAnnonceComponent, DragDropDirectiveDirective, DragDropDirectiveDirective, ShowAnnonceComponent, ConnectedUserListAnnonceComponent],
   imports: [
     CommonModule,
     AnnonceRoutingModule,
@@ -24,7 +32,14 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     DropzoneModule,
     NgxDropzoneModule,
     UploaderModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatTableModule,
+    MatSortModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatFormFieldModule
   ]
 })
 export class AnnonceModule { }

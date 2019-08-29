@@ -39,11 +39,7 @@
               Nombre de groupe
               <a class="pull-right"></a>
             </li>
-
           </ul>
-          <div class="newLabelBtn">
-            <button type="button" class="btn btn-border-radius bg-purple waves-effect">New Label</button>
-          </div>
         </div>
       </div>
 
@@ -113,7 +109,12 @@
 
                 <div class="mat-elevation-z8">
                   <table class="table" mat-table [dataSource]="dataSource"  matSort >
-
+<div style="display: none">
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef >Id</th>
+                      <td mat-cell *matCellDef="let row" style="width: 50px"> {{row.id }}</td>
+                    </ng-container>
+</div>
                     <!-- image Column -->
                     <ng-container matColumnDef="image">
                       <th mat-header-cell *matHeaderCellDef >Image</th>
@@ -140,12 +141,57 @@
                     <ng-container matColumnDef="actions">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
                       <td mat-cell *matCellDef="let row">
-                        <button mat-icon-button matTooltip="Bloquer" class="iconbutton" color="primary">
+                        <button mat-icon-button matTooltip="Bloquer"  class="iconbutton" color="primary"  data-toggle="modal" [attr.data-target]="'#basicModal'+row.id">
                           <i class="fas fa-user-slash" aria-label="Edit"></i>
                         </button>
-                        <button mat-icon-button matTooltip="Supprimer" class="iconbutton" color="warn">
+                        <button mat-icon-button matTooltip="Supprimer" class="iconbutton" color="warn"  data-toggle="modal" [attr.data-target]="'#basicModal2'+row.id">
                           <mat-icon aria-label="Delete">delete</mat-icon>
                         </button>
+
+                      <div class="modal fade" [id]="'basicModal'+row.id" tabindex="-1" role="dialog"
+                           aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Bloquer un ami</h5>
+                              <button type="button" class="close" data-dismiss="modal"
+                                      aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Vous etes sur que vous voulais bloquer {{row.nom}} {{row.prenom}} ?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-info waves-effect" (click)="bloquerAmi(row.id)">Confirmer</button>
+                              <button type="button" class="btn btn-danger waves-effect"
+                                      data-dismiss="modal">Anuler</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal fade" [id]="'basicModal2'+row.id" tabindex="-1" role="dialog"
+                           aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">Supprimer un ami</h5>
+                              <button type="button" class="close" data-dismiss="modal"
+                                      aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Vous etes sur que vous voulais supprimer {{row.nom}} {{row.prenom}} ?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-info waves-effect" (click)="supprimerAmi(row.id)">Confirmer</button>
+                              <button type="button" class="btn btn-danger waves-effect"
+                                      data-dismiss="modal">Annuler</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       </td>
                     </ng-container>
 

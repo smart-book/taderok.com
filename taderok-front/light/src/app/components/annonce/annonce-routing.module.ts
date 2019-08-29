@@ -7,11 +7,16 @@ import {ListAnnonceComponent} from "./list-annonce/list-annonce.component";
 import {AddAnnonceComponent} from "./add-annonce/add-annonce.component";
 import {PhotosAnnonceComponent} from "./photos-annonce/photos-annonce.component";
 import {ShowAnnonceComponent} from "./show-annonce/show-annonce.component";
+import {ConnectedUserListAnnonceComponent} from "./connected-user-list-annonce/connected-user-list-annonce.component";
 
 const routes: Routes = [
   {
     path: 'list',
     component: ListAnnonceComponent
+  },
+  {
+    path: 'mesAnnonces',
+    component: ConnectedUserListAnnonceComponent
   },
   {
     path: 'add',

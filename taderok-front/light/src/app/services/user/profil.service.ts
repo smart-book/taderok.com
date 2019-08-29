@@ -20,6 +20,10 @@ export class ProfilService {
     return this.http.get<User>(`${this.baseUrl}` + `/user/`+id);
   }
 
+  async getUserAsync(id: string){
+    return await this.http.get<User>(`${this.baseUrl}` + `/user/`+id).toPromise();
+  }
+
   getFriends(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}` + `/demande/friends`);
   }

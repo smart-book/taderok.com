@@ -36,6 +36,11 @@ public class DemandeAmisController {
         demandeAmisService.accepterDemande(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/bloquer/{id}")
+    public void bloquer(@PathVariable long id){
+        demandeAmisService.bloquerDemande(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/refuser/{id}")
     public void refuser(@PathVariable long id){
         demandeAmisService.refuserDemande(id);

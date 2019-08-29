@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AnnonceServiceService} from "../../../services/annonce/annonce-service.service";
 import {Annonce} from "../../../models/Annonce";
+import {AnnoncePhoto} from "../../../models/AnnoncePhoto";
 declare const $: any;
 
 @Component({
@@ -11,14 +12,20 @@ declare const $: any;
 export class ListAnnonceComponent implements OnInit {
 
   ListAnnonce : Annonce[];
+  ListPhotoAnnonce : AnnoncePhoto[];
 
   constructor(private annonceService: AnnonceServiceService) { }
 
-  ngOnInit() {
-    this.annonceService.getAllAnnonce().subscribe(data=> {
-      console.log(data);
-      this.ListAnnonce = data;
-    }, error => console.log(error) );
+  async ngOnInit() {
+   this.ListAnnonce = await this.annonceService.getAllAnnonceAsync();
+
+    this.ListAnnonce.forEach((e)=>{
+      this.annonceService.getPhotosAnnonce(e.id).subscribe(data=> {
+        console.log(data);
+        this.ListPhotoAnnonce = data;
+        e.photo=this.ListPhotoAnnonce[0].path;
+      }, error => console.log(error) );
+    })
 
     $(function () {
       $('.categories a').click(function (e) {

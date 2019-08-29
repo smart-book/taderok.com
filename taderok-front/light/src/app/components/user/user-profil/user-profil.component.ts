@@ -21,59 +21,46 @@ export class UserProfilComponent implements OnInit {
   user:User;
   profil = JSON.parse(localStorage.getItem('user')).user;
   private demandeAmis: DemandeAmis = new DemandeAmis();
-  private demandeAmis2: DemandeAmis=null;
+  private demandeAmis2: DemandeAmis=new DemandeAmis();
   private relation:boolean=true;
 
-  ngOnInit() {
+  async ngOnInit() {
     this.id=this.route.snapshot.paramMap.get("id");
     this.id2=Number(this.id);
     if(this.profil.id===this.id2){
       this.router.navigateByUrl('/user/profil');
     }
     console.log(this.id2);
-    this.profilService.getUser(this.id).subscribe(data=> {
-      console.log(data);
-      this.user = data;
-      console.log(this.user.email);
-      this.demandeService.isFriend(this.user.email).subscribe(data=>{
-        console.log("aaaaaaaaaaaaaaaaaaaaaa")
-        console.log(data);
-        if(data===null){
-          this.relation=false;
-        }
-        else
-        this.demandeAmis2=data;
-      })
-    },error => console.log(error));
+
+    this.user = await this.profilService.getUserAsync(this.id);
+    this.demandeAmis2 = await this.demandeService.isFriend(this.user.email);
+    if (this.demandeAmis2 === null) {
+      this.relation = false;
+    }
+
 
   }
 
 
 
-  ajouterAmi(){
-    this.demandeAmis.receiver=this.user;
-    this.demandeService.ajouterAmi(this.demandeAmis).subscribe(data=>{
-      console.log(data)
-      $.notify("Publication ajoutée", "success");
-      location.reload();
-    })
+  async ajouterAmi() {
+    this.demandeAmis.receiver = this.user;
+    await this.demandeService.ajouterAmi(this.demandeAmis);
+    this.relation = true;
+    this.ngOnInit();
 
   }
 
 
-  supprimerAmi(id) {
-    this.demandeService.supprimerOuRefuserrAmi(id).subscribe(data=>{
-      console.log(data)
-      $.notify("Publication ajoutée", "success");
-      location.reload();
-    })
+  async supprimerAmi(id) {
+    await this.demandeService.supprimerOuRefuserrAmi(id);
+    this.relation = false;
+    this.ngOnInit();
   }
 
-  accepterAmi(id) {
-    this.demandeService.accepterAmi(id).subscribe(data=>{
-      console.log(data)
-      $.notify("Publication ajoutée", "success");
-      location.reload();
-    })
+  async accepterAmi(id) {
+    await this.demandeService.accepterAmi(id);
+    this.relation = true;
+    this.ngOnInit();
   }
 }

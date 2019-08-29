@@ -10,4 +10,5 @@ export class Annonce {
   user: User;
   archive:boolean;
   valide :boolean;
+  photo :string;
 }

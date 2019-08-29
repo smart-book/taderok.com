@@ -9,6 +9,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import {OptionsInput} from '@fullcalendar/core';
 import {AppComponent} from '../../../app.component';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog} from '@angular/material';
+import {DemandeAmisService} from "../../../services/user/demande-amis.service";
 declare const $: any;
 declare const jQuery: any;
 @Component({
@@ -20,7 +21,7 @@ declare const jQuery: any;
 
 
 export class ProfilComponent implements OnInit {
-  constructor(private appComponent: AppComponent, private profilService: LoginService, private modifierProfilService: ProfilService, private router: Router ) {}
+  constructor(private appComponent: AppComponent, private profilService: LoginService, private modifierProfilService: ProfilService,private demanderService: DemandeAmisService, private router: Router ) {}
   profil: User;
 
   @ViewChild('calendar', {static: true})
@@ -28,7 +29,7 @@ export class ProfilComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   calendarComponent: FullCalendarComponent;
   dataSource:MatTableDataSource<User>;
-  displayedColumns: string[] = ['image', 'friend','telephone', 'email','actions']
+  displayedColumns: string[] = ['id','image', 'friend','telephone', 'email','actions']
   value: string;
 
   options: OptionsInput;
@@ -39,7 +40,7 @@ export class ProfilComponent implements OnInit {
   friends : User[];
 
 
-  ngOnInit() {
+  async ngOnInit() {
     /*this.profilService.getConnectedUser().subscribe(data => {
       console.log(data);
       this.profil = data;
@@ -59,6 +60,7 @@ export class ProfilComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sortingDataAccessor = (item, property) => {
           switch(property) {
+            case 'id': return item.id;
             case 'friend': return item.nom && item.prenom;
             case 'telephone': return item.telephone;
             case 'email': return item.email;
@@ -225,5 +227,14 @@ updateProfilProf() {
 
   OnSearchClear(){
     this.value='';
+  }
+
+  async bloquerAmi(id){
+    await this.demanderService.bloquerAmi(id);
+    this.ngOnInit();
+  }
+  async supprimerAmi(id){
+    await this.demanderService.supprimerOuRefuserrAmi(id);
+    this.ngOnInit();
   }
 }

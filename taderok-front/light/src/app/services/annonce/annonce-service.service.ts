@@ -33,4 +33,12 @@ export class AnnonceServiceService {
   getAllAnnonce(): Observable<Annonce[]>{
     return this.http.get<Annonce[]>(`${this.baseUrl}`+`/findAll`);
   }
+
+  getAllConnectedAnnonce(): Observable<Annonce[]>{
+    return this.http.get<Annonce[]>(`${this.baseUrl}`+`/findAllConnected`);
+  }
+
+  async getAllAnnonceAsync() {
+    return await this.http.get<Annonce[]>(`${this.baseUrl}`+`/findAll`).toPromise();
+  }
 }

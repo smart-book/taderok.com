@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {DemandeAmis} from "../../models/DemandeAmis";
+import {Annonce} from "../../models/Annonce";
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,26 @@ export class DemandeAmisService {
   private baseUrl = 'http://localhost:8181/demande'
   constructor(private http: HttpClient) { }
 
-  ajouterAmi(da: DemandeAmis): Observable<Object>{
+  async ajouterAmi(da: DemandeAmis){
     console.log(da);
-    return this.http.post(`${this.baseUrl}`+`/add/`+da.receiver.id, da);
+    da.status="en attente";
+    return await this.http.post(`${this.baseUrl}`+`/add/`+da.receiver.id, da).toPromise();
   }
 
-  accepterAmi(id:number): Observable<DemandeAmis>{
-    return this.http.get<DemandeAmis>(`${this.baseUrl}`+`/accepter/`+id);
+
+  async accepterAmi(id:number){
+    return await this.http.get<DemandeAmis>(`${this.baseUrl}`+`/accepter/`+id).toPromise();
   }
 
-  supprimerOuRefuserrAmi(id:number): Observable<Object>{
-    return this.http.get(`${this.baseUrl}`+`/refuser/`+id);
+  async bloquerAmi(id:number){
+    return await this.http.get<DemandeAmis>(`${this.baseUrl}`+`/bloquer/`+id).toPromise();
   }
 
-  isFriend(id:string): Observable<DemandeAmis>{
-    return this.http.get<DemandeAmis>(`${this.baseUrl}`+`/isFriends/`+id);
+  async supprimerOuRefuserrAmi(id:number){
+    return await this.http.get(`${this.baseUrl}`+`/refuser/`+id).toPromise();
+  }
+
+  async isFriend(id:string){
+    return await this.http.get<DemandeAmis>(`${this.baseUrl}`+`/isFriends/`+id).toPromise();
   }
 }

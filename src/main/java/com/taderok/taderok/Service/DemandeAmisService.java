@@ -48,12 +48,25 @@ public class DemandeAmisService {
         demandeAmisRepository.save(demande);
     }
 
-    public void bloquerDemande(long id){
-        DemandeAmis demande=demandeAmisRepository.findById(id).orElse(null);
-        demande.setStatus("blocked");
+    public void bloquerDemande(long idReceiver){
+        User sender = userRepository.findById((long) AthenticationController.getConnectedUser().getUser().getId()).orElse(null);
+        User receiver = userRepository.findById(idReceiver).orElse(null);
+        DemandeAmis demande=demandeAmisRepository.findRelationBySenderAndReceiver(sender,receiver);
+        if(demande!=null){
+            demande.setStatus("blocked");
+            Date date = new Date();
+            demande.setDate(date);
+            demandeAmisRepository.save(demande);
+        }
+        else{
+        DemandeAmis da = new DemandeAmis();
+        da.setSender(sender);
+        da.setReceiver(receiver);
+        da.setStatus("blocked");
         Date date = new Date();
-        demande.setDate(date);
-        demandeAmisRepository.save(demande);
+        da.setDate(date);
+        demandeAmisRepository.save(da);
+        }
     }
 
     public void refuserDemande(long id){
