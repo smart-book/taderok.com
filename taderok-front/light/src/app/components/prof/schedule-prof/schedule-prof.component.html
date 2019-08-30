@@ -1,9 +1,9 @@
 <section class="content">
   <div class="container-fluid">
-    <div class="control-section">
-      <div class="col-lg-9 content-wrapper">
+
         <ejs-schedule #scheduleObj width='100%' height='650px' locale="fr-CH" [selectedDate]="selectedDate"
                       [eventSettings]="eventSettings"
+                      (popupOpen)='onPopupOpen($event)'
                       [currentView]="currentView" (eventRendered)="oneventRendered($event)"
                       (actionBegin)="onActionBegin($event)" [showQuickInfo]="showQuickInfo"
                       (dragStop)="onTreeDragStop($event)"
@@ -27,7 +27,7 @@
               <tr>
                 <td class="e-textlabel">De</td>
                 <td colspan="4">
-                  <ejs-datetimepicker locale="fr-CH" id="StartTime" class="e-field" data-name="StartTime"
+                  <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"
                                       format="M/dd/yy h:mm a" [value]="dateParser(data.startTime || data.StartTime)">
                   </ejs-datetimepicker>
                 </td>
@@ -35,10 +35,19 @@
               <tr>
                 <td class="e-textlabel">A</td>
                 <td colspan="4">
-                  <ejs-datetimepicker locale="fr-CH" id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                  <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
                                       [value]='dateParser(data.endTime || data.EndTime)'></ejs-datetimepicker>
                 </td>
               </tr>
+
+              <tr>
+                <td colspan="4">
+                  <div>
+                    <ejs-recurrenceeditor locale="fr-CH" #recObject [value]='data.RecurrenceRule' id="RecurrenceRule" class="e-field" data-name="RecurrenceRule" (change)="onChangeRecurrence($event)"></ejs-recurrenceeditor>
+                  </div>
+                </td>
+              </tr>
+
               <tr>
                 <td class="e-textlabel">Couleur de votre séance</td>
                 <td colspan="4">
@@ -49,13 +58,6 @@
                 </td>
               </tr>
               <tr>
-              <tr>
-                <td colspan="4">
-                  <div>
-                    <ejs-recurrenceeditor locale="fr-CH" #recObject [value]='data.RecurrenceRule' id="RecurrenceRule" class="e-field" data-name="RecurrenceRule" (change)="onChangeRecurrence($event)"></ejs-recurrenceeditor>
-                  </div>
-                </td>
-              </tr>
 
               <tr>
                 <td class="e-textlabel">Matiére</td>
@@ -114,6 +116,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </section>

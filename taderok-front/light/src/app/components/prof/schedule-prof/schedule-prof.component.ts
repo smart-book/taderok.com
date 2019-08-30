@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { recurrenceData } from './data';
-import {extend, L10n} from '@syncfusion/ej2-base';
+import {createElement, extend, L10n} from '@syncfusion/ej2-base';
 import {
   ScheduleComponent,
   EventSettingsModel,
@@ -143,17 +143,36 @@ export class ScheduleProfComponent implements OnInit {
     this.data = await this.seanceService.afficherSeanceAsync();
     console.log(this.data);
     this.out = this.data.map(function (obj) {
-      return {
-        Id: obj.id,
-        Subject: obj.titre,
-        StartTime : new Date(obj.date_debut),
-        EndTime : new Date(obj.date_fin),
-        CategoryColor: obj.couleur,
-        Description: obj.description,
-        Matiere: obj.matiere,
-        Niveau: obj.niveau,
-        RecurrenceRule: obj.etat
-      };
+      if (obj.duree === 0){
+        return {
+          Id: obj.id,
+          Subject: obj.titre,
+          StartTime : new Date(obj.date_debut),
+          EndTime : new Date(obj.date_fin),
+          CategoryColor: obj.couleur,
+          Description: obj.description,
+          Matiere: obj.matiere,
+          Niveau: obj.niveau,
+          RecurrenceRule: obj.etat,
+          RecurrenceException: '20180130T043000Z',
+          isAllDay: false
+
+        };
+      }else {
+        return {
+          Id: obj.id,
+          Subject: obj.titre,
+          StartTime : new Date(obj.date_debut),
+          EndTime : new Date(obj.date_fin),
+          CategoryColor: obj.couleur,
+          Description: obj.description,
+          Matiere: obj.matiere,
+          Niveau: obj.niveau,
+          RecurrenceID: obj.duree,
+          RecurrenceException: '20180130T043000Z',
+          isAllDay: false,
+        };
+      }
     });
 
     this.outData = this.data;
@@ -198,9 +217,8 @@ export class ScheduleProfComponent implements OnInit {
   onChange(args: ChangeEventArgs): void {
     this.scheduleObj.eventSettings.editFollowingEvents = args.checked;
     console.log(args);
-    //this.recurrence = args as string ;
-    //this.recObject.setRecurrenceRule(args as string);
   }
+
   onChangeRecurrence(args: RecurrenceEditorChangeEventArgs): void {
     console.log(args);
     this.recurrence = args.value ;
@@ -223,13 +241,42 @@ export class ScheduleProfComponent implements OnInit {
         break;
     }
   }*/
+
+  onPopupOpen(args: PopupOpenEventArgs): void {
+    if (args.type === 'QuickInfo') {
+      let data: any;
+      data = <any>args.data;
+
+      console.log(data);
+      if (data.Id === undefined) {
+        args.cancel = true;
+      } else {
+        args.cancel = false;
+        if (args.element.querySelector('.e-popup-content')) {
+          console.log(args.element.querySelector('.e-popup-content'));
+          let row: HTMLElement = createElement('div', {className: 'e-description'});
+          console.log(row);
+          //let formElement: HTMLElement = args.element.querySelector('.e-description');
+          //formElement.firstChild.insertBefore(row, args.element.querySelector('.e-description'));
+          let container: HTMLElement = createElement('div', {className: 'e-resource-icon e-icons'});
+          let inputEle: HTMLElement = createElement('div', {className: 'e-description-details e-text-ellipsis'});
+          let a:HTMLElement = createElement('a', {attrs: {href : '/#/prof/seance/details/'+data.Id},innerHTML: 'Voir plus'});
+          inputEle.append(a);
+          row.appendChild(container);
+          row.appendChild(inputEle);
+          args.element.querySelector('.e-popup-content').append(row);
+        }
+      }
+    }
+  }
+
   public onActionBegin(args: { [key: string]: Object }): void {
     if (args.requestType === 'eventCreate' || args.requestType === 'eventChange') {
       let data: any;
       if (args.requestType === 'eventCreate') {
         // add course and group
         data = <any>args.data[0];
-        //(<any>this.scheduleObj.eventWindow).recurrenceEditor.frequencies = ['daily', 'weekly'];
+        data.isAllDay = false;
         this.seance.titre = data.Subject;
         this.seance.date_debut = data.StartTime;
         this.seance.date_fin = data.EndTime;
@@ -267,18 +314,46 @@ export class ScheduleProfComponent implements OnInit {
         data = <any>args.data;
         data.RecurrenceRule = this.recurrence;
          console.log(data);
-        // update course
-        this.seanceModifiee.id = data.Id;
-        this.seanceModifiee.titre = data.Subject;
-        this.seanceModifiee.description = data.Description;
-        this.seanceModifiee.date_debut = data.StartTime;
-        this.seanceModifiee.date_fin = data.EndTime;
-        this.seanceModifiee.couleur = data.CategoryColor;
-        this.seanceModifiee.matiere = data.Matiere;
-        this.seanceModifiee.niveau = data.Niveau;
-        this.seanceModifiee.etat = data.RecurrenceRule;
 
-        this.seanceService.modifierSeanceAsync(this.seanceModifiee, data.Id).then( $.notify("Séance modifiée avec succès", "success"));
+         if (data.occurrence === undefined) {
+           // update course
+           this.seanceModifiee.id = data.Id;
+           this.seanceModifiee.titre = data.Subject;
+           this.seanceModifiee.description = data.Description;
+           this.seanceModifiee.date_debut = data.StartTime;
+           this.seanceModifiee.date_fin = data.EndTime;
+           this.seanceModifiee.couleur = data.CategoryColor;
+           this.seanceModifiee.matiere = data.Matiere;
+           this.seanceModifiee.niveau = data.Niveau;
+           this.seanceModifiee.etat = data.RecurrenceRule;
+
+           this.seanceService.modifierSeanceAsync(this.seanceModifiee, data.Id).then( $.notify("Séance modifiée avec succès", "success"));
+         } else {
+           this.seanceModifiee.titre = data.occurrence.Subject;
+           this.seanceModifiee.description = data.occurrence.Description;
+           this.seanceModifiee.date_debut = data.occurrence.StartTime;
+           this.seanceModifiee.date_fin = data.occurrence.EndTime;
+           this.seanceModifiee.couleur = data.occurrence.CategoryColor;
+           this.seanceModifiee.matiere = data.occurrence.Matiere;
+           this.seanceModifiee.niveau = data.occurrence.Niveau;
+           this.seanceModifiee.duree = data.occurrence.RecurrenceID;
+
+           this.seanceService.ajouterSeance(this.seanceModifiee).subscribe(data=>{console.log(data);
+             $.notify("Séance ajoutée avec succès", "success");
+             /*Swal.fire(
+               'Succes!',
+               'Votre seance a été ajoutée!',
+               'success'
+             )*/
+           }, error => {console.log(error);
+             Swal.fire({
+               type: 'error',
+               title: 'Oops...',
+               text: 'Veuillez remplir à nouveau les informations de la seance!',
+             });
+           });
+
+         }
       }
       if (!this.scheduleObj.isSlotAvailable(data.StartTime as Date, data.EndTime as Date)) {
         args.cancel = true;
